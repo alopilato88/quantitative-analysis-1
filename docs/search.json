@@ -1,9 +1,23 @@
 [
   {
+    "objectID": "content.html",
+    "href": "content.html",
+    "title": "content",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "quantitative-analysis-1",
     "section": "",
     "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "About",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
   }
 ]

@@ -1,0 +1,37 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+// fonts
+$font-family-sans-serif: 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
+$presentation-font-size-root: "36px";
+
+// colors for background
+$body-bg: #F9F7F7;
+$body-color: #112D4E;
+$link-color: #112D4E;
+$selection-bg: #112D4E;
+
+// headings
+$presentation-heading-font: "Roboto Condensed", sans-serif;
+
+// $presentation-heading-text-transform: uppercase !default;
+$presentation-heading-font-weight: bold;
+$presentation-heading-color: #3F72AF;
+
+// SCSS Rules
+.reveal .slide blockquote {
+  color: #112D4E;
+}
+
+.reveal .slide .aside-footnotes {
+  color: #112D4E;
+}
+
+.navbar-dark {
+  background-color: #112D4E;
+}

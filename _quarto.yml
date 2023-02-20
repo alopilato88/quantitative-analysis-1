@@ -3,17 +3,20 @@ project:
   output-dir: docs
 
 website:
-  title: "quantitative-analysis-1"
+  title: "Quantitative Analysis 1"
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
-      - test.qmd
+        text: About
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: content.qmd
+        text: Content
+  search: false
 
 format:
   html:
-    theme: cosmo
+    theme: [cosmo, theme.scss]
     css: styles.css
     toc: true
 
