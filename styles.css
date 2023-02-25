@@ -2,3 +2,8 @@
 .navbar-dark {
   background-color: #112D4E;
 }
+
+.title {
+  font-weight: 700;
+  font-style: bold;
+}

@@ -6,12 +6,10 @@ website:
   title: "Quantitative Analysis 1"
   navbar:
     left:
-      - href: index.qmd
-        text: About
       - href: syllabus.qmd
         text: Syllabus
-      - href: content.qmd
-        text: Content
+      - href: schedule.qmd
+        text: Schedule
   search: false
 
 format:

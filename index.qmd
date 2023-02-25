@@ -1,5 +1,5 @@
 ---
-title: "quantitative-analysis-1"
+title: "Quantitative Analysis 1"
 ---
 
 This is a Quarto website.

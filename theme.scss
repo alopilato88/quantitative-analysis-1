@@ -3,12 +3,12 @@
 @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;700&display=swap');
 
 // fonts
-$font-family-sans-serif: 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
-$presentation-font-size-root: "36px";
+$font-family-sans-serif: 'Oswald';
+$font-size-root: "20px";
 
 // colors for background
 $body-bg: #F9F7F7;
@@ -17,11 +17,12 @@ $link-color: #112D4E;
 $selection-bg: #112D4E;
 
 // headings
-$presentation-heading-font: "Roboto Condensed", sans-serif;
+// $presentation-heading-font: "Oswald";
 
 // $presentation-heading-text-transform: uppercase !default;
 $presentation-heading-font-weight: bold;
 $presentation-heading-color: #3F72AF;
+
 
 // SCSS Rules
 .reveal .slide blockquote {
@@ -35,3 +36,48 @@ $presentation-heading-color: #3F72AF;
 .navbar-dark {
   background-color: #112D4E;
 }
+
+h1 {
+  text-transform: uppercase;
+}
+
+.navbar-title {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+// Table Rules
+.table-schedule {
+  width: 900px;
+}
+
+.table-schedule th {
+  border-bottom: 2px solid #112D4E;
+}
+
+.ts-date {
+  text-align: left;
+  width: 25%;
+  padding: 2px 15px 5px 10px;
+}
+
+.ts-topic {
+  text-align: left;
+  width: 45%;
+  padding: 2px 15px 5px 10px;
+}
+
+.ts-content {
+  text-align: center;
+  width: 10%;
+  padding: 2px 10px 5px 10px;
+}
+
+
+
+
