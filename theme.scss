@@ -6,6 +6,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;700&display=swap');
 
+// Custom page
+.page-layout-custom {
+    min-height: 100vh;
+    max-width: 900px;
+    margin: auto;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.nav-fixed .quarto-light {
+  padding-top: 90px;
+}
+
 // fonts
 $font-family-sans-serif: 'Oswald';
 $font-size-root: "20px";
@@ -53,7 +68,7 @@ h1 {
 
 // Table Rules
 .table-schedule {
-  width: 900px;
+  width: 100%;
 }
 
 .table-schedule th {
@@ -63,19 +78,16 @@ h1 {
 .ts-date {
   text-align: left;
   width: 25%;
-  padding: 2px 15px 5px 10px;
 }
 
 .ts-topic {
   text-align: left;
   width: 45%;
-  padding: 2px 15px 5px 10px;
 }
 
 .ts-content {
   text-align: center;
   width: 10%;
-  padding: 2px 10px 5px 10px;
 }
 
 
