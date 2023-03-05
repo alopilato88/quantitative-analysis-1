@@ -26,98 +26,98 @@ Test text test text test text
   </tr>
   <tr>
     <td class="ts-date">9/5</td>
-    <td class="ts-topic">Comparison, covariation, & correlation</td>
+    <td class="ts-topic">Bivariate measures of association & simple regression</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/12</td>
-    <td class="ts-topic">Correlation & simple regression</td>
+    <td class="ts-topic">Measures of partial association & multiple regression</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/19</td>
-    <td class="ts-topic">Multiple regression</td>
+    <td class="ts-topic">Statistical inference for regression</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/29 - Immersion Day</td>
-    <td class="ts-topic">Generalizing from and extending regression models</td>
+    <td class="ts-topic">Categorical predictors & model building</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">10/10</td>
-    <td class="ts-topic">Multicategorical predictors</td>
+    <td class="ts-topic">Nonlinear effects, interactions, & more model building</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
-    <td class="ts-date">Estimating & testing interactions</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-date">10/17</td>
+    <td class="ts-topic">More on interactions</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">10/24</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">General Linear Model: ANOVA, ANCOVA, & multiple regression</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/3 - Immersion Day</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Regression diagnostics & prediction</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/7</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Introduction to causal inferencet</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/14</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Experimental design & analysis</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/28</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Causal inference with observational data</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/5</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Introduction to mediation & path analysis</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/12</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Causal mediation</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/19</td>
-    <td class="ts-topic">Test</td>
+    <td class="ts-topic">Course wrap-up</td>
     <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
