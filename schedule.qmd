@@ -3,7 +3,7 @@ format:
   html:
     page-layout: custom
 ---
-
+<div class="page-schedule">
 The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading links to see the required and supplementary readings for each week. Use the assignment links to see the assignment for each week. Use the lecture links to see the lecture for each week. 
 
 <table class="table-schedule">
@@ -20,14 +20,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   <tr>
     <td class="ts-date">8/25 - Stats Bootcamp</td>
     <td class="ts-topic">Basics of data analysis & R</td>
-    <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="readings/reading-1.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="syllabus.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/5</td>
     <td class="ts-topic">Bivariate measures of association & simple regression</td>
-    <td class="ts-content"><a href="index.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="readings/reading-2.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
@@ -124,3 +124,5 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
 </tbody>
 </table>
+
+</div>

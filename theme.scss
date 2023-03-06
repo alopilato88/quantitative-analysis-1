@@ -7,11 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500;700&display=swap');
 
 // Custom page
-.page-layout-custom {
+.page-schedule {
     min-height: 100vh;
     max-width: 900px;
     margin: 0 auto;
     display: grid;
+}
+
+.page-readings {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
 }
 
 .navbar {
