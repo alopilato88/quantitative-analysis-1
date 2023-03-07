@@ -19,8 +19,8 @@ format:
 <li><a href="https://r4ds.hadley.nz/intro.html">R for Data Science -- Chapter 1: Introduction</a></li>
 </ul>
 
-<div>
-<a href="reading-2.html">Next Readings &raquo;</a>
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-2.html">Next Weeks Readings &raquo;</a>
 </div>
 
 </div>

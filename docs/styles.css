@@ -37,11 +37,21 @@
   text-decoration: underline;
   margin-top: 1rem;
   font-weight: 700;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   text-transform: none;
 }
 
 .h2-reading {
   margin-top: 1rem;
   margin-bottom: 0;
+  font-weight: 700;
+}
+
+.prev-next {
+  padding-right: 1rem;
+  font-weight: 700;
+}
+
+.prev-next-container {
+  padding-top: 1rem;
 }

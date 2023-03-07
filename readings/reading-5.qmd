@@ -1,0 +1,27 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-readings">
+<h1 class="h1-reading"> Categorical Predictors & Model Building </h1>
+<h2 class="h2-reading">Required Readings:</h2>
+<ul class="ul-reading">
+<li>RAGLM -- Chapter 5: Extending Regression Analysis & Principles</li>
+<li>RAGLM -- Chapter 8: Assessing the Importance of Regressors</li>
+<li>RAGLM -- Chapter 9: Multicategorical Regressors</li>
+
+</ul>
+
+<h2 class="h2-reading">Supplemental Readings:</h2>
+<ul class="ul-reading">
+<li><a href="https://moderndive.com/5-regression.html">ModernDive -- Chapter 5: Basic Regression</a></li>
+<li><a href="https://moderndive.com/6-multiple-regression.html">ModernDive -- Chapter 6: Multiple Regression</a></li>
+</ul>
+
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-4.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-6.html">Next Weeks Readings &raquo;</a>
+</div>
+
+</div>

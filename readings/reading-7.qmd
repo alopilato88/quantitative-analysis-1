@@ -1,0 +1,25 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-readings">
+<h1 class="h1-reading"> More on Interactions </h1>
+<h2 class="h2-reading">Required Readings:</h2>
+<ul class="ul-reading">
+<li>RAGLM -- Chapter 14: Probing Interactions & Various Complexities</li>
+
+</ul>
+
+<h2 class="h2-reading">Supplemental Readings:</h2>
+<ul class="ul-reading">
+<li>Dawson (2014). Moderation in management research: What, why, when, and how.</li>
+<li>Haans et al. (2016). Thinking about U: Theorizing and testing U- and inverted U-shaped relationships in strategy research.</li>
+</ul>
+
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-6.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-8.html">Next Weeks Readings &raquo;</a>
+</div>
+
+</div>
