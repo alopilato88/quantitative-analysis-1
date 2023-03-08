@@ -1,0 +1,11 @@
+---
+title: "Stats Bootcamp"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+---
+
+## Slide 1
+
+## Slide 2

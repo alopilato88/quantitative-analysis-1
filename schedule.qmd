@@ -22,7 +22,7 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
     <td class="ts-topic">Basics of data analysis & R</td>
     <td class="ts-content"><a href="readings/reading-1.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
-    <td class="ts-content"><a href="syllabus.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="lectures/01-lecture-page.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/5</td>

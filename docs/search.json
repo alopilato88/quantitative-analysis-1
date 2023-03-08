@@ -12,5 +12,40 @@
     "title": "About",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "lectures/01-lecture-page.html",
+    "href": "lectures/01-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »"
+  },
+  {
+    "objectID": "lectures/01-lecture-page.html#lecture-stats-bootcamp",
+    "href": "lectures/01-lecture-page.html#lecture-stats-bootcamp",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Stats Bootcamp",
+    "text": "Lecture: Stats Bootcamp\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/01-lecture-page.html#r-in-class-assignment",
+    "href": "lectures/01-lecture-page.html#r-in-class-assignment",
+    "title": "Quantitative Analysis 1",
+    "section": "R: In-Class Assignment",
+    "text": "R: In-Class Assignment\n\nx <- rnorm(500)\nmean(x)\n\n[1] -0.01222021"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#slide-1",
+    "href": "lectures/01-lecture-slides.html#slide-1",
+    "title": "Stats Bootcamp",
+    "section": "Slide 1",
+    "text": "Slide 1"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#slide-2",
+    "href": "lectures/01-lecture-slides.html#slide-2",
+    "title": "Stats Bootcamp",
+    "section": "Slide 2",
+    "text": "Slide 2"
   }
 ]
