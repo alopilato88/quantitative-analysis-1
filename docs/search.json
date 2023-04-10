@@ -47,5 +47,47 @@
     "title": "Stats Bootcamp",
     "section": "Slide 2",
     "text": "Slide 2"
+  },
+  {
+    "objectID": "notes/00-notes-template.html",
+    "href": "notes/00-notes-template.html",
+    "title": "Notes Template",
+    "section": "",
+    "text": "This is a template for me to use to right my lecture notes."
+  },
+  {
+    "objectID": "notes/00-notes-template.html#test",
+    "href": "notes/00-notes-template.html#test",
+    "title": "Notes Template",
+    "section": "Test",
+    "text": "Test"
+  },
+  {
+    "objectID": "notes/00-notes-template.html#test-2",
+    "href": "notes/00-notes-template.html#test-2",
+    "title": "Notes Template",
+    "section": "Test 2",
+    "text": "Test 2"
+  },
+  {
+    "objectID": "notes/00-notes-template.html#test-3",
+    "href": "notes/00-notes-template.html#test-3",
+    "title": "Notes Template",
+    "section": "Test 3",
+    "text": "Test 3\nTest.\n\nTest 4\nThis is a test."
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#sampling-distribution",
+    "href": "notes/01-lecture-notes.html#sampling-distribution",
+    "title": "Lecture 1 Notes",
+    "section": "Sampling Distribution",
+    "text": "Sampling Distribution"
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#confidence-interval",
+    "href": "notes/01-lecture-notes.html#confidence-interval",
+    "title": "Lecture 1 Notes",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval"
   }
 ]
