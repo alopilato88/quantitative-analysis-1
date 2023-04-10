@@ -1,0 +1,62 @@
+---
+title: "Lecture 1 Notes"
+format: 
+  html:
+    page-layout: article
+    toc: true
+    toc-depth: 2
+---
+
+## Introduction 
+
+## What is Statistics
+
+## Probability Theory: Mathematics of Uncertainty 
+
+### What is Probability? 
+
+### Fundamentals of Probability Theory
+
+### Joint Probability: The Probability of Two or More Events
+
+### Conditional Probability: The Probability of One Event Given Another
+
+## Random Variables: Connecting Probability, Statistics, and Data
+
+#### Types of Random Variables: Discrete or Continuous 
+
+### Probability Distributions 
+
+### Probability Mass Function: Describing Discrete Random Variables
+
+### Probability Density Function: Describing Continuous Random Variables
+
+### Cumulative Distribution Function
+
+### Joint & Conditional Distributions: Modeling Two (or More) Random Variables
+
+## Descriptive Statistics: Describing Your Data
+
+### Population vs Sample
+
+### Measures of Central Tendency 
+
+#### Mean (or Expected Value)
+
+#### Median 
+
+#### Mode 
+
+### Measures of Spread 
+
+#### Range 
+
+#### Variance 
+
+#### Standard Deviation 
+
+### 
+
+## Inferential Statistics: Generalizing from Your Data
+
+
