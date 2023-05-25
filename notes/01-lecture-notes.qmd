@@ -53,7 +53,7 @@ format:
 
 #### Variance 
 
-#### Standard Deviation - test
+#### Standard Deviation
 
 ### 
 

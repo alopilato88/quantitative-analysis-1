@@ -6,6 +6,134 @@ format:
     css: styles-lecture-slides.css
 ---
 
-## Slide 1
+## Overview 
 
-## Slide 2
+* Introduction to 
+
+# Introduction to Statistical Science
+
+## What is Statistical Science?
+
+## Three Aspects of Statistical Science
+
+* Design
+* Description
+* Inference 
+
+## Design of Studies
+
+## Descriptive Statistics
+
+## Inferential Statistics 
+
+## Populations
+
+* Subject
+* Parameter
+
+## Actual vs Conceptual Populations
+
+## Samples & Data
+
+## Variables
+
+* Classify by the values the variable takes on or the role they play in a statistical model.
+
+## Types of Variables
+
+* Quantitative
+* Categorical 
+
+## Types of Quantitative Variables
+
+## Types of Categorical Variables
+
+* Dichotomous / Binary
+* Multicategorical 
+
+## Roles of Variables
+
+* Response, Outcome, Dependent Variable, Criterion Variable
+* Predictor, Independent Variable, Feature, Covariate 
+
+## Collecting Data
+
+* Randomized Experiment 
+* Quasi-Experiment 
+* Observational Studies 
+
+## Randomized Experiments
+
+## Quasi-Experiments 
+
+## Observational Studies 
+
+# Describing your Data 
+
+## What is a Statistic?
+
+## Statistic vs Population Parameter
+
+## Decriptive Statistics
+
+## Describing the Center of your Data
+
+## Describing the Spread of your Data
+
+## Describing the Shape of your Data
+
+## Describing the Overall Distributiong of your Data
+
+## Describing the Relationship between two Variables
+
+## The Importance of Plots
+
+## Histograms
+
+## Box Plots
+
+## Violin Plots
+
+## Scatter Plots
+
+# An Introduction to Probability Theory 
+
+## What is Probability?
+
+## Probability as a Long-Run Frequency
+
+## Sample Space & Events
+
+## Axioms (Rules) of Probability Theory
+
+## Joint Probability
+
+## Conditional Probability
+
+## Random Variables: Connecting Probability, Statistics, and Data
+
+## Types of Random Variables: Discrete & Continuous 
+
+## Probability Distribution Functions
+
+## Probability Mass & Density Functions
+
+## Cumulative Distribution Function
+
+## Expectation of a Random Variable 
+
+## Connection Between the Mean and Expectation 
+
+* 1/n @ large n
+
+## Using the Expecation for Variance
+
+## Joint Probability Distributions
+
+## Conditional Probability Distributions
+
+## Independent Random Variables 
+
+# Drawing Inferences from your Data
+
+## Sampling Distributions
