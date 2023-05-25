@@ -136,4 +136,14 @@ format:
 
 # Drawing Inferences from your Data
 
+## Inferential Statistics
+
 ## Sampling Distributions
+
+## The Standard Error 
+
+## Central Limit Theorem
+
+## Sampling Distribution of a Sample Mean 
+
+# Statistical Tests
