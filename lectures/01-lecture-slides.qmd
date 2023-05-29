@@ -134,7 +134,7 @@ format:
 
 ## Independent Random Variables 
 
-# Drawing Inferences from your Data
+# Generalizing from your Data
 
 ## Inferential Statistics
 
