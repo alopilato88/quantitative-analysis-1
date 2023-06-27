@@ -104,7 +104,7 @@ format:
 
 ## Sample Space & Events
 
-## Axioms (Rules) of Probability Theory
+## Rules of Probability Theory
 
 ## Joint Probability
 
@@ -142,8 +142,24 @@ format:
 
 ## The Standard Error 
 
+## Sampling Distribution of the Mean
+
+## Standard Error of the Mean
+
 ## Central Limit Theorem
 
 ## Sampling Distribution of a Sample Mean 
 
-# Statistical Tests
+# Statistical Estimation 
+
+## Point Estimates
+
+## Estimating the Mean & Variance
+
+## Interval Estimates (Confidence Interval)
+
+## Building a Confidence Interval Around the Mean
+
+## Interpreting a Confidence Interval
+
+# Statistical (Hypothesis) Tests 
