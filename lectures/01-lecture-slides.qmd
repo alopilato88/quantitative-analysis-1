@@ -1,165 +1,2707 @@
 ---
-title: "Stats Bootcamp"
+title: "An Introduction to Programming & Statistics"
 format: 
   revealjs:
     theme: [default, theme-lecture-slides.scss] 
     css: styles-lecture-slides.css
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
 ---
 
-## Overview 
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
 
-* Introduction to 
+```
+
+## Overview
+
+* Introduction to Programming with R
+  - Base R
+  - Tidyverse 
+  
+* Introduction to Statistical Science 
+  - Descriptive Statistics
+  - Quick look at Probability Theory
+  - Inferential Statistics 
+
+## Learning Goals
+
+* Data importing and transformation with R
+* Estimate and interpret a statistical test
+
+## A Reassuring Reminder
+
+> Statistics is hard, especially when effects are small and variable and measurements are noisy. 
+> `r tufte::quote_footer("--- McShane et al. (2019)")`
+
+# An Introduction to R
+
+## First Steps
+
+* Download R if you haven't already
+* Download RStudio
+
+## What is R?
+
+R is a programming language that is generally used for statistical computing.
+
+## Why Learn R? 
+
+To analyze the data you collect, you will need to be familiar with some kind of general programming language (R, Python, etc.) or a more specific statistical program (SPSS, SAS). I recommend and use R because it is:
+
+* Open-source (free to download, use, and improve)
+* Highly flexible language
+* Can estimate A LOT of different statistical models
+
+## Integrated Development Environment & RStudio
+
+An integrated development environment (IDE) is an application that makes programming a little easier and organized. It includes all of the tools one needs to program effectively and efficiently. 
+
+RStudio is an IDE initially developed for R, but it can be used for other programming languages too. 
+
+If you have not already, please go ahead and download RStudio from [here](https://posit.co/downloads/).
+
+## Writing Scripts in R
+
+Just because you can write R code in just about any kind of digital document (Word, Notes, Notepad) does not mean you should! 
+
+It is best practice to write your code in an R Script (.R) in RStudio (in my opinion at least). 
+
+## Using Comments in Your Code
+
+You can write comments in your own code by beginning a line with `#`. R will not evaluate any text on a line that begins with `#`. 
+
+```{r}
+# This is a comment. Use comments to leave yourself notes in your script. 
+```
+
+# Programming with Base R
+
+## Objects in R 
+
+Everything you do in R will involve some kind of **object** that you have created. Think of an **object** like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator `<-` which is how R knows to assign `value` to `object_name`.
+
+```{r}
+#| eval: false
+object_name <- value 
+```
+
+## Atomic Vectors
+
+* An atomic vector is just a simple vector of data. 
+* R recognizes six types of atomic vectors: 
+  - Integers
+  - Doubles (Numeric)
+  - Characters
+  - Logicals
+  - Complex
+  - Raw
+
+## Integer & Numeric Vectors 
+
+**Integer vectors** contain only integers. Add `L` after each number so R recognizes it as an integer. **Numeric (doubles) vectors** contain real numbers. These are the default vectors for numbers.
+
+```{r}
+#| eval: false
+integer_vec <- c(1L, 2L, 50L)
+numeric_vec <- c(1, 2, 50, 45.23)
+```
+
+## Character Vector
+
+**Character vectors** contain only text data also referred to as string data. Basically anything surrounded by `""` or `''` is considered string data.
+
+```{r}
+#| eval: false
+character_vec <- c("1", "abc", "$#2")
+```
+
+## Logical Vector
+
+**Logical vectors** are vectors that can only contain `TRUE` or `FALSE` values also referred to as boolean values. 
+
+```{r}
+#| eval: false
+logical_vec <- c(TRUE, FALSE)
+```
+
+## Adding Attributes 
+
+You can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting.
+
+## `names` Attribute 
+
+```{r}
+days_of_week <- 1:7 
+names(days_of_week) <- c("mon", "tues", "wed", "thurs", "fri", "sat", "sun")
+names(days_of_week)
+attributes(days_of_week)
+```
+
+## `dim` Attribute
+
+```{r}
+days_of_week <- 1:14
+dim(days_of_week) <- c(2, 7) # 2 Rows, 7 Columns
+attributes(days_of_week)
+class(days_of_week)
+```
+
+## Creating Factors 
+
+R stores categorical data using factors, which are integer vectors with two attributes: `class` and `levels`. 
+```{r}
+days_of_week <- factor(c("mon", "tues", "wed", "thurs", "fri", "sat", "sun"))
+typeof(days_of_week)
+attributes(days_of_week)
+```
+
+## Data Frames: Best way to Represent Data
+
+Data frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet. 
+
+Each column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column. 
+
+```{r}
+data_frame_1 <- data.frame(NUMERIC = c(1, 3), CHARACTER = c("a", "b"), 
+                           LOGICAL = c(TRUE, FALSE))
+data_frame_1
+```
+
+## Viewing Your Data
+
+You can use `View()` to open up a spreadsheet-like view of your data. 
+
+```{r}
+#| eval: false
+View(data_frame_1)
+```
+
+## Selecting Data from Data Frames
+
+You will mainly select data from data frames using one of the two following methods: 
+
+```{r}
+data_frame_1[1, 1] # Index the row and/or column
+data_frame_1[, 1] # Leaving the column or row index blank selects the whole vector
+data_frame_1$NUMERIC # Use a $ operator to reference the column name
+```
+
+## Functions in R
+
+Functions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output. 
+
+```{r}
+sum(c(1, 3))
+```
+
+## The Elements of a Function
+
+R comes with a variety of predefined functions and they all follow the same structure: 
+
+* A **name** for the function.
+* The **arguments** that change across different function calls. 
+* The **body** which contains the code that is repeated across different calls.
+
+## The Elements of a Function
+
+```{r}
+#| eval: false
+name <- function(argument) {
+  body
+}
+```
+
+## Example Base Function
+
+```{r}
+x <- c(1, 4, 6)
+sum(x) 
+mean(x)
+min(x)
+```
+
+## Linking Functions Together
+
+R lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward. 
+
+```{r}
+sum(abs(c(-1, -1, 1, 1)))
+```
+
+## Using the pipe `|>`
+
+The `|>` operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the `|>` makes it easier to read your code, which is a good thing. 
+
+```{r}
+c(-1, -1, 1, 1) |>
+  abs() |>
+  sum()
+```
+
+## Packages: The Lifeblood of R
+
+A lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one! 
+
+## Installing & Loading Packages 
+
+You can use `install.packages` to install a package once and then `library` to load that package and gain access to all of its functions. 
+
+```{r}
+#| eval: false
+install.packages("package_name")
+library(package_name)
+```
+
+## Reading and Writing Data 
+
+There are a number of different methods to read and write data into R. The two most common functions are:
+
+```{r}
+#| eval: false
+data <- read.csv("filepath/file-name.csv")
+
+write.csv(data, "filepath/file-name.csv")
+```
+
+## Importing Data from an R Package
+
+Oftentimes, R packages will come with their own datasets that we can load into R. The `peopleanalytics` package has many such datasets that we will use today:
+
+```{r}
+data_employees <- peopleanalytics::employees
+```
+
+## Getting Help with R
+
+There are two ways to get help in R: 
+
+* Add `?` in front of your function, which will result in RStudio displaying the help page for that function.
+* Google what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!
+
+```{r}
+#| eval: false
+?sum()
+```
+
+# Introduction to the Tidyverse
+
+## What is the Tidyverse? 
+
+The tidyverse is a collection of R packages that "share a common philosophy of data and R programming and are designed to work together."
+
+## Installing Packages from the Tidyverse
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+## `tibble`: Data frame of Tidyverse
+
+Tibbles are the tidyverse's version of a `data.frame`. They can be loaded from the tidyverse package: `tibble`. 
+
+```{r}
+data_employees_tbl <- tibble::as_tibble(data_employees)
+data_employees_tbl
+```
+
+## `dplyr`: Your Data Multitool 
+
+The package `dplyr` should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data. 
+
+## The Philosophy of `dplyr` Functions
+
+Every function in `dplyr` follows this philosophy: 
+
+* First argument is always a data frame.
+* Remaining arguments are usually names of columns on which to operate.
+* The output is always a new data frame (tibble).
+
+`dplyr` functions are also further grouped by whether they operate on **rows**, **columns**, **groups**, or **tables**. 
+
+## Using `dplyr` to Operate on Rows
+
+The following `dplyr` functions can **filter**, **reduce**, or **reorder** the rows of a data frame:
+
+```{r}
+#| eval: false
+dplyr::filter(data_employees_tbl, job_level %in% c(4, 5))
+
+dplyr::distinct(data_employees_tbl, ed_lvl, ed_field)
+
+dplyr::arrange(data_employees_tbl, work_exp)
+```
+
+## Using `dplyr` to Operate on Columns
+
+The following `dplyr` functions can **select**, **rename**, **add/change**, or **relocate** the columns of a data frame:
+
+```{r}
+#| eval: false
+dplyr::select(data_employees_tbl, dept)
+
+dplyr::rename(data_employees_tbl, job_level = job_lvl)
+
+dplyr::mutate(data_employees_tbl, salary = monthly_comp * 12)
+
+dplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)
+```
+
+## Using `dplyr` to Operate on Groups
+
+The following `dplyr` functions can **group** and **summarize** your data by a predefined group indicator:
+
+```{r}
+#| eval: false
+data_employees_tbl |>
+  dplyr::group_by(
+    job_lvl
+  ) |>
+  dplyr::summarize(
+    annual_comp_mean = mean(annual_comp),
+    annual_comp_median = median(annual_comp)
+  )
+```
+
+In this code chunk, we have grouped by an employee's job level and summarized their annual salary by job level. 
+
+## Using `dplyr` to Operate on Tables
+
+The following`dplyr` functions can be used to **join different tables (data frames)** together by a unique identifier:
+
+```{r}
+data_job <- peopleanalytics::job |> tibble::as_tibble()
+
+data_payroll <- peopleanalytics::payroll |> tibble::as_tibble()
+
+data_job_payroll <- 
+  data_job |>
+  dplyr::left_join(
+    data_payroll,
+    by = "employee_id"
+  )
+```
+
+## R Resources 
+
+https://r4ds.hadley.nz/
 
 # Introduction to Statistical Science
 
 ## What is Statistical Science?
 
+> Statistical science is the science of developing and applying methods for collecting 
+> analyzing, and interpreting data.
+> `r tufte::quote_footer("--- Agresti & Kateri, 2022")`
+
 ## Three Aspects of Statistical Science
 
-* Design
-* Description
-* Inference 
+* Design: Planning on how to gather relevant data.
+* Description: Summarizing the data.
+* Inference: Making evaluations (generalizations) based on the data.
 
 ## Design of Studies
 
-## Descriptive Statistics
+The design of a study focuses on planning a study so that it produces useful data. This involves: 
 
-## Inferential Statistics 
+* Deciding how to sample and who to sample
+* Constructing surveys for **observational studies**
+* Constructing treatments for **experimental studies**
 
-## Populations
+## Description
 
-* Subject
-* Parameter
+Description focuses on how to summarize the raw data without losing too much information. Descriptive statistics are statistics calculated from the raw data that summarize all (or most) of the information contained in the data: 
+
+* Mean, median, and mode 
+* Variance and standard deviation
+* Cumulative distribution of the data
+
+## Inference
+
+Inference focuses on how to make evaluations (generalizations) from the data that take into consideration the uncertainty present in the data. These data-based evaluations take the form of:
+
+* Predictions
+* Interval and point estimates 
+* Probability (P) values
+
+## Populations & Samples
+
+The purpose of most analyses is to learn something about the **population** from the collected data or **sample**. 
+
+A **population** is the collection of every unit or subject (e.g. person) that one wishes to generalize to from the results of their study. A **sample** is the actual collected data one is using to make these generalizations. 
 
 ## Actual vs Conceptual Populations
 
-## Samples & Data
+Depending on the research question, the population may be **real** or it may be **conceptual**. **Conceptual** populations are often future populations we want to generalize to, but which we have to use data collected on current populations. 
 
 ## Variables
 
-* Classify by the values the variable takes on or the role they play in a statistical model.
+Variables are characteristics of the sample or population that vary across subjects. Data consists of a set of variables: 
 
-## Types of Variables
+```{r}
+set.seed(3)
+data_employees_tbl |>
+  dplyr::sample_n(5) |>
+  dplyr::select(
+    employee_id,
+    trainings,
+    ed_field,
+    dept
+  )
+```
 
-* Quantitative
-* Categorical 
+## Types of Variables by Measurement Scale
+
+We can classify variables into two broad categories based on their measurement scale--the types of values the variable can take on:
+
+* Quantitative: Values are numbers
+* Categorical: Values are categories
+
+## Types of Variables by Measurement Scale
+
+```{r}
+set.seed(4)
+data_employees_tbl |> 
+  dplyr::sample_n(5) |>
+  dplyr::select(
+    job_tenure,
+    dept
+  )
+```
 
 ## Types of Quantitative Variables
 
+Quantitative variables can be further classified into two groups: 
+
+* Discrete: Values are distinct, separable numbers (e.g. integers)
+* Continuous: Values are on an infinite continuum (e.g. real numbers)
+
+## Types of Quantitative Variables
+
+```{r}
+set.seed(4)
+data_employees_tbl |>
+  dplyr::sample_n(5) |>
+  dplyr::select(
+    trainings,
+    commute_dist
+  )
+```
+
 ## Types of Categorical Variables
 
-* Dichotomous / Binary
-* Multicategorical 
+Similar to quantitative variables, categorical variables can also be classified into two groups:
+
+* Dichotomous / Binary: Two categories
+* Multicategorical: Three or more categories
+
+## Types of Categorical Variables
+
+```{r}
+set.seed(4)
+data_employees_tbl |>
+  dplyr::sample_n(5) |>
+  dplyr::select(
+    trainings,
+    commute_dist
+  )
+```
 
 ## Roles of Variables
+
+Variables can not only be categorized by the kinds and ranges of values they take on, but also by the **role they take on in the analysis**:
 
 * Response, Outcome, Dependent Variable, Criterion Variable
 * Predictor, Independent Variable, Feature, Covariate 
 
-## Collecting Data
+## Data Collection
 
-* Randomized Experiment 
-* Quasi-Experiment 
+The strength of the inferences you can make depends on the quality of your data. The quality of your data is very dependent on the method used to collect it: 
+
+* Experiments
 * Observational Studies 
 
-## Randomized Experiments
+## Experiments
 
-## Quasi-Experiments 
+In experiments---also known as randomized control trials (RCTs)---data are collected by **randomly** assigning subjects to an experimental trial or condition, then collecting the subsequent outcome data.
 
-## Observational Studies 
+By randomly assigning subjects to conditions, you are effectively ensuring that any differences in the outcome variable by condition is due solely to the condition not to any other **lurking** variable. 
+
+## Observational Studies
+
+In observational studies, the researchers **observe** collect a sample of subjects and **observe** their outcomes across the variables of interest. One type of observational study design is a **survey study**.  
+
+The important difference between observational studies and experiments is that subjects are **not randomly assigned** to treatments. 
 
 # Describing your Data 
 
+## Thinking in Disributions 
+
+The distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either absolute terms (count of observations) or relative terms (proportion or percent). A variable's distribution completely describes the variable.
+
+## Importance of Plots
+
+Plotting your data immediately gives you more information than looking at the raw numbers: 
+
+* Plots give you visual information about the center, spread, and shape of your data.
+* Plots alert you to values that are really far away from the center of your data.
+
+## Examples of Plots
+
+```{r}
+set.seed(2311)
+x <- rnorm(1000)
+data <- tibble::tibble(x = x)
+```
+
+```{r}
+#| echo: false
+
+p1 <- ggplot2::ggplot(
+  data = data.frame(x = x),
+  ggplot2::aes(x, after_stat(density))
+) + 
+  ggplot2::geom_histogram(
+    bins = 40,
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) +
+  ggplot2::labs(
+    title = "Histogram",
+    x = "",
+    y = ""
+  )
+
+p2 <- ggplot2::ggplot(
+  data = data.frame(x = x),
+  ggplot2::aes(y = x, x = 0)
+) + 
+  ggplot2::geom_violin(
+    width = .5,
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::xlim(c(-.5, .5)) +
+  ggplot2::labs(
+    title = "Violin Plot",
+    x = "",
+    y = ""
+  )
+
+p3 <- ggplot2::ggplot(
+  data = data.frame(x = x),
+  ggplot2::aes(y = x)
+) + 
+  ggplot2::geom_boxplot(
+    width = .3,
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::xlim(c(-.5,.5)) +
+  ggplot2::labs(
+    title = "Boxplot",
+    x = "",
+    y = ""
+  )
+
+p4 <- ggplot2::ggplot(
+  data = data.frame(x = x),
+  ggplot2::aes(x, after_stat(density))
+) + 
+   ggplot2::geom_density(
+    data = data.frame(x = x),
+    ggplot2::aes(x = x),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    alpha = 1,
+    inherit.aes = FALSE
+  ) +
+  ggplot2::geom_histogram(
+    bins = 40,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    alpha = .5
+  ) +
+  ggplot2::labs(
+    title = "Histogram + Density Plot",
+    x = "",
+    y = ""
+  )
+
+p5 <- ggplot2::ggplot(
+  data = data.frame(x = x),
+  ggplot2::aes(y = x, x = 0)
+) + 
+  ggplot2::geom_violin(
+    width = .5,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    alpha = .5
+  ) + 
+  ggplot2::geom_boxplot(
+    width = .3,
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::xlim(c(-.5,.5)) +
+  ggplot2::labs(
+    title = "Violin + Boxplot",
+    x = "",
+    y = ""
+  )
+
+patchwork <- (p1 | p2 | p3) / (p4 | p5)
+patchwork & lecture_ggplot_theme_1
+```
+
 ## What is a Statistic?
+
+A statistic is a number that we can calculate from our data. Statistics provide useful information about the characteristics of a variable's distribution such as its center (mean) or spread (standard deviation).  
+
+```{r}
+mean(data_employees_tbl$commute_dist) |> round(2) # Mean
+median(data_employees_tbl$commute_dist) # Median
+sd(data_employees_tbl$commute_dist) |> round(2) # SD
+```
+
 
 ## Statistic vs Population Parameter
 
-## Decriptive Statistics
+**Population parameters** (or parameters) are numerical summaries of our population. **Statistics** are estimates of these parameters calculated from data sampled from this population. 
+
+Usually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data.  
+
+## Statistic vs Population Parameter 
+
+```{r}
+#| echo: false
+#| label: population-statistic-plot
+plot_population <- 
+  ggplot2::ggplot(
+    NULL,
+    ggplot2::aes(
+      c(-5, 5)
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-5, 5)
+  ) +
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = 0,
+      y = 0, 
+      xend = 0, 
+      yend = .40
+    )
+  ) +
+  ggplot2::labs(
+    x = "Population",
+    y= ""
+  ) + 
+  lecture_ggplot_theme_1
+
+set.seed(3)
+data_s1 <- data.frame(x = rnorm(20))
+data_s2 <- data.frame(x = rnorm(20))
+data_s3 <- data.frame(x = rnorm(20))
+
+plot_sample_1 <- 
+  ggplot2::ggplot(
+    data = data_s1,
+    ggplot2::aes(x)
+  ) + 
+  ggplot2::geom_density(
+    color = "#112D4E",
+    fill = "#3F72AF",
+  ) + 
+  ggplot2::xlim(-5, 5) + 
+  ggplot2::geom_vline(xintercept = mean(data_s1$x)) + 
+  ggplot2::labs(x = "Sample 1",
+                y = "") +
+  lecture_ggplot_theme_1
+
+plot_sample_2 <- 
+  ggplot2::ggplot(
+    data = data_s2,
+    ggplot2::aes(x)
+  ) + 
+  ggplot2::geom_density(
+    color = "#112D4E",
+    fill = "#3F72AF",
+  ) + 
+  ggplot2::xlim(-5, 5) + 
+  ggplot2::geom_vline(xintercept = mean(data_s2$x)) +
+  ggplot2::labs(x = "Sample 2",
+                y = "") +
+  lecture_ggplot_theme_1
+
+plot_sample_3 <- 
+  ggplot2::ggplot(
+    data = data_s3,
+    ggplot2::aes(x)
+  ) + 
+  ggplot2::geom_density(
+    color = "#112D4E",
+    fill = "#3F72AF",
+  ) + 
+  ggplot2::xlim(-5, 5) + 
+  ggplot2::geom_vline(xintercept = mean(data_s3$x)) +
+  ggplot2::labs(x = "Sample 3",
+                y = "") +
+  lecture_ggplot_theme_1
+
+(plot_population / (plot_sample_1 | plot_sample_2 | plot_sample_3)) & lecture_ggplot_theme_1
+```
 
 ## Describing the Center of your Data
 
+One common way to describe your data is to compute a statistic that tells you where the center of your data is---the average or expected value of your data. There are three statistics you can compute: 
+
+* Mean: The average value.
+* Median: The value at which 50% of your data lies below it.
+* Mode: The most common value.
+
+## Describing the Center of your Data
+
+```{r}
+#| label: center-stat-plot
+#| echo: false
+set.seed(1523)
+data_plot <- data.frame(
+  x_gamma = rgamma(1000, shape = .95),
+  x_norm = rnorm(1000)
+)
+
+p1 <- 
+  ggplot2::ggplot(
+    data = data_plot,
+    ggplot2::aes(
+      x = x_gamma
+    )
+  ) + 
+  ggplot2::geom_histogram(
+    color = "#112D4E",
+    fill = "#3F72AF",
+    bins = 50
+  ) +
+  ggplot2::geom_vline(
+    xintercept = c(mean(data_plot$x_gamma), median(data_plot$x_gamma)),
+    color = c("#112D4E"),
+    linetype = c("solid", "dashed"),
+    size = 1.5
+  ) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  )
+
+p2 <- 
+  ggplot2::ggplot(
+    data = data_plot,
+    ggplot2::aes(
+      x = x_norm
+    )
+  ) + 
+  ggplot2::geom_histogram(
+    color = "#112D4E",
+    fill = "#3F72AF",
+    bins = 50
+  ) +
+  ggplot2::geom_vline(
+    xintercept = c(mean(data_plot$x_norm), median(data_plot$x_norm)),
+    color = c("#112D4E"),
+    linetype = c("solid", "dashed"),
+    size = 1.5
+  ) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  )
+
+patchwork_plot <- (p1 | p2) + patchwork::plot_annotation(title = "Solid Line = Mean & Dashed Line = Median")
+patchwork_plot & lecture_ggplot_theme_1
+  
+```
+
 ## Describing the Spread of your Data
+
+You can describe the **spread** of your data by computing statistics that tells you generally how far the observations are from the mean of your data. There are three statistics you can compute: 
+
+* Variance: The average squared distance your data falls from the mean.
+* Standard Deviation: The average distance your data falls from the mean (square root of variance).
+* Range: Maximum value minus the minimum value of your data. 
+
+## Describing the Spread of your Data
+
+```{r}
+#| label: spread-stat-plot
+#| echo: false
+p1 <- 
+  ggplot2::ggplot(
+    NULL,
+    ggplot2::aes(
+      c(-8, 8)
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    args = list(mean = 0, sd = .50),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim= c(-8,8)
+  ) +
+  ggplot2::labs(
+    title = "Narrow, SD = .50",
+    y = "",
+    x = ""
+  ) 
+
+p2 <- 
+  ggplot2::ggplot(
+    NULL,
+    ggplot2::aes(
+      c(-8, 8)
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    args = list(mean = 0, sd = 1),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim= c(-8,8)
+  ) +
+  ggplot2::labs(
+    title = "Average, SD = 1",
+    y = "",
+    x = ""
+  )
+
+p3 <- 
+  ggplot2::ggplot(
+    NULL,
+    ggplot2::aes(
+      c(-8, 8)
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    args = list(mean = 0, sd = 2),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim= c(-8,8)
+  ) +
+  ggplot2::labs(
+    title = "Wide, SD = 2",
+    y = "",
+    x = ""
+  )
+
+patchwork_plot <- (p1 | p2 | p3)
+patchwork_plot & lecture_ggplot_theme_1 
+  
+```
 
 ## Describing the Shape of your Data
 
-## Describing the Overall Distributiong of your Data
+Oftentimes, you will also want to talk about the **shape** of your data. Typically, this is about how **skewed** or asymmetric your data is in one direction or how heavy the **tails** of your distribution are:
+
+* Skewness: How long the tails of your distribution are in a given direction. 
+* Kurtosis: How heavy the tails of your distribution are.
+
+## Describing the Shape of your Data
+
+```{r}
+#| label: shape-stat-plot
+#| echo: false
+p1 <- 
+  ggplot2::ggplot(
+    data = NULL,
+    ggplot2::aes(
+      x = -3:3
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-3, 3)
+  ) + 
+  ggplot2::labs(
+    title = "Standard Normal",
+    y = "",
+    x = ""
+  )
+
+p2 <- 
+  ggplot2::ggplot(
+    data = NULL,
+    ggplot2::aes(
+      x = -3:3
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dsn,
+    args = list(alpha = 5),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-1,4)
+  ) + 
+  ggplot2::labs(
+    title = "Skewed Right",
+    y = "",
+    x = ""
+  )
+
+p3 <- 
+  ggplot2::ggplot(
+    data = NULL,
+    ggplot2::aes(
+      x = -3:3
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dsn,
+    args = list(alpha = -5),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-4,1)
+  ) + 
+  ggplot2::labs(
+    title = "Skewed Left",
+    y = "",
+    x = ""
+  )
+
+p4 <- 
+  ggplot2::ggplot(
+    data = NULL,
+    ggplot2::aes(
+      x = -5:5
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dt,
+    args = list(df = 1),
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-5,5)
+  ) + 
+  ggplot2::labs(
+    title = "Kurtosis - Heavy Tails",
+    y = "",
+    x = ""
+  )
+
+patchwork <- (p1 | p4) / (p2 | p3)
+patchwork & lecture_ggplot_theme_1
+```
 
 ## Describing the Relationship between two Variables
 
-## The Importance of Plots
+We can also describe the linear relationship between two variables by computing either the **covariation** or **correlation** between two variables. Both of these metrics tell us the extent to which two variables are linearly related to one another. 
 
-## Histograms
+## Correlation Coefficient
 
-## Box Plots
+The correlation coefficient is just a standardized version of the covariance statistic with values that range from -1 to 1. 
 
-## Violin Plots
+* Positive Correlation: **High (low)** values of one variable, X, are frequently seen with **high (low)** values of another variable.
 
-## Scatter Plots
+* Negative Correlation: **High (low)** values of one variable, X, are frequently seen with **low (high)** values of another variable.
+
+```{r}
+set.seed(324)
+x <- rnorm(100, sd = 50)
+y <- 1 * x + rnorm(100, sd = 100)
+
+cov(x, y) |> round(2)
+cor(x, y) |> round(2)
+```
+
+## Plotting the Relationship Between two Variables
+
+```{r}
+#| label: plot-rel-variables
+#| echo: false
+set.seed(3243)
+n <- 3000
+alpha_value <- .3
+
+data <- 
+  tibble::tibble(
+    X = rnorm(n)
+  ) |>
+  dplyr::mutate(
+    Y_POS = .7 * X + rnorm(n, sd = sqrt(1 - var(.7 * X))),
+    Y_NEG = -.7 * X + rnorm(n, sd = sqrt(1 - var(.7 * X))),
+    Y_UC = rnorm(n),
+    Y_NL = -.6 * (X^2) + rnorm(n, sd = sqrt(1 - var(-.3 * (X^2))))
+  )
+
+p1 <- ggplot2::ggplot(
+  data = data, 
+  ggplot2::aes(
+    x = X,
+    y= Y_POS
+  )
+) + 
+  ggplot2::geom_point(
+    fill = "#112D4E",
+    color = "#3F72AF",
+    alpha = alpha_value
+  ) + 
+  ggplot2::geom_smooth(
+    method = lm,
+    formula = y ~ x,
+    color = "#112D4E",
+    size = 1
+  ) + 
+  ggplot2::labs(
+    title = "Positive Correlation: r = .70",
+    x = "X",
+    y = "Y"
+  )
+
+p2 <- ggplot2::ggplot(
+  data = data, 
+  ggplot2::aes(
+    x = X,
+    y= Y_NEG
+  )
+) + 
+  ggplot2::geom_point(
+    fill = "#112D4E",
+    color = "#3F72AF",
+    alpha = alpha_value
+  ) + 
+  ggplot2::geom_smooth(
+    method = lm,
+    formula = y ~ x,
+    color = "#112D4E",
+    size = 1
+  ) + 
+  ggplot2::labs(
+    title = "Negative Correlation: r = -.70",
+    x = "X",
+    y = "Y"
+  )
+
+p3 <- ggplot2::ggplot(
+  data = data, 
+  ggplot2::aes(
+    x = X,
+    y= Y_UC
+  )
+) + 
+  ggplot2::geom_point(
+    fill = "#112D4E",
+    color = "#3F72AF",
+    alpha = alpha_value
+  ) + 
+  ggplot2::geom_smooth(
+    method = lm,
+    formula = y ~ x,
+    color = "#112D4E",
+    size = 1
+  ) + 
+  ggplot2::labs(
+    title = "No Correlation: r = 0",
+    x = "X",
+    y = "Y"
+  )
+
+p4 <- ggplot2::ggplot(
+  data = data, 
+  ggplot2::aes(
+    x = X,
+    y= Y_NL
+  )
+) + 
+  ggplot2::geom_point(
+    fill = "#112D4E",
+    color = "#3F72AF",
+    alpha = alpha_value
+  ) + 
+  ggplot2::geom_smooth(
+    method = lm,
+    formula = y ~ x,
+    color = "#112D4E",
+    size = 1
+  ) + 
+  ggplot2::labs(
+    title = "Nonlinear Relationship",
+    x = "X",
+    y = "Y"
+  )
+
+patchwork <- (p1 | p2) / (p3 | p4)
+patchwork & lecture_ggplot_theme_1
+```
 
 # An Introduction to Probability Theory 
 
 ## What is Probability?
 
+Probability is the language of uncertainty. Anytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events.
+
 ## Probability as a Long-Run Frequency
 
-## Sample Space & Events
+> For an observation of a random phenomen, the probability of a particular outcome is the proportion of times
+> that outcome would occur in an indefinitely long sequence of like observations, under the same 
+> conditions.
+> `r tufte::quote_footer("--- Agresti & Kateri, 2022")`
 
-## Rules of Probability Theory
+## The Three Rules of Probability
+
+All of probability theory rests on three rules: 
+
+1. $P(\text{Event}) \geq 0$
+2. $P(\text{Any Event}) = 1$
+3. If two events are mutually exclusive, then the probability of event one **or** event two happening is equal to $P(\text{Event 1}) + P(\text{Event 2})$
+
+## A Concrete Example 
+
+You're a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm's HR data over the past fiscal year, which includes three key variables: `voluntary_turnover`, `job_satisfacation`, and `office_region`. Your manager asks you to determine the likelihood that an employee leaves the firm. 
+
+```{r}
+#| echo: false
+n <- 20000
+set.seed(54234)
+var_js <- sample(1:3, n, prob = c(.10, .60, .30), replace = TRUE)
+var_reg <- sample(1:6, n, prob = c(.40, .30, .10, .10, .05, .05), replace = TRUE)
+data_mat <- cbind(model.matrix(~as.factor(var_js)), model.matrix(~as.factor(var_reg))[, -1])
+beta <- as.matrix(c(-.50, -1, -2, -.80, 0, .30, .45, .45), ncol = 1)
+var_to_lin <- data_mat %*% beta
+var_to <- rbinom(n, 1, prob = plogis(var_to_lin))
+
+data <- 
+  tibble::tibble(
+    voluntary_turnover = var_to, 
+    job_satisfaction = var_js,
+    office_region = var_reg
+  ) |>
+  dplyr::mutate(
+    voluntary_turnover = dplyr::if_else(
+      voluntary_turnover == 1, "inactive", "active"
+    ),
+    job_satisfaction = dplyr::case_when(
+      job_satisfaction == 1 ~ "Dissatisfied",
+      job_satisfaction == 2 ~ "Neutral",
+      job_satisfaction == 3 ~ "Satisfied"
+    ),
+    office_region = dplyr::case_when(
+      office_region == 1 ~ "North America",
+      office_region == 2 ~ "Europe",
+      office_region == 3 ~ "China",
+      office_region == 4 ~ "Latin Am.",
+      office_region == 5 ~ "EEMEA",
+      office_region == 6 ~ "Asia"
+    ),
+    job_satisfaction = factor(job_satisfaction),
+    job_satisfaction = relevel(job_satisfaction, ref = "Dissatisfied"),
+    office_region = factor(office_region),
+    office_region = relevel(office_region, ref = "North America")
+  )
+
+```
+
+## A Concrete Example 
+
+```{r}
+#| echo: false
+print(data, n =  10)
+```
+
+## Probability of Voluntary Turnover
+
+A quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the $P(\text{Status = Inactive}=.16)$. 
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_summary <- 
+  data |>
+  dplyr::summarise(
+    count = dplyr::n(),
+    .by = voluntary_turnover
+  ) |>
+  dplyr::mutate(
+    total = sum(count),
+    prop = count / total,
+    prop = round(prop, 2),
+    text = paste0(prop, " (", formatC(count, format = "d", big.mark = ","), " employees)")
+  )
+
+p1 <- 
+ggplot2::ggplot(
+  data = data_summary,
+  ggplot2::aes(x = voluntary_turnover, y = prop)
+) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  )  +
+  geom_text(
+    aes(label = text, vjust = -.50, fontface = "bold", size = 1.5)
+  ) +
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    y = "Proportion",
+    x = "Employment Status"
+  ) + 
+  ylim(c(0, 1))
+
+p1
+```
 
 ## Joint Probability
 
+Joint probability is the probability of some event happening for two or more random variables. For example, what is the probability of `employment_status == inactive & job_satisfaction == satisfied`? 
+
+## Employment Status & Job Satisfaction: Joint Probability
+
+```{r}
+#| echo: false
+xtabs(~job_satisfaction + voluntary_turnover, data) |>
+  prop.table() |>
+  round(2) |>
+  knitr::kable()
+```
+
 ## Conditional Probability
 
-## Random Variables: Connecting Probability, Statistics, and Data
+**Conditional probability** is the probability of one event occurring given the occurrence of another event. This is written mathematically as: 
+
+$$P(\text{Event 1} \space | \space \text{Event 2})$$
+
+which is read as the **probability of Event 1 conditional on (or given) Event 2**.
+
+## Employment Status Given Job Satisfaction: Conditional Probability
+
+What is the probability that an employee's status is inactive given that they had responded they were dissatisfied with their job on an an earlier attitude survey? What happens to this probability as job satisfaction moves from dissatisfied to satisfied?
+
+```{r}
+#| echo: false
+xtabs(~job_satisfaction + voluntary_turnover, data) |>
+  prop.table(1) |>
+  round(2) |>
+  knitr::kable()
+```
+
+## Independent Events
+
+Two events are said to be independent if the probability of one event occurring **does not** change given the occurrence of the other event:
+
+$$P(\text{Event 1} \space | \space \text{Event 2})=P(\text{Event 1)}$$
+
+## Office Region & Job Satisfaction: Independent Events
+
+How does the probability of an employee's job satisfaction response change depending on the region they're working in? Or does it change? 
+
+```{r}
+#| echo: false
+xtabs(~office_region + job_satisfaction, data) |>
+  prop.table(1) |>
+  round(2) |>
+  knitr::kable()
+```
+
+## Random Variables
+
+Whether you realize it or not, we have been talking about `voluntary_turnover` as a **random variable**. A **random variable** is a function of a random phenomenon that maps an outcome of that phenomenon to a real number. 
+
+In our example, `voluntary_turnover` is a random variable that maps the outcome of an employee's decision to leave or remain with their organization to a real number: 1 or 0. 
+
+## Voluntary Turnover as a Random Variable
+
+As a random variable, `voluntary_turnover` maps `inactive` to 1 and `active` to 0:
+
+$$\text{Y}(\text{inactive})=1 \\ \text{Y}(\text{active})=0$$
+
+Because the random variable is a function of a random phenomenon, we can still calculate probabilities for the outcome:
+
+$$P(\text{Y}=1)=.16 \\ P(\text{Y}=0) = .84$$
+
+## Connecting Probability to Statistics with Random Variables
+
+The big gain from introducing **random variables** is that we can now apply mathematical and statistical models to the numerical values, and we can use more general probability distributions to describe the distributions of these random variables.  
+
+For instance, we can say `voluntary_turnover` can be modeled using a binomial distribution. 
 
 ## Types of Random Variables: Discrete & Continuous 
 
-## Probability Distribution Functions
+Random variables, like quantitative variables, can be classified into two broad categories: 
+
+* Discrete: Separate, distinct outcome values like integers 
+* Continuous: Infinite continuum of possible outcomes
+
+## Probability Distributions
+
+**Probability distributions** are mathematical models that can be used to summarize the random variation in the random variables by specifying the probabilities of all possible outcomes of the random variable. 
+
+## Modeling Voluntary Turnover with a Binomial Distribution
+
+The Bernoulli distribution is a probability distribution that can be used to model a random variable that has two outcomes. It specifies the probability of the first outcome, 1, as **p** and the second outcome, as **1 - p**: 
+
+$$\begin{equation}
+    f(\text{Employment Status};p) =
+    \left\{
+        \begin{array}{cc}
+                p & \mathrm{if\ } status=1 \\
+                1-p & \mathrm{if\ } status=0 \\
+        \end{array} 
+    \right.
+\end{equation}$$
 
 ## Probability Mass & Density Functions
 
+Probability Mass and Density Functions (PMF & PDF, respectively) are mathematical functions that take the **value of a random variable as an input** and return the **probability of that value occurring as an output**. Every statistical model we will use will assume a certain PMF or PDF. 
+
+* **PMF** is a probability distribution function for **discrete random variables**
+* **PDF** is a probability distribution function for **continuous random variables**
+
+## Plotting PMFs and PDFs
+
+```{r}
+#| echo: false
+#| fig-align: center
+p1 <- 
+  ggplot2::ggplot(
+    data = NULL,
+    ggplot2::aes(
+      x = -4:4
+    )
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    xlim = c(-4,4)
+  ) + 
+  ggplot2::labs(
+    y = "Density",
+    x = "Random Var. - Outcome Values",
+    title = "Probability Density Function - Normal Dist."
+  ) +
+  ggplot2::ylim(c(0, .40))
+
+p2 <- 
+  ggplot2::ggplot(
+    data = tibble::tibble(x = 0:6) |>
+        dplyr::mutate(
+          y = dpois(x, lambda = 1),
+          x = as.factor(x)
+        ),
+    ggplot2::aes(
+      x = x,
+      y = y
+    )
+  ) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::labs(
+    y = "Probability",
+    x = "Random Var. - Outcome Values",
+    title = "Probability Mass Function - Poisson Dist."
+  ) + 
+  ggplot2::ylim(c(0, .40))
+
+p3 <- 
+  ggplot2::ggplot(
+    data = tibble::tibble(x = 0:1) |>
+        dplyr::mutate(
+          y = dbinom(x, size = 1, prob = .16),
+          x = as.factor(x)
+        ),
+    ggplot2::aes(
+      x = x,
+      y = y
+    )
+  ) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::labs(
+    y = "Probability",
+    x = "Random Var. - Outcome Values",
+    title = "Probability Mass Function - Bernouli Dist."
+  ) +
+  ylim(c(0, 1))
+
+patchwork <- (p2) | p1
+patchwork & lecture_ggplot_theme_barplot
+```
+
 ## Cumulative Distribution Function
 
-## Expectation of a Random Variable 
+Closely related to the PMF/PDF, the Cumulative Distribution Function (CDF) specifies the **cumulative probability** that a random variable takes a value, Y, or any value less than Y:
 
-## Connection Between the Mean and Expectation 
+$$F(\text{Y})=P(\text{Y} \leq \text{y})$$
 
-* 1/n @ large n
+In our example, what is the probability that `involuntary_turnover` takes a value of 0? What is the probability `involuntary_turnover` takes a value less than or equal to 1?
 
-## Using the Expecation for Variance
+## Cumulative Distribution Function
 
-## Joint Probability Distributions
+```{r}
+#| echo: false
+#| fig-align: center
+data <- 
+  tibble::tibble(x = 0:6) |>
+        dplyr::mutate(
+          y = ppois(x, lambda = 1),
+          prob = dpois(x, lambda = 1),
+          prob_rd = round(prob, 2),
+          prob_rd = as.character(prob_rd),
+          cum_sum = cumsum(prob_rd),
+          text = dplyr::lag(cum_sum),
+          text = as.character(text),
+          text = tidyr::replace_na(text, ""),
+          text = paste0(text, " + ", prob_rd, " = ", cum_sum),
+          prob_rd = as.numeric(prob_rd),
+          text = dplyr::case_when(
+            prob_rd == cum_sum ~ as.character(cum_sum),
+            prob_rd == 0 ~ "1",
+            TRUE ~ text
+          ),
+          x = as.factor(x)
+        )
 
-## Conditional Probability Distributions
+p1 <- 
+  ggplot2::ggplot(
+    data = data,
+    ggplot2::aes(
+      x = x,
+      y = y
+    )
+  ) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::labs(
+    y = "P(Y <= y)",
+    x = "Random Var. - Outcome Values",
+    title = "Cumulative Distribution Function - Poisson Dist."
+  ) + 
+  ggplot2::ylim(c(0, 1.10)) + 
+   geom_text(
+    aes(label = text, vjust = -.50, fontface = "bold"),
+    size = 3.5
+  ) 
 
-## Independent Random Variables 
+p1 + lecture_ggplot_theme_barplot
+```
+
+## The CDF of the Normal Distribution
+
+Think about the CDF as a way to compute the percentiles of a distribution. What is the 50th percentile---the value where 50% or less of the observations fall---for the Normal CDF below? 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+  NULL,
+  ggplot2::aes(c(-3,3))
+) +
+  ggplot2::geom_area(
+    stat = "function",
+    fun = pnorm,
+    xlim = c(-3,0),
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) +
+  ggplot2::geom_area(
+    stat = "function",
+    fun = pnorm,
+    xlim = c(0, 3),
+    color = "#112D4E",
+    fill = "#F9F7F7"
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = -3,
+      y = .50,
+      xend = 0,
+      yend = .50
+    ),
+    lwd = 1.5
+  ) +
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = 0,
+      y = 0,
+      xend = 0,
+      yend = .50
+    ),
+    lwd = 1.5
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "Value",
+    y = "Cumulative Probability",
+    title = "Normal CDF"
+  )
+```
+
+## Getting to Know the Normal Distribution Better
+
+* It has two parameters: Mean & Variance. 
+* 68% of its mass is between $\pm1$ SDs from its mean, 95% of its mass is between $\pm2$ SDs from its mean, and 99.7% of its mass is between $\pm3$ SDs from its mean.
+
+```{r}
+#| echo: false
+#| fig-align: center
+plot_normal <- 
+  ggplot2::ggplot(
+    NULL,
+    ggplot2::aes(c(-4, 4))
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    xlim = c(-4, 4),
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+     x = -1, 
+    y = dnorm(-1),
+    xend = 1,
+    yend = dnorm(1) 
+    ),
+    lwd = 1.5,
+    arrow = arrow(length = unit(2, "mm"), ends = "both")
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+     x = -2, 
+    y = .175,
+    xend = 2,
+    yend = .175
+    ),
+    lwd = 1.5,
+    arrow = arrow(length = unit(2, "mm"), ends = "both")
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+     x = -3, 
+    y = .10,
+    xend = 3,
+    yend = .10
+    ),
+    lwd = 1.5,
+    arrow = arrow(length = unit(2, "mm"), ends = "both")
+  ) + 
+  ggplot2::annotate(
+    geom = "text", 
+    x = 0,
+    y = dnorm(1) + .02,
+    label = "68%",
+    size = 4,
+    fontface = "bold"
+  ) +
+  ggplot2::annotate(
+    geom = "text", 
+    x = 0,
+    y = .195,
+    label = "95%",
+    size = 4,
+    fontface = "bold"
+  ) + 
+  ggplot2::annotate(
+    geom = "text", 
+    x = 0,
+    y = .12,
+    label = "99.7%",
+    size = 4,
+    fontface = "bold"
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Values",
+    y = "Density"
+  )
+
+plot_normal
+```
 
 # Generalizing from your Data
 
 ## Inferential Statistics
 
+Usually, when you analyze your data you want to generalize the results from your specific dataset to a broader population or more general phenomenon. This is called **statistical inference**. We infer something from our data about a more general phenomenon.
+
+## Example: Recruiters' trust in AI
+
+Your organization is considering adopting an AI automated resume scraper program to lessen the burden on the recruiters. Before committing to the tool, however, your manager has asked you to determine if the recruiters would trust the outcomes provided by the AI system. 
+
+To assess this, you administer a single survey question to three random samples of 50 recruiters:
+
+<center>**I trust the outcome provided by an artificially intelligent system.**</center> 
+
+## Example: Do Recruiters' trust AI? 
+
+To determine how recruiters feel about AI, on average, you compute the mean of each sample and find the following: 
+
+```{r}
+#| echo: false
+prob <- c(.05, .05, .25, .30, .35)
+
+data_pop <- 
+  tibble::tibble(
+    x = 1:5,
+    prob = prob,
+    label = c("1 - Strong. Disagree", "2 - Disagree", "3 - Neut.", 
+              "4 - Agree", "5 - Strong. Agree")
+  ) |>
+  dplyr::mutate(
+    label = factor(label, levels = c("1 - Strong. Disagree", "2 - Disagree", "3 - Neut.", 
+              "4 - Agree", "5 - Strong. Agree"))
+  )
+
+set.seed(12353)
+s1 <- sample(1:5, size = 50, replace = TRUE, prob = prob)
+s2 <- sample(1:5, size = 50, replace = TRUE, prob = prob)
+s3 <- sample(1:5, size = 50, replace = TRUE, prob = prob)
+
+data_sample <- 
+  tibble::tibble(
+    samp_id = rep(1:3, each = 50),
+    value = c(s1, s2, s3)
+  )
+
+data_sample |>
+  dplyr::summarize(
+    mean = mean(value),
+    .by = samp_id
+  ) |>
+  dplyr::mutate(
+    mean = round(mean, 2)
+  ) |>
+  tidyr::pivot_wider(
+    names_from = samp_id,
+    values_from = mean,
+    names_prefix = "sample_"
+  ) |>
+  knitr::kable()
+```
+
+The average response is different across the three different samples. Is this expected? What should you do? 
+
+## Populations & Sample Variation
+
+```{r}
+#| echo: false
+
+
+data_plot <- 
+  data_sample |>
+  dplyr::summarize(
+    count = dplyr::n(),
+    .by = c(samp_id, value)
+  ) |>
+  dplyr::group_by(
+    samp_id
+  ) |>
+  dplyr::mutate(
+    total = sum(count),
+    prop = count / total,
+    prop = round(prop, 2),
+    samp_id = paste0("Sample ", samp_id)
+  )
+
+plot_sample <- 
+  ggplot2::ggplot(
+    data = data_plot,
+    ggplot2::aes(
+      x = value, 
+      y = prop
+    )
+  ) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::facet_wrap(
+    ~ samp_id
+  ) + 
+  ggplot2::geom_text(
+    data = data_sample |> 
+      dplyr::mutate(
+        samp_id = paste0("Sample ", samp_id)
+      ) |>
+      dplyr::summarize(
+        mean = mean(value),
+        .by = samp_id
+      ),
+    ggplot2::aes(
+      label = paste0("Mean = ", mean),
+      x = 3,
+      y = .55
+    ),
+    inherit.aes = FALSE,
+    fontface = "bold"
+  ) + 
+  labs(
+    x = "Response Value",
+    y = "Proportion"
+  )
+
+plot_pop <- 
+  ggplot2::ggplot(
+    data = data_pop,
+    ggplot2::aes(
+      x = label, 
+      y = prob
+    )
+  ) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::geom_text(
+    data = data_pop |> 
+      dplyr::mutate(
+        prod = x * prob
+      ) |>
+      dplyr::summarize(
+        mean = sum(prod)
+      ),
+    ggplot2::aes(
+      label = paste0("Mean = ", mean),
+      x = 3,
+      y = .40
+    ),
+    inherit.aes = FALSE,
+    fontface = "bold"
+  ) + 
+  ggplot2::labs(
+    x = "",
+    y = "Probability",
+    title = "Population"
+  )
+
+patchwork <- plot_pop / plot_sample
+patchwork & lecture_ggplot_theme_barplot
+```
+
+## Statistics as Random Variables 
+
+Because statistics like the sample mean are computed from a sample that contains random variation, we **expect** our statistics to behave like **random variables**. Like a random variable, we can specify a probability distribution for our statistic called a **sampling distribution**. 
+
 ## Sampling Distributions
+
+Imagine you can draw an infinite number of random samples from a population and then for each sample you compute the sample mean. The distribution of these sample means is referred to as the **sampling distribution of the mean**.
+
+```{r}
+#| echo: false
+#| fig-align: center
+n_samp <- 2000
+n <- 50
+
+set.seed(5354)
+obs_sample <- 
+  tibble::tibble(
+    samp_id = rep(1:n_samp, each = n),
+    value = sample(1:5, n * n_samp, replace = TRUE, prob)
+  ) |>
+  dplyr::summarize(
+    mean = mean(value),
+    .by = samp_id
+  )
+
+plot_samp_dist <- 
+  ggplot2::ggplot(
+    data = obs_sample,
+    ggplot2::aes(
+      x = mean
+    )
+  ) + 
+  ggplot2::geom_histogram(
+    color = "#112D4E",
+    fill = "#3F72AF",
+    bins = 35
+  ) + 
+  ggplot2::geom_vline(
+    xintercept = sum(1:5 * prob),
+    linewidth = 1.5
+  ) + 
+  ggplot2::labs(
+    x = "Sample Means",
+    y = "Count"
+  ) +
+  lecture_ggplot_theme_barplot
+
+plot_samp_dist
+
+```
+
+## The Mean & Standard Deviation of a Sampling Distribution
+
+Like all distributions, we can compute the mean and standard deviation of a sampling distribution and obtain useful information: 
+
+* **Mean of a sampling distribution** = Population Parameter
+* **Standard deviation of a sampling distribution** = Uncertainty in our statistic
 
 ## The Standard Error 
 
-## Sampling Distribution of the Mean
+The standard deviation of a sampling distribution is known by another name: **the standard error**. The standard error quantifies our uncertainty in a given statistic and is fundamental to inferential statistics. 
 
-## Standard Error of the Mean
+For the mean, the standard error can be calculated as: 
+
+$$\sigma_{\bar{Y}} = \sqrt{\frac{\sigma^{2}}{n}} = \frac{\sigma}{\sqrt{n}}$$
+
+## The Standard Error
+
+We can reduce the standard error, thereby reducing our uncertainty, by increasing our sample size:
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+set.seed(5673)
+pop_mean = sum(1:5 * prob)
+pop_sd = (sum((1:5)^2*prob) - sum(1:5*prob)^2) |> sqrt()
+
+data_plot <- 
+  tibble::tibble(
+    n = c(
+      rep(10, 10 * 2000),
+      rep(30, 30 * 2000),
+      rep(100, 100 * 2000)
+    ),
+    sample = c(
+      rep(1:2000, each = 10),
+      rep(1:2000, each = 30),
+      rep(1:2000, each = 100)
+    ),
+    value = c(
+      sample(1:5, 10 * 2000, replace = TRUE, prob = prob),
+      sample(1:5, 30 * 2000, replace = TRUE, prob = prob),
+      sample(1:5, 100 * 2000, replace = TRUE, prob = prob)
+    )
+  ) |>
+  dplyr::summarize(
+    mean_value = mean(value),
+    .by = c(n, sample)
+  ) |>
+  dplyr::mutate(
+    se_value = c(
+      rep(pop_sd / sqrt(10), 2000),
+      rep(pop_sd / sqrt(30), 2000),
+      rep(pop_sd / sqrt(100), 2000)
+    ),
+    se_value = round(se_value, 2),
+    n = paste0("Sample Size = ", n, "\n SE = ", se_value),
+    n = factor(n, levels = c("Sample Size = 10\n SE = 0.35",
+                             "Sample Size = 30\n SE = 0.2",
+                             "Sample Size = 100\n SE = 0.11"))
+  )
+
+plot <- 
+  ggplot2::ggplot(
+    data_plot,
+    ggplot2::aes(
+      x = mean_value
+    )
+  ) + 
+  ggplot2::geom_histogram(
+    color = "#112D4E",
+    fill = "#3F72AF",
+    binwidth = .10
+  ) + 
+  ggplot2::facet_wrap(
+    ~ n
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::theme(
+    axis.ticks.y = ggplot2::element_line(linewidth = 0),
+    axis.text.y = ggplot2::element_blank(),
+    axis.title.y = ggplot2::element_blank()
+  )
+
+plot
+```
+
+## The Norm of Normality: The Central Limit Theorem
+
+The Central Limit Theorem (CLT) is a mathematical finding that tells us that the sampling distribution of a statistic like the mean starts to closely resemble a normal distribution **as the sample size increases** regardless of the distribution of the sample data itself! 
+
+**The CLT plays a very important role in all of our statistical inference!**
 
 ## Central Limit Theorem
 
-## Sampling Distribution of a Sample Mean 
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| out-height: "100%"
 
-# Statistical Estimation 
+data_clt_pop <- 
+  tibble::tibble(
+    dist = rep(
+      c(
+        "exponential",
+        "normal",
+        "uniform"
+      ), 
+      each = 100
+    ),
+    x = c(
+      seq(0, 8, len = 100),
+      seq(-4, 4, len = 100),
+      seq(0, 1, len = 100)
+    )
+  ) |>
+  dplyr::mutate(
+    y = dplyr::case_when(
+      dist == "exponential" ~ dexp(x, rate = 1),
+      dist == "normal" ~ dnorm(x),
+      TRUE ~ dunif(x)
+    )
+  )
 
-## Point Estimates
+plot_pop_exp <- 
+  ggplot2::ggplot(
+    data = data.frame(name = "Exponential", x = 0:9)
+  ) +
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dexp,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    ggplot2::aes(x = x)
+  ) +
+  ggplot2::facet_wrap(~name) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  )
 
-## Estimating the Mean & Variance
+plot_pop_norm <- 
+  ggplot2::ggplot(
+    data = data.frame(name = "Normal", x = -4:4)
+  ) +
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    ggplot2::aes(x = x)
+  ) +
+  ggplot2::facet_wrap(~name) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  )
 
-## Interval Estimates (Confidence Interval)
+plot_pop_uniform <- 
+  ggplot2::ggplot(
+    data = data.frame(name = "Uniform", x = -.5:1.5)
+  ) +
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dunif,
+    color = "#112D4E",
+    fill = "#3F72AF",
+    ggplot2::aes(x = x)
+  ) +
+  ggplot2::facet_wrap(~name) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  )
 
-## Building a Confidence Interval Around the Mean
+set.seed(564345)
+n_sample <- 1000
+sample_size <- c(1, 30, 500)
+data_clt_samp <- 
+  tibble::tibble(
+    dist = rep(
+      c("Exponential", "Normal", "Uniform"),
+        each = n_sample*sum(sample_size)
+    ),
+    sample = rep(
+      1:n_sample, 3*sum(sample_size)
+    ),
+    n = rep(
+      c(
+        rep(sample_size[1], sample_size[1]),
+        rep(sample_size[2], sample_size[2]),
+        rep(sample_size[3], sample_size[3])
+      ),
+      times = 3*n_sample
+    )
+  ) |>
+  dplyr::group_by(
+    dist
+  ) |>
+  dplyr::mutate(
+    value = dplyr::case_when(
+      dist == "Exponential" ~ rexp(n = sum(sample_size)*n_sample),
+      dist == "Normal" ~ rnorm(n = sum(sample_size)*n_sample),
+      TRUE ~ runif(n = sum(sample_size)*n_sample)
+    )
+  ) |>
+  dplyr::ungroup() |>
+  dplyr::summarize(
+    mean = mean(value),
+    .by = c(dist, n, sample)
+  ) |>
+  dplyr::mutate(
+    n = paste0("N = ", n)
+  )
+
+plot_clt_sample <- 
+  ggplot2::ggplot(
+    data = data_clt_samp,
+    ggplot2::aes(
+      x = mean
+    )
+  ) + 
+  ggplot2::geom_histogram(
+    bins = 45,
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::facet_grid(
+    n ~ dist,
+    scales = "free"
+  ) + 
+  ggplot2::labs(
+    x = "",
+    y = ""
+  ) +
+  lecture_ggplot_theme_1
+
+patchwork_clt <- ((plot_pop_exp | plot_pop_norm | plot_pop_uniform) / plot_clt_sample) + patchwork::plot_layout(heights = c(1, 3))
+patchwork_clt & lecture_ggplot_theme_1 
+```
+
+# Statistical Estimation & Tests
+
+## What is Statistical Estimation? 
+
+The goal of every data analytic project is to **estimate** some population parameter by computing some statistic or **point estimate**. This is statistical estimation. 
+
+## Point Estimates & Interval Estimates 
+
+Statistical estimates can either come as point estimates or interval estimates: 
+
+* Point Estimate: A single value that estimates the population parameter.
+* Interval Estimate: An interval of values centered around the point estimate.
+
+## Differences in Recruiters' trust in AI by Job Experience
+
+Your manager asks you to administer the survey one more time to a larger sample of 300 recruiters, **but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience `job_exp`**. Your manager would like to know if employees' trust differs based on their level of job experience.
+
+```{r}
+#| echo: false
+n <- 300
+set.seed(4235)
+job_exp_mat <- model.matrix(~as.factor(rep(1:3, each = n / 3)))
+y_latent <- -.50*job_exp_mat[, 2] + -3*job_exp_mat[, 3] + rlogis(n)
+data <- 
+  tibble::tibble(
+    y_latent = y_latent,
+    job_exp = rep(c("Low", "Medium", "High"), each = n / 3)
+  ) |>
+  dplyr::mutate(
+    job_exp = as.factor(job_exp),
+    job_exp = relevel(job_exp, ref = "Low"),
+    trust_in_ai = dplyr::case_when(
+      y_latent <= quantile(y_latent, .05) ~ 1,
+      y_latent <= quantile(y_latent, .10) ~ 2,
+      y_latent <= quantile(y_latent, .35) ~ 3,
+      y_latent <= quantile(y_latent, .65) ~ 4,
+      TRUE ~ 5
+    )
+  )
+```
+
+## A Glimpse of your Data
+
+```{r}
+set.seed(435)
+data |>
+  dplyr::slice_sample(n = 10) |>
+  dplyr::select(
+    job_exp,
+    trust_in_ai
+  ) |>
+  dplyr::arrange(
+    job_exp
+  )
+```
+
+## Plotting your Data
+
+```{r}
+#| echo: false
+plot_overall_ai <- 
+  ggplot2::ggplot(
+    data = data |>
+      dplyr::summarize(
+        count = dplyr::n(),
+        .by = trust_in_ai
+      ) |>
+      dplyr::mutate(
+        total = sum(count),
+        prop = round(count / total, 2)
+      ),
+    ggplot2::aes(
+      x = as.factor(trust_in_ai),
+      y = prop
+    )
+  ) + 
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::labs(
+    x = "",
+    y = "Response Proportion",
+    title = "Trust in AI"
+  )
+
+plot_job_exp_ai <- 
+  ggplot2::ggplot(
+    data = data |>
+      dplyr::summarize(
+        count = dplyr::n(),
+        .by = c(job_exp, trust_in_ai)
+      ) |>
+      dplyr::group_by(job_exp) |>
+      dplyr::mutate(
+        total = sum(count),
+        prop = round(count / total, 2),
+        job_exp = factor(job_exp, levels = c(
+          "Low", "Medium", "High"
+        ))
+      ),
+    ggplot2::aes(
+      x = as.factor(trust_in_ai),
+      y = prop
+    )
+  ) + 
+  ggplot2::facet_wrap(~ job_exp) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) + 
+  ggplot2::labs(
+    x = "Trust in AI (Strongly Disagree to Strongly Agree)",
+    y = "Response Proportion",
+    title = "Trust in AI by Job Experience"
+  )
+
+patchwork_ai <- (plot_overall_ai / plot_job_exp_ai) & lecture_ggplot_theme_barplot
+patchwork_ai
+```
+
+## Estimating the Mean & Variance by Job Experience
+
+For each job experience group, we can **estimate the population means** by computing the sample mean and standard deviation of their responses to the trust in AI question:
+
+```{r}
+#| echo: false
+data_ai_summary <- 
+  data |>
+  dplyr::summarize(
+    mean_trust = round(mean(trust_in_ai), 2),
+    sd_trust = round(sd(trust_in_ai), 2),
+    n = dplyr::n(),
+    .by = job_exp
+  ) |>
+  dplyr::mutate(
+    se = sd_trust / sqrt(n),
+    interval_high = mean_trust + qnorm(.975) * se,
+    interval_high = round(interval_high, 2),
+    interval_low = mean_trust - qnorm(.975) * se,
+    interval_low = round(interval_low, 2)
+  )
+
+data_ai_summary |>
+  dplyr::select(
+    job_exp:n
+  ) |>
+  dplyr::rename(
+    `Mean Trust` = mean_trust,
+    `SD Trust` = sd_trust,
+    `Job Exp.` = job_exp,
+    N = n
+  ) |> 
+  knitr::kable()
+```
+
+## A Confidence (Interval) Estimate for the Mean
+
+Because there is uncertainty in our data, we would like to move away from providing a single estimate of trust in AI for each group and provide an interval of estimates that adequately quantifies the uncertainty we have in our estimate:
+
+```{r}
+#| echo: false
+data_ai_summary |>
+  dplyr::mutate(
+    interval = paste0(interval_low, " - ", interval_high)
+  ) |>
+  dplyr::select(
+    `Job Exp.` = job_exp,
+    `Mean Trust` = mean_trust,
+    `95% Conf. Int.` = interval,
+    `SE` = se,
+    `SD Trust` = sd_trust,
+    N = n
+  ) |>
+  knitr::kable()
+```
 
 ## Interpreting a Confidence Interval
 
-# Statistical (Hypothesis) Tests 
+Confidence intervals have a very strict (and kind of odd) interpretation: 
+
+If you were to randomly sample a large number of samples from a population and create a 95% confidence interval around the sample mean, then 95% of those intervals would contain the population mean.  
+
+## Building a Confidence Interval
+
+Generally, to build a confidence interval, you need three pieces of information: 
+
+* Point estimate to build the interval around
+* The probability distribution that best approximates the estimate's sampling distribution (almost always the normal distribution)
+* The Standard Error of the estimate (the standard deviation of the sampling distribution)
+* The level of "confidence" (i.e. how confident you are that the population parameter is contained in the interval)
+
+## Building a Confidence Interval 
+
+$$\overline{Y} \space \pm \space 1.96 \times\text{SE}$$
+
+* $\overline{Y}$: Point estimate (sample mean)
+* $\pm 1.96$ is the value at which 95% of the mass of the standard normal distribution falls
+* SE: The standard error of the estimate
+
+## Are the Differences in Recruiters' trust in AI by Job Experience Real?
+
+We saw that the sample means of trust in AI differed by job experience level, but are those differences real or are they a result of random noise (sample variation)?
+
+We can use a statistical test to determine if the difference we see in the sample means is indicative of true population-level differences. 
+
+## Stating a Statistical Hypothesis
+
+In statistics, a hypothesis is a statement about the population distribution. Researchers typically formulate two kinds of hypotheses: **null hypothesis ($H_{0}$)** and **alternative (researcher's) hypothesis ($H_{a}$)**.
+
+* $H_{0}$ is a statement that the population parameter takes on some value---usually 0. 
+* $H_{a}$ is a statement that the population parameters takes on an alternative **set** of values that fit with the researcher's theory.  
+
+## The Direction of a Statistical Hypothesis
+
+Hypotheses can be directional or non-directional. 
+
+A **directional hypothesis** is a hypothesis that makes an explicit statement about whether one group will have a larger (or smaller) mean than another group. 
+
+A **non-directional hypothesis** is a hypothesis that states that the means of the two groups differ, but does not specify which group has a larger (or smaller) mean. 
+
+## Trust in AI Hypotheses
+
+**$H_{0}$**: In this organization, there are **no differences** between mean-level trust in AI for employees with low job experience and mean-level trust in AI for employees with either medium or high job experience.
+
+**$H_{a}$**: In this organization, the mean-level trust in AI for employees with low job experience **is higher than** the mean-level trust in AI for employees with medium job experience and high experience.
+
+## What is a Statistical Significance Test? 
+
+A statistical significance test, or just test, uses data to summarize the evidence about a hypothesis, usually the null, by comparing a point estimate of the parameter of interest (e.g. sample mean) to the value predicted by the hypothesis (e.g. 0 in the case of the null hypothesis).
+
+## The Four Elements of a Statistical Test
+
+* **Assumptions**: Background assumptions that need to hold for our test to be valid.
+* **Hypotheses**: The $H_{0}$ and $H_{a}$ hypotheses, which need to be formulated before analyses happen.
+* **Test Statistic**: Summary of how far away a statistical estimate is from the population value predicted by $H_{0}$.
+* **P-value & Conclusion**: A decision on whether to reject or not reject $H_{0}$ if the probability of our data coming from the null population distribution is sufficiently low as measured by a **P-value**.
+
+## A Significance Test for Trust in AI
+
+To determine if trust in AI differs by job experience, we are going to use a **z-test** to test our two null hypotheses, which can be framed as hypotheses about **the mean differences** between trust in AI by job experience: 
+
+* $\mu_{\text{AI Low Exp.}} \space - \space \mu_{\text{AI Med. Exp.}} = 0$
+* $\mu_{\text{AI Low Exp.}} \space - \space \mu_{\text{AI Hifg Exp.}} = 0$
+
+## Understanding a Z-Test
+
+A Z-test is a test that compares the mean of one variable to a specific population parameter specified by the null hypothesis (usually 0) or to the mean of a different variable. To conduct a Z-test you can follow these steps: 
+
+1. Ensure the Z-test assumptions are met. 
+2. Set the the probability threshold you need to surpass for an effect to be considered significant---**your alpha level**. 
+3. Compute your test statistic and determine if it is significant at your specified alpha-level. 
+
+## Z-Test Assumptions
+
+1. The populations from which the samples were taken from must be normal. 
+2. The population SDs must be known or the sample sizes for each group must be large (~30 or more observations per group).
+
+## Determing your Alpha-Level
+
+The $\alpha$-level, also called the significance level, is a number $\alpha$ between 0 and 1 such that we reject $H_{0}$ if the P-value of the test statistic is less than or equal to $\alpha$. 
+
+Generally, we set $\alpha$ to .05 or .01. To reject the $H_{0}$, the P-value needs to be less than or equal to .05 or .01, respectively. 
+
+## Z-Test Test Statistic
+
+When you are comparing two groups to one another, like we are, the test statistic, $Z$, is defined as:
+
+$$Z = \frac{\overline{Y_{1}}-\overline{Y_{2}}}{\sqrt{\frac{\sigma^{2}_{1}}{n_{1}} + \frac{\sigma^{2}_{2}}{n_{2}}}}$$
+
+## Difference in Trust in AI Means by Job Experience
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_ai_summary |>
+  dplyr::select(
+    job_exp,
+    mean_trust,
+    sd_trust,
+    n
+  ) |>
+  dplyr::mutate(
+    low_mean = data_ai_summary$mean_trust[data_ai_summary$job_exp == "Low"],
+    low_var = data_ai_summary$sd_trust[data_ai_summary$job_exp == "Low"]^2,
+    dif = low_mean - mean_trust,
+    dif = round(dif, 2),
+    comp = paste0("Low - ", job_exp),
+    var = sd_trust^2,
+    var = round(var, 2)
+  ) |>
+  dplyr::filter(
+    job_exp != "Low"
+  ) |>
+  dplyr::select(
+    `Comp.` = comp, 
+    `Low Exp. Mean` = low_mean,
+    `Mean Trust` = mean_trust,
+    `Mean Diff.` = dif,
+    `Low Exp. Var.` = low_var,
+    `Var. Trust` = var,
+    n
+  ) |>
+  knitr::kable()
+```
+
+<hr> 
+
+$$Z = \frac{4.33 - 4.28}{\sqrt{\frac{.81}{100} + \frac{.61}{100}}} = \frac{0.05}{.12}=.42$$
+
+## Determining the P-Value
+
+A P-value is a tricky thing to think about, it is the probability of seeing a value greater than or equal to your test value **given that the sampling distribution specified by the null hypothesis is true**. 
+
+$$P(Z \geq z \space | \space H_{0} )$$
+
+If your P-value is small (usually less than .05), then you can conclude that your test statistic is very unlikely to have come from the null distribution and thus you can **reject the null hypothesis**.
+
+## Visualizing the P-Value
+
+We assume (somewhat safely thanks to the CLT), the our estimate has a **normal sampling distribution** and according to our **null hypothesis of no effect** the mean of the normal distribution should be 0 and the SD should be 1. We can use the **CDF of the standard normal distribution** to compute the P-value.
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+ggplot2::ggplot(
+  NULL,
+  ggplot2::aes(
+    x = c(-4, 4)
+  )
+) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    xlim = c(-4, .42),
+    color = "#112D4E",
+    fill = "#F9F7F7"
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    xlim = c(.42, 4),
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) +
+  ggplot2::annotate(
+    geom = "curve",
+    x = 2,
+    xend = 1,
+    y = dnorm(1),
+    yend = dnorm(1.25),
+    curvature = -.3,
+    arrow = arrow(length = unit(2, "mm")),
+    lwd = 1.25
+  ) + 
+  ggplot2::annotate(
+    geom = "text",
+    x = 2,
+    y = dnorm(.95),
+    label = paste0("P-value = ", round(pnorm(.42, lower.tail = FALSE), 3)),
+    fontface = "bold"
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = .42,
+      xend = .42,
+      y = 0, 
+      yend = dnorm(.42)
+    ),
+    lwd = 1.25
+  ) + 
+  ggplot2::annotate(
+    geom = "text",
+    x = -2,
+    y = dnorm(1.40),
+    label = "Test Statistic: .42",
+    hjust = "right",
+    fontface = "bold"
+  ) + 
+  ggplot2::annotate(
+    geom = "curve",
+    x = -2,
+    xend = .30,
+    y = dnorm(1.5),
+    yend = dnorm(2),
+    curvature = .2,
+    arrow = arrow(length = unit(2, "mm")),
+    lwd = 1.25
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = 0,
+      xend = 0,
+      y = 0, 
+      yend = dnorm(0)
+    ),
+    lwd = 1.4,
+    lty = "dashed"
+  ) + 
+  ggplot2::annotate(
+    geom = "curve",
+    x = -2,
+    xend = -.10,
+    y = dnorm(-1),
+    yend = dnorm(-1.25),
+    curvature = .2,
+    arrow = arrow(length = unit(2, "mm")),
+    lwd = 1.25
+  ) +
+  ggplot2::annotate(
+    geom = "text",
+    x = -2,
+    y = dnorm(-.90),
+    label = "Null Hypothesis",
+    hjust = "right",
+    fontface = "bold"
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = qnorm(.95),
+      xend = qnorm(.95),
+      y = 0,
+      yend = dnorm(qnorm(.95))
+    ),
+    lwd = 1,
+    color = "red"
+  ) + 
+  ggplot2::annotate(
+    geom = "curve",
+    x = 3,
+    xend = qnorm(.95 + .01),
+    y = dnorm(1.75),
+    yend = dnorm(2.25),
+    curvature = -.2,
+    arrow = arrow(length = unit(2, "mm")),
+    lwd = 1.25
+  ) +
+  ggplot2::annotate(
+    geom = "text",
+    x = 3,
+    y = dnorm(1.60),
+    label = paste0("Critical Value: \n", round(qnorm(.95), 2)),
+    fontface = "bold"
+  ) +
+  ggplot2::labs(
+    x = "Theoretical Test Statistic Values",
+    y = ""
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::theme(
+    axis.ticks.y = ggplot2::element_line(linewidth = 0),
+    axis.text.y = ggplot2::element_blank()
+  )
+```
+
+## Using R to Conduct a Z-test: Medium Job Experience
+
+```{r}
+low_group <- data$trust_in_ai[data$job_exp == "Low"]
+medium_group <- data$trust_in_ai[data$job_exp == "Medium"]
+
+z_low_medium <- BSDA::z.test(
+  x = low_group, y = medium_group, alternative = "greater",
+  sigma.x = sd(low_group), sigma.y = sd(medium_group) 
+)
+
+z_low_medium
+```
+
+## Using R to Conduct a Z-test: High Job Experience
+
+```{r}
+low_group <- data$trust_in_ai[data$job_exp == "Low"]
+high_group <- data$trust_in_ai[data$job_exp == "High"]
+
+z_low_high <- BSDA::z.test(
+  x = low_group, y = high_group, alternative = "greater",
+  sigma.x = sd(low_group), sigma.y = sd(high_group) 
+)
+
+z_low_high
+```
+
+## Visualizing a Very Small P-Value
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+ggplot2::ggplot(
+  NULL,
+  ggplot2::aes(
+    x = c(-4, 12)
+  )
+) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    xlim = c(-4, 10.20),
+    color = "#112D4E",
+    fill = "#F9F7F7"
+  ) + 
+  ggplot2::geom_area(
+    stat = "function",
+    fun = dnorm,
+    xlim = c(10.20, 12),
+    color = "#112D4E",
+    fill = "#3F72AF"
+  ) +
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = .42,
+      xend = .42,
+      y = 0, 
+      yend = dnorm(.42)
+    ),
+    lwd = 1.25
+  ) + 
+  ggplot2::annotate(
+    geom = "text",
+    x = 10,
+    y = .035,
+    label = "Test Statistic: 10.20",
+    hjust = "right",
+    fontface = "bold"
+  ) + 
+  ggplot2::annotate(
+    geom = "curve",
+    x = 9,
+    xend = 10.10,
+    y = .025,
+    yend = .001,
+    curvature = 0,
+    arrow = arrow(length = unit(2, "mm"))
+  ) +
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = 0,
+      xend = 0,
+      y = 0, 
+      yend = dnorm(0)
+    ),
+    lwd = 1.4,
+    lty = "dashed"
+  ) + 
+  ggplot2::geom_segment(
+    ggplot2::aes(
+      x = qnorm(.95),
+      xend = qnorm(.95),
+      y = 0,
+      yend = dnorm(qnorm(.95))
+    ),
+    lwd = 1,
+    color = "red"
+  ) + 
+  ggplot2::annotate(
+    geom = "curve",
+    x = 3,
+    xend = qnorm(.95 + .01),
+    y = dnorm(1.75),
+    yend = dnorm(2.25),
+    curvature = -.2,
+    arrow = arrow(length = unit(2, "mm")),
+    lwd = 1.25
+  ) +
+  ggplot2::annotate(
+    geom = "text",
+    x = 3,
+    y = dnorm(1.60),
+    label = paste0("Critical Value: \n", round(qnorm(.95), 2)),
+    fontface = "bold"
+  ) +
+  ggplot2::labs(
+    x = "Theoretical Test Statistic Values",
+    y = ""
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::theme(
+    axis.ticks.y = ggplot2::element_line(linewidth = 0),
+    axis.text.y = ggplot2::element_blank()
+  )
+```
+
+## Decision Errors
+
+The conclusion you come to thanks to a statistical test is not guaranteed to be the right one. There is always a risk of making a decision error:
+
+|                  | Reject $H_{0}$   | Do Not Reject $H_{0}$ | 
+|------------------|------------------|-----------------------|
+| $H_{0}$ is true  | Type 1 Error     | Correct Decision      |
+| $H_{0}$ is false | Correct Decision | Type 2 Error          |
+
+To protect against a **Type 1 Error**, we can make our $\alpha$-level very small, which will make it very difficult to reject $H_{0}$, but this increases **Type 2 Error**. One way to guard against **Type 2 Error** is by using an appropriate statistical test on a **large** sample of data. 
+
+# More to come this semester...
+ 
+
+

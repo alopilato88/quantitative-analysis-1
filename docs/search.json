@@ -89,5 +89,1517 @@
     "title": "Lecture 1 Notes",
     "section": "Confidence Interval",
     "text": "Confidence Interval"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#learning-goals",
+    "href": "lectures/01-lecture-slides.html#learning-goals",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Learning Goals",
+    "text": "Learning Goals\n\nData importing and transformation with R\nEstimate and interpret a statistical test"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#overview",
+    "href": "lectures/01-lecture-slides.html#overview",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Overview",
+    "text": "Overview\n\nIntroduction to Programming with R\n\nBase R\nTidyverse\n\nIntroduction to Statistical Science\n\nDescriptive Statistics\nQuick look at Probability Theory\nInferential Statistics"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#first-steps",
+    "href": "lectures/01-lecture-slides.html#first-steps",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "First Steps",
+    "text": "First Steps\n\nDownload R if you haven’t already\nDownload RStudio"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-r",
+    "href": "lectures/01-lecture-slides.html#what-is-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is R?",
+    "text": "What is R?\nR is a programming language that is generally used for statistical computing."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#why-learn-r",
+    "href": "lectures/01-lecture-slides.html#why-learn-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Why Learn R?",
+    "text": "Why Learn R?\nTo analyze the data you collect, you will need to be familiar with some kind of general programming language (R, Python, etc.) or a more specific statistical program (SPSS, SAS). I recommend and use R because it is:\n\nOpen-source (free to download, use, and improve)\nHighly flexible language\nCan estimate A LOT of different statistical models"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#rstudio-and-ides",
+    "href": "lectures/01-lecture-slides.html#rstudio-and-ides",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "RStudio and IDEs",
+    "text": "RStudio and IDEs\nWe will be using RStudio to do all of our statistical computing. RStudio is an integrated development environment (IDE) initially developed for R.\nIf you have not already, please go ahead and download RStudio from: https://posit.co/downloads/."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#basics-of-the-integrated-development-environment-ide",
+    "href": "lectures/01-lecture-slides.html#basics-of-the-integrated-development-environment-ide",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Basics of the Integrated Development Environment (IDE)",
+    "text": "Basics of the Integrated Development Environment (IDE)\nAn IDE is an application that makes programming a little easier and organized. As we will see shortly, it includes all of the tools one needs to program effectively and efficiently."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#writing-scripts-in-r",
+    "href": "lectures/01-lecture-slides.html#writing-scripts-in-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Writing Scripts in R",
+    "text": "Writing Scripts in R\nJust because you can write R code in just about any kind of digital document (Word, Notes, Notepad) does not mean you should!\nIt is best practice to write your code in an R Script (.R) in RStudio (in my opinion at least)."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-comments-in-your-code",
+    "href": "lectures/01-lecture-slides.html#using-comments-in-your-code",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using Comments in Your Code",
+    "text": "Using Comments in Your Code\nYou can write comments in your own code by beginning a line with #. R will not evaluate any text on a line that begins with #.\n\n# This is a comment. Use comments to leave yourself notes in your script."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#objects-in-r",
+    "href": "lectures/01-lecture-slides.html#objects-in-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Objects in R",
+    "text": "Objects in R\nEverything you do in R will involve some kind of object that you have created. Think of an object like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator &lt;- which is how R knows to assign value to object_name.\n\nobject_name &lt;- value"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#functions-in-r",
+    "href": "lectures/01-lecture-slides.html#functions-in-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Functions in R",
+    "text": "Functions in R\nFunctions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output.\n\nsum(c(1, 3))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#writing-your-own-function",
+    "href": "lectures/01-lecture-slides.html#writing-your-own-function",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Writing Your Own Function",
+    "text": "Writing Your Own Function\nR comes with many predefined functions, but often times you will want to write your own function to accomplish some repetive task. If you find yourself copy and pasting the same lines of code, then it is time to turn those lines into a function."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-elements-of-a-function",
+    "href": "lectures/01-lecture-slides.html#the-elements-of-a-function",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\nR comes with a variety of predefined functions and they all follow the same structure:\n\nA name for the function.\nThe arguments that change across different function calls.\nThe body which contains the code that is repeated across different calls."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-elements-of-a-function-1",
+    "href": "lectures/01-lecture-slides.html#the-elements-of-a-function-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\n\nname &lt;- function(argument) {\n  body\n}"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#example-function",
+    "href": "lectures/01-lecture-slides.html#example-function",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Example Function",
+    "text": "Example Function\n\ncreate_email_address &lt;- function(name) {\n  email &lt;- stringr::str_to_title(name)\n  email &lt;- stringr::str_replace_all(email, \" \", \"_\")\n  email &lt;- paste0(email, \"@organization.com\")\n  return(email)\n}\n\ncreate_email_address(name = \"john doe\")\n\n[1] \"John_Doe@organization.com\"\n\ncreate_email_address(name = \"JOHN DOE\")\n\n[1] \"John_Doe@organization.com\"\n\ncreate_email_address(name = \"jOhN dOe\")\n\n[1] \"John_Doe@organization.com\""
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#linking-functions-together",
+    "href": "lectures/01-lecture-slides.html#linking-functions-together",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Linking Functions Together",
+    "text": "Linking Functions Together\nR lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward.\n\nsum(abs(c(-1, -1, 1, 1)))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#packages-the-lifeblood-of-r",
+    "href": "lectures/01-lecture-slides.html#packages-the-lifeblood-of-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Packages: The Lifeblood of R",
+    "text": "Packages: The Lifeblood of R\nA lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one!"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#getting-help-with-r",
+    "href": "lectures/01-lecture-slides.html#getting-help-with-r",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Getting Help with R",
+    "text": "Getting Help with R\nThere are two ways to get help in R:\n\nAdd ? in front of your function, which will result in RStudio displaying the help page for that function.\nGoogle what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!\n\n\n?sum()"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#atomic-vectors",
+    "href": "lectures/01-lecture-slides.html#atomic-vectors",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Atomic Vectors",
+    "text": "Atomic Vectors\n\nAn atomic vector is just a simple vector of data.\nR recognizes six types of atomic vectors:\n\nIntegers\nDoubles (Numeric)\nCharacters\nLogicals\nComplex\nRaw"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#integer-numeric-vectors",
+    "href": "lectures/01-lecture-slides.html#integer-numeric-vectors",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Integer & Numeric Vectors",
+    "text": "Integer & Numeric Vectors\nInteger vectors contain only integers. Add L after each number so R recognizes it as an integer. Numeric (doubles) vectors contain real numbers. These are the default vectors for numbers.\n\ninteger_vec &lt;- c(1L, 2L, 50L)\nnumeric_vec &lt;- c(1, 2, 50, 45.23)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#character-vector",
+    "href": "lectures/01-lecture-slides.html#character-vector",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Character Vector",
+    "text": "Character Vector\nCharacter vectors contain only text data also referred to as string data. Basically anything surrounded by \"\" or '' is considered string data.\n\ncharacter_vec &lt;- c(\"1\", \"abc\", \"$#2\")"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#logical-vector",
+    "href": "lectures/01-lecture-slides.html#logical-vector",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Logical Vector",
+    "text": "Logical Vector\nLogical vectors are vectors that can only contain TRUE or FALSE values also referred to as boolean values.\n\nlogical_vec &lt;- c(TRUE, FALSE)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#applying-functions-to-vectors",
+    "href": "lectures/01-lecture-slides.html#applying-functions-to-vectors",
+    "title": "Stats Bootcamp",
+    "section": "Applying Functions to Vectors",
+    "text": "Applying Functions to Vectors"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#nesting-multiple-functions",
+    "href": "lectures/01-lecture-slides.html#nesting-multiple-functions",
+    "title": "Stats Bootcamp",
+    "section": "Nesting Multiple Functions",
+    "text": "Nesting Multiple Functions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-the-pipe",
+    "href": "lectures/01-lecture-slides.html#using-the-pipe",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using the pipe |>",
+    "text": "Using the pipe |&gt;\nThe |&gt; operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the |&gt; makes it easier to read your code, which is a good thing.\n\nc(-1, -1, 1, 1) |&gt;\n  abs() |&gt;\n  sum()\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#adding-attributes",
+    "href": "lectures/01-lecture-slides.html#adding-attributes",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Adding Attributes",
+    "text": "Adding Attributes\nYou can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#names-attribute",
+    "href": "lectures/01-lecture-slides.html#names-attribute",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "names Attribute",
+    "text": "names Attribute\n\ndays_of_week &lt;- 1:7 \nnames(days_of_week) &lt;- c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\")\nnames(days_of_week)\n\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\"  \n\nattributes(days_of_week)\n\n$names\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\""
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#dim-attribute",
+    "href": "lectures/01-lecture-slides.html#dim-attribute",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "dim Attribute",
+    "text": "dim Attribute\n\ndays_of_week &lt;- 1:14\ndim(days_of_week) &lt;- c(2, 7) # 2 Rows, 7 Columns\nattributes(days_of_week)\n\n$dim\n[1] 2 7\n\nclass(days_of_week)\n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#creating-factors",
+    "href": "lectures/01-lecture-slides.html#creating-factors",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Creating Factors",
+    "text": "Creating Factors\nR stores categorical data using factors, which are integer vectors with two attributes: class and levels.\n\ndays_of_week &lt;- factor(c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\"))\ntypeof(days_of_week)\n\n[1] \"integer\"\n\nattributes(days_of_week)\n\n$levels\n[1] \"fri\"   \"mon\"   \"sat\"   \"sun\"   \"thurs\" \"tues\"  \"wed\"  \n\n$class\n[1] \"factor\""
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#lists-a-flexible-representation-of-data",
+    "href": "lectures/01-lecture-slides.html#lists-a-flexible-representation-of-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Lists: A Flexible Representation of Data",
+    "text": "Lists: A Flexible Representation of Data\nLike vectors, lists are another way to structure data in R. Rather than group individual elements, however, lists group together different types of R objects including other lists.\n\nlist_1 &lt;- list(c(1, 3, 4), c(\"a\", \"b\"), list(3, 4))"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#data-frames-best-way-to-represent-data",
+    "href": "lectures/01-lecture-slides.html#data-frames-best-way-to-represent-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Data Frames: Best way to Represent Data",
+    "text": "Data Frames: Best way to Represent Data\nData frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet.\nEach column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column.\n\ndata_frame_1 &lt;- data.frame(NUMERIC = c(1, 3), CHARACTER = c(\"a\", \"b\"), \n                           LOGICAL = c(TRUE, FALSE))\ndata_frame_1\n\n  NUMERIC CHARACTER LOGICAL\n1       1         a    TRUE\n2       3         b   FALSE"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#viewing-your-data",
+    "href": "lectures/01-lecture-slides.html#viewing-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Viewing Your Data",
+    "text": "Viewing Your Data\nYou can use View() to open up a spreadsheet-like view of your data.\n\nView(data_frame_1)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#selecting-data-from-vectors-and-data-frames",
+    "href": "lectures/01-lecture-slides.html#selecting-data-from-vectors-and-data-frames",
+    "title": "Stats Bootcamp",
+    "section": "Selecting Data from Vectors and Data Frames",
+    "text": "Selecting Data from Vectors and Data Frames"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#selecting-data-from-lists",
+    "href": "lectures/01-lecture-slides.html#selecting-data-from-lists",
+    "title": "Stats Bootcamp",
+    "section": "Selecting Data from Lists",
+    "text": "Selecting Data from Lists"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#na-value-missing-data",
+    "href": "lectures/01-lecture-slides.html#na-value-missing-data",
+    "title": "Stats Bootcamp",
+    "section": "NA Value: Missing Data",
+    "text": "NA Value: Missing Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#reading-writing-data",
+    "href": "lectures/01-lecture-slides.html#reading-writing-data",
+    "title": "Stats Bootcamp",
+    "section": "Reading & Writing Data",
+    "text": "Reading & Writing Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-the-tidyverse",
+    "href": "lectures/01-lecture-slides.html#what-is-the-tidyverse",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is the Tidyverse?",
+    "text": "What is the Tidyverse?\nThe tidyverse is a collection of R packages that “share a common philosophy of data and R programming and are designed to work together.”"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#tibble-data-frame-of-tidyverse",
+    "href": "lectures/01-lecture-slides.html#tibble-data-frame-of-tidyverse",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "tibble: Data frame of Tidyverse",
+    "text": "tibble: Data frame of Tidyverse\nTibbles are the tidyverse’s version of a data.frame. They can be loaded from the tidyverse package: tibble.\n\ndata_employees_tbl &lt;- tibble::as_tibble(data_employees)\ndata_employees_tbl\n\n# A tibble: 1,470 × 36\n   employee_id active stock_opt_lvl trainings   age commute_dist ed_lvl ed_field\n         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   \n 1        1001 No                 0         0    41            1      2 Life Sc…\n 2        1002 Yes                1         3    49            8      1 Life Sc…\n 3        1003 No                 0         3    37            2      2 Other   \n 4        1004 Yes                0         3    33            3      4 Life Sc…\n 5        1005 Yes                1         3    27            2      1 Medical \n 6        1006 Yes                0         2    32            2      2 Life Sc…\n 7        1007 Yes                3         3    59            3      3 Medical \n 8        1008 Yes                1         2    30           24      1 Life Sc…\n 9        1009 Yes                0         2    38           23      3 Life Sc…\n10        1010 Yes                2         3    36           27      3 Medical \n# ℹ 1,460 more rows\n# ℹ 28 more variables: gender &lt;chr&gt;, marital_sts &lt;chr&gt;, dept &lt;chr&gt;,\n#   engagement &lt;int&gt;, job_lvl &lt;int&gt;, job_title &lt;chr&gt;, overtime &lt;chr&gt;,\n#   business_travel &lt;chr&gt;, hourly_rate &lt;int&gt;, daily_comp &lt;int&gt;,\n#   monthly_comp &lt;int&gt;, annual_comp &lt;int&gt;, ytd_leads &lt;int&gt;, ytd_sales &lt;int&gt;,\n#   standard_hrs &lt;int&gt;, salary_hike_pct &lt;int&gt;, perf_rating &lt;int&gt;,\n#   prior_emplr_cnt &lt;int&gt;, env_sat &lt;int&gt;, job_sat &lt;int&gt;, rel_sat &lt;int&gt;, …"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#dplyr-your-data-multitool",
+    "href": "lectures/01-lecture-slides.html#dplyr-your-data-multitool",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "dplyr: Your Data Multitool",
+    "text": "dplyr: Your Data Multitool\nThe package dplyr should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#selecting-columns-using-dplyrselect",
+    "href": "lectures/01-lecture-slides.html#selecting-columns-using-dplyrselect",
+    "title": "Stats Bootcamp",
+    "section": "Selecting Columns using dplyr::select",
+    "text": "Selecting Columns using dplyr::select\n\ndplyr::select(data_frame_1, NUMERIC, LOGICAL)\n\n  NUMERIC LOGICAL\n1       1    TRUE\n2       3   FALSE\n\n\n\ndata_frame_1 |&gt;\n  dplyr::select(NUMERIC, LOGICAL)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#adding-new-columns-using-dplyrmutate",
+    "href": "lectures/01-lecture-slides.html#adding-new-columns-using-dplyrmutate",
+    "title": "Stats Bootcamp",
+    "section": "Adding New Columns Using dplyr::mutate",
+    "text": "Adding New Columns Using dplyr::mutate"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#filtering-rows-using-dplyrfilter",
+    "href": "lectures/01-lecture-slides.html#filtering-rows-using-dplyrfilter",
+    "title": "Stats Bootcamp",
+    "section": "Filtering Rows Using dplyr::filter",
+    "text": "Filtering Rows Using dplyr::filter"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#an-example-tibble",
+    "href": "lectures/01-lecture-slides.html#an-example-tibble",
+    "title": "Stats Bootcamp",
+    "section": "An Example tibble",
+    "text": "An Example tibble"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-to-bring-it-all-together",
+    "href": "lectures/01-lecture-slides.html#using-to-bring-it-all-together",
+    "title": "Stats Bootcamp",
+    "section": "Using |> to bring it all together",
+    "text": "Using |&gt; to bring it all together"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#r-resources",
+    "href": "lectures/01-lecture-slides.html#r-resources",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "R Resources",
+    "text": "R Resources\nhttps://r4ds.hadley.nz/"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-statistical-science",
+    "href": "lectures/01-lecture-slides.html#what-is-statistical-science",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is Statistical Science?",
+    "text": "What is Statistical Science?\n\nStatistical science is the science of developing and applying methods for collecting analyzing, and interpreting data.\n\n— Agresti & Kateri, 2022"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#three-aspects-of-statistical-science",
+    "href": "lectures/01-lecture-slides.html#three-aspects-of-statistical-science",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Three Aspects of Statistical Science",
+    "text": "Three Aspects of Statistical Science\n\nDesign: Planning on how to gather relevant data.\nDescription: Summarizing the data.\nInference: Making evaluations (generalizations) based on the data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#design-of-studies",
+    "href": "lectures/01-lecture-slides.html#design-of-studies",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Design of Studies",
+    "text": "Design of Studies\nThe design of a study focuses on planning a study so that it produces useful data. This involves:\n\nDeciding how to sample and who to sample\nConstructing surveys for observational studies\nConstructing treatments for experimental studies"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#descriptive-statistics",
+    "href": "lectures/01-lecture-slides.html#descriptive-statistics",
+    "title": "Stats Bootcamp",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#inferential-statistics",
+    "href": "lectures/01-lecture-slides.html#inferential-statistics",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Inferential Statistics",
+    "text": "Inferential Statistics\nUsually, when you analyze your data you want to generalize the results from your specific dataset to a broader population or more general phenomenon. This is called statistical inference. We infer something from our data about a more general phenomenon."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#populations",
+    "href": "lectures/01-lecture-slides.html#populations",
+    "title": "Stats Bootcamp",
+    "section": "Populations",
+    "text": "Populations\n\nSubject\nParameter"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#actual-vs-conceptual-populations",
+    "href": "lectures/01-lecture-slides.html#actual-vs-conceptual-populations",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Actual vs Conceptual Populations",
+    "text": "Actual vs Conceptual Populations\nDepending on the research question, the population may be real or it may be conceptual. Conceptual populations are often future populations we want to generalize to, but which we have to use data collected on current populations."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#samples-data",
+    "href": "lectures/01-lecture-slides.html#samples-data",
+    "title": "Stats Bootcamp",
+    "section": "Samples & Data",
+    "text": "Samples & Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#variables",
+    "href": "lectures/01-lecture-slides.html#variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Variables",
+    "text": "Variables\nVariables are characteristics of the sample or population that vary across subjects. Data consists of a set of variables:\n\nset.seed(3)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    employee_id,\n    trainings,\n    ed_field,\n    dept\n  )\n\n# A tibble: 5 × 4\n  employee_id trainings ed_field         dept                  \n        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                 \n1        1773         4 Medical          Research & Development\n2        1652         2 Marketing        Sales                 \n3        1999         2 Medical          Research & Development\n4        1548         2 Medical          Research & Development\n5        1698         5 Technical Degree Sales"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-variables",
+    "href": "lectures/01-lecture-slides.html#types-of-variables",
+    "title": "Stats Bootcamp",
+    "section": "Types of Variables",
+    "text": "Types of Variables\n\nQuantitative\nCategorical"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-quantitative-variables",
+    "href": "lectures/01-lecture-slides.html#types-of-quantitative-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Quantitative Variables",
+    "text": "Types of Quantitative Variables\nQuantitative variables can be further classified into two groups:\n\nDiscrete: Values are distinct, separable numbers (e.g. integers)\nContinuous: Values are on an infinite continuum (e.g. real numbers)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-categorical-variables",
+    "href": "lectures/01-lecture-slides.html#types-of-categorical-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Categorical Variables",
+    "text": "Types of Categorical Variables\nSimilar to quantitative variables, categorical variables can also be classified into two groups:\n\nDichotomous / Binary: Two categories\nMulticategorical: Three or more categories"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#roles-of-variables",
+    "href": "lectures/01-lecture-slides.html#roles-of-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Roles of Variables",
+    "text": "Roles of Variables\nVariables can not only be categorized by the kinds and ranges of values they take on, but also by the role they take on in the analysis:\n\nResponse, Outcome, Dependent Variable, Criterion Variable\nPredictor, Independent Variable, Feature, Covariate"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#collecting-data",
+    "href": "lectures/01-lecture-slides.html#collecting-data",
+    "title": "Stats Bootcamp",
+    "section": "Collecting Data",
+    "text": "Collecting Data\n\nRandomized Experiment\nQuasi-Experiment\nObservational Studies"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#randomized-experiments",
+    "href": "lectures/01-lecture-slides.html#randomized-experiments",
+    "title": "Stats Bootcamp",
+    "section": "Randomized Experiments",
+    "text": "Randomized Experiments"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#quasi-experiments",
+    "href": "lectures/01-lecture-slides.html#quasi-experiments",
+    "title": "Stats Bootcamp",
+    "section": "Quasi-Experiments",
+    "text": "Quasi-Experiments"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#observational-studies",
+    "href": "lectures/01-lecture-slides.html#observational-studies",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Observational Studies",
+    "text": "Observational Studies\nIn observational studies, the researchers observe collect a sample of subjects and observe their outcomes across the variables of interest. One type of observational study design is a survey study.\nThe important difference between observational studies and experiments is that subjects are not randomly assigned to treatments."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-a-statistic",
+    "href": "lectures/01-lecture-slides.html#what-is-a-statistic",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is a Statistic?",
+    "text": "What is a Statistic?\nA statistic is a number that we can calculate from our data. Statistics provide useful information about the characteristics of a variable’s distribution such as its center (mean) or spread (standard deviation).\n\nmean(data_employees_tbl$commute_dist) |&gt; round(2) # Mean\n\n[1] 9.19\n\nmedian(data_employees_tbl$commute_dist) # Median\n\n[1] 7\n\nsd(data_employees_tbl$commute_dist) |&gt; round(2) # SD\n\n[1] 8.11"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#statistic-vs-population-parameter",
+    "href": "lectures/01-lecture-slides.html#statistic-vs-population-parameter",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Statistic vs Population Parameter",
+    "text": "Statistic vs Population Parameter\nPopulation parameters (or parameters) are numerical summaries of our population. Statistics are estimates of these parameters calculated from data sampled from this population.\nUsually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-center-of-your-data",
+    "href": "lectures/01-lecture-slides.html#describing-the-center-of-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Center of your Data",
+    "text": "Describing the Center of your Data\nOne common way to describe your data is to compute a statistic that tells you where the center of your data is—the average or expected value of your data. There are three statistics you can compute:\n\nMean: The average value.\nMedian: The value at which 50% of your data lies below it.\nMode: The most common value."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-spread-of-your-data",
+    "href": "lectures/01-lecture-slides.html#describing-the-spread-of-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Spread of your Data",
+    "text": "Describing the Spread of your Data\nYou can describe the spread of your data by computing statistics that tells you generally how far the observations are from the mean of your data. There are three statistics you can compute:\n\nVariance: The average squared distance your data falls from the mean.\nStandard Deviation: The average distance your data falls from the mean (square root of variance).\nRange: Maximum value minus the minimum value of your data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-shape-of-your-data",
+    "href": "lectures/01-lecture-slides.html#describing-the-shape-of-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Shape of your Data",
+    "text": "Describing the Shape of your Data\nOftentimes, you will also want to talk about the shape of your data. Typically, this is about how skewed or asymmetric your data is in one direction or how heavy the tails of your distribution are:\n\nSkewness: How long the tails of your distribution are in a given direction.\nKurtosis: How heavy the tails of your distribution are."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-overall-distribution-of-your-data",
+    "href": "lectures/01-lecture-slides.html#describing-the-overall-distribution-of-your-data",
+    "title": "Stats Bootcamp",
+    "section": "Describing the Overall Distribution of your Data",
+    "text": "Describing the Overall Distribution of your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-relationship-between-two-variables",
+    "href": "lectures/01-lecture-slides.html#describing-the-relationship-between-two-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Relationship between two Variables",
+    "text": "Describing the Relationship between two Variables\nWe can also describe the linear relationship between two variables by computing either the covariation or correlation between two variables. Both of these metrics tell us the extent to which two variables are linearly related to one another."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-importance-of-plots",
+    "href": "lectures/01-lecture-slides.html#the-importance-of-plots",
+    "title": "Stats Bootcamp",
+    "section": "The Importance of Plots",
+    "text": "The Importance of Plots"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#histograms",
+    "href": "lectures/01-lecture-slides.html#histograms",
+    "title": "Stats Bootcamp",
+    "section": "Histograms",
+    "text": "Histograms"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#box-plots",
+    "href": "lectures/01-lecture-slides.html#box-plots",
+    "title": "Stats Bootcamp",
+    "section": "Box Plots",
+    "text": "Box Plots"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#violin-plots",
+    "href": "lectures/01-lecture-slides.html#violin-plots",
+    "title": "Stats Bootcamp",
+    "section": "Violin Plots",
+    "text": "Violin Plots"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#scatter-plots",
+    "href": "lectures/01-lecture-slides.html#scatter-plots",
+    "title": "Stats Bootcamp",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-probability",
+    "href": "lectures/01-lecture-slides.html#what-is-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is Probability?",
+    "text": "What is Probability?\nProbability is the language of uncertainty. Anytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-as-a-long-run-frequency",
+    "href": "lectures/01-lecture-slides.html#probability-as-a-long-run-frequency",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Probability as a Long-Run Frequency",
+    "text": "Probability as a Long-Run Frequency\n\nFor an observation of a random phenomen, the probability of a particular outcome is the proportion of times that outcome would occur in an indefinitely long sequence of like observations, under the same conditions.\n\n— Agresti & Kateri, 2022"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#sample-space-events",
+    "href": "lectures/01-lecture-slides.html#sample-space-events",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Sample Space & Events",
+    "text": "Sample Space & Events\n\nprobability-space"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#rules-of-probability-theory",
+    "href": "lectures/01-lecture-slides.html#rules-of-probability-theory",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Rules of Probability Theory",
+    "text": "Rules of Probability Theory"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#joint-probability",
+    "href": "lectures/01-lecture-slides.html#joint-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Joint Probability",
+    "text": "Joint Probability\nJoint probability is the probability of some event happening for two or more random variables. For example, what is the probability of employment_status == inactive & job_satisfaction == satisfied?"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#conditional-probability",
+    "href": "lectures/01-lecture-slides.html#conditional-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nConditional probability is the probability of one event occurring given the occurrence of another event. This is written mathematically as:\n\\[P(\\text{Event 1} \\space | \\space \\text{Event 2})\\]\nwhich is read as the probability of Event 1 conditional on (or given) Event 2."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#random-variables-connecting-probability-statistics-and-data",
+    "href": "lectures/01-lecture-slides.html#random-variables-connecting-probability-statistics-and-data",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Random Variables: Connecting Probability, Statistics, and Data",
+    "text": "Random Variables: Connecting Probability, Statistics, and Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-random-variables-discrete-continuous",
+    "href": "lectures/01-lecture-slides.html#types-of-random-variables-discrete-continuous",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Random Variables: Discrete & Continuous",
+    "text": "Types of Random Variables: Discrete & Continuous\nRandom variables, like quantitative variables, can be classified into two broad categories:\n\nDiscrete: Separate, distinct outcome values like integers\nContinuous: Infinite continuum of possible outcomes"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#expectation-of-a-random-variable",
+    "href": "lectures/01-lecture-slides.html#expectation-of-a-random-variable",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Expectation of a Random Variable",
+    "text": "Expectation of a Random Variable"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#connection-between-the-mean-and-expectation",
+    "href": "lectures/01-lecture-slides.html#connection-between-the-mean-and-expectation",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Connection Between the Mean and Expectation",
+    "text": "Connection Between the Mean and Expectation\n\n1/n @ large n"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-distribution-functions",
+    "href": "lectures/01-lecture-slides.html#probability-distribution-functions",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Probability Distribution Functions",
+    "text": "Probability Distribution Functions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-mass-density-functions",
+    "href": "lectures/01-lecture-slides.html#probability-mass-density-functions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Probability Mass & Density Functions",
+    "text": "Probability Mass & Density Functions\nProbability Mass and Density Functions (PMF & PDF, respectively) are mathematical functions that take the value of a random variable as an input and return the probability of that value occurring as an output. Every statistical model we will use will assume a certain PMF or PDF.\n\nPMF is a probability distribution function for discrete random variables\nPDF is a probability distribution function for continuous random variables"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#cumulative-distribution-function",
+    "href": "lectures/01-lecture-slides.html#cumulative-distribution-function",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Cumulative Distribution Function",
+    "text": "Cumulative Distribution Function\nClosely related to the PMF/PDF, the Cumulative Distribution Function (CDF) specifies the cumulative probability that a random variable takes a value, Y, or any value less than Y:\n\\[F(\\text{Y})=P(\\text{Y} \\leq \\text{y})\\]\nIn our example, what is the probability that involuntary_turnover takes a value of 0? What is the probability involuntary_turnover takes a value less than or equal to 1?"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#joint-probability-distributions",
+    "href": "lectures/01-lecture-slides.html#joint-probability-distributions",
+    "title": "Stats Bootcamp",
+    "section": "Joint Probability Distributions",
+    "text": "Joint Probability Distributions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#conditional-probability-distributions",
+    "href": "lectures/01-lecture-slides.html#conditional-probability-distributions",
+    "title": "Stats Bootcamp",
+    "section": "Conditional Probability Distributions",
+    "text": "Conditional Probability Distributions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#independent-random-variables",
+    "href": "lectures/01-lecture-slides.html#independent-random-variables",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Independent Random Variables",
+    "text": "Independent Random Variables"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#inferential-statistics-1",
+    "href": "lectures/01-lecture-slides.html#inferential-statistics-1",
+    "title": "Stats Bootcamp",
+    "section": "Inferential Statistics",
+    "text": "Inferential Statistics"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#sampling-distributions",
+    "href": "lectures/01-lecture-slides.html#sampling-distributions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Sampling Distributions",
+    "text": "Sampling Distributions\nImagine you can draw an infinite number of random samples from a population and then for each sample you compute the sample mean. The distribution of these sample means is referred to as the sampling distribution of the mean."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-standard-error",
+    "href": "lectures/01-lecture-slides.html#the-standard-error",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Standard Error",
+    "text": "The Standard Error\nThe standard deviation of a sampling distribution is known by another name: the standard error. The standard error quantifies our uncertainty in a given statistic and is fundamental to inferential statistics.\nFor the mean, the standard error can be calculated as:\n\\[\\sigma_{\\bar{Y}} = \\sqrt{\\frac{\\sigma^{2}}{n}} = \\frac{\\sigma}{\\sqrt{n}}\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#sampling-distribution-of-the-mean",
+    "href": "lectures/01-lecture-slides.html#sampling-distribution-of-the-mean",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Sampling Distribution of the Mean",
+    "text": "Sampling Distribution of the Mean"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#standard-error-of-the-mean",
+    "href": "lectures/01-lecture-slides.html#standard-error-of-the-mean",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Standard Error of the Mean",
+    "text": "Standard Error of the Mean"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#central-limit-theorem",
+    "href": "lectures/01-lecture-slides.html#central-limit-theorem",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#point-estimates",
+    "href": "lectures/01-lecture-slides.html#point-estimates",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Point Estimates",
+    "text": "Point Estimates"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#law-of-large-numbers",
+    "href": "lectures/01-lecture-slides.html#law-of-large-numbers",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#estimating-the-mean-variance",
+    "href": "lectures/01-lecture-slides.html#estimating-the-mean-variance",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Estimating the Mean & Variance",
+    "text": "Estimating the Mean & Variance"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#interval-estimates-confidence-interval",
+    "href": "lectures/01-lecture-slides.html#interval-estimates-confidence-interval",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Interval Estimates (Confidence Interval)",
+    "text": "Interval Estimates (Confidence Interval)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#building-a-confidence-interval-around-the-mean",
+    "href": "lectures/01-lecture-slides.html#building-a-confidence-interval-around-the-mean",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Building a Confidence Interval Around the Mean",
+    "text": "Building a Confidence Interval Around the Mean\nGenerally, to build a confidence interval, you need three pieces of information:\n\nPoint estimate to build the interval around\nThe probability distribution that best approximates the estimate’s sampling distribution (almost always the normal distribution)\nThe Standard Error of the estimate (the standard devation of the sampling distribution)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#interpreting-a-confidence-interval",
+    "href": "lectures/01-lecture-slides.html#interpreting-a-confidence-interval",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Interpreting a Confidence Interval",
+    "text": "Interpreting a Confidence Interval\nConfidence intervals have a very strict (and kind of odd) interpretation:\nIf you were to randomly sample a large number of samples from a population and create a 95% confidence interval around the sample mean, then 95% of those intervals would contain the population mean."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-a-statistical-test",
+    "href": "lectures/01-lecture-slides.html#what-is-a-statistical-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is a statistical test?",
+    "text": "What is a statistical test?"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-four-elements-of-a-statistical-test",
+    "href": "lectures/01-lecture-slides.html#the-four-elements-of-a-statistical-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Four Elements of a Statistical Test",
+    "text": "The Four Elements of a Statistical Test\n\nAssumptions: Background assumptions that need to hold for our test to be valid.\nHypotheses: The \\(H_{0}\\) and \\(H_{a}\\) hypotheses, which need to be formulated before analyses happen.\nTest Statistic: Summary of how far away a statistical estimate is from the population value predicted by \\(H_{0}\\).\nP-value & Conclusion: A decision on whether to reject or not reject \\(H_{0}\\) if the probability of our data coming from the null population distribution is sufficiently low as measured by a P-value."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#assumptions",
+    "href": "lectures/01-lecture-slides.html#assumptions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Assumptions",
+    "text": "Assumptions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#hypotheses",
+    "href": "lectures/01-lecture-slides.html#hypotheses",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Hypotheses",
+    "text": "Hypotheses"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#test-statistic",
+    "href": "lectures/01-lecture-slides.html#test-statistic",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Test Statistic",
+    "text": "Test Statistic"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#p-value-conclusion",
+    "href": "lectures/01-lecture-slides.html#p-value-conclusion",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "P-value & Conclusion",
+    "text": "P-value & Conclusion"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#comparing-two-means-t-test",
+    "href": "lectures/01-lecture-slides.html#comparing-two-means-t-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Comparing Two Means (T-Test)",
+    "text": "Comparing Two Means (T-Test)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#assumptions-of-the-t-test",
+    "href": "lectures/01-lecture-slides.html#assumptions-of-the-t-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Assumptions of the T-Test",
+    "text": "Assumptions of the T-Test"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#hypotheses-of-the-t-test",
+    "href": "lectures/01-lecture-slides.html#hypotheses-of-the-t-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Hypotheses of the T-Test",
+    "text": "Hypotheses of the T-Test"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#t-test-test-statistic",
+    "href": "lectures/01-lecture-slides.html#t-test-test-statistic",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "T-Test Test Statistic",
+    "text": "T-Test Test Statistic"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#pooled-standard-deviation",
+    "href": "lectures/01-lecture-slides.html#pooled-standard-deviation",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Pooled Standard Deviation",
+    "text": "Pooled Standard Deviation"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#standard-error",
+    "href": "lectures/01-lecture-slides.html#standard-error",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Standard Error",
+    "text": "Standard Error"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#calculating-the-p-value",
+    "href": "lectures/01-lecture-slides.html#calculating-the-p-value",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Calculating the P-Value",
+    "text": "Calculating the P-Value"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#building-a-confidence-interval",
+    "href": "lectures/01-lecture-slides.html#building-a-confidence-interval",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Building a Confidence Interval",
+    "text": "Building a Confidence Interval\nGenerally, to build a confidence interval, you need three pieces of information:\n\nPoint estimate to build the interval around\nThe probability distribution that best approximates the estimate’s sampling distribution (almost always the normal distribution)\nThe Standard Error of the estimate (the standard deviation of the sampling distribution)\nThe level of “confidence” (i.e. how confident you are that the population parameter is contained in the interval)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#connection-between-p-values-confidence-intervals",
+    "href": "lectures/01-lecture-slides.html#connection-between-p-values-confidence-intervals",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Connection Between P-Values & Confidence Intervals",
+    "text": "Connection Between P-Values & Confidence Intervals"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#significance-tests-decision-errors",
+    "href": "lectures/01-lecture-slides.html#significance-tests-decision-errors",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Significance Tests & Decision Errors",
+    "text": "Significance Tests & Decision Errors"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#statistical-significance-vs-practical-significance",
+    "href": "lectures/01-lecture-slides.html#statistical-significance-vs-practical-significance",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Statistical Significance vs Practical Significance",
+    "text": "Statistical Significance vs Practical Significance"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#weaknesses-of-signficance-tests-p-values",
+    "href": "lectures/01-lecture-slides.html#weaknesses-of-signficance-tests-p-values",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Weaknesses of Signficance Tests & P-Values",
+    "text": "Weaknesses of Signficance Tests & P-Values"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#installing-loading-packages",
+    "href": "lectures/01-lecture-slides.html#installing-loading-packages",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Installing & Loading Packages",
+    "text": "Installing & Loading Packages\nYou can use install.packages to install a package once and then library to load that package and gain access to all of its functions.\n\ninstall.packages(\"package_name\")\nlibrary(package_name)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#selecting-data-from-data-frames",
+    "href": "lectures/01-lecture-slides.html#selecting-data-from-data-frames",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Selecting Data from Data Frames",
+    "text": "Selecting Data from Data Frames\nYou will mainly select data from data frames using one of the two following methods:\n\ndata_frame_1[1, 1] # Index the row and/or column\n\n[1] 1\n\ndata_frame_1[, 1] # Leaving the column or row index blank selects the whole vector\n\n[1] 1 3\n\ndata_frame_1$NUMERIC # Use a $ operator to reference the column name\n\n[1] 1 3"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#na-values-missing-data",
+    "href": "lectures/01-lecture-slides.html#na-values-missing-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "NA Values: Missing Data",
+    "text": "NA Values: Missing Data\nFor a number of reasons, uou will often having missing data in the datasets you create. R encodes missing data as NA and often interacts differently with vectors that contain NA values compared to vectors that do not contain any NA values.\n\nno_na_value &lt;- c(1, 3, 5)\nmean(no_na_value)\n\n[1] 3\n\nna_value &lt;- c(NA, 3, 5)\nmean(na_value)\n\n[1] NA\n\nmean(na_value, na.rm = TRUE) # Drops NA value from calculation.\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#reading-and-writing-data",
+    "href": "lectures/01-lecture-slides.html#reading-and-writing-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Reading and Writing Data",
+    "text": "Reading and Writing Data\nThere are a number of different methods to read and write data into R. The two most common functions are:\n\ndata &lt;- read.csv(\"filepath/file-name.csv\")\n\nwrite.csv(data, \"filepath/file-name.csv\")"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#importing-data-from-an-r-package",
+    "href": "lectures/01-lecture-slides.html#importing-data-from-an-r-package",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Importing Data from an R Package",
+    "text": "Importing Data from an R Package\nOftentimes, R packages will come with their own datasets that we can load into R. The peopleanalytics package has many such datasets that we will use today:\n\ndata_employees &lt;- peopleanalytics::employees"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#installing-packages-from-the-tidyverse",
+    "href": "lectures/01-lecture-slides.html#installing-packages-from-the-tidyverse",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Installing Packages from the Tidyverse",
+    "text": "Installing Packages from the Tidyverse\n\ninstall.packages(\"tidyverse\")"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-philosophy-of-dplyr-functions",
+    "href": "lectures/01-lecture-slides.html#the-philosophy-of-dplyr-functions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Philosophy of dplyr Functions",
+    "text": "The Philosophy of dplyr Functions\nEvery function in dplyr follows this philosophy:\n\nFirst argument is always a data frame.\nRemaining arguments are usually names of columns on which to operate.\nThe output is always a new data frame (tibble).\n\ndplyr functions are also further grouped by whether they operate on rows, columns, groups, or tables."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-rows",
+    "href": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-rows",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using dplyr to Operate on Rows",
+    "text": "Using dplyr to Operate on Rows\nThe following dplyr functions can filter, reduce, or reorder the rows of a data frame:\n\ndplyr::filter(data_employees_tbl, job_level %in% c(4, 5))\n\ndplyr::distinct(data_employees_tbl, ed_lvl, ed_field)\n\ndplyr::arrange(data_employees_tbl, work_exp)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-columns",
+    "href": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-columns",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using dplyr to Operate on Columns",
+    "text": "Using dplyr to Operate on Columns\nThe following dplyr functions can select, rename, add/change, or relocate the columns of a data frame:\n\ndplyr::select(data_employees_tbl, dept)\n\ndplyr::rename(data_employees_tbl, job_level = job_lvl)\n\ndplyr::mutate(data_employees_tbl, salary = monthly_comp * 12)\n\ndplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-groups",
+    "href": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-groups",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using dplyr to Operate on Groups",
+    "text": "Using dplyr to Operate on Groups\nThe following dplyr functions can group and summarize your data by a predefined group indicator:\n\ndata_employees_tbl |&gt;\n  dplyr::group_by(\n    job_lvl\n  ) |&gt;\n  dplyr::summarize(\n    annual_comp_mean = mean(annual_comp),\n    annual_comp_median = median(annual_comp)\n  )\n\nIn this code chunk, we have grouped by an employee’s job level and summarized their annual salary by job level."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-tables",
+    "href": "lectures/01-lecture-slides.html#using-dplyr-to-operate-on-tables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using dplyr to Operate on Tables",
+    "text": "Using dplyr to Operate on Tables\nThe followingdplyr functions can be used to join different tables (data frames) together by a unique identifier:\n\ndata_job &lt;- peopleanalytics::job |&gt; tibble::as_tibble()\n\ndata_payroll &lt;- peopleanalytics::payroll |&gt; tibble::as_tibble()\n\ndata_job_payroll &lt;- \n  data_job |&gt;\n  dplyr::left_join(\n    data_payroll,\n    by = \"employee_id\"\n  )"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#description",
+    "href": "lectures/01-lecture-slides.html#description",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Description",
+    "text": "Description\nDescription focuses on how to summarize the raw data without losing too much information. Descriptive statistics are statistics calculated from the raw data that summarize all (or most) of the information contained in the data:\n\nMean, median, and mode\nVariance and standard deviation\nCumulative distribution of the data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#inference",
+    "href": "lectures/01-lecture-slides.html#inference",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Inference",
+    "text": "Inference\nInference focuses on how to make evaluations (generalizations) from the data that take into consideration the uncertainty present in the data. These data-based evaluations take the form of:\n\nPredictions\nInterval and point estimates\nProbability (P) values"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#populations-samples",
+    "href": "lectures/01-lecture-slides.html#populations-samples",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Populations & Samples",
+    "text": "Populations & Samples\nThe purpose of most analyses is to learn something about the population from the collected data or sample.\nA population is the collection of every unit or subject (e.g. person) that one wishes to generalize to from the results of their study. A sample is the actual collected data one is using to make these generalizations."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-variables-by-measurement-scale",
+    "href": "lectures/01-lecture-slides.html#types-of-variables-by-measurement-scale",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Variables by Measurement Scale",
+    "text": "Types of Variables by Measurement Scale\nWe can classify variables into two broad categories based on their measurement scale–the types of values the variable can take on:\n\nQuantitative: Values are numbers\nCategorical: Values are categories"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-variables-by-measurement-scale-1",
+    "href": "lectures/01-lecture-slides.html#types-of-variables-by-measurement-scale-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Variables by Measurement Scale",
+    "text": "Types of Variables by Measurement Scale\n\nset.seed(4)\ndata_employees_tbl |&gt; \n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    job_tenure,\n    dept\n  )\n\n# A tibble: 5 × 2\n  job_tenure dept                  \n       &lt;int&gt; &lt;chr&gt;                 \n1          0 Research & Development\n2          2 Sales                 \n3          3 Sales                 \n4          0 Sales                 \n5          0 Sales"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-quantitative-variables-1",
+    "href": "lectures/01-lecture-slides.html#types-of-quantitative-variables-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Quantitative Variables",
+    "text": "Types of Quantitative Variables\n\nset.seed(4)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    trainings,\n    commute_dist\n  )\n\n# A tibble: 5 × 2\n  trainings commute_dist\n      &lt;int&gt;        &lt;int&gt;\n1         4            9\n2         4           20\n3         2            1\n4         2           19\n5         0           12"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-categorical-variables-1",
+    "href": "lectures/01-lecture-slides.html#types-of-categorical-variables-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Types of Categorical Variables",
+    "text": "Types of Categorical Variables\n\nset.seed(4)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    trainings,\n    commute_dist\n  )\n\n# A tibble: 5 × 2\n  trainings commute_dist\n      &lt;int&gt;        &lt;int&gt;\n1         4            9\n2         4           20\n3         2            1\n4         2           19\n5         0           12"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#data-collection",
+    "href": "lectures/01-lecture-slides.html#data-collection",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Data Collection",
+    "text": "Data Collection\nThe strength of the inferences you can make depends on the quality of your data. The quality of your data is very dependent on the method used to collect it:\n\nExperiments\nObservational Studies"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#experiments",
+    "href": "lectures/01-lecture-slides.html#experiments",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Experiments",
+    "text": "Experiments\nIn experiments—also known as randomized control trials (RCTs)—data are collected by randomly assigning subjects to an experimental trial or condition, then collecting the subsequent outcome data.\nBy randomly assigning subjects to conditions, you are effectively ensuring that any differences in the outcome variable by condition is due solely to the condition not to any other lurking variable."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#statistic-vs-population-parameter-1",
+    "href": "lectures/01-lecture-slides.html#statistic-vs-population-parameter-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Statistic vs Population Parameter",
+    "text": "Statistic vs Population Parameter"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-reassuring-reminder",
+    "href": "lectures/01-lecture-slides.html#a-reassuring-reminder",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Reassuring Reminder",
+    "text": "A Reassuring Reminder\n\nStatistics is hard, especially when effects are small and variable and measurements are noisy.\n\n— McShane et al. (2019)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-center-of-your-data-1",
+    "href": "lectures/01-lecture-slides.html#describing-the-center-of-your-data-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Center of your Data",
+    "text": "Describing the Center of your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-center-of-your-data-mean",
+    "href": "lectures/01-lecture-slides.html#describing-the-center-of-your-data-mean",
+    "title": "Stats Bootcamp",
+    "section": "Describing the Center of your Data: Mean",
+    "text": "Describing the Center of your Data: Mean\n\\(\\frac{\\Sigma{y_i}}{n}\\)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-spread-of-your-data-1",
+    "href": "lectures/01-lecture-slides.html#describing-the-spread-of-your-data-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Spread of your Data",
+    "text": "Describing the Spread of your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#describing-the-shape-of-your-data-1",
+    "href": "lectures/01-lecture-slides.html#describing-the-shape-of-your-data-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Describing the Shape of your Data",
+    "text": "Describing the Shape of your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-r-to-describe-your-data",
+    "href": "lectures/01-lecture-slides.html#using-r-to-describe-your-data",
+    "title": "Stats Bootcamp",
+    "section": "Using R to Describe your Data",
+    "text": "Using R to Describe your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#correlation-coefficient",
+    "href": "lectures/01-lecture-slides.html#correlation-coefficient",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Correlation Coefficient",
+    "text": "Correlation Coefficient\nThe correlation coefficient is just a standardized version of the covariance statistic with values that range from -1 to 1.\n\nPositive Correlation: High (low) values of one variable, X, are frequently seen with high (low) values of another variable.\nNegative Correlation: High (low) values of one variable, X, are frequently seen with low (high) values of another variable.\n\n\nset.seed(324)\nx &lt;- rnorm(100, sd = 50)\ny &lt;- 1 * x + rnorm(100, sd = 100)\n\ncov(x, y) |&gt; round(2)\n\n[1] 2522.9\n\ncor(x, y) |&gt; round(2)\n\n[1] 0.45"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#plotting-the-relationship-between-two-variables",
+    "href": "lectures/01-lecture-slides.html#plotting-the-relationship-between-two-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Plotting the Relationship Between two Variables",
+    "text": "Plotting the Relationship Between two Variables"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#importance-of-plots",
+    "href": "lectures/01-lecture-slides.html#importance-of-plots",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Importance of Plots",
+    "text": "Importance of Plots\nPlotting your data immediately gives you more information than looking at the raw numbers:\n\nPlots give you visual information about the center, spread, and shape of your data.\nPlots alert you to values that are really far away from the center of your data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#thinking-in-disributions",
+    "href": "lectures/01-lecture-slides.html#thinking-in-disributions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Thinking in Disributions",
+    "text": "Thinking in Disributions\nThe distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either absolute terms (count of observations) or relative terms (proportion or percent). A variable’s distribution completely describes the variable."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#examples-of-plots",
+    "href": "lectures/01-lecture-slides.html#examples-of-plots",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Examples of Plots",
+    "text": "Examples of Plots\n\nset.seed(2311)\nx &lt;- rnorm(1000)\ndata &lt;- tibble::tibble(x = x)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-of-a-coin-flip",
+    "href": "lectures/01-lecture-slides.html#probability-of-a-coin-flip",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Probability of a Coin Flip",
+    "text": "Probability of a Coin Flip\nYou flip a coin 100 times. Of those 100 flips, 78 were heads and 22 were tails, so we can (not so safely) say that the probability of this coin coming up heads is 78%."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-three-rules-of-probability",
+    "href": "lectures/01-lecture-slides.html#the-three-rules-of-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Three Rules of Probability",
+    "text": "The Three Rules of Probability\nAll of probability theory rests on three rules:\n\n\\(P(\\text{Event}) \\geq 0\\)\n\\(P(\\text{Any Event}) = 1\\)\nIf two events are mutually exclusive, then the probability of event one or event two happening is equal to \\(P(\\text{Event 1}) + P(\\text{Event 2})\\)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-concrete-example",
+    "href": "lectures/01-lecture-slides.html#a-concrete-example",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Concrete Example",
+    "text": "A Concrete Example\nYou’re a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm’s HR data over the past fiscal year, which includes three key variables: voluntary_turnover, job_satisfacation, and office_region. Your manager asks you to determine the likelihood that an employee leaves the firm."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-of-voluntary-turnover",
+    "href": "lectures/01-lecture-slides.html#probability-of-voluntary-turnover",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Probability of Voluntary Turnover",
+    "text": "Probability of Voluntary Turnover\nA quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the \\(P(\\text{Status = Inactive}=.16)\\)."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-concrete-example-1",
+    "href": "lectures/01-lecture-slides.html#a-concrete-example-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Concrete Example",
+    "text": "A Concrete Example\n\n\n# A tibble: 20,000 × 3\n   voluntary_turnover job_satisfaction office_region\n   &lt;chr&gt;              &lt;fct&gt;            &lt;fct&gt;        \n 1 active             Neutral          China        \n 2 active             Satisfied        Latin Am.    \n 3 active             Satisfied        North America\n 4 inactive           Neutral          North America\n 5 active             Neutral          China        \n 6 active             Neutral          China        \n 7 inactive           Neutral          Latin Am.    \n 8 active             Dissatisfied     Europe       \n 9 active             Neutral          Europe       \n10 active             Dissatisfied     Europe       \n# ℹ 19,990 more rows"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#employment-status-job-satisfaction-joint-probability",
+    "href": "lectures/01-lecture-slides.html#employment-status-job-satisfaction-joint-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Employment Status & Job Satisfaction: Joint Probability",
+    "text": "Employment Status & Job Satisfaction: Joint Probability\n\n\n\n\n\n\nactive\ninactive\n\n\n\n\nDissatisfied\n0.06\n0.04\n\n\nNeutral\n0.50\n0.10\n\n\nSatisfied\n0.28\n0.02"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#employment-status-job-satisfaction-joint-probability-1",
+    "href": "lectures/01-lecture-slides.html#employment-status-job-satisfaction-joint-probability-1",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Employment Status & Job Satisfaction: Joint Probability",
+    "text": "Employment Status & Job Satisfaction: Joint Probability\n\n\n\n\n\n\nactive\ninactive\n\n\n\n\nDissatisfied\n0.06\n0.04\n\n\nNeutral\n0.50\n0.10\n\n\nSatisfied\n0.28\n0.02"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#emplyment-status-given-job-satisfaction-conditional-probability",
+    "href": "lectures/01-lecture-slides.html#emplyment-status-given-job-satisfaction-conditional-probability",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Emplyment Status Given Job Satisfaction: Conditional Probability",
+    "text": "Emplyment Status Given Job Satisfaction: Conditional Probability\nConditional probability is the probability of one event occurring given the occurence of another event. This is written mathematically as:\n\\[P(\\text{Event 1} \\space | \\space \\text{Event 2})\\]\nwhich is read as the probability of Event 1 conditional on (or given) Event 2."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#employment-status-given-job-satisfaction-conditional-probability",
+    "href": "lectures/01-lecture-slides.html#employment-status-given-job-satisfaction-conditional-probability",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Employment Status Given Job Satisfaction: Conditional Probability",
+    "text": "Employment Status Given Job Satisfaction: Conditional Probability\nWhat is the probability that an employee’s status is inactive given that they had responded they were dissatisfied with their job on an an earlier attitude survey? What happens to this probability as job satisfaction moves from dissatisfied to satisfied?\n\n\n\n\n\n\nactive\ninactive\n\n\n\n\nDissatisfied\n0.63\n0.37\n\n\nNeutral\n0.84\n0.16\n\n\nSatisfied\n0.93\n0.07"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#employment-status-given-job-satisfaction-conditional-probability-1",
+    "href": "lectures/01-lecture-slides.html#employment-status-given-job-satisfaction-conditional-probability-1",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Employment Status Given Job Satisfaction: Conditional Probability",
+    "text": "Employment Status Given Job Satisfaction: Conditional Probability\nWhat is the probability that an employee’s status is inactive given that they had responded they were disstaisfied with their job on an an earlier attitude survey? What happens to this probability as job satisfaction moves from dissatisfied to satisfied?\n\n\n\n\n\n\nactive\ninactive\n\n\n\n\nDissatisfied\n0.63\n0.37\n\n\nNeutral\n0.84\n0.16\n\n\nSatisfied\n0.93\n0.07"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#independent-probabilities",
+    "href": "lectures/01-lecture-slides.html#independent-probabilities",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Independent Probabilities",
+    "text": "Independent Probabilities\nTwo events are said to be independent if the probability of one event occurring does not change given the occurence of the other event:\n\\[P(\\text{Event 1} \\space | \\space \\text{Event 2})=P(\\text{Event 1)}\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#office-region-job-satisfaction-independent-probabilities",
+    "href": "lectures/01-lecture-slides.html#office-region-job-satisfaction-independent-probabilities",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Office Region & Job Satisfaction: Independent Probabilities",
+    "text": "Office Region & Job Satisfaction: Independent Probabilities\nHow does the probability of an employee’s job satisfaction response change depending on the region they’re working in? Or does it change?\n\n\n\n\n\n\nDissatisfied\nNeutral\nSatisfied\n\n\n\n\nNorth America\n0.10\n0.59\n0.31\n\n\nAsia\n0.11\n0.62\n0.27\n\n\nChina\n0.11\n0.59\n0.30\n\n\nEEMEA\n0.10\n0.59\n0.31\n\n\nEurope\n0.09\n0.61\n0.29\n\n\nLatin Am.\n0.10\n0.60\n0.29"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#independent-events",
+    "href": "lectures/01-lecture-slides.html#independent-events",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Independent Events",
+    "text": "Independent Events\nTwo events are said to be independent if the probability of one event occurring does not change given the occurrence of the other event:\n\\[P(\\text{Event 1} \\space | \\space \\text{Event 2})=P(\\text{Event 1)}\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#office-region-job-satisfaction-independent-events",
+    "href": "lectures/01-lecture-slides.html#office-region-job-satisfaction-independent-events",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Office Region & Job Satisfaction: Independent Events",
+    "text": "Office Region & Job Satisfaction: Independent Events\nHow does the probability of an employee’s job satisfaction response change depending on the region they’re working in? Or does it change?\n\n\n\n\n\n\nDissatisfied\nNeutral\nSatisfied\n\n\n\n\nNorth America\n0.10\n0.59\n0.31\n\n\nAsia\n0.11\n0.62\n0.27\n\n\nChina\n0.11\n0.59\n0.30\n\n\nEEMEA\n0.10\n0.59\n0.31\n\n\nEurope\n0.09\n0.61\n0.29\n\n\nLatin Am.\n0.10\n0.60\n0.29"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#random-variables",
+    "href": "lectures/01-lecture-slides.html#random-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Random Variables",
+    "text": "Random Variables\nWhether you realize it or not, we have been talking about voluntary_turnover as a random variable. A random variable is a function of a random phenomenon that maps an outcome of that phenomenon to a real number.\nIn our example, voluntary_turnover is a random variable that maps the outcome of an employee’s decision to leave or remain with their organization to a real number: 1 or 0."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#voluntary-turnover-as-a-random-variable",
+    "href": "lectures/01-lecture-slides.html#voluntary-turnover-as-a-random-variable",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Voluntary Turnover as a Random Variable",
+    "text": "Voluntary Turnover as a Random Variable\nAs a random variable, voluntary_turnover maps inactive to 1 and active to 0:\n\\[\\text{Y}(\\text{inactive})=1 \\\\ \\text{Y}(\\text{active})=0\\]\nBecause the random variable is a function of a random phenomenon, we can still calculate probabilities for the outcome:\n\\[P(\\text{Y}=1)=.16 \\\\ P(\\text{Y}=0) = .84\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#connecting-probability-to-statistics-with-random-variables",
+    "href": "lectures/01-lecture-slides.html#connecting-probability-to-statistics-with-random-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Connecting Probability to Statistics with Random Variables",
+    "text": "Connecting Probability to Statistics with Random Variables\nThe big gain from introducing random variables is that we can now apply mathematical and statistical models to the numerical values, and we can use more general probability distributions to describe the distributions of these random variables.\nFor instance, we can say voluntary_turnover can be modeled using a binomial distribution."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#probability-distributions",
+    "href": "lectures/01-lecture-slides.html#probability-distributions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Probability Distributions",
+    "text": "Probability Distributions\nProbability distributions are mathematical models that can be used to summarize the random variation in the random variables by specifying the probabilities of all possible outcomes of the random variable."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#modeling-voluntary-turnover-with-a-binomial-distribution",
+    "href": "lectures/01-lecture-slides.html#modeling-voluntary-turnover-with-a-binomial-distribution",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Modeling Voluntary Turnover with a Binomial Distribution",
+    "text": "Modeling Voluntary Turnover with a Binomial Distribution\nThe Bernoulli distribution is a probability distribution that can be used to model a random variable that has two outcomes. It specifies the probability of the first outcome, 1, as p and the second outcome, as 1 - p:\n\\[\\begin{equation}\n    f(\\text{Employment Status};p) =\n    \\left\\{\n        \\begin{array}{cc}\n                p & \\mathrm{if\\ } status=1 \\\\\n                1-p & \\mathrm{if\\ } status=0 \\\\\n        \\end{array}\n    \\right.\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#plotting-pmfs-and-pdfs",
+    "href": "lectures/01-lecture-slides.html#plotting-pmfs-and-pdfs",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Plotting PMFs and PDFs",
+    "text": "Plotting PMFs and PDFs"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#cumulative-distribution-function-1",
+    "href": "lectures/01-lecture-slides.html#cumulative-distribution-function-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Cumulative Distribution Function",
+    "text": "Cumulative Distribution Function"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#example-recruiters-trust-in-ai",
+    "href": "lectures/01-lecture-slides.html#example-recruiters-trust-in-ai",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Example: Recruiters’ trust in AI",
+    "text": "Example: Recruiters’ trust in AI\nYour organization is considering adopting an AI automated resume scraper program to lessen the burden on the recruiters. Before committing to the tool, however, your manager has asked you to determine if the recruiters would trust the outcomes provided by the AI system.\nTo assess this, you administer a single survey question to three random samples of 50 recruiters:\n\nI trust the outcome provided by an artificially intelligent system."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#population-sample-response-distributions",
+    "href": "lectures/01-lecture-slides.html#population-sample-response-distributions",
+    "title": "Quantitative Analysis 1 - Crash Course",
+    "section": "Population & Sample Response Distributions",
+    "text": "Population & Sample Response Distributions"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#example-do-recruiters-trust-ai",
+    "href": "lectures/01-lecture-slides.html#example-do-recruiters-trust-ai",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Example: Do Recruiters’ trust AI?",
+    "text": "Example: Do Recruiters’ trust AI?\nTo determine how recruiters feel about AI, on average, you compute the mean of each sample and find the following:\n\n\n\n\n\nsample_1\nsample_2\nsample_3\n\n\n\n\n3.74\n3.76\n3.82\n\n\n\n\n\nThe average response is different across the three different samples. Is this expected? What should you do?"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#populations-sample-variation",
+    "href": "lectures/01-lecture-slides.html#populations-sample-variation",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Populations & Sample Variation",
+    "text": "Populations & Sample Variation"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#statistics-as-random-variables",
+    "href": "lectures/01-lecture-slides.html#statistics-as-random-variables",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Statistics as Random Variables",
+    "text": "Statistics as Random Variables\nBecause statistics like the sample mean are computed from a sample that contains random variation, we expect our statistics to behave like random variables. Like a random variable, we can specify a probability distribution for our statistic called a sampling distribution."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-mean-standard-deviation-of-a-sampling-distribution",
+    "href": "lectures/01-lecture-slides.html#the-mean-standard-deviation-of-a-sampling-distribution",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Mean & Standard Deviation of a Sampling Distribution",
+    "text": "The Mean & Standard Deviation of a Sampling Distribution\nLike all distributions, we can compute the mean and standard deviation of a sampling distribution and obtain useful information:\n\nMean of a sampling distribution = Population Parameter\nStandard deviation of a sampling distribution = Uncertainty in our statistic"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-standard-error-1",
+    "href": "lectures/01-lecture-slides.html#the-standard-error-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Standard Error",
+    "text": "The Standard Error\nWe can reduce the standard error, thereby reducing our uncertainty, by increasing our sample size:"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-norm-of-normality-the-central-limit-theorem",
+    "href": "lectures/01-lecture-slides.html#the-norm-of-normality-the-central-limit-theorem",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Norm of Normality: The Central Limit Theorem",
+    "text": "The Norm of Normality: The Central Limit Theorem\nThe Central Limit Theorem (CLT) is a mathematical finding that tells us that the sampling distribution of a statistic like the mean starts to closely resemble a normal distribution as the sample size increases regardless of the distribution of the sample data itself!\nThe CLT plays a very important role in all of our statistical inference!"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-statistical-estimation",
+    "href": "lectures/01-lecture-slides.html#what-is-statistical-estimation",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is Statistical Estimation?",
+    "text": "What is Statistical Estimation?\nThe goal of every data analytic project is to estimate some population parameter by computing some statistic or point estimate. This is statistical estimation."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#point-estimates-interval-estimates",
+    "href": "lectures/01-lecture-slides.html#point-estimates-interval-estimates",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Point Estimates & Interval Estimates",
+    "text": "Point Estimates & Interval Estimates\nStatistical estimates can either come as point estimates or interval estimates:\n\nPoint Estimate: A single value that estimates the population parameter.\nInterval Estimate: An interval of values centered around the point estimate."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#differences-in-recruiters-trust-in-ai-by-job-experience",
+    "href": "lectures/01-lecture-slides.html#differences-in-recruiters-trust-in-ai-by-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Differences in Recruiters’ trust in AI by Job Experience",
+    "text": "Differences in Recruiters’ trust in AI by Job Experience\nYour manager asks you to administer the survey one more time to a larger sample of 300 recruiters, but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience job_exp. Your manager would like to know if employees’ trust differs based on their level of job experience."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#plotting-your-data",
+    "href": "lectures/01-lecture-slides.html#plotting-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Plotting your Data",
+    "text": "Plotting your Data"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#estimating-the-mean-variance-by-job-experience",
+    "href": "lectures/01-lecture-slides.html#estimating-the-mean-variance-by-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Estimating the Mean & Variance by Job Experience",
+    "text": "Estimating the Mean & Variance by Job Experience\nFor each job experience group, we can estimate the population means by computing the sample mean and standard deviation of their responses to the trust in AI question:\n\n\n\n\n\nJob Exp.\nMean Trust\nSD Trust\nN\n\n\n\n\nLow\n4.33\n0.90\n100\n\n\nMedium\n4.28\n0.78\n100\n\n\nHigh\n2.94\n1.02\n100"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-confidence-interval-estimate-for-the-mean",
+    "href": "lectures/01-lecture-slides.html#a-confidence-interval-estimate-for-the-mean",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Confidence (Interval) Estimate for the Mean",
+    "text": "A Confidence (Interval) Estimate for the Mean\nBecause there is uncertainty in our data, we would like to move away from providing a single estimate of trust in AI for each group and provide an interval of estimates that adequately quantifies the uncertainty we have in our estimate:\n\n\n\n\n\nJob Exp.\nMean Trust\n95% Conf. Int.\nSE\nSD Trust\nN\n\n\n\n\nLow\n4.33\n4.15 - 4.51\n0.090\n0.90\n100\n\n\nMedium\n4.28\n4.13 - 4.43\n0.078\n0.78\n100\n\n\nHigh\n2.94\n2.74 - 3.14\n0.102\n1.02\n100"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-cdf-of-the-normal-distribution",
+    "href": "lectures/01-lecture-slides.html#the-cdf-of-the-normal-distribution",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The CDF of the Normal Distribution",
+    "text": "The CDF of the Normal Distribution\nThink about the CDF as a way to compute the percentiles of a distribution. What is the 50th percentile—the value where 50% or less of the observations fall—for the Normal CDF below?"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-99-confidence-interval",
+    "href": "lectures/01-lecture-slides.html#a-99-confidence-interval",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A 99% Confidence Interval",
+    "text": "A 99% Confidence Interval"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#getting-to-know-the-normal-distribution-better",
+    "href": "lectures/01-lecture-slides.html#getting-to-know-the-normal-distribution-better",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Getting to Know the Normal Distribution Better",
+    "text": "Getting to Know the Normal Distribution Better\n\nIt has two parameters: Mean & Variance.\n68% of its mass is between \\(\\pm1\\) SDs from its mean, 95% of its mass is between \\(\\pm2\\) SDs from its mean, and 99.7% of its mass is between \\(\\pm3\\) SDs from its mean."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#building-a-confidence-interval-1",
+    "href": "lectures/01-lecture-slides.html#building-a-confidence-interval-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Building a Confidence Interval",
+    "text": "Building a Confidence Interval\n\\[\\overline{Y} \\space \\pm \\space 1.96 \\times\\text{SE}\\]\n\n\\(\\overline{Y}\\): Point estimate (sample mean)\n\\(\\pm 1.96\\) is the value at which 95% of the mass of the standard normal distribution falls\nSE: The standard error of the estimate"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#are-the-differences-in-recruiters-trust-in-ai-by-job-experience-real",
+    "href": "lectures/01-lecture-slides.html#are-the-differences-in-recruiters-trust-in-ai-by-job-experience-real",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Are the Differences in Recruiters’ trust in AI by Job Experience Real?",
+    "text": "Are the Differences in Recruiters’ trust in AI by Job Experience Real?\nWe saw that the sample means of trust in AI differed by job experience level, but are those differences real or are they a result of random noise (sample variation)?\nWe can use a statistical test to determine if the difference we see in the sample means is indicative of true population-level differences."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#stating-a-statistical-hypothesis",
+    "href": "lectures/01-lecture-slides.html#stating-a-statistical-hypothesis",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Stating a Statistical Hypothesis",
+    "text": "Stating a Statistical Hypothesis\nIn statistics, a hypothesis is a statement about the population distribution. Researchers typically formulate two kinds of hypotheses: null hypothesis (\\(H_{0}\\)) and alternative (researcher’s) hypothesis (\\(H_{a}\\)).\n\n\\(H_{0}\\) is a statement that the population parameter takes on some value—usually 0.\n\\(H_{a}\\) is a statement that the population parameters takes on an alternative set of values that fit with the researcher’s theory."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#trust-in-ai-hypotheses",
+    "href": "lectures/01-lecture-slides.html#trust-in-ai-hypotheses",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Trust in AI Hypotheses",
+    "text": "Trust in AI Hypotheses\n\\(H_{0}\\): In this organization, there are no differences between mean-level trust in AI for employees with low job experience and mean-level trust in AI for employees with either medium or high job experience.\n\\(H_{a}\\): In this organization, the mean-level trust in AI for employees with low job experience is higher than the mean-level trust in AI for employees with medium job experience and high experience."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#what-is-a-statistical-significance-test",
+    "href": "lectures/01-lecture-slides.html#what-is-a-statistical-significance-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "What is a Statistical Significance Test?",
+    "text": "What is a Statistical Significance Test?\nA statistical significance test, or just test, uses data to summarize the evidence about a hypothesis, usually the null, by comparing a point estimate of the parameter of interest (e.g. sample mean) to the value predicted by the hypothesis (e.g. 0 in the case of the null hypothesis)."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-significance-test-for-trust-in-ai",
+    "href": "lectures/01-lecture-slides.html#a-significance-test-for-trust-in-ai",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Significance Test for Trust in AI",
+    "text": "A Significance Test for Trust in AI\nTo determine if trust in AI differs by job experience, we are going to use a z-test to test our two null hypotheses, which can be framed as hypotheses about the mean differences between trust in AI by job experience:\n\n\\(\\mu_{\\text{AI Low Exp.}} \\space - \\space \\mu_{\\text{AI Med. Exp.}} = 0\\)\n\\(\\mu_{\\text{AI Low Exp.}} \\space - \\space \\mu_{\\text{AI Hifg Exp.}} = 0\\)"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#understanding-a-t-test",
+    "href": "lectures/01-lecture-slides.html#understanding-a-t-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Understanding a T-Test",
+    "text": "Understanding a T-Test"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#differnce-in-trust-in-ai-means-by-job-experience",
+    "href": "lectures/01-lecture-slides.html#differnce-in-trust-in-ai-means-by-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Differnce in Trust in AI Means by Job Experience",
+    "text": "Differnce in Trust in AI Means by Job Experience\n\n\n\n\n\nComparison\nMean Trust\nMean Difference\n\n\n\n\nLow - Low\n4.33\n0.00\n\n\nLow - Medium\n4.28\n0.05\n\n\nLow - High\n2.94\n1.39"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#understanding-a-z-test",
+    "href": "lectures/01-lecture-slides.html#understanding-a-z-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Understanding a Z-Test",
+    "text": "Understanding a Z-Test\nA Z-test is a test that compares the mean of one variable to a specific population parameter specified by the null hypothesis (usually 0) or to the mean of a different variable. To conduct a Z-test you can follow these steps:\n\nEnsure the Z-test assumptions are met.\nSet the the probability threshold you need to surpass for an effect to be considered significant—your alpha level.\nCompute your test statistic and determine if it is significant at your specified alpha-level."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#z-test-assumptions",
+    "href": "lectures/01-lecture-slides.html#z-test-assumptions",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Z-Test Assumptions",
+    "text": "Z-Test Assumptions\n\nThe populations from which the samples were taken from must be normal.\nThe population SDs must be known or the sample sizes for each group must be large (~30 or more observations per group)."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#z-test-test-statistic",
+    "href": "lectures/01-lecture-slides.html#z-test-test-statistic",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Z-Test Test Statistic",
+    "text": "Z-Test Test Statistic\nWhen you are comparing two groups to one another, like we are, the test statistic, \\(Z\\), is defined as:\n\\[Z = \\frac{\\overline{Y_{1}}-\\overline{Y_{2}}}{\\sqrt{\\frac{\\sigma^{2}_{1}}{n_{1}} + \\frac{\\sigma^{2}_{2}}{n_{2}}}}\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#difference-in-trust-in-ai-means-by-job-experience",
+    "href": "lectures/01-lecture-slides.html#difference-in-trust-in-ai-means-by-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Difference in Trust in AI Means by Job Experience",
+    "text": "Difference in Trust in AI Means by Job Experience\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComp.\nLow Exp. Mean\nMean Trust\nMean Diff.\nLow Exp. Var.\nVar. Trust\nn\n\n\n\n\nLow - Medium\n4.33\n4.28\n0.05\n0.81\n0.61\n100\n\n\nLow - High\n4.33\n2.94\n1.39\n0.81\n1.04\n100\n\n\n\n\n\n\n\\[Z = \\frac{4.33 - 4.28}{\\sqrt{\\frac{.81}{100} + \\frac{.61}{100}}} = \\frac{0.05}{.12}=.42\\]"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#determining-the-p-value",
+    "href": "lectures/01-lecture-slides.html#determining-the-p-value",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Determining the P-Value",
+    "text": "Determining the P-Value\nA P-value is a tricky thing to think about, it is the probability of seeing a value greater than or equal to your test value given that the sampling distribution specified by the null hypothesis is true.\n\\[P(Z \\geq z \\space | \\space H_{0} )\\]\nIf your P-value is small (usually less than .05), then you can conclude that your test statistic is very unlikely to have come from the null distribution and thus you can reject the null hypothesis."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#visualizing-the-p-value",
+    "href": "lectures/01-lecture-slides.html#visualizing-the-p-value",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Visualizing the P-Value",
+    "text": "Visualizing the P-Value\nWe assume (somewhat safely thanks to the CLT), the our estimate has a normal sampling distribution and according to our null hypothesis of no effect the mean of the normal distribution should be 0 and the SD should be 1. We can use the CDF of the standard normal distribution to compute the P-value."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test",
+    "href": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using R to Conduct a Z-test",
+    "text": "Using R to Conduct a Z-test\n\nlow_group &lt;- data$trust_in_ai[data$job_exp == \"Low\"]\nmedium_group &lt;- data$trust_in_ai[data$job_exp == \"Medium\"]\n\nz_low_medium &lt;- BSDA::z.test(\n  x = low_group, y = medium_group, alternative = \"greater\",\n  sigma.x = sd(low_group), sigma.y = sd(medium_group) \n)\n\nz_low_medium\n\n\n    Two-sample z-Test\n\ndata:  low_group and medium_group\nz = 0.42005, p-value = 0.3372\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n -0.1457907         NA\nsample estimates:\nmean of x mean of y \n     4.33      4.28"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-1",
+    "href": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-1",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using R to Conduct a Z-test",
+    "text": "Using R to Conduct a Z-test\n\nlow_group &lt;- data$trust_in_ai[data$job_exp == \"Low\"]\nhigh_group &lt;- data$trust_in_ai[data$job_exp == \"High\"]\n\nz_low_high &lt;- BSDA::z.test(\n  x = low_group, y = high_group, alternative = \"greater\",\n  sigma.x = sd(low_group), sigma.y = sd(high_group) \n)\n\nz_low_high\n\n\n    Two-sample z-Test\n\ndata:  low_group and high_group\nz = 10.203, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n 1.16591      NA\nsample estimates:\nmean of x mean of y \n     4.33      2.94"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#visualizing-a-high-p-value",
+    "href": "lectures/01-lecture-slides.html#visualizing-a-high-p-value",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Visualizing a High P-Value",
+    "text": "Visualizing a High P-Value"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-medium-job-experience",
+    "href": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-medium-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using R to Conduct a Z-test: Medium Job Experience",
+    "text": "Using R to Conduct a Z-test: Medium Job Experience\n\nlow_group &lt;- data$trust_in_ai[data$job_exp == \"Low\"]\nmedium_group &lt;- data$trust_in_ai[data$job_exp == \"Medium\"]\n\nz_low_medium &lt;- BSDA::z.test(\n  x = low_group, y = medium_group, alternative = \"greater\",\n  sigma.x = sd(low_group), sigma.y = sd(medium_group) \n)\n\nz_low_medium\n\n\n    Two-sample z-Test\n\ndata:  low_group and medium_group\nz = 0.42005, p-value = 0.3372\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n -0.1457907         NA\nsample estimates:\nmean of x mean of y \n     4.33      4.28"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-high-job-experience",
+    "href": "lectures/01-lecture-slides.html#using-r-to-conduct-a-z-test-high-job-experience",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Using R to Conduct a Z-test: High Job Experience",
+    "text": "Using R to Conduct a Z-test: High Job Experience\n\nlow_group &lt;- data$trust_in_ai[data$job_exp == \"Low\"]\nhigh_group &lt;- data$trust_in_ai[data$job_exp == \"High\"]\n\nz_low_high &lt;- BSDA::z.test(\n  x = low_group, y = high_group, alternative = \"greater\",\n  sigma.x = sd(low_group), sigma.y = sd(high_group) \n)\n\nz_low_high\n\n\n    Two-sample z-Test\n\ndata:  low_group and high_group\nz = 10.203, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is greater than 0\n95 percent confidence interval:\n 1.16591      NA\nsample estimates:\nmean of x mean of y \n     4.33      2.94"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#visualizing-a-very-small-p-value",
+    "href": "lectures/01-lecture-slides.html#visualizing-a-very-small-p-value",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Visualizing a Very Small P-Value",
+    "text": "Visualizing a Very Small P-Value"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#a-glimpse-of-your-data",
+    "href": "lectures/01-lecture-slides.html#a-glimpse-of-your-data",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "A Glimpse of your Data",
+    "text": "A Glimpse of your Data\n\nset.seed(435)\ndata |&gt;\n  dplyr::slice_sample(n = 10) |&gt;\n  dplyr::select(\n    job_exp,\n    trust_in_ai\n  ) |&gt;\n  dplyr::arrange(\n    job_exp\n  )\n\n# A tibble: 10 × 2\n   job_exp trust_in_ai\n   &lt;fct&gt;         &lt;dbl&gt;\n 1 Low               5\n 2 Low               3\n 3 Low               5\n 4 Low               5\n 5 High              1\n 6 High              3\n 7 High              3\n 8 High              3\n 9 Medium            5\n10 Medium            5"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#the-direction-of-a-statistical-hypothesis",
+    "href": "lectures/01-lecture-slides.html#the-direction-of-a-statistical-hypothesis",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "The Direction of a Statistical Hypothesis",
+    "text": "The Direction of a Statistical Hypothesis\nHypotheses can be directional or non-directional.\nA directional hypothesis is a hypothesis that makes an explicit statement about whether one group will have a larger (or smaller) mean than another group.\nA non-directional hypothesis is a hypothesis that states that the means of the two groups differ, but does not specify which group has a larger (or smaller) mean."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#determing-your-alpha-level",
+    "href": "lectures/01-lecture-slides.html#determing-your-alpha-level",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Determing your Alpha-Level",
+    "text": "Determing your Alpha-Level\nThe \\(\\alpha\\)-level, also called the significance level, is a number \\(\\alpha\\) between 0 and 1 such that we reject \\(H_{0}\\) if the P-value of the test statistic is less than or equal to \\(\\alpha\\).\nGenerally, we set \\(\\alpha\\) to .05 or .01. To reject the \\(H_{0}\\), the P-value needs to be less than or equal to .05 or .01, respectively."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#decision-errors",
+    "href": "lectures/01-lecture-slides.html#decision-errors",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Decision Errors",
+    "text": "Decision Errors\nThe conclusion you come to thanks to a statistical test is not guaranteed to be the right one. There is always a risk of making a decision error:\n\n\n\n\nReject \\(H_{0}\\)\nDo Not Reject \\(H_{0}\\)\n\n\n\n\n\\(H_{0}\\) is true\nType 1 Error\nCorrect Decision\n\n\n\\(H_{0}\\) is false\nCorrect Decision\nType 2 Error\n\n\n\nTo protect against a Type 1 Error, we can make our \\(\\alpha\\)-level very small, which will make it very difficult to reject \\(H_{0}\\), but this increases Type 2 Error. One way to guard against Type 2 Error is by using an appropriate statistical test on a large sample of data."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#example-base-function",
+    "href": "lectures/01-lecture-slides.html#example-base-function",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Example Base Function",
+    "text": "Example Base Function\n\nx &lt;- c(1, 4, 6)\nsum(x) \n\n[1] 11\n\nmean(x)\n\n[1] 3.666667\n\nmin(x)\n\n[1] 1"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#integrated-development-environment-rstudio",
+    "href": "lectures/01-lecture-slides.html#integrated-development-environment-rstudio",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Integrated Development Environment & RStudio",
+    "text": "Integrated Development Environment & RStudio\nAn integrated development environment (IDE) is an application that makes programming a little easier and organized. It includes all of the tools one needs to program effectively and efficiently.\nRStudio is an IDE initially developed for R, but it can be used for other programming languages too.\nIf you have not already, please go ahead and download RStudio from here."
   }
 ]

@@ -8,7 +8,6 @@
 
 // fonts
 $font-family-sans-serif: 'Oswald';
-$font-size-root: "20px";
 
 // colors for background
 $body-bg: #F9F7F7;
@@ -23,8 +22,12 @@ $selection-bg: #112D4E;
 $presentation-heading-font-weight: bold;
 $presentation-heading-color: #3F72AF;
 
+/*-- scss:rules --*/
+:root {
+  --r-main-font-size: 35px;
+  --r-block-margin: 24px;
+}
 
-// SCSS Rules
 .reveal .slide blockquote {
   color: #112D4E;
 }
@@ -35,4 +38,8 @@ $presentation-heading-color: #3F72AF;
 
 h1 {
   text-transform: uppercase;
+}
+
+.reveal .slide h2 {
+  font-size: 1.4em;
 }
