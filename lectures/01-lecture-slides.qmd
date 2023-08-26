@@ -514,9 +514,9 @@ patchwork_plot & lecture_ggplot_theme_1
 
 You can describe the **spread** of your data by computing statistics that tells you generally how far the observations are from the mean of your data. There are three statistics you can compute: 
 
-* Variance: The average squared distance your data falls from the mean.
-* Standard Deviation: The average distance your data falls from the mean (square root of variance).
-* Range: Maximum value minus the minimum value of your data. 
+* **Variance**: The average squared distance your data falls from the mean.
+* **Standard Deviation**: The average distance your data falls from the mean (square root of variance).
+* **Range**: Maximum value minus the minimum value of your data. 
 
 ## Describing the Spread of your Data
 
@@ -595,8 +595,8 @@ patchwork_plot & lecture_ggplot_theme_1
 
 Oftentimes, you will also want to talk about the **shape** of your data. Typically, this is about how **skewed** or asymmetric your data is in one direction or how heavy the **tails** of your distribution are:
 
-* Skewness: How long the tails of your distribution are in a given direction. 
-* Kurtosis: How heavy the tails of your distribution are.
+* **Skewness**: How long the tails of your distribution are in a given direction. 
+* **Kurtosis**: How heavy the tails of your distribution are.
 
 ## Describing the Shape of your Data
 
@@ -692,7 +692,7 @@ patchwork & lecture_ggplot_theme_1
 
 ## Describing the Relationship between two Variables
 
-We can also describe the linear relationship between two variables by computing either the **covariation** or **correlation** between two variables. Both of these metrics tell us the extent to which two variables are linearly related to one another. 
+We can also describe the linear relationship between two variables by computing either the **covariation** or **correlation** between two variables. Both of these metrics tell us the extent to which two variables are **linearly related** to one another. 
 
 ## Correlation Coefficient
 
@@ -835,7 +835,9 @@ patchwork & lecture_ggplot_theme_1
 
 ## What is Probability?
 
-Probability is the language of uncertainty. Anytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events.
+Probability is the language of uncertainty. 
+
+Anytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events.
 
 ## Probability as a Long-Run Frequency
 
@@ -854,7 +856,9 @@ All of probability theory rests on three rules:
 
 ## A Concrete Example 
 
-You're a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm's HR data over the past fiscal year, which includes three key variables: `voluntary_turnover`, `job_satisfacation`, and `office_region`. Your manager asks you to determine the likelihood that an employee leaves the firm. 
+You're a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm's HR data over the past fiscal year, which includes three key variables: `voluntary_turnover`, `job_satisfacation`, and `office_region`. 
+
+Your manager asks you to determine the likelihood that an employee leaves the firm. How do you approach this project?
 
 ```{r}
 #| echo: false
@@ -907,7 +911,7 @@ print(data, n =  10)
 
 ## Probability of Voluntary Turnover
 
-A quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the $P(\text{Status = Inactive}=.16)$. 
+A quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the $P(\text{Status = Inactive})=.16$. 
 
 ```{r}
 #| echo: false
@@ -950,7 +954,9 @@ p1
 
 ## Joint Probability
 
-Joint probability is the probability of some event happening for two or more random variables. For example, what is the probability of `employment_status == inactive & job_satisfaction == satisfied`? 
+Joint probability is the probability of some event happening for two or more random variables. 
+
+For example, what is the probability of `employment_status == inactive & job_satisfaction == satisfied`? 
 
 ## Employment Status & Job Satisfaction: Joint Probability
 
@@ -1002,9 +1008,18 @@ xtabs(~office_region + job_satisfaction, data) |>
 
 ## Random Variables
 
-Whether you realize it or not, we have been talking about `voluntary_turnover` as a **random variable**. A **random variable** is a function of a random phenomenon that maps an outcome of that phenomenon to a real number. 
+Whether you realize it or not, we have been talking about `voluntary_turnover` as a **random variable**. 
+
+A **random variable** is a function of a random phenomenon that maps an outcome of that phenomenon to a real number. 
 
 In our example, `voluntary_turnover` is a random variable that maps the outcome of an employee's decision to leave or remain with their organization to a real number: 1 or 0. 
+
+## Types of Random Variables: Discrete & Continuous 
+
+Random variables, like quantitative variables, can be classified into two broad categories: 
+
+* Discrete: Separate, distinct outcome values like integers 
+* Continuous: Infinite continuum of possible outcomes
 
 ## Voluntary Turnover as a Random Variable
 
@@ -1021,13 +1036,6 @@ $$P(\text{Y}=1)=.16 \\ P(\text{Y}=0) = .84$$
 The big gain from introducing **random variables** is that we can now apply mathematical and statistical models to the numerical values, and we can use more general probability distributions to describe the distributions of these random variables.  
 
 For instance, we can say `voluntary_turnover` can be modeled using a binomial distribution. 
-
-## Types of Random Variables: Discrete & Continuous 
-
-Random variables, like quantitative variables, can be classified into two broad categories: 
-
-* Discrete: Separate, distinct outcome values like integers 
-* Continuous: Infinite continuum of possible outcomes
 
 ## Probability Distributions
 
@@ -1337,7 +1345,7 @@ Usually, when you analyze your data you want to generalize the results from your
 
 Your organization is considering adopting an AI automated resume scraper program to lessen the burden on the recruiters. Before committing to the tool, however, your manager has asked you to determine if the recruiters would trust the outcomes provided by the AI system. 
 
-To assess this, you administer a single survey question to three random samples of 50 recruiters:
+To assess this, you administer a single survey question to **three random samples of 50 recruiters**:
 
 <center>**I trust the outcome provided by an artificially intelligent system.**</center> 
 
@@ -1491,7 +1499,9 @@ patchwork & lecture_ggplot_theme_barplot
 
 ## Statistics as Random Variables 
 
-Because statistics like the sample mean are computed from a sample that contains random variation, we **expect** our statistics to behave like **random variables**. Like a random variable, we can specify a probability distribution for our statistic called a **sampling distribution**. 
+Because statistics like the sample mean are computed from a sample that contains random variation, we **expect** our statistics to behave like **random variables**. 
+
+Like a random variable, we can specify a probability distribution for our statistic called a **sampling distribution**. 
 
 ## Sampling Distributions
 
@@ -1629,7 +1639,7 @@ plot
 
 ## The Norm of Normality: The Central Limit Theorem
 
-The Central Limit Theorem (CLT) is a mathematical finding that tells us that the sampling distribution of a statistic like the mean starts to closely resemble a normal distribution **as the sample size increases** regardless of the distribution of the sample data itself! 
+The Central Limit Theorem (CLT) is a mathematical finding that tells us that the sampling distribution of a statistic like the mean starts to **closely resemble a normal distribution as the sample size increases** regardless of the distribution of the sample data itself! 
 
 **The CLT plays a very important role in all of our statistical inference!**
 
@@ -1796,7 +1806,9 @@ Statistical estimates can either come as point estimates or interval estimates:
 
 ## Differences in Recruiters' trust in AI by Job Experience
 
-Your manager asks you to administer the survey one more time to a larger sample of 300 recruiters, **but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience `job_exp`**. Your manager would like to know if employees' trust differs based on their level of job experience.
+Your manager asks you to administer the survey one more time to a larger sample of 300 recruiters, **but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience `job_exp`**. 
+
+Your manager would like to know if employees' trust differs based on their level of job experience. How should you approach this project?
 
 ```{r}
 #| echo: false
@@ -2012,7 +2024,7 @@ A **non-directional hypothesis** is a hypothesis that states that the means of t
 
 ## What is a Statistical Significance Test? 
 
-A statistical significance test, or just test, uses data to summarize the evidence about a hypothesis, usually the null, by comparing a point estimate of the parameter of interest (e.g. sample mean) to the value predicted by the hypothesis (e.g. 0 in the case of the null hypothesis).
+A **statistical significance test**, or just test, uses data to summarize the evidence about a hypothesis, usually the null, by comparing a point estimate of the parameter of interest (e.g. sample mean) to the value predicted by the hypothesis (e.g. 0 in the case of the null hypothesis).
 
 ## The Four Elements of a Statistical Test
 
@@ -2025,8 +2037,31 @@ A statistical significance test, or just test, uses data to summarize the eviden
 
 To determine if trust in AI differs by job experience, we are going to use a **z-test** to test our two null hypotheses, which can be framed as hypotheses about **the mean differences** between trust in AI by job experience: 
 
-* $\mu_{\text{AI Low Exp.}} \space - \space \mu_{\text{AI Med. Exp.}} = 0$
-* $\mu_{\text{AI Low Exp.}} \space - \space \mu_{\text{AI Hifg Exp.}} = 0$
+<div id="hypo-column">
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**$H_{o}$**:
+
+$\mu_{\text{AI Low Exp.}} - \mu_{\text{AI Med. Exp.}} = 0$
+$\mu_{\text{AI Low Exp.}} - \mu_{\text{AI Hifg Exp.}} = 0$
+
+:::
+
+::: {.column width="50%"}
+
+**$H_{a}$**:
+
+$\mu_{\text{AI Low Exp.}} - \mu_{\text{AI Med. Exp.}} > 0$
+$\mu_{\text{AI Low Exp.}} - \mu_{\text{AI Hifg Exp.}} > 0$
+
+:::
+
+::::
+
+</div>
 
 ## Understanding a Z-Test
 
@@ -2367,7 +2402,7 @@ ggplot2::ggplot(
   )
 ```
 
-## Decision Errors
+## Types of Decision Errors
 
 The conclusion you come to thanks to a statistical test is not guaranteed to be the right one. There is always a risk of making a decision error:
 
@@ -2376,7 +2411,11 @@ The conclusion you come to thanks to a statistical test is not guaranteed to be 
 | $H_{0}$ is true  | Type 1 Error     | Correct Decision      |
 | $H_{0}$ is false | Correct Decision | Type 2 Error          |
 
-To protect against a **Type 1 Error**, we can make our $\alpha$-level very small, which will make it very difficult to reject $H_{0}$, but this increases **Type 2 Error**. One way to guard against **Type 2 Error** is by using an appropriate statistical test on a **large** sample of data. 
+## Protecting Against Errors
+
+To protect against a **Type 1 Error**, we can make our $\alpha$-level very small, which will make it very difficult to reject $H_{0}$, but this increases **Type 2 Error**. 
+
+One way to guard against **Type 2 Error** is by using an appropriate statistical test on a **large** sample of data. 
 
 # An Introduction to R
 

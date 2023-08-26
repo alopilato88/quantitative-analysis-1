@@ -613,7 +613,7 @@
     "href": "lectures/01-lecture-slides.html#what-is-probability",
     "title": "An Introduction to Statistics & Programming",
     "section": "What is Probability?",
-    "text": "What is Probability?\nProbability is the language of uncertainty. Anytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events."
+    "text": "What is Probability?\nProbability is the language of uncertainty.\nAnytime we are dealing with random events such as the outcome of a coin toss or the response to a survey question, we rely on probability to talk about these events."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#probability-as-a-long-run-frequency",
@@ -641,7 +641,7 @@
     "href": "lectures/01-lecture-slides.html#joint-probability",
     "title": "An Introduction to Statistics & Programming",
     "section": "Joint Probability",
-    "text": "Joint Probability\nJoint probability is the probability of some event happening for two or more random variables. For example, what is the probability of employment_status == inactive & job_satisfaction == satisfied?"
+    "text": "Joint Probability\nJoint probability is the probability of some event happening for two or more random variables.\nFor example, what is the probability of employment_status == inactive & job_satisfaction == satisfied?"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#conditional-probability",
@@ -1173,14 +1173,14 @@
     "href": "lectures/01-lecture-slides.html#a-concrete-example",
     "title": "An Introduction to Statistics & Programming",
     "section": "A Concrete Example",
-    "text": "A Concrete Example\nYou’re a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm’s HR data over the past fiscal year, which includes three key variables: voluntary_turnover, job_satisfacation, and office_region. Your manager asks you to determine the likelihood that an employee leaves the firm."
+    "text": "A Concrete Example\nYou’re a Human Capital Analytics researcher at a large, multinational organization and you have access to all of the firm’s HR data over the past fiscal year, which includes three key variables: voluntary_turnover, job_satisfacation, and office_region.\nYour manager asks you to determine the likelihood that an employee leaves the firm. How do you approach this project?"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#probability-of-voluntary-turnover",
     "href": "lectures/01-lecture-slides.html#probability-of-voluntary-turnover",
     "title": "An Introduction to Statistics & Programming",
     "section": "Probability of Voluntary Turnover",
-    "text": "Probability of Voluntary Turnover\nA quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the \\(P(\\text{Status = Inactive}=.16)\\)."
+    "text": "Probability of Voluntary Turnover\nA quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the \\(P(\\text{Status = Inactive})=.16\\)."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#a-concrete-example-1",
@@ -1257,7 +1257,7 @@
     "href": "lectures/01-lecture-slides.html#random-variables",
     "title": "An Introduction to Statistics & Programming",
     "section": "Random Variables",
-    "text": "Random Variables\nWhether you realize it or not, we have been talking about voluntary_turnover as a random variable. A random variable is a function of a random phenomenon that maps an outcome of that phenomenon to a real number.\nIn our example, voluntary_turnover is a random variable that maps the outcome of an employee’s decision to leave or remain with their organization to a real number: 1 or 0."
+    "text": "Random Variables\nWhether you realize it or not, we have been talking about voluntary_turnover as a random variable.\nA random variable is a function of a random phenomenon that maps an outcome of that phenomenon to a real number.\nIn our example, voluntary_turnover is a random variable that maps the outcome of an employee’s decision to leave or remain with their organization to a real number: 1 or 0."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#voluntary-turnover-as-a-random-variable",
@@ -1334,7 +1334,7 @@
     "href": "lectures/01-lecture-slides.html#statistics-as-random-variables",
     "title": "An Introduction to Statistics & Programming",
     "section": "Statistics as Random Variables",
-    "text": "Statistics as Random Variables\nBecause statistics like the sample mean are computed from a sample that contains random variation, we expect our statistics to behave like random variables. Like a random variable, we can specify a probability distribution for our statistic called a sampling distribution."
+    "text": "Statistics as Random Variables\nBecause statistics like the sample mean are computed from a sample that contains random variation, we expect our statistics to behave like random variables.\nLike a random variable, we can specify a probability distribution for our statistic called a sampling distribution."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#the-mean-standard-deviation-of-a-sampling-distribution",
@@ -1376,7 +1376,7 @@
     "href": "lectures/01-lecture-slides.html#differences-in-recruiters-trust-in-ai-by-job-experience",
     "title": "An Introduction to Statistics & Programming",
     "section": "Differences in Recruiters’ trust in AI by Job Experience",
-    "text": "Differences in Recruiters’ trust in AI by Job Experience\nYour manager asks you to administer the survey one more time to a larger sample of 300 recruiters, but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience job_exp. Your manager would like to know if employees’ trust differs based on their level of job experience."
+    "text": "Differences in Recruiters’ trust in AI by Job Experience\nYour manager asks you to administer the survey one more time to a larger sample of 300 recruiters, but this time they would like you to measure the amount of years the employee has been in the recruiting industry as a proxy for job experience job_exp.\nYour manager would like to know if employees’ trust differs based on their level of job experience. How should you approach this project?"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#plotting-your-data",
@@ -1460,7 +1460,7 @@
     "href": "lectures/01-lecture-slides.html#a-significance-test-for-trust-in-ai",
     "title": "An Introduction to Statistics & Programming",
     "section": "A Significance Test for Trust in AI",
-    "text": "A Significance Test for Trust in AI\nTo determine if trust in AI differs by job experience, we are going to use a z-test to test our two null hypotheses, which can be framed as hypotheses about the mean differences between trust in AI by job experience:\n\n\\(\\mu_{\\text{AI Low Exp.}} \\space - \\space \\mu_{\\text{AI Med. Exp.}} = 0\\)\n\\(\\mu_{\\text{AI Low Exp.}} \\space - \\space \\mu_{\\text{AI Hifg Exp.}} = 0\\)"
+    "text": "A Significance Test for Trust in AI\nTo determine if trust in AI differs by job experience, we are going to use a z-test to test our two null hypotheses, which can be framed as hypotheses about the mean differences between trust in AI by job experience:\n\n\n\n\\(H_{o}\\):\n\\(\\mu_{\\text{AI Low Exp.}} - \\mu_{\\text{AI Med. Exp.}} = 0\\) \\(\\mu_{\\text{AI Low Exp.}} - \\mu_{\\text{AI Hifg Exp.}} = 0\\)\n\n\\(H_{a}\\):\n\\(\\mu_{\\text{AI Low Exp.}} - \\mu_{\\text{AI Med. Exp.}} &gt; 0\\) \\(\\mu_{\\text{AI Low Exp.}} - \\mu_{\\text{AI Hifg Exp.}} &gt; 0\\)"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#understanding-a-t-test",
@@ -1622,5 +1622,19 @@
     "title": "An Introduction to Statistics & Programming",
     "section": "Schedule for Today",
     "text": "Schedule for Today\nIn addition to a 15 minute break at 2:30 PM, we will take two 5-ish minute breaks at:\n\n5 min break @ 1:45 PM\n5 min break @ 4:00 PM\n\nFeel free to ask me even more questions during this time!"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#types-of-decision-errors",
+    "href": "lectures/01-lecture-slides.html#types-of-decision-errors",
+    "title": "An Introduction to Statistics & Programming",
+    "section": "Types of Decision Errors",
+    "text": "Types of Decision Errors\nThe conclusion you come to thanks to a statistical test is not guaranteed to be the right one. There is always a risk of making a decision error:\n\n\n\n\nReject \\(H_{0}\\)\nDo Not Reject \\(H_{0}\\)\n\n\n\n\n\\(H_{0}\\) is true\nType 1 Error\nCorrect Decision\n\n\n\\(H_{0}\\) is false\nCorrect Decision\nType 2 Error"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#protecting-against-errors",
+    "href": "lectures/01-lecture-slides.html#protecting-against-errors",
+    "title": "An Introduction to Statistics & Programming",
+    "section": "Protecting Against Errors",
+    "text": "Protecting Against Errors\nTo protect against a Type 1 Error, we can make our \\(\\alpha\\)-level very small, which will make it very difficult to reject \\(H_{0}\\), but this increases Type 2 Error.\nOne way to guard against Type 2 Error is by using an appropriate statistical test on a large sample of data."
   }
 ]
