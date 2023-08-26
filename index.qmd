@@ -2,10 +2,8 @@
 title: "Quantitative Analysis 1"
 ---
 
-This is a Quarto website.
+**Welcome to the homepage for Quantitative Analysis 1 (PHD1502-1)**!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+To view the course syllabus, click <a href="syllabus.html><strong>here</strong></a>>.
 
-```{r}
-1 + 1
-```
+To view the course schedule, click <a href="schedule.html><strong>here</strong></a>>.
