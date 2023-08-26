@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to Programming & Statistics"
+title: "An Introduction to Statistics & Programming"
 format: 
   revealjs:
     theme: [default, theme-lecture-slides.scss] 
@@ -27,6 +27,15 @@ My quick teaching philosophy:
 1. I love talking not lecturing---ask me questions!
 2. We are all here because we enjoy learning, which is the goal of my course: learning. DO NOT WORRY ABOUT YOUR GRADES---take that stress off of yourself. 
 
+## Schedule for Today
+
+In addition to a **15 minute break at 2:30 PM**, we will take two 5-ish minute breaks at: 
+
+* **5 min break @ 1:45 PM** 
+* **5 min break @ 4:00 PM**
+
+Feel free to ask me even more questions during this time!
+
 ## Overview
 
 * Introduction to Statistical Science 
@@ -43,15 +52,6 @@ My quick teaching philosophy:
 * Refresh yourself on statistics!
 * Learn about statistical estimation and tests
 * Data importing and transformation with R
-
-## Schedule for Today
-
-In addition to a **15 minute break at 2:30 PM**, we will take two 5-ish minute breaks at: 
-
-* **5 min break @ 1:45 PM** 
-* **5 min break @ 4:00 PM**
-
-Feel free to ask me even more questions during this time!
 
 ## A Reassuring Reminder
 
