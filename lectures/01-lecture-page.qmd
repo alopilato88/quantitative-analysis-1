@@ -14,11 +14,7 @@ format:
 
 To download a pdf version of these slides, click <a href="01-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
 
-## R: In-Class Assignment
+To download the R script that follows the R portion of the lecture, click <a href="01-lecture-script.R" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
 
-```{r}
-x <- rnorm(500)
-mean(x)
-```
 
 
