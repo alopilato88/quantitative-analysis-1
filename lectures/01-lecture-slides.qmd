@@ -179,8 +179,8 @@ set.seed(4)
 data_employees_tbl |>
   dplyr::sample_n(5) |>
   dplyr::select(
-    trainings,
-    commute_dist
+    overtime,
+    ed_field
   )
 ```
 

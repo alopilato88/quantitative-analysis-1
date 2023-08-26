@@ -611,18 +611,18 @@ Statistical science is the science of developing and applying methods for collec
 <span id="cb7-2"><a href="#cb7-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    trainings,</span>
-<span id="cb7-6"><a href="#cb7-6"></a>    commute_dist</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    overtime,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    ed_field</span>
 <span id="cb7-7"><a href="#cb7-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
-  trainings commute_dist
-      &lt;int&gt;        &lt;int&gt;
-1         4            9
-2         4           20
-3         2            1
-4         2           19
-5         0           12</code></pre>
+  overtime ed_field     
+  &lt;chr&gt;    &lt;chr&gt;        
+1 No       Life Sciences
+2 No       Life Sciences
+3 No       Life Sciences
+4 Yes      Marketing    
+5 No       Life Sciences</code></pre>
 </div>
 </div>
 </section>

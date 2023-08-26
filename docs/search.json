@@ -1054,7 +1054,7 @@
     "href": "lectures/01-lecture-slides.html#types-of-categorical-variables-1",
     "title": "An Introduction to Statistics & Programming",
     "section": "Types of Categorical Variables",
-    "text": "Types of Categorical Variables\n\nset.seed(4)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    trainings,\n    commute_dist\n  )\n\n# A tibble: 5 × 2\n  trainings commute_dist\n      &lt;int&gt;        &lt;int&gt;\n1         4            9\n2         4           20\n3         2            1\n4         2           19\n5         0           12"
+    "text": "Types of Categorical Variables\n\nset.seed(4)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    overtime,\n    ed_field\n  )\n\n# A tibble: 5 × 2\n  overtime ed_field     \n  &lt;chr&gt;    &lt;chr&gt;        \n1 No       Life Sciences\n2 No       Life Sciences\n3 No       Life Sciences\n4 Yes      Marketing    \n5 No       Life Sciences"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#data-collection",
