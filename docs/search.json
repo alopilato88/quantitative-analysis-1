@@ -1026,7 +1026,7 @@
     "href": "lectures/01-lecture-slides.html#populations-samples",
     "title": "An Introduction to Statistics & Programming",
     "section": "Populations & Samples",
-    "text": "Populations & Samples\nThe purpose of most analyses is to learn something about the population from the collected data or sample.\nA population is the collection of every unit or subject (e.g. person) that one wishes to generalize to from the results of their study. A sample is the actual collected data one is using to make these generalizations."
+    "text": "Populations & Samples\nThe purpose of most analyses is to learn something about the population from the collected data or sample.\n\nA population is the collection of every unit or subject (e.g. person) that one wishes to generalize to from the results of their study.\nA sample is the actual collected data one is using to make these generalizations."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#types-of-variables-by-measurement-scale",
