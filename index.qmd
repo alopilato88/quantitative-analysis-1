@@ -4,6 +4,6 @@ title: "Quantitative Analysis 1"
 
 **Welcome to the homepage for Quantitative Analysis 1 (PHD1502-1)**!
 
-To view the course syllabus, click <a href="syllabus.html><strong>here</strong></a>>.
+To view the course syllabus, click <a href="syllabus.html"><strong>here</strong></a>.
 
-To view the course schedule, click <a href="schedule.html><strong>here</strong></a>>.
+To view the course schedule, click <a href="schedule.html"><strong>here</strong></a>.

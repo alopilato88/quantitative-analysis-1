@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Quantitative Analysis 1",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to the homepage for Quantitative Analysis 1 (PHD1502-1)!\nTo view the course syllabus, click here.\nTo view the course schedule, click here."
   },
   {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "About",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "lectures/01-lecture-page.html",
@@ -25,7 +25,7 @@
     "href": "lectures/01-lecture-page.html#lecture-stats-bootcamp",
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Stats Bootcamp",
-    "text": "Lecture: Stats Bootcamp\n\n\nTo download a pdf version of these slides, click here."
+    "text": "Lecture: Stats Bootcamp\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
   },
   {
     "objectID": "lectures/01-lecture-page.html#r-in-class-assignment",
@@ -1636,5 +1636,40 @@
     "title": "An Introduction to Statistics & Programming",
     "section": "Protecting Against Errors",
     "text": "Protecting Against Errors\nTo protect against a Type 1 Error, we can make our \\(\\alpha\\)-level very small, which will make it very difficult to reject \\(H_{0}\\), but this increases Type 2 Error.\nOne way to guard against Type 2 Error is by using an appropriate statistical test on a large sample of data."
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#what-is-statistics",
+    "href": "notes/01-lecture-notes.html#what-is-statistics",
+    "title": "Lecture 1 Notes",
+    "section": "What is Statistics",
+    "text": "What is Statistics"
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#probability-theory-mathematics-of-uncertainty",
+    "href": "notes/01-lecture-notes.html#probability-theory-mathematics-of-uncertainty",
+    "title": "Lecture 1 Notes",
+    "section": "Probability Theory: Mathematics of Uncertainty",
+    "text": "Probability Theory: Mathematics of Uncertainty\n\nWhat is Probability?\n\n\nFundamentals of Probability Theory\n\n\nJoint Probability: The Probability of Two or More Events\n\n\nConditional Probability: The Probability of One Event Given Another"
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#random-variables-connecting-probability-statistics-and-data",
+    "href": "notes/01-lecture-notes.html#random-variables-connecting-probability-statistics-and-data",
+    "title": "Lecture 1 Notes",
+    "section": "Random Variables: Connecting Probability, Statistics, and Data",
+    "text": "Random Variables: Connecting Probability, Statistics, and Data\n\nTypes of Random Variables: Discrete or Continuous\n\n\nProbability Distributions\n\n\nProbability Mass Function: Describing Discrete Random Variables\n\n\nProbability Density Function: Describing Continuous Random Variables\n\n\nCumulative Distribution Function\n\n\nJoint & Conditional Distributions: Modeling Two (or More) Random Variables"
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#descriptive-statistics-describing-your-data",
+    "href": "notes/01-lecture-notes.html#descriptive-statistics-describing-your-data",
+    "title": "Lecture 1 Notes",
+    "section": "Descriptive Statistics: Describing Your Data",
+    "text": "Descriptive Statistics: Describing Your Data\n\nPopulation vs Sample\n\n\nMeasures of Central Tendency\n\nMean (or Expected Value)\n\n\nMedian\n\n\nMode\n\n\n\nMeasures of Spread\n\nRange\n\n\nVariance\n\n\nStandard Deviation"
+  },
+  {
+    "objectID": "notes/01-lecture-notes.html#inferential-statistics-generalizing-from-your-data",
+    "href": "notes/01-lecture-notes.html#inferential-statistics-generalizing-from-your-data",
+    "title": "Lecture 1 Notes",
+    "section": "Inferential Statistics: Generalizing from Your Data",
+    "text": "Inferential Statistics: Generalizing from Your Data"
   }
 ]
