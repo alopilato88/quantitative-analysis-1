@@ -73,3 +73,51 @@ data_employees <- peopleanalytics::employees
 # Tidyverse ---------------------------------------------------------------
 
 library(tidyverse)
+
+## Tibbles 
+
+data_employees_tbl <- tibble::as_tibble(data_employees)
+data_employees_tbl
+
+## dplyr -- Row Functions
+
+dplyr::filter(data_employees_tbl, job_lvl %in% c(4, 5))
+
+dplyr::distinct(data_employees_tbl, ed_lvl, ed_field)
+
+dplyr::arrange(data_employees_tbl, work_exp)
+
+## dplyr -- Column Functions
+
+dplyr::select(data_employees_tbl, dept)
+
+dplyr::rename(data_employees_tbl, job_level = job_lvl)
+
+dplyr::mutate(data_employees_tbl, salary = monthly_comp * 12)
+
+dplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)
+
+## dplyr -- Operate on Groups 
+
+data_employees_tbl |>
+  dplyr::group_by(
+    job_lvl
+  ) |>
+  dplyr::summarize(
+    annual_comp_mean = mean(annual_comp),
+    annual_comp_median = median(annual_comp)
+  )
+
+## dplyr -- Table Functions
+
+data_job <- peopleanalytics::job |> tibble::as_tibble()
+
+data_payroll <- peopleanalytics::payroll |> tibble::as_tibble()
+
+data_job_payroll <- 
+  data_job |>
+  dplyr::left_join(
+    data_payroll,
+    by = "employee_id"
+  )
+
