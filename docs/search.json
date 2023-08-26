@@ -102,7 +102,7 @@
     "href": "lectures/01-lecture-slides.html#overview",
     "title": "An Introduction to Programming & Statistics",
     "section": "Overview",
-    "text": "Overview\n\nIntroduction to Programming with R\n\nBase R\nTidyverse\n\nIntroduction to Statistical Science\n\nDescriptive Statistics\nQuick look at Probability Theory\nInferential Statistics"
+    "text": "Overview\n\nIntroduction to Statistical Science\n\nDescriptive Statistics\nQuick look at Probability Theory\nInferential Statistics\n\nIntroduction to Programming with R\n\nBase R\nTidyverse"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#first-steps",
@@ -410,7 +410,7 @@
     "href": "lectures/01-lecture-slides.html#what-is-statistical-science",
     "title": "An Introduction to Programming & Statistics",
     "section": "What is Statistical Science?",
-    "text": "What is Statistical Science?\n\nStatistical science is the science of developing and applying methods for collecting analyzing, and interpreting data.\n\n— Agresti & Kateri, 2022"
+    "text": "What is Statistical Science?\n\nStatistical science is the science of developing and applying methods for collecting, analyzing, and interpreting data.\n\n— Agresti & Kateri, 2022"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#three-aspects-of-statistical-science",
@@ -466,7 +466,7 @@
     "href": "lectures/01-lecture-slides.html#variables",
     "title": "An Introduction to Programming & Statistics",
     "section": "Variables",
-    "text": "Variables\nVariables are characteristics of the sample or population that vary across subjects. Data consists of a set of variables:\n\nset.seed(3)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    employee_id,\n    trainings,\n    ed_field,\n    dept\n  )\n\n# A tibble: 5 × 4\n  employee_id trainings ed_field         dept                  \n        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                 \n1        1773         4 Medical          Research & Development\n2        1652         2 Marketing        Sales                 \n3        1999         2 Medical          Research & Development\n4        1548         2 Medical          Research & Development\n5        1698         5 Technical Degree Sales"
+    "text": "Variables\nVariables are characteristics of the sample or population that vary across subjects. Data consists of a set of variables:\n\ndata_employees &lt;- peopleanalytics::employees\ndata_employees_tbl &lt;- tibble::as_tibble(data_employees)\n\nset.seed(3)\ndata_employees_tbl |&gt;\n  dplyr::sample_n(5) |&gt;\n  dplyr::select(\n    employee_id,\n    trainings,\n    ed_field,\n    dept\n  )\n\n# A tibble: 5 × 4\n  employee_id trainings ed_field         dept                  \n        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                 \n1        1773         4 Medical          Research & Development\n2        1652         2 Marketing        Sales                 \n3        1999         2 Medical          Research & Development\n4        1548         2 Medical          Research & Development\n5        1698         5 Technical Degree Sales"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#types-of-variables",
@@ -529,14 +529,14 @@
     "href": "lectures/01-lecture-slides.html#what-is-a-statistic",
     "title": "An Introduction to Programming & Statistics",
     "section": "What is a Statistic?",
-    "text": "What is a Statistic?\nA statistic is a number that we can calculate from our data. Statistics provide useful information about the characteristics of a variable’s distribution such as its center (mean) or spread (standard deviation).\n\nmean(data_employees_tbl$commute_dist) |&gt; round(2) # Mean\n\n[1] 9.19\n\nmedian(data_employees_tbl$commute_dist) # Median\n\n[1] 7\n\nsd(data_employees_tbl$commute_dist) |&gt; round(2) # SD\n\n[1] 8.11"
+    "text": "What is a Statistic?\nStatistics are numbers computed from your data that provide useful numerical information about the characteristics of a variable’s distribution such as its center (mean) or spread (standard deviation).\n\nmean(data_employees_tbl$commute_dist) |&gt; round(2) # Mean\n\n[1] 9.19\n\nmedian(data_employees_tbl$commute_dist) # Median\n\n[1] 7\n\nsd(data_employees_tbl$commute_dist) |&gt; round(2) # SD\n\n[1] 8.11"
   },
   {
     "objectID": "lectures/01-lecture-slides.html#statistic-vs-population-parameter",
     "href": "lectures/01-lecture-slides.html#statistic-vs-population-parameter",
     "title": "An Introduction to Programming & Statistics",
     "section": "Statistic vs Population Parameter",
-    "text": "Statistic vs Population Parameter\nPopulation parameters (or parameters) are numerical summaries of our population. Statistics are estimates of these parameters calculated from data sampled from this population.\nUsually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data."
+    "text": "Statistic vs Population Parameter\nPopulation parameters (or parameters) are numerical summaries of our population.\nStatistics are estimates of these parameters calculated from data sampled from this population.\nUsually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#describing-the-center-of-your-data",
@@ -1138,14 +1138,14 @@
     "href": "lectures/01-lecture-slides.html#importance-of-plots",
     "title": "An Introduction to Programming & Statistics",
     "section": "Importance of Plots",
-    "text": "Importance of Plots\nPlotting your data immediately gives you more information than looking at the raw numbers:\n\nPlots give you visual information about the center, spread, and shape of your data.\nPlots alert you to values that are really far away from the center of your data."
+    "text": "Importance of Plots\nPlotting your data immediately gives you more information than looking at the raw numbers:\n\nVisual information about the center, spread, and shape of your data.\nAlert you to outlier values."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#thinking-in-disributions",
     "href": "lectures/01-lecture-slides.html#thinking-in-disributions",
     "title": "An Introduction to Programming & Statistics",
     "section": "Thinking in Disributions",
-    "text": "Thinking in Disributions\nThe distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either absolute terms (count of observations) or relative terms (proportion or percent). A variable’s distribution completely describes the variable."
+    "text": "Thinking in Disributions\nThe distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either:\n\nAbsolute terms: Count of observations\nRelative terms: Proportion or percent of observations\n\nA variable’s distribution completely describes the variable."
   },
   {
     "objectID": "lectures/01-lecture-slides.html#examples-of-plots",
@@ -1601,5 +1601,26 @@
     "title": "An Introduction to Programming & Statistics",
     "section": "Integrated Development Environment & RStudio",
     "text": "Integrated Development Environment & RStudio\nAn integrated development environment (IDE) is an application that makes programming a little easier and organized. It includes all of the tools one needs to program effectively and efficiently.\nRStudio is an IDE initially developed for R, but it can be used for other programming languages too.\nIf you have not already, please go ahead and download RStudio from here."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#welcome",
+    "href": "lectures/01-lecture-slides.html#welcome",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Welcome!",
+    "text": "Welcome!\nFirst off, breathe! We will all make it through this together!\nMy quick teaching philosophy:\n\nI love talking not lecturing—ask me questions!\nWe are all here because we enjoy learning, which is the goal of my course: learning. DO NOT WORRY ABOUT YOUR GRADES—take that stress off of yourself."
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#goals-for-today",
+    "href": "lectures/01-lecture-slides.html#goals-for-today",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nRefresh yourself on statistics!\nLearn about statistical estimation and tests\nData importing and transformation with R"
+  },
+  {
+    "objectID": "lectures/01-lecture-slides.html#schedule-for-today",
+    "href": "lectures/01-lecture-slides.html#schedule-for-today",
+    "title": "An Introduction to Programming & Statistics",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\nIn addition to a 15 minute break at 2:30 PM, we will take two 5-ish minute breaks at:\n\n5 min break @ 1:45 PM\n5 min break @ 4:00 PM\n\nFeel free to ask me even more questions during this time!"
   }
 ]

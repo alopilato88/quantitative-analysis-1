@@ -396,28 +396,47 @@
 </div>
 
 </section>
+<section id="welcome" class="slide level2">
+<h2>Welcome!</h2>
+<p>First off, breathe! We will all make it through this together!</p>
+<p>My quick teaching philosophy:</p>
+<ol type="1">
+<li>I love talking not lecturing—ask me questions!</li>
+<li>We are all here because we enjoy learning, which is the goal of my course: learning. DO NOT WORRY ABOUT YOUR GRADES—take that stress off of yourself.</li>
+</ol>
+</section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li>Introduction to Programming with R
-<ul>
-<li>Base R</li>
-<li>Tidyverse</li>
-</ul></li>
 <li>Introduction to Statistical Science
 <ul>
 <li>Descriptive Statistics</li>
 <li>Quick look at Probability Theory</li>
 <li>Inferential Statistics</li>
 </ul></li>
+<li>Introduction to Programming with R
+<ul>
+<li>Base R</li>
+<li>Tidyverse</li>
+</ul></li>
 </ul>
 </section>
-<section id="learning-goals" class="slide level2">
-<h2>Learning Goals</h2>
+<section id="goals-for-today" class="slide level2">
+<h2>Goals for Today</h2>
 <ul>
+<li>Refresh yourself on statistics!</li>
+<li>Learn about statistical estimation and tests</li>
 <li>Data importing and transformation with R</li>
-<li>Estimate and interpret a statistical test</li>
 </ul>
+</section>
+<section id="schedule-for-today" class="slide level2">
+<h2>Schedule for Today</h2>
+<p>In addition to a <strong>15 minute break at 2:30 PM</strong>, we will take two 5-ish minute breaks at:</p>
+<ul>
+<li><strong>5 min break @ 1:45 PM</strong></li>
+<li><strong>5 min break @ 4:00 PM</strong></li>
+</ul>
+<p>Feel free to ask me even more questions during this time!</p>
 </section>
 <section id="a-reassuring-reminder" class="slide level2">
 <h2>A Reassuring Reminder</h2>
@@ -429,417 +448,6 @@ Statistics is hard, especially when effects are small and variable and measureme
 </blockquote>
 </section>
 <section>
-<section id="an-introduction-to-r" class="title-slide slide level1 center">
-<h1>An Introduction to R</h1>
-
-</section>
-<section id="first-steps" class="slide level2">
-<h2>First Steps</h2>
-<ul>
-<li>Download R if you haven’t already</li>
-<li>Download RStudio</li>
-</ul>
-</section>
-<section id="what-is-r" class="slide level2">
-<h2>What is R?</h2>
-<p>R is a programming language that is generally used for statistical computing.</p>
-</section>
-<section id="why-learn-r" class="slide level2">
-<h2>Why Learn R?</h2>
-<p>To analyze the data you collect, you will need to be familiar with some kind of general programming language (R, Python, etc.) or a more specific statistical program (SPSS, SAS). I recommend and use R because it is:</p>
-<ul>
-<li>Open-source (free to download, use, and improve)</li>
-<li>Highly flexible language</li>
-<li>Can estimate A LOT of different statistical models</li>
-</ul>
-</section>
-<section id="integrated-development-environment-rstudio" class="slide level2">
-<h2>Integrated Development Environment &amp; RStudio</h2>
-<p>An integrated development environment (IDE) is an application that makes programming a little easier and organized. It includes all of the tools one needs to program effectively and efficiently.</p>
-<p>RStudio is an IDE initially developed for R, but it can be used for other programming languages too.</p>
-<p>If you have not already, please go ahead and download RStudio from <a href="https://posit.co/downloads/">here</a>.</p>
-</section>
-<section id="writing-scripts-in-r" class="slide level2">
-<h2>Writing Scripts in R</h2>
-<p>Just because you can write R code in just about any kind of digital document (Word, Notes, Notepad) does not mean you should!</p>
-<p>It is best practice to write your code in an R Script (.R) in RStudio (in my opinion at least).</p>
-</section>
-<section id="using-comments-in-your-code" class="slide level2">
-<h2>Using Comments in Your Code</h2>
-<p>You can write comments in your own code by beginning a line with <code>#</code>. R will not evaluate any text on a line that begins with <code>#</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># This is a comment. Use comments to leave yourself notes in your script. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="programming-with-base-r" class="title-slide slide level1 center">
-<h1>Programming with Base R</h1>
-
-</section>
-<section id="objects-in-r" class="slide level2">
-<h2>Objects in R</h2>
-<p>Everything you do in R will involve some kind of <strong>object</strong> that you have created. Think of an <strong>object</strong> like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator <code>&lt;-</code> which is how R knows to assign <code>value</code> to <code>object_name</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>object_name <span class="ot">&lt;-</span> value </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="atomic-vectors" class="slide level2">
-<h2>Atomic Vectors</h2>
-<ul>
-<li>An atomic vector is just a simple vector of data.</li>
-<li>R recognizes six types of atomic vectors:
-<ul>
-<li>Integers</li>
-<li>Doubles (Numeric)</li>
-<li>Characters</li>
-<li>Logicals</li>
-<li>Complex</li>
-<li>Raw</li>
-</ul></li>
-</ul>
-</section>
-<section id="integer-numeric-vectors" class="slide level2">
-<h2>Integer &amp; Numeric Vectors</h2>
-<p><strong>Integer vectors</strong> contain only integers. Add <code>L</code> after each number so R recognizes it as an integer. <strong>Numeric (doubles) vectors</strong> contain real numbers. These are the default vectors for numbers.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>integer_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, 2L, 50L)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>numeric_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">50</span>, <span class="fl">45.23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="character-vector" class="slide level2">
-<h2>Character Vector</h2>
-<p><strong>Character vectors</strong> contain only text data also referred to as string data. Basically anything surrounded by <code>""</code> or <code>''</code> is considered string data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>character_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"abc"</span>, <span class="st">"$#2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="logical-vector" class="slide level2">
-<h2>Logical Vector</h2>
-<p><strong>Logical vectors</strong> are vectors that can only contain <code>TRUE</code> or <code>FALSE</code> values also referred to as boolean values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>logical_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="adding-attributes" class="slide level2">
-<h2>Adding Attributes</h2>
-<p>You can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting.</p>
-</section>
-<section id="names-attribute" class="slide level2">
-<h2><code>names</code> Attribute</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">names</span>(days_of_week) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mon"</span>, <span class="st">"tues"</span>, <span class="st">"wed"</span>, <span class="st">"thurs"</span>, <span class="st">"fri"</span>, <span class="st">"sat"</span>, <span class="st">"sun"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">names</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "mon"   "tues"  "wed"   "thurs" "fri"   "sat"   "sun"  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$names
-[1] "mon"   "tues"  "wed"   "thurs" "fri"   "sat"   "sun"  </code></pre>
-</div>
-</div>
-</section>
-<section id="dim-attribute" class="slide level2">
-<h2><code>dim</code> Attribute</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">14</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">dim</span>(days_of_week) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span>) <span class="co"># 2 Rows, 7 Columns</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$dim
-[1] 2 7</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">class</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "matrix" "array" </code></pre>
-</div>
-</div>
-</section>
-<section id="creating-factors" class="slide level2">
-<h2>Creating Factors</h2>
-<p>R stores categorical data using factors, which are integer vectors with two attributes: <code>class</code> and <code>levels</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mon"</span>, <span class="st">"tues"</span>, <span class="st">"wed"</span>, <span class="st">"thurs"</span>, <span class="st">"fri"</span>, <span class="st">"sat"</span>, <span class="st">"sun"</span>))</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">typeof</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$levels
-[1] "fri"   "mon"   "sat"   "sun"   "thurs" "tues"  "wed"  
-
-$class
-[1] "factor"</code></pre>
-</div>
-</div>
-</section>
-<section id="data-frames-best-way-to-represent-data" class="slide level2">
-<h2>Data Frames: Best way to Represent Data</h2>
-<p>Data frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet.</p>
-<p>Each column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>data_frame_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NUMERIC =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">CHARACTER =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>), </span>
-<span id="cb18-2"><a href="#cb18-2"></a>                           <span class="at">LOGICAL =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb18-3"><a href="#cb18-3"></a>data_frame_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  NUMERIC CHARACTER LOGICAL
-1       1         a    TRUE
-2       3         b   FALSE</code></pre>
-</div>
-</div>
-</section>
-<section id="viewing-your-data" class="slide level2">
-<h2>Viewing Your Data</h2>
-<p>You can use <code>View()</code> to open up a spreadsheet-like view of your data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">View</span>(data_frame_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="selecting-data-from-data-frames" class="slide level2">
-<h2>Selecting Data from Data Frames</h2>
-<p>You will mainly select data from data frames using one of the two following methods:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data_frame_1[<span class="dv">1</span>, <span class="dv">1</span>] <span class="co"># Index the row and/or column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>data_frame_1[, <span class="dv">1</span>] <span class="co"># Leaving the column or row index blank selects the whole vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data_frame_1<span class="sc">$</span>NUMERIC <span class="co"># Use a $ operator to reference the column name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 3</code></pre>
-</div>
-</div>
-</section>
-<section id="functions-in-r" class="slide level2">
-<h2>Functions in R</h2>
-<p>Functions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="the-elements-of-a-function" class="slide level2">
-<h2>The Elements of a Function</h2>
-<p>R comes with a variety of predefined functions and they all follow the same structure:</p>
-<ul>
-<li>A <strong>name</strong> for the function.</li>
-<li>The <strong>arguments</strong> that change across different function calls.</li>
-<li>The <strong>body</strong> which contains the code that is repeated across different calls.</li>
-</ul>
-</section>
-<section id="the-elements-of-a-function-1" class="slide level2">
-<h2>The Elements of a Function</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(argument) {</span>
-<span id="cb29-2"><a href="#cb29-2"></a>  body</span>
-<span id="cb29-3"><a href="#cb29-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="example-base-function" class="slide level2">
-<h2>Example Base Function</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">sum</span>(x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.666667</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">min</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-</section>
-<section id="linking-functions-together" class="slide level2">
-<h2>Linking Functions Together</h2>
-<p>R lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="using-the-pipe" class="slide level2">
-<h2>Using the pipe <code>|&gt;</code></h2>
-<p>The <code>|&gt;</code> operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the <code>|&gt;</code> makes it easier to read your code, which is a good thing.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">abs</span>() <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-</section>
-<section id="packages-the-lifeblood-of-r" class="slide level2">
-<h2>Packages: The Lifeblood of R</h2>
-<p>A lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one!</p>
-</section>
-<section id="installing-loading-packages" class="slide level2">
-<h2>Installing &amp; Loading Packages</h2>
-<p>You can use <code>install.packages</code> to install a package once and then <code>library</code> to load that package and gain access to all of its functions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="reading-and-writing-data" class="slide level2">
-<h2>Reading and Writing Data</h2>
-<p>There are a number of different methods to read and write data into R. The two most common functions are:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"filepath/file-name.csv"</span>)</span>
-<span id="cb41-2"><a href="#cb41-2"></a></span>
-<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">write.csv</span>(data, <span class="st">"filepath/file-name.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="importing-data-from-an-r-package" class="slide level2">
-<h2>Importing Data from an R Package</h2>
-<p>Oftentimes, R packages will come with their own datasets that we can load into R. The <code>peopleanalytics</code> package has many such datasets that we will use today:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>data_employees <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>employees</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="getting-help-with-r" class="slide level2">
-<h2>Getting Help with R</h2>
-<p>There are two ways to get help in R:</p>
-<ul>
-<li>Add <code>?</code> in front of your function, which will result in RStudio displaying the help page for that function.</li>
-<li>Google what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>?<span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section></section>
-<section>
-<section id="introduction-to-the-tidyverse" class="title-slide slide level1 center">
-<h1>Introduction to the Tidyverse</h1>
-
-</section>
-<section id="what-is-the-tidyverse" class="slide level2">
-<h2>What is the Tidyverse?</h2>
-<p>The tidyverse is a collection of R packages that “share a common philosophy of data and R programming and are designed to work together.”</p>
-</section>
-<section id="installing-packages-from-the-tidyverse" class="slide level2">
-<h2>Installing Packages from the Tidyverse</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="tibble-data-frame-of-tidyverse" class="slide level2">
-<h2><code>tibble</code>: Data frame of Tidyverse</h2>
-<p>Tibbles are the tidyverse’s version of a <code>data.frame</code>. They can be loaded from the tidyverse package: <code>tibble</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>data_employees_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(data_employees)</span>
-<span id="cb45-2"><a href="#cb45-2"></a>data_employees_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,470 × 36
-   employee_id active stock_opt_lvl trainings   age commute_dist ed_lvl ed_field
-         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   
- 1        1001 No                 0         0    41            1      2 Life Sc…
- 2        1002 Yes                1         3    49            8      1 Life Sc…
- 3        1003 No                 0         3    37            2      2 Other   
- 4        1004 Yes                0         3    33            3      4 Life Sc…
- 5        1005 Yes                1         3    27            2      1 Medical 
- 6        1006 Yes                0         2    32            2      2 Life Sc…
- 7        1007 Yes                3         3    59            3      3 Medical 
- 8        1008 Yes                1         2    30           24      1 Life Sc…
- 9        1009 Yes                0         2    38           23      3 Life Sc…
-10        1010 Yes                2         3    36           27      3 Medical 
-# ℹ 1,460 more rows
-# ℹ 28 more variables: gender &lt;chr&gt;, marital_sts &lt;chr&gt;, dept &lt;chr&gt;,
-#   engagement &lt;int&gt;, job_lvl &lt;int&gt;, job_title &lt;chr&gt;, overtime &lt;chr&gt;,
-#   business_travel &lt;chr&gt;, hourly_rate &lt;int&gt;, daily_comp &lt;int&gt;,
-#   monthly_comp &lt;int&gt;, annual_comp &lt;int&gt;, ytd_leads &lt;int&gt;, ytd_sales &lt;int&gt;,
-#   standard_hrs &lt;int&gt;, salary_hike_pct &lt;int&gt;, perf_rating &lt;int&gt;,
-#   prior_emplr_cnt &lt;int&gt;, env_sat &lt;int&gt;, job_sat &lt;int&gt;, rel_sat &lt;int&gt;, …</code></pre>
-</div>
-</div>
-</section>
-<section id="dplyr-your-data-multitool" class="slide level2">
-<h2><code>dplyr</code>: Your Data Multitool</h2>
-<p>The package <code>dplyr</code> should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data.</p>
-</section>
-<section id="the-philosophy-of-dplyr-functions" class="slide level2">
-<h2>The Philosophy of <code>dplyr</code> Functions</h2>
-<p>Every function in <code>dplyr</code> follows this philosophy:</p>
-<ul>
-<li>First argument is always a data frame.</li>
-<li>Remaining arguments are usually names of columns on which to operate.</li>
-<li>The output is always a new data frame (tibble).</li>
-</ul>
-<p><code>dplyr</code> functions are also further grouped by whether they operate on <strong>rows</strong>, <strong>columns</strong>, <strong>groups</strong>, or <strong>tables</strong>.</p>
-</section>
-<section id="using-dplyr-to-operate-on-rows" class="slide level2">
-<h2>Using <code>dplyr</code> to Operate on Rows</h2>
-<p>The following <code>dplyr</code> functions can <strong>filter</strong>, <strong>reduce</strong>, or <strong>reorder</strong> the rows of a data frame:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(data_employees_tbl, job_level <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>))</span>
-<span id="cb47-2"><a href="#cb47-2"></a></span>
-<span id="cb47-3"><a href="#cb47-3"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(data_employees_tbl, ed_lvl, ed_field)</span>
-<span id="cb47-4"><a href="#cb47-4"></a></span>
-<span id="cb47-5"><a href="#cb47-5"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(data_employees_tbl, work_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="using-dplyr-to-operate-on-columns" class="slide level2">
-<h2>Using <code>dplyr</code> to Operate on Columns</h2>
-<p>The following <code>dplyr</code> functions can <strong>select</strong>, <strong>rename</strong>, <strong>add/change</strong>, or <strong>relocate</strong> the columns of a data frame:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(data_employees_tbl, dept)</span>
-<span id="cb48-2"><a href="#cb48-2"></a></span>
-<span id="cb48-3"><a href="#cb48-3"></a>dplyr<span class="sc">::</span><span class="fu">rename</span>(data_employees_tbl, <span class="at">job_level =</span> job_lvl)</span>
-<span id="cb48-4"><a href="#cb48-4"></a></span>
-<span id="cb48-5"><a href="#cb48-5"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(data_employees_tbl, <span class="at">salary =</span> monthly_comp <span class="sc">*</span> <span class="dv">12</span>)</span>
-<span id="cb48-6"><a href="#cb48-6"></a></span>
-<span id="cb48-7"><a href="#cb48-7"></a>dplyr<span class="sc">::</span><span class="fu">relocate</span>(data_employees_tbl, job_lvl, <span class="at">.before =</span> employee_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="using-dplyr-to-operate-on-groups" class="slide level2">
-<h2>Using <code>dplyr</code> to Operate on Groups</h2>
-<p>The following <code>dplyr</code> functions can <strong>group</strong> and <strong>summarize</strong> your data by a predefined group indicator:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(</span>
-<span id="cb49-3"><a href="#cb49-3"></a>    job_lvl</span>
-<span id="cb49-4"><a href="#cb49-4"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb49-5"><a href="#cb49-5"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
-<span id="cb49-6"><a href="#cb49-6"></a>    <span class="at">annual_comp_mean =</span> <span class="fu">mean</span>(annual_comp),</span>
-<span id="cb49-7"><a href="#cb49-7"></a>    <span class="at">annual_comp_median =</span> <span class="fu">median</span>(annual_comp)</span>
-<span id="cb49-8"><a href="#cb49-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this code chunk, we have grouped by an employee’s job level and summarized their annual salary by job level.</p>
-</section>
-<section id="using-dplyr-to-operate-on-tables" class="slide level2">
-<h2>Using <code>dplyr</code> to Operate on Tables</h2>
-<p>The following<code>dplyr</code> functions can be used to <strong>join different tables (data frames)</strong> together by a unique identifier:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>data_job <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>job <span class="sc">|&gt;</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb50-2"><a href="#cb50-2"></a></span>
-<span id="cb50-3"><a href="#cb50-3"></a>data_payroll <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>payroll <span class="sc">|&gt;</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
-<span id="cb50-4"><a href="#cb50-4"></a></span>
-<span id="cb50-5"><a href="#cb50-5"></a>data_job_payroll <span class="ot">&lt;-</span> </span>
-<span id="cb50-6"><a href="#cb50-6"></a>  data_job <span class="sc">|&gt;</span></span>
-<span id="cb50-7"><a href="#cb50-7"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
-<span id="cb50-8"><a href="#cb50-8"></a>    data_payroll,</span>
-<span id="cb50-9"><a href="#cb50-9"></a>    <span class="at">by =</span> <span class="st">"employee_id"</span></span>
-<span id="cb50-10"><a href="#cb50-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="r-resources" class="slide level2">
-<h2>R Resources</h2>
-<p>https://r4ds.hadley.nz/</p>
-</section></section>
-<section>
 <section id="introduction-to-statistical-science" class="title-slide slide level1 center">
 <h1>Introduction to Statistical Science</h1>
 
@@ -847,7 +455,7 @@ $class
 <section id="what-is-statistical-science" class="slide level2">
 <h2>What is Statistical Science?</h2>
 <blockquote>
-Statistical science is the science of developing and applying methods for collecting analyzing, and interpreting data.
+Statistical science is the science of developing and applying methods for collecting, analyzing, and interpreting data.
 <footer>
 — Agresti &amp; Kateri, 2022
 </footer>
@@ -901,15 +509,18 @@ Statistical science is the science of developing and applying methods for collec
 <h2>Variables</h2>
 <p>Variables are characteristics of the sample or population that vary across subjects. Data consists of a set of variables:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
-<span id="cb51-2"><a href="#cb51-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb51-5"><a href="#cb51-5"></a>    employee_id,</span>
-<span id="cb51-6"><a href="#cb51-6"></a>    trainings,</span>
-<span id="cb51-7"><a href="#cb51-7"></a>    ed_field,</span>
-<span id="cb51-8"><a href="#cb51-8"></a>    dept</span>
-<span id="cb51-9"><a href="#cb51-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data_employees <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>employees</span>
+<span id="cb1-2"><a href="#cb1-2"></a>data_employees_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(data_employees)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    employee_id,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    trainings,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    ed_field,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    dept</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   employee_id trainings ed_field         dept                  
@@ -933,13 +544,13 @@ Statistical science is the science of developing and applying methods for collec
 <section id="types-of-variables-by-measurement-scale-1" class="slide level2">
 <h2>Types of Variables by Measurement Scale</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
-<span id="cb53-2"><a href="#cb53-2"></a>data_employees_tbl <span class="sc">|&gt;</span> </span>
-<span id="cb53-3"><a href="#cb53-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb53-4"><a href="#cb53-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb53-5"><a href="#cb53-5"></a>    job_tenure,</span>
-<span id="cb53-6"><a href="#cb53-6"></a>    dept</span>
-<span id="cb53-7"><a href="#cb53-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>data_employees_tbl <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    job_tenure,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    dept</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   job_tenure dept                  
@@ -963,13 +574,13 @@ Statistical science is the science of developing and applying methods for collec
 <section id="types-of-quantitative-variables-1" class="slide level2">
 <h2>Types of Quantitative Variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
-<span id="cb55-2"><a href="#cb55-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
-<span id="cb55-3"><a href="#cb55-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb55-4"><a href="#cb55-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb55-5"><a href="#cb55-5"></a>    trainings,</span>
-<span id="cb55-6"><a href="#cb55-6"></a>    commute_dist</span>
-<span id="cb55-7"><a href="#cb55-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    trainings,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    commute_dist</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   trainings commute_dist
@@ -993,13 +604,13 @@ Statistical science is the science of developing and applying methods for collec
 <section id="types-of-categorical-variables-1" class="slide level2">
 <h2>Types of Categorical Variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
-<span id="cb57-2"><a href="#cb57-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb57-4"><a href="#cb57-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb57-5"><a href="#cb57-5"></a>    trainings,</span>
-<span id="cb57-6"><a href="#cb57-6"></a>    commute_dist</span>
-<span id="cb57-7"><a href="#cb57-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">4</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  dplyr<span class="sc">::</span><span class="fu">sample_n</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    trainings,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    commute_dist</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   trainings commute_dist
@@ -1045,38 +656,43 @@ Statistical science is the science of developing and applying methods for collec
 </section>
 <section id="thinking-in-disributions" class="slide level2">
 <h2>Thinking in Disributions</h2>
-<p>The distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either absolute terms (count of observations) or relative terms (proportion or percent). A variable’s distribution completely describes the variable.</p>
+<p>The distribution of a given variable gives the frequency of each value of the variable. This frequency can be in either:</p>
+<ul>
+<li>Absolute terms: Count of observations</li>
+<li>Relative terms: Proportion or percent of observations</li>
+</ul>
+<p>A variable’s distribution completely describes the variable.</p>
 </section>
 <section id="importance-of-plots" class="slide level2">
 <h2>Importance of Plots</h2>
 <p>Plotting your data immediately gives you more information than looking at the raw numbers:</p>
 <ul>
-<li>Plots give you visual information about the center, spread, and shape of your data.</li>
-<li>Plots alert you to values that are really far away from the center of your data.</li>
+<li>Visual information about the <strong>center, spread, and shape</strong> of your data.</li>
+<li>Alert you to <strong>outlier values</strong>.</li>
 </ul>
 </section>
 <section id="examples-of-plots" class="slide level2">
 <h2>Examples of Plots</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">set.seed</span>(<span class="dv">2311</span>)</span>
-<span id="cb59-2"><a href="#cb59-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb59-3"><a href="#cb59-3"></a>data <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">set.seed</span>(<span class="dv">2311</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>data <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">x =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="what-is-a-statistic" class="slide level2">
 <h2>What is a Statistic?</h2>
-<p>A statistic is a number that we can calculate from our data. Statistics provide useful information about the characteristics of a variable’s distribution such as its center (mean) or spread (standard deviation).</p>
+<p>Statistics are numbers computed from your data that provide useful <strong>numerical</strong> information about the characteristics of a variable’s distribution such as its center (mean) or spread (standard deviation).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">mean</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) <span class="co"># Mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) <span class="co"># Mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.19</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">median</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="co"># Median</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">median</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="co"># Median</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">sd</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) <span class="co"># SD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">sd</span>(data_employees_tbl<span class="sc">$</span>commute_dist) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) <span class="co"># SD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.11</code></pre>
 </div>
@@ -1084,7 +700,8 @@ Statistical science is the science of developing and applying methods for collec
 </section>
 <section id="statistic-vs-population-parameter" class="slide level2">
 <h2>Statistic vs Population Parameter</h2>
-<p><strong>Population parameters</strong> (or parameters) are numerical summaries of our population. <strong>Statistics</strong> are estimates of these parameters calculated from data sampled from this population.</p>
+<p><strong>Population parameters</strong> (or parameters) are numerical summaries of our population.</p>
+<p><strong>Statistics</strong> are estimates of these parameters calculated from data sampled from this population.</p>
 <p>Usually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data.</p>
 </section>
 <section id="statistic-vs-population-parameter-1" class="slide level2">
@@ -1095,9 +712,9 @@ Statistical science is the science of developing and applying methods for collec
 <h2>Describing the Center of your Data</h2>
 <p>One common way to describe your data is to compute a statistic that tells you where the center of your data is—the average or expected value of your data. There are three statistics you can compute:</p>
 <ul>
-<li>Mean: The average value.</li>
-<li>Median: The value at which 50% of your data lies below it.</li>
-<li>Mode: The most common value.</li>
+<li><strong>Mean</strong>: The average value.</li>
+<li><strong>Median</strong>: The value at which 50% of your data lies below it.</li>
+<li><strong>Mode</strong>: The most common value.</li>
 </ul>
 </section>
 <section id="describing-the-center-of-your-data-1" class="slide level2">
@@ -1141,15 +758,15 @@ Statistical science is the science of developing and applying methods for collec
 <li><p>Negative Correlation: <strong>High (low)</strong> values of one variable, X, are frequently seen with <strong>low (high)</strong> values of another variable.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">set.seed</span>(<span class="dv">324</span>)</span>
-<span id="cb66-2"><a href="#cb66-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">50</span>)</span>
-<span id="cb66-3"><a href="#cb66-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">100</span>)</span>
-<span id="cb66-4"><a href="#cb66-4"></a></span>
-<span id="cb66-5"><a href="#cb66-5"></a><span class="fu">cov</span>(x, y) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">set.seed</span>(<span class="dv">324</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">50</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">100</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="fu">cov</span>(x, y) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2522.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">cor</span>(x, y) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">cor</span>(x, y) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.45</code></pre>
 </div>
@@ -1215,7 +832,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <h2>Probability of Voluntary Turnover</h2>
 <p>A quick way to determine the probability of voluntary turnover is to look at the proportion of employees who left the firm in the last year. This proportion is .16, so the <span class="math inline">\(P(\text{Status = Inactive}=.16)\)</span>.</p>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="joint-probability" class="slide level2">
 <h2>Joint Probability</h2>
 <p>Joint probability is the probability of some event happening for two or more random variables. For example, what is the probability of <code>employment_status == inactive &amp; job_satisfaction == satisfied</code>?</p>
@@ -1407,7 +1024,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <section id="plotting-pmfs-and-pdfs" class="slide level2">
 <h2>Plotting PMFs and PDFs</h2>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-47-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="cumulative-distribution-function" class="slide level2">
 <h2>Cumulative Distribution Function</h2>
 <p>Closely related to the PMF/PDF, the Cumulative Distribution Function (CDF) specifies the <strong>cumulative probability</strong> that a random variable takes a value, Y, or any value less than Y:</p>
@@ -1417,12 +1034,12 @@ For an observation of a random phenomen, the probability of a particular outcome
 <section id="cumulative-distribution-function-1" class="slide level2">
 <h2>Cumulative Distribution Function</h2>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-48-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="the-cdf-of-the-normal-distribution" class="slide level2">
 <h2>The CDF of the Normal Distribution</h2>
 <p>Think about the CDF as a way to compute the percentiles of a distribution. What is the 50th percentile—the value where 50% or less of the observations fall—for the Normal CDF below?</p>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="getting-to-know-the-normal-distribution-better" class="slide level2">
 <h2>Getting to Know the Normal Distribution Better</h2>
 <ul>
@@ -1430,7 +1047,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <li>68% of its mass is between <span class="math inline">\(\pm1\)</span> SDs from its mean, 95% of its mass is between <span class="math inline">\(\pm2\)</span> SDs from its mean, and 99.7% of its mass is between <span class="math inline">\(\pm3\)</span> SDs from its mean.</li>
 </ul>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch quarto-figure-center"></section></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="generalizing-from-your-data" class="title-slide slide level1 center">
 <h1>Generalizing from your Data</h1>
@@ -1476,7 +1093,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <section id="populations-sample-variation" class="slide level2">
 <h2>Populations &amp; Sample Variation</h2>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-52-1.png" width="960" class="r-stretch"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
 <section id="statistics-as-random-variables" class="slide level2">
 <h2>Statistics as Random Variables</h2>
 <p>Because statistics like the sample mean are computed from a sample that contains random variation, we <strong>expect</strong> our statistics to behave like <strong>random variables</strong>. Like a random variable, we can specify a probability distribution for our statistic called a <strong>sampling distribution</strong>.</p>
@@ -1485,7 +1102,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <h2>Sampling Distributions</h2>
 <p>Imagine you can draw an infinite number of random samples from a population and then for each sample you compute the sample mean. The distribution of these sample means is referred to as the <strong>sampling distribution of the mean</strong>.</p>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="the-mean-standard-deviation-of-a-sampling-distribution" class="slide level2">
 <h2>The Mean &amp; Standard Deviation of a Sampling Distribution</h2>
 <p>Like all distributions, we can compute the mean and standard deviation of a sampling distribution and obtain useful information:</p>
@@ -1504,7 +1121,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <h2>The Standard Error</h2>
 <p>We can reduce the standard error, thereby reducing our uncertainty, by increasing our sample size:</p>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="the-norm-of-normality-the-central-limit-theorem" class="slide level2">
 <h2>The Norm of Normality: The Central Limit Theorem</h2>
 <p>The Central Limit Theorem (CLT) is a mathematical finding that tells us that the sampling distribution of a statistic like the mean starts to closely resemble a normal distribution <strong>as the sample size increases</strong> regardless of the distribution of the sample data itself!</p>
@@ -1514,7 +1131,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <h2>Central Limit Theorem</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-55-1.png" style="width:100.0%;height:100.0%"></p>
+<p><img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-29-1.png" style="width:100.0%;height:100.0%"></p>
 </div>
 </div>
 </section></section>
@@ -1542,16 +1159,16 @@ For an observation of a random phenomen, the probability of a particular outcome
 <section id="a-glimpse-of-your-data" class="slide level2">
 <h2>A Glimpse of your Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">set.seed</span>(<span class="dv">435</span>)</span>
-<span id="cb71-2"><a href="#cb71-2"></a>data <span class="sc">|&gt;</span></span>
-<span id="cb71-3"><a href="#cb71-3"></a>  dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb71-4"><a href="#cb71-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb71-5"><a href="#cb71-5"></a>    job_exp,</span>
-<span id="cb71-6"><a href="#cb71-6"></a>    trust_in_ai</span>
-<span id="cb71-7"><a href="#cb71-7"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb71-8"><a href="#cb71-8"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(</span>
-<span id="cb71-9"><a href="#cb71-9"></a>    job_exp</span>
-<span id="cb71-10"><a href="#cb71-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">set.seed</span>(<span class="dv">435</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>data <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb21-5"><a href="#cb21-5"></a>    job_exp,</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    trust_in_ai</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(</span>
+<span id="cb21-9"><a href="#cb21-9"></a>    job_exp</span>
+<span id="cb21-10"><a href="#cb21-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
    job_exp trust_in_ai
@@ -1572,7 +1189,7 @@ For an observation of a random phenomen, the probability of a particular outcome
 <section id="plotting-your-data" class="slide level2">
 <h2>Plotting your Data</h2>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-58-1.png" width="960" class="r-stretch"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
 <section id="estimating-the-mean-variance-by-job-experience" class="slide level2">
 <h2>Estimating the Mean &amp; Variance by Job Experience</h2>
 <p>For each job experience group, we can <strong>estimate the population means</strong> by computing the sample mean and standard deviation of their responses to the trust in AI question:</p>
@@ -1813,19 +1430,19 @@ For an observation of a random phenomen, the probability of a particular outcome
 <h2>Visualizing the P-Value</h2>
 <p>We assume (somewhat safely thanks to the CLT), the our estimate has a <strong>normal sampling distribution</strong> and according to our <strong>null hypothesis of no effect</strong> the mean of the normal distribution should be 0 and the SD should be 1. We can use the <strong>CDF of the standard normal distribution</strong> to compute the P-value.</p>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-62-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="using-r-to-conduct-a-z-test-medium-job-experience" class="slide level2">
 <h2>Using R to Conduct a Z-test: Medium Job Experience</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>low_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Low"</span>]</span>
-<span id="cb73-2"><a href="#cb73-2"></a>medium_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Medium"</span>]</span>
-<span id="cb73-3"><a href="#cb73-3"></a></span>
-<span id="cb73-4"><a href="#cb73-4"></a>z_low_medium <span class="ot">&lt;-</span> BSDA<span class="sc">::</span><span class="fu">z.test</span>(</span>
-<span id="cb73-5"><a href="#cb73-5"></a>  <span class="at">x =</span> low_group, <span class="at">y =</span> medium_group, <span class="at">alternative =</span> <span class="st">"greater"</span>,</span>
-<span id="cb73-6"><a href="#cb73-6"></a>  <span class="at">sigma.x =</span> <span class="fu">sd</span>(low_group), <span class="at">sigma.y =</span> <span class="fu">sd</span>(medium_group) </span>
-<span id="cb73-7"><a href="#cb73-7"></a>)</span>
-<span id="cb73-8"><a href="#cb73-8"></a></span>
-<span id="cb73-9"><a href="#cb73-9"></a>z_low_medium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>low_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Low"</span>]</span>
+<span id="cb23-2"><a href="#cb23-2"></a>medium_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Medium"</span>]</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>z_low_medium <span class="ot">&lt;-</span> BSDA<span class="sc">::</span><span class="fu">z.test</span>(</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="at">x =</span> low_group, <span class="at">y =</span> medium_group, <span class="at">alternative =</span> <span class="st">"greater"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="at">sigma.x =</span> <span class="fu">sd</span>(low_group), <span class="at">sigma.y =</span> <span class="fu">sd</span>(medium_group) </span>
+<span id="cb23-7"><a href="#cb23-7"></a>)</span>
+<span id="cb23-8"><a href="#cb23-8"></a></span>
+<span id="cb23-9"><a href="#cb23-9"></a>z_low_medium</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two-sample z-Test
@@ -1844,15 +1461,15 @@ mean of x mean of y
 <section id="using-r-to-conduct-a-z-test-high-job-experience" class="slide level2">
 <h2>Using R to Conduct a Z-test: High Job Experience</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>low_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Low"</span>]</span>
-<span id="cb75-2"><a href="#cb75-2"></a>high_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"High"</span>]</span>
-<span id="cb75-3"><a href="#cb75-3"></a></span>
-<span id="cb75-4"><a href="#cb75-4"></a>z_low_high <span class="ot">&lt;-</span> BSDA<span class="sc">::</span><span class="fu">z.test</span>(</span>
-<span id="cb75-5"><a href="#cb75-5"></a>  <span class="at">x =</span> low_group, <span class="at">y =</span> high_group, <span class="at">alternative =</span> <span class="st">"greater"</span>,</span>
-<span id="cb75-6"><a href="#cb75-6"></a>  <span class="at">sigma.x =</span> <span class="fu">sd</span>(low_group), <span class="at">sigma.y =</span> <span class="fu">sd</span>(high_group) </span>
-<span id="cb75-7"><a href="#cb75-7"></a>)</span>
-<span id="cb75-8"><a href="#cb75-8"></a></span>
-<span id="cb75-9"><a href="#cb75-9"></a>z_low_high</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>low_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"Low"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2"></a>high_group <span class="ot">&lt;-</span> data<span class="sc">$</span>trust_in_ai[data<span class="sc">$</span>job_exp <span class="sc">==</span> <span class="st">"High"</span>]</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a>z_low_high <span class="ot">&lt;-</span> BSDA<span class="sc">::</span><span class="fu">z.test</span>(</span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">x =</span> low_group, <span class="at">y =</span> high_group, <span class="at">alternative =</span> <span class="st">"greater"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="at">sigma.x =</span> <span class="fu">sd</span>(low_group), <span class="at">sigma.y =</span> <span class="fu">sd</span>(high_group) </span>
+<span id="cb25-7"><a href="#cb25-7"></a>)</span>
+<span id="cb25-8"><a href="#cb25-8"></a></span>
+<span id="cb25-9"><a href="#cb25-9"></a>z_low_high</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two-sample z-Test
@@ -1871,7 +1488,7 @@ mean of x mean of y
 <section id="visualizing-a-very-small-p-value" class="slide level2">
 <h2>Visualizing a Very Small P-Value</h2>
 
-<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-65-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="01-lecture-slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch quarto-figure-center"></section>
 <section id="decision-errors" class="slide level2">
 <h2>Decision Errors</h2>
 <p>The conclusion you come to thanks to a statistical test is not guaranteed to be the right one. There is always a risk of making a decision error:</p>
@@ -1897,6 +1514,417 @@ mean of x mean of y
 </tbody>
 </table>
 <p>To protect against a <strong>Type 1 Error</strong>, we can make our <span class="math inline">\(\alpha\)</span>-level very small, which will make it very difficult to reject <span class="math inline">\(H_{0}\)</span>, but this increases <strong>Type 2 Error</strong>. One way to guard against <strong>Type 2 Error</strong> is by using an appropriate statistical test on a <strong>large</strong> sample of data.</p>
+</section></section>
+<section>
+<section id="an-introduction-to-r" class="title-slide slide level1 center">
+<h1>An Introduction to R</h1>
+
+</section>
+<section id="first-steps" class="slide level2">
+<h2>First Steps</h2>
+<ul>
+<li>Download R if you haven’t already</li>
+<li>Download RStudio</li>
+</ul>
+</section>
+<section id="what-is-r" class="slide level2">
+<h2>What is R?</h2>
+<p>R is a programming language that is generally used for statistical computing.</p>
+</section>
+<section id="why-learn-r" class="slide level2">
+<h2>Why Learn R?</h2>
+<p>To analyze the data you collect, you will need to be familiar with some kind of general programming language (R, Python, etc.) or a more specific statistical program (SPSS, SAS). I recommend and use R because it is:</p>
+<ul>
+<li>Open-source (free to download, use, and improve)</li>
+<li>Highly flexible language</li>
+<li>Can estimate A LOT of different statistical models</li>
+</ul>
+</section>
+<section id="integrated-development-environment-rstudio" class="slide level2">
+<h2>Integrated Development Environment &amp; RStudio</h2>
+<p>An integrated development environment (IDE) is an application that makes programming a little easier and organized. It includes all of the tools one needs to program effectively and efficiently.</p>
+<p>RStudio is an IDE initially developed for R, but it can be used for other programming languages too.</p>
+<p>If you have not already, please go ahead and download RStudio from <a href="https://posit.co/downloads/">here</a>.</p>
+</section>
+<section id="writing-scripts-in-r" class="slide level2">
+<h2>Writing Scripts in R</h2>
+<p>Just because you can write R code in just about any kind of digital document (Word, Notes, Notepad) does not mean you should!</p>
+<p>It is best practice to write your code in an R Script (.R) in RStudio (in my opinion at least).</p>
+</section>
+<section id="using-comments-in-your-code" class="slide level2">
+<h2>Using Comments in Your Code</h2>
+<p>You can write comments in your own code by beginning a line with <code>#</code>. R will not evaluate any text on a line that begins with <code>#</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># This is a comment. Use comments to leave yourself notes in your script. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="programming-with-base-r" class="title-slide slide level1 center">
+<h1>Programming with Base R</h1>
+
+</section>
+<section id="objects-in-r" class="slide level2">
+<h2>Objects in R</h2>
+<p>Everything you do in R will involve some kind of <strong>object</strong> that you have created. Think of an <strong>object</strong> like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator <code>&lt;-</code> which is how R knows to assign <code>value</code> to <code>object_name</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>object_name <span class="ot">&lt;-</span> value </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="atomic-vectors" class="slide level2">
+<h2>Atomic Vectors</h2>
+<ul>
+<li>An atomic vector is just a simple vector of data.</li>
+<li>R recognizes six types of atomic vectors:
+<ul>
+<li>Integers</li>
+<li>Doubles (Numeric)</li>
+<li>Characters</li>
+<li>Logicals</li>
+<li>Complex</li>
+<li>Raw</li>
+</ul></li>
+</ul>
+</section>
+<section id="integer-numeric-vectors" class="slide level2">
+<h2>Integer &amp; Numeric Vectors</h2>
+<p><strong>Integer vectors</strong> contain only integers. Add <code>L</code> after each number so R recognizes it as an integer. <strong>Numeric (doubles) vectors</strong> contain real numbers. These are the default vectors for numbers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>integer_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, 2L, 50L)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>numeric_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">50</span>, <span class="fl">45.23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="character-vector" class="slide level2">
+<h2>Character Vector</h2>
+<p><strong>Character vectors</strong> contain only text data also referred to as string data. Basically anything surrounded by <code>""</code> or <code>''</code> is considered string data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>character_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"abc"</span>, <span class="st">"$#2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="logical-vector" class="slide level2">
+<h2>Logical Vector</h2>
+<p><strong>Logical vectors</strong> are vectors that can only contain <code>TRUE</code> or <code>FALSE</code> values also referred to as boolean values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>logical_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adding-attributes" class="slide level2">
+<h2>Adding Attributes</h2>
+<p>You can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting.</p>
+</section>
+<section id="names-attribute" class="slide level2">
+<h2><code>names</code> Attribute</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span> </span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">names</span>(days_of_week) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mon"</span>, <span class="st">"tues"</span>, <span class="st">"wed"</span>, <span class="st">"thurs"</span>, <span class="st">"fri"</span>, <span class="st">"sat"</span>, <span class="st">"sun"</span>)</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">names</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "mon"   "tues"  "wed"   "thurs" "fri"   "sat"   "sun"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$names
+[1] "mon"   "tues"  "wed"   "thurs" "fri"   "sat"   "sun"  </code></pre>
+</div>
+</div>
+</section>
+<section id="dim-attribute" class="slide level2">
+<h2><code>dim</code> Attribute</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">14</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">dim</span>(days_of_week) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span>) <span class="co"># 2 Rows, 7 Columns</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$dim
+[1] 2 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">class</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+</div>
+</section>
+<section id="creating-factors" class="slide level2">
+<h2>Creating Factors</h2>
+<p>R stores categorical data using factors, which are integer vectors with two attributes: <code>class</code> and <code>levels</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>days_of_week <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"mon"</span>, <span class="st">"tues"</span>, <span class="st">"wed"</span>, <span class="st">"thurs"</span>, <span class="st">"fri"</span>, <span class="st">"sat"</span>, <span class="st">"sun"</span>))</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">typeof</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">attributes</span>(days_of_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$levels
+[1] "fri"   "mon"   "sat"   "sun"   "thurs" "tues"  "wed"  
+
+$class
+[1] "factor"</code></pre>
+</div>
+</div>
+</section>
+<section id="data-frames-best-way-to-represent-data" class="slide level2">
+<h2>Data Frames: Best way to Represent Data</h2>
+<p>Data frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet.</p>
+<p>Each column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>data_frame_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">NUMERIC =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">CHARACTER =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>), </span>
+<span id="cb44-2"><a href="#cb44-2"></a>                           <span class="at">LOGICAL =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb44-3"><a href="#cb44-3"></a>data_frame_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  NUMERIC CHARACTER LOGICAL
+1       1         a    TRUE
+2       3         b   FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="viewing-your-data" class="slide level2">
+<h2>Viewing Your Data</h2>
+<p>You can use <code>View()</code> to open up a spreadsheet-like view of your data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">View</span>(data_frame_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="selecting-data-from-data-frames" class="slide level2">
+<h2>Selecting Data from Data Frames</h2>
+<p>You will mainly select data from data frames using one of the two following methods:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>data_frame_1[<span class="dv">1</span>, <span class="dv">1</span>] <span class="co"># Index the row and/or column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>data_frame_1[, <span class="dv">1</span>] <span class="co"># Leaving the column or row index blank selects the whole vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>data_frame_1<span class="sc">$</span>NUMERIC <span class="co"># Use a $ operator to reference the column name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-in-r" class="slide level2">
+<h2>Functions in R</h2>
+<p>Functions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="the-elements-of-a-function" class="slide level2">
+<h2>The Elements of a Function</h2>
+<p>R comes with a variety of predefined functions and they all follow the same structure:</p>
+<ul>
+<li>A <strong>name</strong> for the function.</li>
+<li>The <strong>arguments</strong> that change across different function calls.</li>
+<li>The <strong>body</strong> which contains the code that is repeated across different calls.</li>
+</ul>
+</section>
+<section id="the-elements-of-a-function-1" class="slide level2">
+<h2>The Elements of a Function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>name <span class="ot">&lt;-</span> <span class="cf">function</span>(argument) {</span>
+<span id="cb55-2"><a href="#cb55-2"></a>  body</span>
+<span id="cb55-3"><a href="#cb55-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-base-function" class="slide level2">
+<h2>Example Base Function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="fu">sum</span>(x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.666667</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">min</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</section>
+<section id="linking-functions-together" class="slide level2">
+<h2>Linking Functions Together</h2>
+<p>R lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">sum</span>(<span class="fu">abs</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="using-the-pipe" class="slide level2">
+<h2>Using the pipe <code>|&gt;</code></h2>
+<p>The <code>|&gt;</code> operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the <code>|&gt;</code> makes it easier to read your code, which is a good thing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">abs</span>() <span class="sc">|&gt;</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section id="packages-the-lifeblood-of-r" class="slide level2">
+<h2>Packages: The Lifeblood of R</h2>
+<p>A lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one!</p>
+</section>
+<section id="installing-loading-packages" class="slide level2">
+<h2>Installing &amp; Loading Packages</h2>
+<p>You can use <code>install.packages</code> to install a package once and then <code>library</code> to load that package and gain access to all of its functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">install.packages</span>(<span class="st">"package_name"</span>)</span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="fu">library</span>(package_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reading-and-writing-data" class="slide level2">
+<h2>Reading and Writing Data</h2>
+<p>There are a number of different methods to read and write data into R. The two most common functions are:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"filepath/file-name.csv"</span>)</span>
+<span id="cb67-2"><a href="#cb67-2"></a></span>
+<span id="cb67-3"><a href="#cb67-3"></a><span class="fu">write.csv</span>(data, <span class="st">"filepath/file-name.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importing-data-from-an-r-package" class="slide level2">
+<h2>Importing Data from an R Package</h2>
+<p>Oftentimes, R packages will come with their own datasets that we can load into R. The <code>peopleanalytics</code> package has many such datasets that we will use today:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>data_employees <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>employees</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="getting-help-with-r" class="slide level2">
+<h2>Getting Help with R</h2>
+<p>There are two ways to get help in R:</p>
+<ul>
+<li>Add <code>?</code> in front of your function, which will result in RStudio displaying the help page for that function.</li>
+<li>Google what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>?<span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="introduction-to-the-tidyverse" class="title-slide slide level1 center">
+<h1>Introduction to the Tidyverse</h1>
+
+</section>
+<section id="what-is-the-tidyverse" class="slide level2">
+<h2>What is the Tidyverse?</h2>
+<p>The tidyverse is a collection of R packages that “share a common philosophy of data and R programming and are designed to work together.”</p>
+</section>
+<section id="installing-packages-from-the-tidyverse" class="slide level2">
+<h2>Installing Packages from the Tidyverse</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tibble-data-frame-of-tidyverse" class="slide level2">
+<h2><code>tibble</code>: Data frame of Tidyverse</h2>
+<p>Tibbles are the tidyverse’s version of a <code>data.frame</code>. They can be loaded from the tidyverse package: <code>tibble</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>data_employees_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(data_employees)</span>
+<span id="cb71-2"><a href="#cb71-2"></a>data_employees_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,470 × 36
+   employee_id active stock_opt_lvl trainings   age commute_dist ed_lvl ed_field
+         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   
+ 1        1001 No                 0         0    41            1      2 Life Sc…
+ 2        1002 Yes                1         3    49            8      1 Life Sc…
+ 3        1003 No                 0         3    37            2      2 Other   
+ 4        1004 Yes                0         3    33            3      4 Life Sc…
+ 5        1005 Yes                1         3    27            2      1 Medical 
+ 6        1006 Yes                0         2    32            2      2 Life Sc…
+ 7        1007 Yes                3         3    59            3      3 Medical 
+ 8        1008 Yes                1         2    30           24      1 Life Sc…
+ 9        1009 Yes                0         2    38           23      3 Life Sc…
+10        1010 Yes                2         3    36           27      3 Medical 
+# ℹ 1,460 more rows
+# ℹ 28 more variables: gender &lt;chr&gt;, marital_sts &lt;chr&gt;, dept &lt;chr&gt;,
+#   engagement &lt;int&gt;, job_lvl &lt;int&gt;, job_title &lt;chr&gt;, overtime &lt;chr&gt;,
+#   business_travel &lt;chr&gt;, hourly_rate &lt;int&gt;, daily_comp &lt;int&gt;,
+#   monthly_comp &lt;int&gt;, annual_comp &lt;int&gt;, ytd_leads &lt;int&gt;, ytd_sales &lt;int&gt;,
+#   standard_hrs &lt;int&gt;, salary_hike_pct &lt;int&gt;, perf_rating &lt;int&gt;,
+#   prior_emplr_cnt &lt;int&gt;, env_sat &lt;int&gt;, job_sat &lt;int&gt;, rel_sat &lt;int&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyr-your-data-multitool" class="slide level2">
+<h2><code>dplyr</code>: Your Data Multitool</h2>
+<p>The package <code>dplyr</code> should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data.</p>
+</section>
+<section id="the-philosophy-of-dplyr-functions" class="slide level2">
+<h2>The Philosophy of <code>dplyr</code> Functions</h2>
+<p>Every function in <code>dplyr</code> follows this philosophy:</p>
+<ul>
+<li>First argument is always a data frame.</li>
+<li>Remaining arguments are usually names of columns on which to operate.</li>
+<li>The output is always a new data frame (tibble).</li>
+</ul>
+<p><code>dplyr</code> functions are also further grouped by whether they operate on <strong>rows</strong>, <strong>columns</strong>, <strong>groups</strong>, or <strong>tables</strong>.</p>
+</section>
+<section id="using-dplyr-to-operate-on-rows" class="slide level2">
+<h2>Using <code>dplyr</code> to Operate on Rows</h2>
+<p>The following <code>dplyr</code> functions can <strong>filter</strong>, <strong>reduce</strong>, or <strong>reorder</strong> the rows of a data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(data_employees_tbl, job_level <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>))</span>
+<span id="cb73-2"><a href="#cb73-2"></a></span>
+<span id="cb73-3"><a href="#cb73-3"></a>dplyr<span class="sc">::</span><span class="fu">distinct</span>(data_employees_tbl, ed_lvl, ed_field)</span>
+<span id="cb73-4"><a href="#cb73-4"></a></span>
+<span id="cb73-5"><a href="#cb73-5"></a>dplyr<span class="sc">::</span><span class="fu">arrange</span>(data_employees_tbl, work_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-dplyr-to-operate-on-columns" class="slide level2">
+<h2>Using <code>dplyr</code> to Operate on Columns</h2>
+<p>The following <code>dplyr</code> functions can <strong>select</strong>, <strong>rename</strong>, <strong>add/change</strong>, or <strong>relocate</strong> the columns of a data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(data_employees_tbl, dept)</span>
+<span id="cb74-2"><a href="#cb74-2"></a></span>
+<span id="cb74-3"><a href="#cb74-3"></a>dplyr<span class="sc">::</span><span class="fu">rename</span>(data_employees_tbl, <span class="at">job_level =</span> job_lvl)</span>
+<span id="cb74-4"><a href="#cb74-4"></a></span>
+<span id="cb74-5"><a href="#cb74-5"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(data_employees_tbl, <span class="at">salary =</span> monthly_comp <span class="sc">*</span> <span class="dv">12</span>)</span>
+<span id="cb74-6"><a href="#cb74-6"></a></span>
+<span id="cb74-7"><a href="#cb74-7"></a>dplyr<span class="sc">::</span><span class="fu">relocate</span>(data_employees_tbl, job_lvl, <span class="at">.before =</span> employee_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-dplyr-to-operate-on-groups" class="slide level2">
+<h2>Using <code>dplyr</code> to Operate on Groups</h2>
+<p>The following <code>dplyr</code> functions can <strong>group</strong> and <strong>summarize</strong> your data by a predefined group indicator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>data_employees_tbl <span class="sc">|&gt;</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(</span>
+<span id="cb75-3"><a href="#cb75-3"></a>    job_lvl</span>
+<span id="cb75-4"><a href="#cb75-4"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb75-5"><a href="#cb75-5"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(</span>
+<span id="cb75-6"><a href="#cb75-6"></a>    <span class="at">annual_comp_mean =</span> <span class="fu">mean</span>(annual_comp),</span>
+<span id="cb75-7"><a href="#cb75-7"></a>    <span class="at">annual_comp_median =</span> <span class="fu">median</span>(annual_comp)</span>
+<span id="cb75-8"><a href="#cb75-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this code chunk, we have grouped by an employee’s job level and summarized their annual salary by job level.</p>
+</section>
+<section id="using-dplyr-to-operate-on-tables" class="slide level2">
+<h2>Using <code>dplyr</code> to Operate on Tables</h2>
+<p>The following<code>dplyr</code> functions can be used to <strong>join different tables (data frames)</strong> together by a unique identifier:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>data_job <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>job <span class="sc">|&gt;</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb76-2"><a href="#cb76-2"></a></span>
+<span id="cb76-3"><a href="#cb76-3"></a>data_payroll <span class="ot">&lt;-</span> peopleanalytics<span class="sc">::</span>payroll <span class="sc">|&gt;</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>()</span>
+<span id="cb76-4"><a href="#cb76-4"></a></span>
+<span id="cb76-5"><a href="#cb76-5"></a>data_job_payroll <span class="ot">&lt;-</span> </span>
+<span id="cb76-6"><a href="#cb76-6"></a>  data_job <span class="sc">|&gt;</span></span>
+<span id="cb76-7"><a href="#cb76-7"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb76-8"><a href="#cb76-8"></a>    data_payroll,</span>
+<span id="cb76-9"><a href="#cb76-9"></a>    <span class="at">by =</span> <span class="st">"employee_id"</span></span>
+<span id="cb76-10"><a href="#cb76-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-resources" class="slide level2">
+<h2>R Resources</h2>
+<p>https://r4ds.hadley.nz/</p>
 </section></section>
 <section id="more-to-come-this-semester" class="title-slide slide level1 center">
 <h1>More to come this semester…</h1>
