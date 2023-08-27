@@ -4,6 +4,7 @@ format:
   revealjs:
     theme: [default, theme-lecture-slides.scss] 
     css: styles-lecture-slides.css
+    slide-number: true
 execute:
   echo: true
 editor_options: 
