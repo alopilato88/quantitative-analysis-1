@@ -1671,5 +1671,54 @@
     "title": "Lecture 1 Notes",
     "section": "Inferential Statistics: Generalizing from Your Data",
     "text": "Inferential Statistics: Generalizing from Your Data"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#schedule-for-today",
+    "href": "lectures/02-lecture-slides.html#schedule-for-today",
+    "title": "Correlation & Covariation",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#overview",
+    "href": "lectures/02-lecture-slides.html#overview",
+    "title": "Correlation & Covariation",
+    "section": "Overview",
+    "text": "Overview"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#goals",
+    "href": "lectures/02-lecture-slides.html#goals",
+    "title": "Correlation & Covariation",
+    "section": "Goals",
+    "text": "Goals"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#theory-construction-in-the-managerial-sciences",
+    "href": "lectures/02-lecture-slides.html#theory-construction-in-the-managerial-sciences",
+    "title": "Correlation & Covariation",
+    "section": "Theory Construction in the Managerial Sciences",
+    "text": "Theory Construction in the Managerial Sciences"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#empirically-testing-theories",
+    "href": "lectures/02-lecture-slides.html#empirically-testing-theories",
+    "title": "Correlation & Covariation",
+    "section": "Empirically Testing Theories",
+    "text": "Empirically Testing Theories\nBasically the goal will be to build the case for stats by explaining that we need stats to determine if our data fits with our theory."
+  },
+  {
+    "objectID": "lectures/02-lecture-page.html",
+    "href": "lectures/02-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »"
+  },
+  {
+    "objectID": "lectures/02-lecture-page.html#lecture-stats-bootcamp",
+    "href": "lectures/02-lecture-page.html#lecture-stats-bootcamp",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Stats Bootcamp",
+    "text": "Lecture: Stats Bootcamp\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
   }
 ]
