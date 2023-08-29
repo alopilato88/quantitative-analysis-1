@@ -120,7 +120,7 @@ To be successful in this course, you will need to:
 |       | Association &          |                                                                                                                       |
 |       | Simple Regression      | - RAGLM – Chapter 2: The Simple Regression Model                                                                      |
 |       |                        |                                                                                                                       |
-|       |                        | - *DBEP – Chapter 4.6: Dependence, Covariane, & Correlation*                                                          |
+|       |                        | - *DBEP – Chapter 4.6: Dependence, Covariance, & Correlation*                                                         |
 |       |                        |                                                                                                                       |
 |       |                        | - [R for Data Science – Chapter 2: Data Visualization](https://r4ds.hadley.nz/data-visualize.html)                    |
 |       |                        |                                                                                                                       |

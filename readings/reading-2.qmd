@@ -14,7 +14,7 @@ format:
 
 <h2 class="h2-reading">Supplemental Readings:</h2>
 <ul class="ul-reading">
-<li>DBEP -- Chapter 4.6: Dependence, Covariane, & Correlation</li>
+<li>DBEP -- Chapter 4.6: Dependence, Covariance, & Correlation</li>
 <li><a href="https://r4ds.hadley.nz/data-visualize.html">R for Data Science -- Chapter 2: Data Visualization</a></li>
 <li><a href="https://r4ds.hadley.nz/workflow-basics.html">R for Data Science -- Chapter 3: Workflow: Basics</a></li>
 </ul>
