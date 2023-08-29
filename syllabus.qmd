@@ -1,8 +1,5 @@
 ---
 title: "Course Syllabus"
-format: 
-  html:
-    toc: false
 ---
 
 To download a pdf version of this syllabus, click <a href="assets/pdf/quant-1-syllabus-2023.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
