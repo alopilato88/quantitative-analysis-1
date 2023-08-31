@@ -26,3 +26,24 @@ lecture_ggplot_theme_barplot <-
     legend.position = "none"
   )
 
+#' scaled_dnorm
+#' 
+#' 
+scaled_dnorm <- function(x, mean = 0, sd = 1, scale) dnorm(x, mean, sd) * scale
+
+#' geom_norm_density
+#' 
+#' 
+geom_norm_density <- function(mean, sd, fun, args, y_offset, color, fill,
+                              alpha, scale) {
+  ggplot2::geom_area(
+    stat = "function",
+    fun = fun,
+    args = list(mean = mean, sd = sd, scale = scale),
+    xlim = c(mean - 3 * sd, mean + 3 * sd),
+    position = ggplot2::position_nudge(y = y_offset),
+    color = color,
+    fill = fill,
+    alpha = alpha
+  )
+}
