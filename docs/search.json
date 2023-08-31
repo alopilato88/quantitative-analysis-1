@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Quantitative Analysis 1",
     "section": "",
-    "text": "Welcome to the homepage for Quantitative Analysis 1 (PHD1502-1)!\nTo view the course syllabus, click here.\nTo view the course schedule, click here."
+    "text": "Welcome to the homepage for Quantitative Analysis 1 (PHD1502-1)!\n\n\n\n\n\nTo view the course syllabus, click here.\nTo view the course schedule, click here."
   },
   {
     "objectID": "syllabus.html",
@@ -1682,14 +1682,14 @@
   {
     "objectID": "lectures/02-lecture-slides.html#overview",
     "href": "lectures/02-lecture-slides.html#overview",
-    "title": "Correlation & Covariation",
+    "title": "Correlation, Covariation, & Simple Regression",
     "section": "Overview",
     "text": "Overview"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#goals",
     "href": "lectures/02-lecture-slides.html#goals",
-    "title": "Correlation & Covariation",
+    "title": "Correlation, Covariation, & Simple Regression",
     "section": "Goals",
     "text": "Goals"
   },
@@ -1703,9 +1703,9 @@
   {
     "objectID": "lectures/02-lecture-slides.html#empirically-testing-theories",
     "href": "lectures/02-lecture-slides.html#empirically-testing-theories",
-    "title": "Correlation & Covariation",
+    "title": "Correlation, Covariation, & Simple Regression",
     "section": "Empirically Testing Theories",
-    "text": "Empirically Testing Theories\nBasically the goal will be to build the case for stats by explaining that we need stats to determine if our data fits with our theory."
+    "text": "Empirically Testing Theories\nWhat is theory without evidence? We need methods that allow us to test the relationships among variables hypothesized by our theory and we need to adjust for other variables (control)"
   },
   {
     "objectID": "lectures/02-lecture-page.html",
@@ -1720,5 +1720,166 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Stats Bootcamp",
     "text": "Lecture: Stats Bootcamp\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#why-do-re-care-about-statistical-modeling",
+    "href": "lectures/02-lecture-slides.html#why-do-re-care-about-statistical-modeling",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Why Do Re Care About Statistical Modeling?",
+    "text": "Why Do Re Care About Statistical Modeling?\nStati"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#the-role-of-theory-in-research-practice",
+    "href": "lectures/02-lecture-slides.html#the-role-of-theory-in-research-practice",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "The Role of Theory in Research & Practice",
+    "text": "The Role of Theory in Research & Practice\n\nA theory is a set of interrelated constructs (concepts), definitions, and propositions that present a systematic view of phenomena by specifying relations among variables with &gt; the purpose of explaining and predicting the phenomenon.\n\n— Kerlinger & Lee (2000)"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#from-theory-to-model-to-data",
+    "href": "lectures/02-lecture-slides.html#from-theory-to-model-to-data",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "From Theory to Model to Data",
+    "text": "From Theory to Model to Data\nPath model diagrams"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#enter-general-linear-models",
+    "href": "lectures/02-lecture-slides.html#enter-general-linear-models",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Enter General Linear Models",
+    "text": "Enter General Linear Models\nSpecfiically regression"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#example-theory-hypothesis",
+    "href": "lectures/02-lecture-slides.html#example-theory-hypothesis",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Example Theory & Hypothesis",
+    "text": "Example Theory & Hypothesis"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#visualzing-the-relationship-between-two-variables",
+    "href": "lectures/02-lecture-slides.html#visualzing-the-relationship-between-two-variables",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Visualzing the Relationship Between Two Variables",
+    "text": "Visualzing the Relationship Between Two Variables\nScatter Plot"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#improving-our-scatter-plot",
+    "href": "lectures/02-lecture-slides.html#improving-our-scatter-plot",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Improving our Scatter Plot",
+    "text": "Improving our Scatter Plot\nWhen data is discrete use jitter"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-distributions",
+    "href": "lectures/02-lecture-slides.html#conditional-distributions",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Conditional Distributions",
+    "text": "Conditional Distributions\n\nggplot2::ggplot(\n  data = data |&gt;\n    dplyr::mutate(\n      x = factor(as.character(x), levels = c(7, 6, 5, 4, 3, 2, 1)),\n    ),\n  ggplot2::aes(\n    x = y\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 40,\n    color = plot_color,\n    fill = plot_fill\n  ) +\n  ggplot2::facet_grid(\n    x ~ .,\n    scales = \"free_y\"\n  ) + \n  lecture_ggplot_theme_barplot"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-mean-expectation",
+    "href": "lectures/02-lecture-slides.html#conditional-mean-expectation",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Conditional Mean (Expectation)",
+    "text": "Conditional Mean (Expectation)\n\\[E[Y|X]\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-mean-plot",
+    "href": "lectures/02-lecture-slides.html#conditional-mean-plot",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Conditional Mean Plot",
+    "text": "Conditional Mean Plot\n\ndata_mean_plot &lt;- \n  data |&gt;\n  dplyr::summarize(\n    y_mean = mean(y),\n    .by = x\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = y\n  )\n) + \n  ggplot2::geom_jitter(\n    fill = plot_color,\n    color = plot_fill,\n    width = .4,\n    height = .6\n  )  + \n  ggplot2::geom_point(\n    data = data_mean_plot,\n    ggplot2::aes(\n      x = x, \n      y = y_mean\n    ),\n    fill = plot_color,\n    size = 5\n  ) +\n  lecture_ggplot_theme_barplot"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#using-covariation-correlation-to-measure-linear-dependence",
+    "href": "lectures/02-lecture-slides.html#using-covariation-correlation-to-measure-linear-dependence",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Using Covariation & Correlation to Measure Linear Dependence",
+    "text": "Using Covariation & Correlation to Measure Linear Dependence"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#using-the-slope-of-a-line-to-measure-dependence",
+    "href": "lectures/02-lecture-slides.html#using-the-slope-of-a-line-to-measure-dependence",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Using the Slope of a Line to Measure Dependence",
+    "text": "Using the Slope of a Line to Measure Dependence"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#what-line-to-choose",
+    "href": "lectures/02-lecture-slides.html#what-line-to-choose",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "What Line to Choose?",
+    "text": "What Line to Choose?"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#errors-of-estimate-or-prediction-errors",
+    "href": "lectures/02-lecture-slides.html#errors-of-estimate-or-prediction-errors",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Errors of Estimate (or Prediction Errors)",
+    "text": "Errors of Estimate (or Prediction Errors)"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#linear-regression-the-line-that-best-fits-your-data",
+    "href": "lectures/02-lecture-slides.html#linear-regression-the-line-that-best-fits-your-data",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Linear Regression: The Line that “Best” Fits your Data",
+    "text": "Linear Regression: The Line that “Best” Fits your Data"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#the-linear-regression-model",
+    "href": "lectures/02-lecture-slides.html#the-linear-regression-model",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "The Linear Regression Model",
+    "text": "The Linear Regression Model"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#estimating-your-model-using-lm",
+    "href": "lectures/02-lecture-slides.html#estimating-your-model-using-lm",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Estimating your Model Using lm",
+    "text": "Estimating your Model Using lm"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#interpreting-the-coefficients",
+    "href": "lectures/02-lecture-slides.html#interpreting-the-coefficients",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Interpreting the Coefficients",
+    "text": "Interpreting the Coefficients"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#residuals",
+    "href": "lectures/02-lecture-slides.html#residuals",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Residuals",
+    "text": "Residuals"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#residual-analysis",
+    "href": "lectures/02-lecture-slides.html#residual-analysis",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Residual Analysis",
+    "text": "Residual Analysis"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#variance-explained",
+    "href": "lectures/02-lecture-slides.html#variance-explained",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "Variance Explained",
+    "text": "Variance Explained"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#r2",
+    "href": "lectures/02-lecture-slides.html#r2",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "R2",
+    "text": "R2"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#m",
+    "href": "lectures/02-lecture-slides.html#m",
+    "title": "Correlation, Covariation, & Simple Regression",
+    "section": "M",
+    "text": "M\n\nscale_val &lt;- 2\nmod_summ &lt;- summary(mod)\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(x = y, y = x)\n) + \n  ggplot2::geom_jitter(\n    color = plot_color,\n    width = 1,\n    height = 0\n  ) + \n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 1)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 1,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 2)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 2,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 3)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 3,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 4)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 4,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 5)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 5,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 6)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 6,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 7)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 7,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  ggplot2::coord_flip() + \n  ggplot2::geom_line(\n    data = data.frame(x = 0:8, y = predict(mod, data.frame(x = 0:8))),\n    color = plot_color,\n    lwd = 1.5\n  ) + \n  ggplot2::geom_point(\n    data = data.frame(x = 1:7, y = predict(mod, data.frame(x = 1:7))),\n    size = 4,\n    shape = \"circle\",\n    group = 1,\n    color = plot_fill,\n    fill = plot_color\n  ) +\n  lecture_ggplot_theme_barplot"
   }
 ]
