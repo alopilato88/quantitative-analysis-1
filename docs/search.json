@@ -1675,23 +1675,23 @@
   {
     "objectID": "lectures/02-lecture-slides.html#schedule-for-today",
     "href": "lectures/02-lecture-slides.html#schedule-for-today",
-    "title": "Correlation & Covariation",
+    "title": "An Introduction to Simple Regression",
     "section": "Schedule for Today",
-    "text": "Schedule for Today"
+    "text": "Schedule for Today\n\nTalk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 5 minutes\nR Introduction / Hands-on coding for 40 mins (6:20 PM - 7:00 PM ET)"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#overview",
     "href": "lectures/02-lecture-slides.html#overview",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Overview",
-    "text": "Overview"
+    "text": "Overview\n\nA quick review of last week\nOverview of conditional distributions & statistics\nIntroduction to Simple Regression\nR Intro"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#goals",
     "href": "lectures/02-lecture-slides.html#goals",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Goals",
-    "text": "Goals"
+    "text": "Goals\n\nDevelop an understanding of simple regression\nWrite your first R script"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#theory-construction-in-the-managerial-sciences",
@@ -1703,7 +1703,7 @@
   {
     "objectID": "lectures/02-lecture-slides.html#empirically-testing-theories",
     "href": "lectures/02-lecture-slides.html#empirically-testing-theories",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Empirically Testing Theories",
     "text": "Empirically Testing Theories\nWhat is theory without evidence? We need methods that allow us to test the relationships among variables hypothesized by our theory and we need to adjust for other variables (control)"
   },
@@ -1724,21 +1724,21 @@
   {
     "objectID": "lectures/02-lecture-slides.html#why-do-re-care-about-statistical-modeling",
     "href": "lectures/02-lecture-slides.html#why-do-re-care-about-statistical-modeling",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Why Do Re Care About Statistical Modeling?",
-    "text": "Why Do Re Care About Statistical Modeling?\nStati"
+    "text": "Why Do Re Care About Statistical Modeling?\nIn research and practice, you will likely come up with questions or hypotheses of the form:\n\n\n“Are changes in Variable X associated with changes in Variable Y?” You will collect relevant data to answer this question and then…what?\n\n\nWe can apply the models we will talk about in class to our data in order to empirically test our hypotheses (or answer our questions). These models allow us to make data-driven evaluations of our theories."
   },
   {
     "objectID": "lectures/02-lecture-slides.html#the-role-of-theory-in-research-practice",
     "href": "lectures/02-lecture-slides.html#the-role-of-theory-in-research-practice",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "The Role of Theory in Research & Practice",
     "text": "The Role of Theory in Research & Practice\n\nA theory is a set of interrelated constructs (concepts), definitions, and propositions that present a systematic view of phenomena by specifying relations among variables with &gt; the purpose of explaining and predicting the phenomenon.\n\n— Kerlinger & Lee (2000)"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#from-theory-to-model-to-data",
     "href": "lectures/02-lecture-slides.html#from-theory-to-model-to-data",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "From Theory to Model to Data",
     "text": "From Theory to Model to Data\nPath model diagrams"
   },
@@ -1752,51 +1752,51 @@
   {
     "objectID": "lectures/02-lecture-slides.html#example-theory-hypothesis",
     "href": "lectures/02-lecture-slides.html#example-theory-hypothesis",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Example Theory & Hypothesis",
     "text": "Example Theory & Hypothesis"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#visualzing-the-relationship-between-two-variables",
     "href": "lectures/02-lecture-slides.html#visualzing-the-relationship-between-two-variables",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Visualzing the Relationship Between Two Variables",
     "text": "Visualzing the Relationship Between Two Variables\nScatter Plot"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#improving-our-scatter-plot",
     "href": "lectures/02-lecture-slides.html#improving-our-scatter-plot",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Improving our Scatter Plot",
-    "text": "Improving our Scatter Plot\nWhen data is discrete use jitter"
+    "text": "Improving our Scatter Plot\nWe can use an R function called geom_jitter to add a bit of random noise to each of our data points, which improves the usefulness of scatter plots when working with discrete data like survey responses."
   },
   {
     "objectID": "lectures/02-lecture-slides.html#conditional-distributions",
     "href": "lectures/02-lecture-slides.html#conditional-distributions",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Conditional Distributions",
-    "text": "Conditional Distributions\n\nggplot2::ggplot(\n  data = data |&gt;\n    dplyr::mutate(\n      x = factor(as.character(x), levels = c(7, 6, 5, 4, 3, 2, 1)),\n    ),\n  ggplot2::aes(\n    x = y\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 40,\n    color = plot_color,\n    fill = plot_fill\n  ) +\n  ggplot2::facet_grid(\n    x ~ .,\n    scales = \"free_y\"\n  ) + \n  lecture_ggplot_theme_barplot"
+    "text": "Conditional Distributions\nConditional distributions are distributions of one variable, Y, conditional (fixed) on a value of one or more additional variables."
   },
   {
     "objectID": "lectures/02-lecture-slides.html#conditional-mean-expectation",
     "href": "lectures/02-lecture-slides.html#conditional-mean-expectation",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Conditional Mean (Expectation)",
     "text": "Conditional Mean (Expectation)\n\\[E[Y|X]\\]"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#conditional-mean-plot",
     "href": "lectures/02-lecture-slides.html#conditional-mean-plot",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Conditional Mean Plot",
-    "text": "Conditional Mean Plot\n\ndata_mean_plot &lt;- \n  data |&gt;\n  dplyr::summarize(\n    y_mean = mean(y),\n    .by = x\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = y\n  )\n) + \n  ggplot2::geom_jitter(\n    fill = plot_color,\n    color = plot_fill,\n    width = .4,\n    height = .6\n  )  + \n  ggplot2::geom_point(\n    data = data_mean_plot,\n    ggplot2::aes(\n      x = x, \n      y = y_mean\n    ),\n    fill = plot_color,\n    size = 5\n  ) +\n  lecture_ggplot_theme_barplot"
+    "text": "Conditional Mean Plot"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#using-covariation-correlation-to-measure-linear-dependence",
     "href": "lectures/02-lecture-slides.html#using-covariation-correlation-to-measure-linear-dependence",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Using Covariation & Correlation to Measure Linear Dependence",
-    "text": "Using Covariation & Correlation to Measure Linear Dependence"
+    "text": "Using Covariation & Correlation to Measure Linear Dependence\nTwo of the most basic measures of linear dependence we have between two variables are the covariance and correlation between two variables.\n\\[Cov(X, Y)=\\frac{\\Sigma{(X - \\overline{X})(Y-\\overline{Y})}}{N}\\] \\[r_{XY}=\\frac{Cov(X,Y)}{S_{X}S_{Y}}\\]"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#using-the-slope-of-a-line-to-measure-dependence",
@@ -1815,71 +1815,337 @@
   {
     "objectID": "lectures/02-lecture-slides.html#errors-of-estimate-or-prediction-errors",
     "href": "lectures/02-lecture-slides.html#errors-of-estimate-or-prediction-errors",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Errors of Estimate (or Prediction Errors)",
-    "text": "Errors of Estimate (or Prediction Errors)"
+    "text": "Errors of Estimate (or Prediction Errors)\nWe say that the “best” line is the line that minimizes the squared distance between our outcome variable, \\(Y\\), and what our line predicts that outcome variable to be, \\(\\hat{Y}\\), on average:\n\\[SS_{error}=\\Sigma(Y_{i}-\\hat{Y}_{i})^2=\\Sigma(e^{2}_{i})\\]\n\\[\\hat{Y}_{i}=\\beta_{0}+\\beta_{1}X_{i}\\]\nWe call this the sum of squared error."
   },
   {
     "objectID": "lectures/02-lecture-slides.html#linear-regression-the-line-that-best-fits-your-data",
     "href": "lectures/02-lecture-slides.html#linear-regression-the-line-that-best-fits-your-data",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Linear Regression: The Line that “Best” Fits your Data",
-    "text": "Linear Regression: The Line that “Best” Fits your Data"
+    "text": "Linear Regression: The Line that “Best” Fits your Data\nLinear regression is the statistical method that estimates the “best” fitting line by minimizing the sum of squared errors (\\(SS_{error}\\)).\nThere is no other line that will produce a smaller value of \\(SS_{error}\\)!"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#the-linear-regression-model",
     "href": "lectures/02-lecture-slides.html#the-linear-regression-model",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "The Linear Regression Model",
     "text": "The Linear Regression Model"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#estimating-your-model-using-lm",
     "href": "lectures/02-lecture-slides.html#estimating-your-model-using-lm",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Estimating your Model Using lm",
-    "text": "Estimating your Model Using lm"
+    "text": "Estimating your Model Using lm\n\nmod_ai &lt;- lm(freq_use_ai ~ pos_attitude_ai, data = data_ai)\nmod_ai |&gt; summary()\n\n\nCall:\nlm(formula = freq_use_ai ~ pos_attitude_ai, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.9683 -1.0050  0.0072  1.0317  3.9950 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      1.51112    0.05575   27.11   &lt;2e-16 ***\npos_attitude_ai  0.49388    0.01285   38.45   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.483 on 4998 degrees of freedom\nMultiple R-squared:  0.2282,    Adjusted R-squared:  0.2281 \nF-statistic:  1478 on 1 and 4998 DF,  p-value: &lt; 2.2e-16"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#interpreting-the-coefficients",
     "href": "lectures/02-lecture-slides.html#interpreting-the-coefficients",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Interpreting the Coefficients",
     "text": "Interpreting the Coefficients"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#residuals",
     "href": "lectures/02-lecture-slides.html#residuals",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Residuals",
     "text": "Residuals"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#residual-analysis",
     "href": "lectures/02-lecture-slides.html#residual-analysis",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Residual Analysis",
     "text": "Residual Analysis"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#variance-explained",
     "href": "lectures/02-lecture-slides.html#variance-explained",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "Variance Explained",
     "text": "Variance Explained"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#r2",
     "href": "lectures/02-lecture-slides.html#r2",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "R2",
     "text": "R2"
   },
   {
     "objectID": "lectures/02-lecture-slides.html#m",
     "href": "lectures/02-lecture-slides.html#m",
-    "title": "Correlation, Covariation, & Simple Regression",
+    "title": "An Introduction to Simple Regression",
     "section": "M",
-    "text": "M\n\nscale_val &lt;- 2\nmod_summ &lt;- summary(mod)\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(x = y, y = x)\n) + \n  ggplot2::geom_jitter(\n    color = plot_color,\n    width = 1,\n    height = 0\n  ) + \n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 1)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 1,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 2)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 2,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 3)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 3,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 4)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 4,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 5)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 5,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 6)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 6,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  geom_norm_density(\n    mean = predict(mod, data.frame(x = 7)),\n    sd = mod_summ$sigma,\n    scale = scale_val,\n    fun = scaled_dnorm,\n    y_offset = 7,\n    color = plot_color,\n    fill = plot_fill,\n    alpha = plot_alpha\n  ) +\n  ggplot2::coord_flip() + \n  ggplot2::geom_line(\n    data = data.frame(x = 0:8, y = predict(mod, data.frame(x = 0:8))),\n    color = plot_color,\n    lwd = 1.5\n  ) + \n  ggplot2::geom_point(\n    data = data.frame(x = 1:7, y = predict(mod, data.frame(x = 1:7))),\n    size = 4,\n    shape = \"circle\",\n    group = 1,\n    color = plot_fill,\n    fill = plot_color\n  ) +\n  lecture_ggplot_theme_barplot"
+    "text": "M"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#using-the-slope-of-a-line-to-measure-linear-dependence",
+    "href": "lectures/02-lecture-slides.html#using-the-slope-of-a-line-to-measure-linear-dependence",
+    "title": "An Introduction to Simple Regression",
+    "section": "Using the Slope of a Line to Measure Linear Dependence",
+    "text": "Using the Slope of a Line to Measure Linear Dependence\n\\[Y = \\beta_{0}+\\beta_{1}X_{1}+\\epsilon\\]\n\\(\\beta_{0}\\): The intercept of the line\n\\(\\beta_{1}\\): The slope of the line\n\\(\\epsilon\\): Error"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#which-line-to-choose",
+    "href": "lectures/02-lecture-slides.html#which-line-to-choose",
+    "title": "An Introduction to Simple Regression",
+    "section": "Which Line to Choose?",
+    "text": "Which Line to Choose?\nWe could, however, choose many different lines. How do we determine what the “best” line is? First, we have to define exactly what we mean by “best.”"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#quick-review-of-terminology",
+    "href": "lectures/02-lecture-slides.html#quick-review-of-terminology",
+    "title": "An Introduction to Simple Regression",
+    "section": "Quick Review of Terminology",
+    "text": "Quick Review of Terminology\n\nMean of X: \\(\\overline{X}\\) or \\(E[X]\\)\nVariance of X: \\(\\sigma^{2}_{x}\\) or \\(Var(X)\\)\nStandard Deviation of X: \\(\\sigma_{x}\\) or \\(S_{X}\\)\nCovariance of X & Y: \\(Cov(XY)\\)\nCorrelation of X & Y: \\(r_{xy}\\)\nPopulation Parameter: \\(\\beta\\) or any other Greek letter\nPopulation Estimate: \\(\\hat{\\beta}\\)"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-statistics",
+    "href": "lectures/02-lecture-slides.html#conditional-statistics",
+    "title": "An Introduction to Simple Regression",
+    "section": "Conditional Statistics",
+    "text": "Conditional Statistics\nConditional statistics are statistics computed from conditional distributions. The characteristics of a distribution (mean, variance, etc.) can change based on the values of another variable.\nLinear regression models are largely concerned with two conditional statistics:\n\nConditional Mean (or Expectation): \\(E[Y|X]\\)\nConditional Variance: \\(\\sigma^2_{Y|X}\\)"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-statistics-visualized",
+    "href": "lectures/02-lecture-slides.html#conditional-statistics-visualized",
+    "title": "An Introduction to Simple Regression",
+    "section": "Conditional Statistics Visualized",
+    "text": "Conditional Statistics Visualized"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#conditional-mean-dependence",
+    "href": "lectures/02-lecture-slides.html#conditional-mean-dependence",
+    "title": "An Introduction to Simple Regression",
+    "section": "Conditional Mean Dependence",
+    "text": "Conditional Mean Dependence"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#modeling-mean-dependence",
+    "href": "lectures/02-lecture-slides.html#modeling-mean-dependence",
+    "title": "An Introduction to Simple Regression",
+    "section": "Modeling Mean Dependence",
+    "text": "Modeling Mean Dependence\nIn statistics, we are mostly interested in modeling mean dependence—this is why statistics has been referred to as “the science of averages.”\nEvery statistical model we will use in this class is ultimately trying to find a function that best describes how the mean of some variable Y changes across the values of some set of variables, X.\n\\[E[Y|X] = f(X)\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#visualizing-mean-dependence",
+    "href": "lectures/02-lecture-slides.html#visualizing-mean-dependence",
+    "title": "An Introduction to Simple Regression",
+    "section": "Visualizing Mean Dependence",
+    "text": "Visualizing Mean Dependence"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#measuring-mean-dependence-with-covariance-correlation",
+    "href": "lectures/02-lecture-slides.html#measuring-mean-dependence-with-covariance-correlation",
+    "title": "An Introduction to Simple Regression",
+    "section": "Measuring Mean Dependence with Covariance & Correlation",
+    "text": "Measuring Mean Dependence with Covariance & Correlation\nTwo of the most basic measures of the linear mean dependence between two variables are the covariance and correlation:\n\\[Cov(X, Y)=\\frac{\\Sigma{(X - \\overline{X})(Y-\\overline{Y})}}{N}\\] \\[r_{XY}=\\frac{Cov(X,Y)}{S_{X}S_{Y}}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#measuring-mean-dependence-with-a-linear-function-a-line",
+    "href": "lectures/02-lecture-slides.html#measuring-mean-dependence-with-a-linear-function-a-line",
+    "title": "An Introduction to Simple Regression",
+    "section": "Measuring Mean Dependence with a Linear Function (a Line)",
+    "text": "Measuring Mean Dependence with a Linear Function (a Line)\nA different, but related way, to measure mean dependence is to choose a linear function (a line) to describe how the mean of \\(Y\\) changes across values of \\(X\\).\n\\[E[Y|X] = \\beta_{0}+\\beta_{1}X_{1}\\]\n\\(\\beta_{0}\\): The intercept of the line\n\\(\\beta_{1}\\): The slope of the line, which is a measure of linear mean dependence"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#the-simple-regression-model",
+    "href": "lectures/02-lecture-slides.html#the-simple-regression-model",
+    "title": "An Introduction to Simple Regression",
+    "section": "The Simple Regression Model",
+    "text": "The Simple Regression Model\nThe simple regression model is just a linear regression model with one independent variable.\n\\[Y=\\beta_0+\\beta_1X_1+\\epsilon\\]\n\n\\(\\beta_0\\): The expected value (mean) of Y when X = 0.\n\\(\\beta_1\\): The average change in Y for a one-unit increase in X.\n\\(\\epsilon\\): Variation in Y that is not explained by our model—unexplained variance."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#estimating-the-regression-coefficients",
+    "href": "lectures/02-lecture-slides.html#estimating-the-regression-coefficients",
+    "title": "An Introduction to Simple Regression",
+    "section": "Estimating the Regression Coefficients",
+    "text": "Estimating the Regression Coefficients\nWe will never know the population values of the regression coefficients (\\(\\beta_0\\) & \\(\\beta_1\\)), but we can use our data to estimate them:\n\\[\\hat{\\beta}_1=\\frac{Cov(X,Y)}{Var(X)}\\]\n\\[\\hat{\\beta}_0=\\overline{Y}-\\hat{\\beta}_1\\overline{X}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#what-is-a-statistical-model",
+    "href": "lectures/02-lecture-slides.html#what-is-a-statistical-model",
+    "title": "An Introduction to Simple Regression",
+    "section": "What is a Statistical Model?",
+    "text": "What is a Statistical Model?\nA statistical model is an approximation of some random process that uses probability theory and other mathematical tools to describe the process.\nIn your own research, you will likely rely on theory to develop your own statistical models."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#example-hypothesis",
+    "href": "lectures/02-lecture-slides.html#example-hypothesis",
+    "title": "An Introduction to Simple Regression",
+    "section": "Example Hypothesis",
+    "text": "Example Hypothesis\nYour organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates.\nYou have been asked to understand if an employee’s general attitude toward AI is related to how frequently they are using the new AI tool using two survey questions:\n\nMuch of society will benefit from a future full of Artificial Intelligence.\nIn the past two months, how frequently have you used the organization’s new AI powered chat bot?"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#view-our-dataset",
+    "href": "lectures/02-lecture-slides.html#view-our-dataset",
+    "title": "An Introduction to Simple Regression",
+    "section": "View our Dataset",
+    "text": "View our Dataset\n\ndata_ai |&gt;\n  dplyr::select(\n    pos_attitude_ai:freq_use_ai_label\n  )\n\n# A tibble: 5,000 × 4\n   pos_attitude_ai freq_use_ai pos_attitude_ai_label freq_use_ai_label\n             &lt;int&gt;       &lt;dbl&gt; &lt;chr&gt;                 &lt;chr&gt;            \n 1               4           4 Neutral               Fairly Often     \n 2               6           6 Strongly Agree        All the time     \n 3               7           3 Completely Agree      Occasionally     \n 4               7           6 Completely Agree      All the time     \n 5               4           3 Neutral               Occasionally     \n 6               5           4 Agree                 Fairly Often     \n 7               5           6 Agree                 All the time     \n 8               3           4 Disagree              Fairly Often     \n 9               3           5 Disagree              Very Often       \n10               4           4 Neutral               Fairly Often     \n# ℹ 4,990 more rows"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#visualizing-the-relationship-between-two-variables",
+    "href": "lectures/02-lecture-slides.html#visualizing-the-relationship-between-two-variables",
+    "title": "An Introduction to Simple Regression",
+    "section": "Visualizing the Relationship Between Two Variables",
+    "text": "Visualizing the Relationship Between Two Variables\nWe can use a scatter plot to visually explore the relationship between our two variables. Why does it look so odd?"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#partitioning-variance",
+    "href": "lectures/02-lecture-slides.html#partitioning-variance",
+    "title": "An Introduction to Simple Regression",
+    "section": "Partitioning Variance",
+    "text": "Partitioning Variance\n\\[(Y - \\overline{Y})^2=(Y - \\hat{Y})^2 + (\\hat{Y}-\\overline{Y})^2\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#r-squared-variance-explained",
+    "href": "lectures/02-lecture-slides.html#r-squared-variance-explained",
+    "title": "An Introduction to Simple Regression",
+    "section": "R-Squared: Variance Explained",
+    "text": "R-Squared: Variance Explained"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#exploring-our-data",
+    "href": "lectures/02-lecture-slides.html#exploring-our-data",
+    "title": "An Introduction to Simple Regression",
+    "section": "Exploring our Data",
+    "text": "Exploring our Data"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#interpreting-the-coefficients-as-group-comparisons",
+    "href": "lectures/02-lecture-slides.html#interpreting-the-coefficients-as-group-comparisons",
+    "title": "An Introduction to Simple Regression",
+    "section": "Interpreting the Coefficients as Group Comparisons",
+    "text": "Interpreting the Coefficients as Group Comparisons\nThe most appropriate way to interpret the slope coefficient (\\(\\beta_1\\)) is as a comparison."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#interpreting-the-coefficients-of-our-model",
+    "href": "lectures/02-lecture-slides.html#interpreting-the-coefficients-of-our-model",
+    "title": "An Introduction to Simple Regression",
+    "section": "Interpreting the Coefficients of our Model",
+    "text": "Interpreting the Coefficients of our Model\nComparing employees who differ in their attidues towards AI by one point, the average difference in the frequency with which those employees use the AI tool is 0.49 points."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#interpreting-the-coefficients-as-comparisons",
+    "href": "lectures/02-lecture-slides.html#interpreting-the-coefficients-as-comparisons",
+    "title": "An Introduction to Simple Regression",
+    "section": "Interpreting the Coefficients as Comparisons",
+    "text": "Interpreting the Coefficients as Comparisons\nThe most appropriate way to interpret the slope coefficient (\\(\\beta_1\\)) is as a comparison. In our example:\nComparing employees who differ in their attitudes towards AI by one point, the average difference in the frequency with which those employees use the AI tool is 0.49 points."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#visualizing-the-comparison",
+    "href": "lectures/02-lecture-slides.html#visualizing-the-comparison",
+    "title": "An Introduction to Simple Regression",
+    "section": "Visualizing the Comparison",
+    "text": "Visualizing the Comparison"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#regression-coefficients-the-strength-of-the-relationship",
+    "href": "lectures/02-lecture-slides.html#regression-coefficients-the-strength-of-the-relationship",
+    "title": "An Introduction to Simple Regression",
+    "section": "Regression Coefficients & the Strength of the Relationship",
+    "text": "Regression Coefficients & the Strength of the Relationship\nIt is very difficult to determine the strength of the relationship between a dependent variable, Y, and an independent variable, X, using just the regression slope, \\(\\beta_1\\).\nIt is difficult because the magnitude of \\(\\beta_1\\) depends on the scale of both the dependent and independent variable, so you can artificially change the magnitude of the slope by changing the scale of your variables."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#the-connection-between-a-correlation-and-a-regression-coefficient",
+    "href": "lectures/02-lecture-slides.html#the-connection-between-a-correlation-and-a-regression-coefficient",
+    "title": "An Introduction to Simple Regression",
+    "section": "The Connection between a Correlation and a Regression Coefficient",
+    "text": "The Connection between a Correlation and a Regression Coefficient\nYou can use the correlation between the independent and dependent variable to estimate how strongly related the two variables are.\nIn simple linear regression there is a straightforward relationship between a correlation and a regression coefficient:\n\\[r_{XY}=\\beta_1\\times\\frac{SD_X}{SD_Y}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#scaling-your-dependent-and-independent-variable",
+    "href": "lectures/02-lecture-slides.html#scaling-your-dependent-and-independent-variable",
+    "title": "An Introduction to Simple Regression",
+    "section": "Scaling your Dependent and Independent Variable",
+    "text": "Scaling your Dependent and Independent Variable\nAnother way to determine the strength of the relationship between a dependent and an indpendent variable is to scale (standardize) each variable, so that it has a mean of 0 and a SD of 1:\n\\[Z_X=\\frac{X-\\overline{X}}{SD_X}\\]\nYou can then estimate a new regression model using the scaled variables and use the magnitude of \\(\\beta_1\\) to judge the strength of the relationship between the independent and dependent variable."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#example-of-scaling-variables",
+    "href": "lectures/02-lecture-slides.html#example-of-scaling-variables",
+    "title": "An Introduction to Simple Regression",
+    "section": "Example of Scaling Variables",
+    "text": "Example of Scaling Variables\n\ndata_ai &lt;-\n  data_ai |&gt;\n  dplyr::mutate(\n    pos_attitude_ai_scale = (pos_attitude_ai - mean(pos_attitude_ai)) / sd(pos_attitude_ai),\n    freq_use_ai_scale = scale(freq_use_ai)[,1]\n  )\n\nmod_scale &lt;- lm(freq_use_ai_scale ~ pos_attitude_ai_scale, data_ai)\nmod_scale$coefficients |&gt; round(2)\n\n          (Intercept) pos_attitude_ai_scale \n                 0.00                  0.48 \n\ncor(data_ai$pos_attitude_ai, data_ai$freq_use_ai) |&gt; round(2)\n\n[1] 0.48"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#measuring-strength-with-correlation-coefficient",
+    "href": "lectures/02-lecture-slides.html#measuring-strength-with-correlation-coefficient",
+    "title": "An Introduction to Simple Regression",
+    "section": "Measuring Strength with Correlation Coefficient",
+    "text": "Measuring Strength with Correlation Coefficient\nYou can use the correlation between the independent and dependent variable to estimate how strongly related the two variables are.\nIn simple linear regression there is a straightforward relationship between a correlation and a regression coefficient:\n\\[r_{XY}=\\beta_1\\times\\frac{SD_X}{SD_Y}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#measuring-strength-with-scaled-variables",
+    "href": "lectures/02-lecture-slides.html#measuring-strength-with-scaled-variables",
+    "title": "An Introduction to Simple Regression",
+    "section": "Measuring Strength with Scaled Variables",
+    "text": "Measuring Strength with Scaled Variables\nIf you can estimate a regression model using the scaled (standardized) independent and dependent variables, then you can use the magnitude of \\(\\beta_1\\) to judge the strength of the relationship between the independent and dependent variable.\nScaling or standardizing a variable transforms the mean of the variable to 0 and its variance and SD to 1:\n\\[\\text{Scaled X = }Z_X=\\frac{X-\\overline{X}}{SD_X}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#the-two-approaches-will-lead-to-the-same-answer",
+    "href": "lectures/02-lecture-slides.html#the-two-approaches-will-lead-to-the-same-answer",
+    "title": "An Introduction to Simple Regression",
+    "section": "The Two Approaches will Lead to the Same Answer",
+    "text": "The Two Approaches will Lead to the Same Answer\n\ndata_ai &lt;-\n  data_ai |&gt;\n  dplyr::mutate(\n    pos_attitude_ai_scale = (pos_attitude_ai - mean(pos_attitude_ai)) / sd(pos_attitude_ai),\n    freq_use_ai_scale = scale(freq_use_ai)[,1]\n  )\n\nmod_scale &lt;- lm(freq_use_ai_scale ~ pos_attitude_ai_scale, data_ai)\nreg_coef &lt;- mod_scale$coefficients[2] |&gt; round(2)\ncor_coef &lt;- cor(data_ai$pos_attitude_ai, data_ai$freq_use_ai) |&gt; round(2)\ntibble::tibble(`Reg. Coef.` = reg_coef, `Corr. Coef` = cor_coef)\n\n# A tibble: 1 × 2\n  `Reg. Coef.` `Corr. Coef`\n         &lt;dbl&gt;        &lt;dbl&gt;\n1         0.48         0.48"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html",
+    "href": "lectures/02-lecture-slides.html",
+    "title": "An Introduction to Simple Regression",
+    "section": "",
+    "text": "Talk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 5 minutes\nR Introduction / Hands-on coding for 40 mins (6:20 PM - 7:00 PM ET)"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#how-well-does-your-model-fit",
+    "href": "lectures/02-lecture-slides.html#how-well-does-your-model-fit",
+    "title": "An Introduction to Simple Regression",
+    "section": "How Well Does Your Model Fit?",
+    "text": "How Well Does Your Model Fit?\nYou will often want to determine how well your model fits your data—how well does your model predict your observed outcome, Y.\nTo determine this, we will partition our observed outcome into three additive pieces:\n\\[Y_{i} = \\underbrace{\\overline{Y}}_\\text{Mean Component}+\\underbrace{(\\hat{Y}_{i}-\\overline{Y})}_\\text{Model Component}+\\underbrace{(Y_{i} - \\hat{Y}_{i})}_\\text{Error Component}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#partitioning-our-observed-score-variance",
+    "href": "lectures/02-lecture-slides.html#partitioning-our-observed-score-variance",
+    "title": "An Introduction to Simple Regression",
+    "section": "Partitioning our Observed Score Variance",
+    "text": "Partitioning our Observed Score Variance\nWe can use the model and error components to summarize the variability in our outcome by partitioning it into variability because of our model and variability because of error and other unexplained causes.\n\\[\\underbrace{\\Sigma(Y_{i}-\\overline{Y})^2}_\\text{Total SS}=\\underbrace{\\Sigma(\\hat{Y}_i-\\overline{Y})^2}_\\text{SS Model}+\\underbrace{\\Sigma(Y_i-\\hat{Y}_i)}_\\text{SS Error}\\]\n\\[\\hat{\\sigma}^2_Y=\\hat{\\sigma}^2_{model}+\\hat{\\sigma}^2_{error}\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#measuring-model-fit-with-r-squared",
+    "href": "lectures/02-lecture-slides.html#measuring-model-fit-with-r-squared",
+    "title": "An Introduction to Simple Regression",
+    "section": "Measuring Model Fit with R-Squared",
+    "text": "Measuring Model Fit with R-Squared\nUsing partitioned variance we can compute a statistic, \\(R^2\\), that tells us how well your model fits your data overall.\n\\[R^2 = \\frac{\\hat{\\sigma}^2_{model}}{\\hat{\\sigma}^2_{Y}}=1-\\frac{\\hat{\\sigma}^2_{error}}{\\hat{\\sigma}^2_Y} \\]\nYou can interpret \\(R^2\\) as the proportion of variance in your observed outcome that is explained by your model."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#r-squared-in-our-example",
+    "href": "lectures/02-lecture-slides.html#r-squared-in-our-example",
+    "title": "An Introduction to Simple Regression",
+    "section": "R-Squared In Our Example",
+    "text": "R-Squared In Our Example\n23% of the variance in the frequency with which the sales representatives use the new AI tool can be explained by their general attitudes toward AI.\n\nsummary(mod_ai)\n\n\nCall:\nlm(formula = freq_use_ai ~ pos_attitude_ai, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.9683 -1.0050  0.0072  1.0317  3.9950 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      1.51112    0.05575   27.11   &lt;2e-16 ***\npos_attitude_ai  0.49388    0.01285   38.45   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.483 on 4998 degrees of freedom\nMultiple R-squared:  0.2282,    Adjusted R-squared:  0.2281 \nF-statistic:  1478 on 1 and 4998 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#looking-at-the-model-component",
+    "href": "lectures/02-lecture-slides.html#looking-at-the-model-component",
+    "title": "An Introduction to Simple Regression",
+    "section": "Looking at the Model Component",
+    "text": "Looking at the Model Component\nThe model component tells us if our model is better able to predict our outcome than its own mean.\nIf we take a closer look at this component, what happens to it as \\(\\hat{\\beta}_1\\) becomes a perfect predictor of Y? Decreases to 0?\n\\[\\hat{Y}_{i}-\\overline{Y}\\\\=\\hat{\\beta}_0+\\hat{\\beta}_1X_{i}-\\overline{Y}\\\\=\\overline{Y}-\\hat{\\beta}_1\\overline{X}+\\hat{\\beta}_{1}X_{i}-\\overline{Y}\\\\=\\hat{\\beta}_{1}(X_{i}-\\overline{X})\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#looking-at-the-error-component",
+    "href": "lectures/02-lecture-slides.html#looking-at-the-error-component",
+    "title": "An Introduction to Simple Regression",
+    "section": "Looking at the Error Component",
+    "text": "Looking at the Error Component\nThe error component or residual plays an important role in linear regression. It tell us the extent to which our model is able to predict our outcome.\nIf we take a closer look at this component, what happens to it as \\(\\hat{\\beta}_1\\) becomes a perfect predictor of Y? Decreases to 0?\n\\[Y_{i}-\\hat{Y}_i\\\\=Y_{i}-\\hat{\\beta}_0-\\hat{\\beta}_1X_{i}\\\\=Y_{i}-\\overline{Y}-\\hat{\\beta}_{1}(X_{i}-\\overline{X})\\]"
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#is-your-effect-significant",
+    "href": "lectures/02-lecture-slides.html#is-your-effect-significant",
+    "title": "An Introduction to Simple Regression",
+    "section": "Is Your Effect Significant?",
+    "text": "Is Your Effect Significant?\nOften researchers determine the significance of their coefficients by comparing the coefficients to a null distribution with a mean of 0.\nThe p-value tells you the probability of seeing an estimate equal to or greater than the absolute value of your estimate given that the true effect is 0.\n\n\n# A tibble: 2 × 5\n  term            estimate std.error statistic   p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)         1.51      0.06      27.1 4.39e-151\n2 pos_attitude_ai     0.49      0.01      38.4 1.56e-283"
   }
 ]
