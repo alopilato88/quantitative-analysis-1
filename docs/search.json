@@ -2147,5 +2147,12 @@
     "title": "An Introduction to Simple Regression",
     "section": "Is Your Effect Significant?",
     "text": "Is Your Effect Significant?\nOften researchers determine the significance of their coefficients by comparing the coefficients to a null distribution with a mean of 0.\nThe p-value tells you the probability of seeing an estimate equal to or greater than the absolute value of your estimate given that the true effect is 0.\n\n\n# A tibble: 2 × 5\n  term            estimate std.error statistic   p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)         1.51      0.06      27.1 4.39e-151\n2 pos_attitude_ai     0.49      0.01      38.4 1.56e-283"
+  },
+  {
+    "objectID": "lectures/02-lecture-page.html#lecture-introduction-to-simple-regression",
+    "href": "lectures/02-lecture-page.html#lecture-introduction-to-simple-regression",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Introduction to Simple Regression",
+    "text": "Lecture: Introduction to Simple Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
   }
 ]

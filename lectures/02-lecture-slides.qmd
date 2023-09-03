@@ -1,0 +1,957 @@
+---
+title: "An Introduction to Simple Regression"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+
+```
+
+## Schedule for Today
+
+* Talk about stats for ~75 mins (5 PM - 6:15 PM ET)
+* Break for 5 minutes 
+* R Introduction / Hands-on coding for 40 mins (6:20 PM - 7:00 PM ET)
+
+## Overview 
+
+* A quick review of last week
+* Overview of conditional distributions & statistics
+* Introduction to Simple Regression 
+* R Intro
+
+## Goals
+
+* Develop an understanding of simple regression
+* Write your first R script 
+
+## Quick Review of Terminology
+
+* **Mean of X**: $\overline{X}$ or $E[X]$
+* **Variance of X**: $\sigma^{2}_{x}$ or $Var(X)$
+* **Standard Deviation of X**: $\sigma_{x}$ or $S_{X}$
+* **Covariance of X & Y**: $Cov(XY)$
+* **Correlation of X & Y**: $r_{xy}$
+* **Population Parameter**: $\beta$ or any other Greek letter
+* **Population Estimate**: $\hat{\beta}$
+
+## What is a Statistical Model? 
+
+A statistical model is an approximation of some random process that uses probability theory and other mathematical tools to describe the process. 
+
+In your own research, you will likely rely on theory to develop your own statistical models. 
+
+## Why Do Re Care About Statistical Modeling?
+
+In research and practice, you will likely come up with questions or hypotheses of the form: 
+
+<br>
+<center>"Are changes in Variable X associated with changes in Variable Y?" You will collect relevant data to answer this question and then...what?</center> 
+<br>
+
+We can apply the models we will talk about in class to our data in order to **empirically** test our hypotheses (or answer our questions). These models allow us to make data-driven evaluations of our theories.   
+
+## Example Hypothesis 
+
+Your organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates. 
+
+You have been asked to understand if an employee's general attitude toward AI is related to how frequently they are using the new AI tool using two survey questions: 
+
+* **Much of society will benefit from a future full of Artificial Intelligence.**
+
+* **In the past two months, how frequently have you used the organization's new AI powered chat bot?** 
+
+## View our Dataset
+
+```{r}
+#| echo: false
+set.seed(4352)
+
+plot_alpha <- .50
+plot_fill <- "#3F72AF"
+plot_color <- "#112D4E"
+plot_xlim <- c(-18, 18)
+
+n <- 5000
+x_prob <- dnorm(1:7, mean = 4, sd = 2) / sum(dnorm(1:7, mean = 5, sd = 1))
+x <- sample(1:7, n, replace = TRUE, prob = x_prob)
+b <- .35
+var_xb <- var(x*b)
+std_error <- sqrt(1)
+y_latent <- b*x  + rnorm(n, sd = std_error)
+
+data <- 
+  tibble::tibble(
+    x = x,
+    y_latent = y_latent
+  ) |>
+  dplyr::mutate(
+    # y = dplyr::case_when(
+    #   y_latent < qnorm(.14, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 1,
+    #   y_latent < qnorm(.28, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 2,
+    #   y_latent < qnorm(.42, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 3,
+    #   y_latent < qnorm(.56, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 4,
+    #   y_latent < qnorm(.70, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 5,
+    #   y_latent < qnorm(.84, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 6,
+    #   TRUE ~ 7
+    # ),
+    y = dplyr::case_when(
+      y_latent < qnorm(.17, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 1,
+      y_latent < qnorm(.33, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 2,
+      y_latent < qnorm(.50, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 3,
+      y_latent < qnorm(.67, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 4,
+      y_latent < qnorm(.84, mean = mean(y_latent), sd = sqrt(var_xb + std_error^2)) ~ 5,
+      TRUE ~ 6
+    )
+  )
+
+mod <- lm(y ~ x, data = data)
+
+data <- 
+  data |>
+  dplyr::mutate(
+    y_cond_mean = predict(mod, data = x)
+  )
+
+data_ai <- 
+  data |>
+  dplyr::select(
+    pos_attitude_ai = x,
+    freq_use_ai = y
+  ) |>
+  dplyr::mutate(
+    employee_id = sample(100000:999999, n, replace = FALSE),
+    employee_id = as.factor(employee_id),
+    pos_attitude_ai_label = dplyr::case_when(
+      pos_attitude_ai == 1 ~ "Completely Disagree",
+      pos_attitude_ai == 2 ~ "Strongly Disagree",
+      pos_attitude_ai == 3 ~ "Disagree",
+      pos_attitude_ai == 4 ~ "Neutral",
+      pos_attitude_ai == 5 ~ "Agree",
+      pos_attitude_ai == 6 ~ "Strongly Agree",
+      pos_attitude_ai == 7 ~ "Completely Agree",
+    ),
+    freq_use_ai_label = dplyr::case_when(
+      freq_use_ai == 1 ~ "Never",
+      freq_use_ai == 2 ~ "Rarely",
+      freq_use_ai == 3 ~ "Occasionally",
+      freq_use_ai == 4 ~ "Fairly Often",
+      freq_use_ai == 5 ~ "Very Often",
+      freq_use_ai == 6 ~ "All the time"
+    )
+  ) |>
+  dplyr::relocate(
+    employee_id
+  )
+```
+
+```{r}
+data_ai |>
+  dplyr::select(
+    pos_attitude_ai:freq_use_ai_label
+  )
+```
+
+## Exploring our Data
+
+```{r}
+#| echo: false
+#| fig-align: center
+plot_explore_att <- 
+  ggplot2::ggplot(
+    data = data_ai |>
+      dplyr::mutate(
+        x_label = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+      ) |>
+      dplyr::summarize(
+        count = dplyr::n(),
+        .by = x_label
+      ) |>
+      dplyr::mutate(
+        total = sum(count),
+        prop = round(count / total, 2),
+        per = 100 * prop
+      ),
+    ggplot2::aes(
+      x = x_label,
+      y = per
+    )
+  ) +
+  geom_bar(
+    stat = "identity",
+    fill = plot_fill,
+    color = plot_color
+  ) + 
+  ggplot2::ylim(0, 40) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "General Attitude Towards AI",
+    y = "Response Percentage",
+    title = "Response Distribution for General Attitude Towards AI"
+  ) + 
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  )
+
+plot_explore_freq <- 
+  ggplot2::ggplot(
+    data = data_ai |>
+      dplyr::mutate(
+        y_label = paste0(freq_use_ai, " - ", freq_use_ai_label)
+      ) |>
+      dplyr::summarize(
+        count = dplyr::n(),
+        .by = y_label
+      ) |>
+      dplyr::mutate(
+        total = sum(count),
+        prop = round(count / total, 2),
+        per = 100 * prop
+      ),
+    ggplot2::aes(
+      x = y_label,
+      y = per
+    )
+  ) +
+  geom_bar(
+    stat = "identity",
+    fill = plot_fill,
+    color = plot_color
+  ) + 
+  ggplot2::ylim(0, 30) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "Frequency of AI Tool Use",
+    y = "Response Percentage",
+    title = "Response Distribution for Frequency of AI Tool Use"
+  ) + 
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  )
+
+patchwork_explore_data <- plot_explore_att | plot_explore_freq
+patchwork_explore_data & lecture_ggplot_theme_barplot
+```
+
+## Visualizing the Relationship Between Two Variables
+
+We can use a scatter plot to visually explore the relationship between our two variables. Why does it look so odd?
+
+```{r}
+#| echo: false
+#| fig-align: center
+plot_scatter <- 
+  ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = as.factor(x),
+    y = y
+  )
+) + 
+  ggplot2::geom_point(
+    fill = plot_color,
+    color = plot_fill
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "General AI Attitude",
+    y = "Frequency of AI Tool Use"
+  )
+
+plot_scatter
+```
+
+## Improving our Scatter Plot 
+
+We can use an R function called `geom_jitter` to add a bit of random noise to each of our data points, which improves the usefulness of scatter plots when working with discrete data like survey responses.
+
+```{r}
+#| echo: false
+#| fig-align: center
+plot_jitter_1 <- 
+  ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      scale_x = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(pos_attitude_ai),
+    y = freq_use_ai
+  )
+) + 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = 0,
+    height = .5,
+    alpha = .50
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "General AI Attitude",
+    y = "Frequency of AI Tool Use"
+  )
+
+plot_jitter_2 <- 
+  ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      scale_x = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(pos_attitude_ai),
+    y = freq_use_ai
+  )
+) + 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = .4,
+    height = .6,
+    alpha = .50
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "General AI Attitude",
+    y = "Frequency of AI Tool Use"
+  )
+
+plot_jitter_3 <- 
+  ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      scale_x = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(pos_attitude_ai),
+    y = freq_use_ai
+  )
+) + 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = .8,
+    height = .8,
+    alpha = .50
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "General AI Attitude",
+    y = "Frequency of AI Tool Use"
+  )
+
+jitter_arrange <- (plot_jitter_1 | plot_jitter_2 | plot_jitter_3)
+jitter_arrange & lecture_ggplot_theme_barplot
+
+```
+
+## Conditional Distributions
+
+Conditional distributions are distributions of one variable, Y, conditional (fixed) on a value of one or more additional variables.
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_cond_dist <- 
+  data |>
+  dplyr::summarize(
+    count = dplyr::n(),
+    .by = c(x, y)
+  ) |>
+  dplyr::group_by(
+    x
+  ) |>
+  dplyr::mutate(
+    total = sum(count),
+    prop = count / total,
+    prop = round(prop, 2),
+    per = 100 * prop,
+    x = factor(x, levels = c(1:7))
+  )
+
+ggplot2::ggplot(
+  data = data_cond_dist |>
+    dplyr::mutate(
+      x_label = dplyr::case_when(
+        x == 1 ~ "1 - Completely Disagree",
+        x == 2 ~ "2 - Strongly Disagree",
+        x == 3 ~ "3 - Disagree",
+        x == 4 ~ "4 - Neutral",
+        x == 5 ~ "5 - Agree",
+        x == 6 ~ "6 - Strongly Agree",
+        TRUE ~ "Completely Agree"
+      )
+    ),
+  ggplot2::aes(
+    x = as.factor(y),
+    y = per
+  )
+) + 
+  ggplot2::facet_wrap(x_label ~ .) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = plot_color,
+    fill = plot_fill
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "Frequency of AI Tool Use",
+    y = "Response Percentage"
+  )
+```
+
+## Conditional Statistics 
+
+Conditional statistics are statistics computed from conditional distributions. The characteristics of a distribution (mean, variance, etc.) can change based on the values of another variable. 
+
+Linear regression models are largely concerned with two conditional statistics:
+
+* **Conditional Mean (or Expectation)**: $E[Y|X]$
+* **Conditional Variance**: $\sigma^2_{Y|X}$
+
+## Conditional Statistics Visualized 
+
+```{r}
+#| echo: false 
+#| fig-align: center
+set.seed(987)
+
+x <- rep(0:1, each = 500)
+y_cond_mean <- 10*x + rnorm(length(x), mean = 0, sd = sqrt(5))
+y_cond_var <- rnorm(length(x), mean = 0, sd = sqrt(5)) + rnorm(length(x), mean = 0, sd = sqrt(10*x))
+
+text_cond_mean <- 
+  data.frame(
+    group = c(0, 1),
+    x_coord = c(10, 0),
+    y_coord = c(40, 40),
+    mean = c(
+      round(mean(y_cond_mean[x == 0]), 2),
+      round(mean(y_cond_mean[x == 1]), 2)
+    ),
+    label = c(
+      paste0("Mean = ", round(mean(y_cond_mean[x == 0]), 2)),
+      paste0("Mean = ", round(mean(y_cond_mean[x == 1]), 2))       
+    )
+  )
+
+text_cond_var <- 
+  data.frame(
+    group = c(0, 1),
+    x_coord = c(-10, -10),
+    y_coord = c(40, 40),
+    label = c(
+      paste0("Var. = ", round(var(y_cond_var[x == 0]), 2)),
+      paste0("Var. = ", round(var(y_cond_var[x == 1]), 2))       
+    )
+  )
+
+plot_cond_mean <- 
+  ggplot2::ggplot(
+  data = data.frame(group = x, y_cond_mean),
+  ggplot2::aes(
+    x = y_cond_mean
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 50,
+    color = plot_color,
+    fill = plot_fill
+  ) + 
+  ggplot2::facet_grid(
+    group ~ .
+  ) +
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Outcome (Dependent) Variable",
+    y = "Count",
+    title = "Differences in Conditional Mean"
+  ) + 
+  ggplot2::geom_text(
+    data = text_cond_mean,
+    ggplot2::aes(
+      x = x_coord,
+      y = y_coord,
+      label = label
+    )
+  ) 
+
+plot_cond_var <- 
+  ggplot2::ggplot(
+  data = data.frame(group = x, y_cond_var),
+  ggplot2::aes(
+    x = y_cond_var
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 50,
+    color = plot_color,
+    fill = plot_fill
+  ) + 
+  ggplot2::facet_grid(
+    group ~ .
+  ) +
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Outcome (Dependent) Variable",
+    y = "Count",
+    title = "Differences in Conditional Variance"
+  ) + 
+  ggplot2::geom_text(
+    data = text_cond_var,
+    ggplot2::aes(
+      x = x_coord,
+      y = y_coord,
+      label = label
+    )
+  ) 
+
+patchwork_cond_stat <- plot_cond_mean | plot_cond_var
+patchwork_cond_stat & lecture_ggplot_theme_barplot
+```
+
+## Modeling Mean Dependence 
+
+In statistics, we are mostly interested in modeling **mean dependence**---this is why statistics has been referred to as "the science of averages." 
+
+Every statistical model we will use in this class is ultimately trying to find a function that best describes how the **mean of some variable Y changes across the values of some set of variables, X**.
+
+$$E[Y|X] = f(X)$$
+
+## Visualizing Mean Dependence
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_mean_plot <- 
+  data_ai |>
+  dplyr::summarize(
+    y_mean = mean(freq_use_ai),
+    .by = pos_attitude_ai
+  )
+
+plot_jitter_mean <- 
+  ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      x_label = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(x_label),
+    y = freq_use_ai
+  )
+) + 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = .4,
+    height = .6,
+    alpha = .50
+  )  + 
+  ggplot2::geom_point(
+    data = data_mean_plot,
+    ggplot2::aes(
+      x = pos_attitude_ai, 
+      y = y_mean
+    ),
+    fill = plot_color,
+    size = 5
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  ) +
+  ggplot2::labs(
+    x = "Frequency of AI Tool Use",
+    y = "Response Percentage"
+  )
+
+
+plot_jitter_mean
+```
+
+## Measuring Mean Dependence with Covariance & Correlation
+
+Two of the most basic measures of the linear mean dependence between two variables are the **covariance** and **correlation**: 
+
+$$Cov(X, Y)=\frac{\Sigma{(X - \overline{X})(Y-\overline{Y})}}{N}$$
+$$r_{XY}=\frac{Cov(X,Y)}{S_{X}S_{Y}}$$
+
+## Measuring Mean Dependence with a Linear Function (a Line)
+
+A different, but related way, to measure mean dependence is to choose a linear function (a line) to describe how the mean of $Y$ changes across values of $X$. 
+
+$$E[Y|X] = \beta_{0}+\beta_{1}X_{1}$$
+
+$\beta_{0}$: The intercept of the line
+
+$\beta_{1}$: The slope of the line, which is a measure of linear mean dependence
+
+## Which Line to Choose? 
+
+We could, however, choose many different lines. How do we determine what the "best" line is? First, we have to define exactly what we mean by "best." 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      x_label = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(x_label),
+    y = freq_use_ai
+  )
+)+ 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = .4,
+    height = .6,
+    alpha = .50
+  )  + 
+  ggplot2::geom_point(
+    data = data_mean_plot,
+    ggplot2::aes(
+      x = pos_attitude_ai, 
+      y = y_mean
+    ),
+    fill = plot_color,
+    size = 5
+  ) +
+  ggplot2::geom_abline(
+    intercept = 4,
+    slope = 1,
+    color = "green",
+    lwd = 2
+  ) +
+  ggplot2::geom_abline(
+    intercept = 1,
+    slope = .50,
+    color = "red",
+    lwd = 2
+  ) + 
+  ggplot2::geom_abline(
+    intercept = mean(data_ai$freq_use_ai),
+    slope = .01,
+    color = plot_color,
+    lwd = 2
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  ) +
+  ggplot2::labs(
+    x = "Frequency of AI Tool Use",
+    y = "Response Percentage"
+  )
+```
+
+## Errors of Estimate (or Prediction Errors)
+
+We say that the "best" line is the line that minimizes the **squared** distance between our outcome variable, $Y$, and what our line predicts that outcome variable to be, $\hat{Y}$, **on average**:
+
+$$SS_{error}=\Sigma(Y_{i}-\hat{Y}_{i})^2=\Sigma(e^{2}_{i})$$
+
+$$\hat{Y}_{i}=\beta_{0}+\beta_{1}X_{i}$$
+
+We call this the **sum of squared error**.  
+
+## Linear Regression: The Line that "Best" Fits your Data
+
+Linear regression is the statistical method that estimates the "best" fitting line by minimizing the sum of squared errors ($SS_{error}$).
+
+**There is no other line that will produce a smaller value of $SS_{error}$**!
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+  data = data_ai |>
+    dplyr::mutate(
+      x_label = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+    ),
+  ggplot2::aes(
+    x = as.factor(x_label),
+    y = freq_use_ai
+  )
+)+ 
+  ggplot2::geom_jitter(
+    fill = plot_color,
+    color = plot_fill,
+    width = .4,
+    height = .6,
+    alpha = .50
+  )  + 
+  ggplot2::geom_point(
+    data = data_mean_plot,
+    ggplot2::aes(
+      x = pos_attitude_ai, 
+      y = y_mean
+    ),
+    fill = plot_color,
+    size = 5
+  ) +
+  ggplot2::geom_abline(
+    intercept = mod$coefficients[1],
+    slope = mod$coefficients[2],
+    color = plot_color,
+    lwd = 2
+  ) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  ) +
+  ggplot2::labs(
+    x = "Frequency of AI Tool Use",
+    y = "Response Percentage"
+  )
+```
+
+## The Simple Regression Model 
+
+The simple regression model is just a linear regression model with **one** independent variable. 
+
+$$Y=\beta_0+\beta_1X_1+\epsilon$$
+
+* $\beta_0$: The expected value (mean) of Y when X = 0.
+* $\beta_1$: The average change in Y for a one-unit increase in X.
+* $\epsilon$: Variation in Y that is not explained by our model---unexplained variance.
+
+## Estimating the Regression Coefficients
+
+We will never know the population values of the regression coefficients ($\beta_0$ & $\beta_1$), but we can use our data to estimate them:
+
+$$\hat{\beta}_1=\frac{Cov(X,Y)}{Var(X)}$$
+
+$$\hat{\beta}_0=\overline{Y}-\hat{\beta}_1\overline{X}$$
+
+## Estimating your Model Using `lm`
+
+```{r}
+mod_ai <- lm(freq_use_ai ~ pos_attitude_ai, data = data_ai)
+mod_ai |> summary()
+```
+
+## Interpreting the Coefficients as Comparisons
+
+The most appropriate way to interpret the slope coefficient ($\beta_1$) is as a comparison. In our example: 
+
+Comparing employees who differ in their *attitudes towards AI by one point*, the *average difference in the frequency with which those employees use the AI tool* is `r round(mod_ai$coefficients[2], 2)` points.
+
+## Visualizing the Comparison
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_ai_mean <- 
+  data_ai |>
+  dplyr::summarize(
+    mean = mean(freq_use_ai),
+    .by = c(pos_attitude_ai, pos_attitude_ai_label)
+  ) |>
+  dplyr::arrange(
+    pos_attitude_ai
+  )
+
+data_ai_comp <-
+  data_ai_mean |>
+  dplyr::mutate(
+    lag_mean = dplyr::lag(
+      mean
+    ),
+    mean_dif = mean - lag_mean,
+    mean_dif = round(mean_dif, 2),
+    attitude_lag = 0:6,
+    label = paste0("AI Attitude Comparison: ", pos_attitude_ai, " - ", attitude_lag)
+  ) |>
+  dplyr::filter(
+    pos_attitude_ai != 1
+  )
+
+plot_coef_1 <- 
+  ggplot2::ggplot(
+    data = data_ai_mean |>
+      dplyr::mutate(
+        label = paste0(pos_attitude_ai, " - ", pos_attitude_ai_label)
+      ),
+    ggplot2::aes(
+      x = label,
+      y = mean
+    )
+  ) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = plot_color,
+    fill = plot_fill
+  ) + 
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = round(mean, 2)
+    ),
+    vjust = -.9,
+    fontface = "bold"
+  ) + 
+  lecture_ggplot_theme_barplot +
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  ) +
+  ggplot2::labs(
+    x = "General AI Attitude",
+    y = "Mean Response to Frequency of Use",
+    title = "Mean Response to Frequency of AI Tool Use"
+  ) + 
+  ggplot2::ylim(c(0, 7))
+
+plot_coef_2 <- 
+  ggplot2::ggplot(
+    data = data_ai_comp,
+    ggplot2::aes(
+      x = label,
+      y = mean_dif
+    )
+  ) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    color = plot_color,
+    fill = plot_fill
+  ) + 
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = mean_dif
+    ),
+    vjust = -.9,
+    fontface = "bold"
+  ) + 
+  lecture_ggplot_theme_barplot +
+  ggplot2::theme(
+    axis.text.x = element_text(angle = 90)
+  ) +
+  ggplot2::labs(
+    x = "Comparison of General AI Attitudes",
+    y = "Mean Difference in Frequency of Tool Use",
+    title = "Mean Differences in Frequency of AI Tool Use"
+  ) + 
+  ggplot2::ylim(0, .75)
+
+patchwork_coef <- plot_coef_1 | plot_coef_2
+patchwork_coef & lecture_ggplot_theme_barplot
+```
+
+## Regression Coefficients & the Strength of the Relationship
+
+It is **very difficult** to determine the strength of the relationship between a dependent variable, Y, and an independent variable, X, using just the regression slope, $\beta_1$. 
+
+It is difficult because the magnitude of $\beta_1$ depends on the scale of both the dependent and independent variable, so you can artificially change the magnitude of the slope by changing the scale of your variables. 
+
+## Measuring Strength with Correlation Coefficient
+
+You can use the correlation between the independent and dependent variable to estimate how strongly related the two variables are. 
+
+In **simple linear regression** there is a straightforward relationship between a correlation and a regression coefficient:
+
+$$r_{XY}=\beta_1\times\frac{SD_X}{SD_Y}$$
+
+## Measuring Strength with Scaled Variables
+
+If you can estimate a regression model using the scaled (standardized) independent and dependent variables, then you can use the magnitude of $\beta_1$ to judge the strength of the relationship between the independent and dependent variable. 
+
+Scaling or standardizing a variable transforms the mean of the variable to 0 and its variance and SD to 1:
+
+$$\text{Scaled X = }Z_X=\frac{X-\overline{X}}{SD_X}$$
+
+## The Two Approaches will Lead to the Same Answer
+
+```{r}
+data_ai <-
+  data_ai |>
+  dplyr::mutate(
+    pos_attitude_ai_scale = (pos_attitude_ai - mean(pos_attitude_ai)) / sd(pos_attitude_ai),
+    freq_use_ai_scale = scale(freq_use_ai)[,1]
+  )
+
+mod_scale <- lm(freq_use_ai_scale ~ pos_attitude_ai_scale, data_ai)
+reg_coef <- mod_scale$coefficients[2] |> round(2)
+cor_coef <- cor(data_ai$pos_attitude_ai, data_ai$freq_use_ai) |> round(2)
+tibble::tibble(`Reg. Coef.` = reg_coef, `Corr. Coef` = cor_coef)
+```
+
+
+## Is Your Effect Significant? 
+
+Often researchers determine the significance of their coefficients by comparing the coefficients to a null distribution with a mean of 0. 
+
+The p-value tells you the probability of seeing an estimate equal to or greater than the **absolute value** of your estimate **given that the true effect is 0**.
+
+```{r}
+#| echo: false
+broom::tidy(mod_ai) |> 
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    std.error = round(std.error, 2),
+    statistic = round(statistic, 2)
+  )
+```
+
+
+## How Well Does Your Model Fit?
+
+You will often want to determine how well your model fits your data---how well does your model predict your observed outcome, Y.
+
+To determine this, we will partition our observed outcome into three additive pieces: 
+
+$$Y_{i} = \underbrace{\overline{Y}}_\text{Mean Component}+\underbrace{(\hat{Y}_{i}-\overline{Y})}_\text{Model Component}+\underbrace{(Y_{i} - \hat{Y}_{i})}_\text{Error Component}$$
+
+## Looking at the Model Component 
+
+The **model component** tells us if our model is better able to predict our outcome than its own mean. 
+
+If we take a closer look at this component, what happens to it as $\hat{\beta}_1$ becomes a perfect predictor of Y? Decreases to 0?
+
+$$\hat{Y}_{i}-\overline{Y}\\=\hat{\beta}_0+\hat{\beta}_1X_{i}-\overline{Y}\\=\overline{Y}-\hat{\beta}_1\overline{X}+\hat{\beta}_{1}X_{i}-\overline{Y}\\=\hat{\beta}_{1}(X_{i}-\overline{X})$$
+
+## Looking at the Error Component 
+
+The **error component** or **residual** plays an important role in linear regression. It tell us the extent to which our model is able to predict our outcome. 
+
+If we take a closer look at this component, what happens to it as $\hat{\beta}_1$ becomes a perfect predictor of Y? Decreases to 0?
+
+$$Y_{i}-\hat{Y}_i\\=Y_{i}-\hat{\beta}_0-\hat{\beta}_1X_{i}\\=Y_{i}-\overline{Y}-\hat{\beta}_{1}(X_{i}-\overline{X})$$
+
+## Partitioning our Observed Score Variance
+
+We can use the model and error components to summarize the variability in our outcome by partitioning it into **variability because of our model** and **variability because of error and other unexplained causes**.
+
+$$\underbrace{\Sigma(Y_{i}-\overline{Y})^2}_\text{Total SS}=\underbrace{\Sigma(\hat{Y}_i-\overline{Y})^2}_\text{SS Model}+\underbrace{\Sigma(Y_i-\hat{Y}_i)}_\text{SS Error}$$
+
+$$\hat{\sigma}^2_Y=\hat{\sigma}^2_{model}+\hat{\sigma}^2_{error}$$
+
+## Measuring Model Fit with R-Squared
+
+Using partitioned variance we can compute a statistic, $R^2$, that tells us how well your model fits your data overall. 
+
+$$R^2 = \frac{\hat{\sigma}^2_{model}}{\hat{\sigma}^2_{Y}}=1-\frac{\hat{\sigma}^2_{error}}{\hat{\sigma}^2_Y} $$
+
+You can interpret $R^2$ as the **proportion of variance in your observed outcome that is explained by your model.**
+
+## R-Squared In Our Example
+
+`r paste0(round(summary(mod_ai)$r.squared, 2) * 100, "%")` of the variance in the frequency with which the sales representatives use the new AI tool can be explained by their general attitudes toward AI.  
+
+```{r}
+summary(mod_ai)
+```
+
