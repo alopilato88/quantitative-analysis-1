@@ -58,7 +58,7 @@ In your own research, you will likely rely on theory to develop your own statist
 In research and practice, you will likely come up with questions or hypotheses of the form: 
 
 <br>
-<center>"Are changes in Variable X associated with changes in Variable Y?" You will collect relevant data to answer this question and then...what?</center> 
+<center>"Are changes in Variable X associated with changes in Variable Y?"</center> 
 <br>
 
 We can apply the models we will talk about in class to our data in order to **empirically** test our hypotheses (or answer our questions). These models allow us to make data-driven evaluations of our theories.   
