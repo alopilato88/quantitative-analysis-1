@@ -53,7 +53,7 @@ A statistical model is an approximation of some random process that uses probabi
 
 In your own research, you will likely rely on theory to develop your own statistical models. 
 
-## Why Do Re Care About Statistical Modeling?
+## Why Do We Care About Statistical Modeling?
 
 In research and practice, you will likely come up with questions or hypotheses of the form: 
 
@@ -67,11 +67,17 @@ We can apply the models we will talk about in class to our data in order to **em
 
 Your organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates. 
 
-You have been asked to understand if an employee's general attitude toward AI is related to how frequently they are using the new AI tool using two survey questions: 
+You have been asked to understand if an employee's general positive attitude toward AI is related to how frequently they are using the new AI tool and you form the following hypothesis: 
 
-* **Much of society will benefit from a future full of Artificial Intelligence.**
+<center>An employee's general positive attitude toward AI will be positively related to the frequency with which they use the new AI tool.</center>
 
-* **In the past two months, how frequently have you used the organization's new AI powered chat bot?** 
+## Our Measures
+
+You measure positive attitudes toward AI and frequency of tool use with the following questions: 
+
+* **Much of society will benefit from a future full of Artificial Intelligence.** [Positive Attiude]
+
+* **In the past two months, how frequently have you used the organization's new AI powered chat bot?** [Frequency of Use]
 
 ## View our Dataset
 

@@ -1978,7 +1978,7 @@
     "href": "lectures/02-lecture-slides.html#example-hypothesis",
     "title": "An Introduction to Simple Regression",
     "section": "Example Hypothesis",
-    "text": "Example Hypothesis\nYour organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates.\nYou have been asked to understand if an employee’s general attitude toward AI is related to how frequently they are using the new AI tool using two survey questions:\n\nMuch of society will benefit from a future full of Artificial Intelligence.\nIn the past two months, how frequently have you used the organization’s new AI powered chat bot?"
+    "text": "Example Hypothesis\nYour organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates.\nYou have been asked to understand if an employee’s general positive attitude toward AI is related to how frequently they are using the new AI tool and you form the following hypothesis:\n\nAn employee’s general positive attitude toward AI will be positively related to the frequency with which they use the new AI tool."
   },
   {
     "objectID": "lectures/02-lecture-slides.html#view-our-dataset",
@@ -2154,5 +2154,19 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Introduction to Simple Regression",
     "text": "Lecture: Introduction to Simple Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#why-do-we-care-about-statistical-modeling",
+    "href": "lectures/02-lecture-slides.html#why-do-we-care-about-statistical-modeling",
+    "title": "An Introduction to Simple Regression",
+    "section": "Why Do We Care About Statistical Modeling?",
+    "text": "Why Do We Care About Statistical Modeling?\nIn research and practice, you will likely come up with questions or hypotheses of the form:\n\n\n“Are changes in Variable X associated with changes in Variable Y?”\n\n\nWe can apply the models we will talk about in class to our data in order to empirically test our hypotheses (or answer our questions). These models allow us to make data-driven evaluations of our theories."
+  },
+  {
+    "objectID": "lectures/02-lecture-slides.html#our-measures",
+    "href": "lectures/02-lecture-slides.html#our-measures",
+    "title": "An Introduction to Simple Regression",
+    "section": "Our Measures",
+    "text": "Our Measures\nYou measure positive attitudes toward AI and frequency of tool use with the following questions:\n\nMuch of society will benefit from a future full of Artificial Intelligence. [Positive Attiude]\nIn the past two months, how frequently have you used the organization’s new AI powered chat bot? [Frequency of Use]"
   }
 ]
