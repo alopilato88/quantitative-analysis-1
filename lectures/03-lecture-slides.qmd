@@ -421,7 +421,7 @@ There are two main reasons to include additional predictor variables in your reg
 
 As an example of how our understanding of the relationship between a predictor variable and an outcome variable changes as we include additional predictor variables, let's look at how the relationships between technological anxiety, intentions to use the AI tool, and frequency of AI tool use change as we move from simple regression to multiple regression.
 
-## Model 1: Technological Anxiety Prediciting AI Use
+## Model 1: Technological Anxiety and AI Use
 
 Should we conclude that technological anxiety is significantly and negatively related to frequency of AI tool use? 
 
@@ -441,7 +441,7 @@ broom::tidy(model_1) |>
   knitr::kable()
 ```
 
-## Model 2: Behavioral Intentions Predicting AI Use
+## Model 2: Behavioral Intentions and AI Use
 
 Should we conclude that intention to use the AI tool is significantly and positively related to frequency of AI tool use?
 
@@ -461,7 +461,7 @@ broom::tidy(model_2) |>
   knitr::kable()
 ```
 
-## Model 3: Anxiety & Intentions Predicting AI Use
+## Model 3: Anxiety & Intentions and AI Use
 
 How do our previous conclusions change? What happened to technological anxiety? 
 
@@ -608,9 +608,9 @@ Similar to simple regression, we can calculate an $R^2$ value which will tell us
 * $R^2$ will equal 0 only when all of the partial regression coefficients equal 0.
 * $R^2$ will never decrease when a new predictor variable is added to a model.
 
-## The R-Squared in Our AI Data
+## The R-Squared in Our AI Data {.smaller}
 
-The multiple correlation is equal to `r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2], 3)`, which is equal to `r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2]^2, 4)` when squared.
+The multiple correlation is equal to **`r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2], 3)`**, which is equal to **`r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2]^2, 4)`** when squared.
 
 ```{r}
 #| echo: false

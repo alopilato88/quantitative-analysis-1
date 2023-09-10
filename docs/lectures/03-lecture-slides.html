@@ -559,8 +559,8 @@
 <h2>What Happens if We Fit Several Simple Regression Models?</h2>
 <p>As an example of how our understanding of the relationship between a predictor variable and an outcome variable changes as we include additional predictor variables, let’s look at how the relationships between technological anxiety, intentions to use the AI tool, and frequency of AI tool use change as we move from simple regression to multiple regression.</p>
 </section>
-<section id="model-1-technological-anxiety-prediciting-ai-use" class="slide level2">
-<h2>Model 1: Technological Anxiety Prediciting AI Use</h2>
+<section id="model-1-technological-anxiety-and-ai-use" class="slide level2">
+<h2>Model 1: Technological Anxiety and AI Use</h2>
 <p>Should we conclude that technological anxiety is significantly and negatively related to frequency of AI tool use?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>model_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(freq_use_ai <span class="sc">~</span> tech_anx, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -597,8 +597,8 @@
 </div>
 </div>
 </section>
-<section id="model-2-behavioral-intentions-predicting-ai-use" class="slide level2">
-<h2>Model 2: Behavioral Intentions Predicting AI Use</h2>
+<section id="model-2-behavioral-intentions-and-ai-use" class="slide level2">
+<h2>Model 2: Behavioral Intentions and AI Use</h2>
 <p>Should we conclude that intention to use the AI tool is significantly and positively related to frequency of AI tool use?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(freq_use_ai <span class="sc">~</span> beh_intent_ai, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -635,8 +635,8 @@
 </div>
 </div>
 </section>
-<section id="model-3-anxiety-intentions-predicting-ai-use" class="slide level2">
-<h2>Model 3: Anxiety &amp; Intentions Predicting AI Use</h2>
+<section id="model-3-anxiety-intentions-and-ai-use" class="slide level2">
+<h2>Model 3: Anxiety &amp; Intentions and AI Use</h2>
 <p>How do our previous conclusions change? What happened to technological anxiety?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>model_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(freq_use_ai <span class="sc">~</span> tech_anx <span class="sc">+</span> beh_intent_ai, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -789,9 +789,9 @@ pred_y            0.669  1.000</code></pre>
 <li><span class="math inline">\(R^2\)</span> will never decrease when a new predictor variable is added to a model.</li>
 </ul>
 </section>
-<section id="the-r-squared-in-our-ai-data" class="slide level2">
+<section id="the-r-squared-in-our-ai-data" class="slide level2 smaller">
 <h2>The R-Squared in Our AI Data</h2>
-<p>The multiple correlation is equal to 0.669, which is equal to 0.4477 when squared.</p>
+<p>The multiple correlation is equal to <strong>0.669</strong>, which is equal to <strong>0.4477</strong> when squared.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>

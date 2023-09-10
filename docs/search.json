@@ -2665,5 +2665,26 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Introduction to Multiple Regression",
     "text": "Lecture: Introduction to Multiple Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-1-technological-anxiety-and-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-1-technological-anxiety-and-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 1: Technological Anxiety and AI Use",
+    "text": "Model 1: Technological Anxiety and AI Use\nShould we conclude that technological anxiety is significantly and negatively related to frequency of AI tool use?\n\nmodel_1 &lt;- lm(freq_use_ai ~ tech_anx, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.740\n0.046\n102.682\n0\n\n\ntech_anx\n-0.322\n0.014\n-23.144\n0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-2-behavioral-intentions-and-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-2-behavioral-intentions-and-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 2: Behavioral Intentions and AI Use",
+    "text": "Model 2: Behavioral Intentions and AI Use\nShould we conclude that intention to use the AI tool is significantly and positively related to frequency of AI tool use?\n\nmodel_2 &lt;- lm(freq_use_ai ~ beh_intent_ai, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.278\n0.042\n30.665\n0\n\n\nbeh_intent_ai\n0.572\n0.009\n63.636\n0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-3-anxiety-intentions-and-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-3-anxiety-intentions-and-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 3: Anxiety & Intentions and AI Use",
+    "text": "Model 3: Anxiety & Intentions and AI Use\nHow do our previous conclusions change? What happened to technological anxiety?\n\nmodel_3 &lt;- lm(freq_use_ai ~ tech_anx + beh_intent_ai, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.342\n0.070\n19.090\n0.000\n\n\ntech_anx\n-0.014\n0.012\n-1.132\n0.258\n\n\nbeh_intent_ai\n0.567\n0.010\n56.349\n0.000"
   }
 ]
