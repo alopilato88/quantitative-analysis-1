@@ -8,6 +8,7 @@ format:
 <h2 class="h2-reading">Required Readings:</h2>
 <ul class="ul-reading">
 <li>RAGLM -- Chapter 14: Probing Interactions & Various Complexities</li>
+<li>RAGLM -- Chapter 11: Mutliple Tests</li>
 
 </ul>
 
