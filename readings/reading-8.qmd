@@ -4,20 +4,18 @@ format:
     page-layout: custom
 ---
 <div class="page-readings">
-<h1 class="h1-reading"> General Linear Model: ANOVA, ANCOVA, & MR and Diagnostics </h1>
+<h1 class="h1-reading"> Introduction to Mediation & Path Analysis and Regression Diagnostics </h1>
 <h2 class="h2-reading">Required Readings:</h2>
 <ul class="ul-reading">
-<li>RAGLM -- Chapter 10: More on Multicategorical Regressors</li>
-<li>RAGLM -- Chapter 11: Mutliple Tests</li>
+<li>RAGLM -- Chapter 15: Mediation & Path Analysis</li>
 <li>RAGLM -- Chapter 16: Detecting & Managing Irregularities</li>
 <li>RAGLM -- Chapter 17.3: An Assortment of Problems</li>
+<li>Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.</li>
 </ul>
 
 <h2 class="h2-reading">Supplemental Readings:</h2>
 <ul class="ul-reading">
-<li>Cohen (1968). Multiple regression as a general data-analytic system.</li>
-<li>Wendorf (2004). Primer on multiple regression coding: Common forms and the additional case of repeated constrasts.</li>
-<li><a href="https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html">Data Analysis in R -- Chapter 7: Understanding Anova in R</li>
+<li>VanderWeele (2016). Mediation analysis: A practitioner's guide.</li>
 <li>Chatterjee & Yilmaz (1992). A review of regression diagnostics for behavioral research.</li>
 </ul>
 
