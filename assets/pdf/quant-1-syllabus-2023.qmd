@@ -174,6 +174,8 @@ To be successful in this course, you will need to:
 |       |                        |                                                                                                                       |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | 10/24 | More on Interactions   | - RAGLM – Chapter 14: Probing Interactions & Various Complexities                                                     |
+|       |                        |                                                                                                                       |
+|       |                        | - RAGLM – Chapter 11: Mutliple Tests                                                                                  |
 |       |                        |                                                                                                                       |      
 |       |                        | - *Dawson (2014). Moderation in management research: What, why, when, and how.*                                       |
 |       |                        |                                                                                                                       |
@@ -181,29 +183,27 @@ To be successful in this course, you will need to:
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |       |                        |                                                                                                                       |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| 11/3  | General Linear Model:  | - RAGLM – Chapter 10: More on Multicategorical Regressors                                                             |
-|       | ANOVA, ANCOVA, & MR    |                                                                                                                       |
-|       | and Diagnostics        | - RAGLM – Chapter 11: Mutliple Tests                                                                                  |
+| 11/3  | Mediation,             | - RAGLM – Chapter 15: Mediation & Path Analysis                                                                       |
+|       | Path Analysis, &       |                                                                                                                       |
+|       | and Diagnostics        | - RAGLM – 16: Detecting & Managing Irregularities                                                                     |
 |       |                        |                                                                                                                       |
-|       | **Immersion Day**      | - RAGLM – Chapter 16: Detecting & Managing Irregularities                                                             |
+|       | **Immersion Day**      | - RAGLM – 17.3: An Assortment of Problems                                                                             |
 |       |                        |                                                                                                                       |
-|       |                        | - *Cohen (1968). Multiple regression as a general data-analytic system.*                                              |
+|       |                        | - Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.    |
 |       |                        |                                                                                                                       |
-|       |                        | - *Wendorf (2004). Primer on multiple regression coding*                                                              |
+|       |                        | - *VanderWeele (2016). Mediation analysis: A practitioner's guide.*                                                   |
 |       |                        |                                                                                                                       |
 |       |                        | - *Chatterjee & Yilmaz (1992). A review of regression diagnostics for behavioral research.*                           |
-|       |                        |                                                                                                                       |
-|       |                        | - [Data Analysis in R – Chapter 7](https://bookdown.org/steve_midway/DAR/understanding-anova-in-r.html)               |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |       |                        |                                                                                                                       |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| 11/7  | Prediction             | - RAGLM – Chapter 7: Regression for Prediction                                                                        |
+| 11/7  | Power, Precision, &    | - RAGLM – 17.1: Power & Precision of Estimation                                                                       |
+|       | Measurement Error      |                                                                                                                       |
+|       |                        | - RAGLM – 17.2: Measurement Error                                                                                     |
 |       |                        |                                                                                                                       |
-|       |                        | - DBEP – Chapter 13: A Framework for Prediction                                                                       |
+|       |                        | - Ree & Caretta (2006). The role of measurement error in familiar statistics.                                         |
 |       |                        |                                                                                                                       |
-|       |                        | - DBEP – Chapter 14: Model Building for Prediction                                                                    |
-|       |                        |                                                                                                                       |
-|       |                        | - Yarkoni & Westfall (2017). Choosing prediction over explanation in psychology: Lessons from machine learning.       |
+|       |                        | - *Cortina (1993). What is coefficient alpha: An examination of theory and application*                               |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |       |                        |                                                                                                                       |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -239,9 +239,11 @@ To be successful in this course, you will need to:
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
 |       |                        |                                                                                                                       |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| 12/12 | Introduction to        | - RAGLM – Chapter 15: Mediation & Path Analysis                                                                       |
-|       | Mediation &            |                                                                                                                       |
-|       | Path Analysis          | - Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.    |
+| 12/12 | Causal Mediation       | - Cuartas & McCoy (2021). Causal mediation in developmental science: A primer.                                        |
 |       |                        |                                                                                                                       |
-|       |                        | - *anderWeele (2016). Mediation analysis: A practitioner’s guide.*                                                    |
+|       |                        | - Nguyen et al. (2021). Clarifying causal mediation analysis for the applied researcher                               |
+|       |                        |                                                                                                                       |
+|       |                        | - *Imai et al. (2010). A general approach to causal mediation analysis.*                                              |
+|       |                        |                                                                                                                       |
+|       |                        | - *Bullock et al. (2010). Yes, but what's the mechanism? (Don't expect an easy answer).*                              |
 +-------+------------------------+-----------------------------------------------------------------------------------------------------------------------+
