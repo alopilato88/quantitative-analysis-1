@@ -1,0 +1,24 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-readings">
+<h1 class="h1-reading"> Introduction to Mediation & Path Analysis </h1>
+<h2 class="h2-reading">Required Readings:</h2>
+<ul class="ul-reading">
+<li>RAGLM -- Chapter 15: Mediation & Path Analysis</li>
+<li>Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.</li>
+</ul>
+
+<h2 class="h2-reading">Supplemental Readings:</h2>
+<ul class="ul-reading">
+<li>VanderWeele (2016). Mediation analysis: A practitioner's guide.</li>
+</ul>
+
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-12.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-14.html">Next Weeks Readings &raquo;</a>
+</div>
+
+</div>

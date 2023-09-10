@@ -1,0 +1,25 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-readings">
+<h1 class="h1-reading"> Prediction </h1>
+<h2 class="h2-reading">Required Readings:</h2>
+<ul class="ul-reading">
+<li>RAGLM -- Chapter 7: Regression for Prediction</li>
+<li>DBEP -- Chapter 13: A Framework for Prediction</li>
+<li>DBEP -- Chapter 14: Model Building for Prediction</li>
+</ul>
+
+<h2 class="h2-reading">Supplemental Readings:</h2>
+<ul class="ul-reading">
+<li>Yarkoni & Westfall (2017). Choosing prediction over explanation in psychology: Lessons from machine learning.</li>
+</ul>
+
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-8.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-10.html">Next Weeks Readings &raquo;</a>
+</div>
+
+</div>
