@@ -2168,5 +2168,495 @@
     "title": "An Introduction to Simple Regression",
     "section": "Our Measures",
     "text": "Our Measures\nYou measure positive attitudes toward AI and frequency of tool use with the following questions:\n\nMuch of society will benefit from a future full of Artificial Intelligence. [Positive Attiude]\nIn the past two months, how frequently have you used the organization’s new AI powered chat bot? [Frequency of Use]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#schedule-for-today",
+    "href": "lectures/03-lecture-slides.html#schedule-for-today",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\n\nTalk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 5 minutes\nFinish up stats / R for 40 mins (6:20 PM - 7:00 PM ET)"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#overview",
+    "href": "lectures/03-lecture-slides.html#overview",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Overview",
+    "text": "Overview\n\nA quick review of last week\nSetup of our working example\nIntroduction to multiple regression"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#goals",
+    "href": "lectures/03-lecture-slides.html#goals",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Goals",
+    "text": "Goals\n\nDevelop an understanding of multiple regression\nWrite your first R script"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#example",
+    "href": "lectures/03-lecture-slides.html#example",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Example",
+    "text": "Example\nYour organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have adopted the technology at different rates.\nYou have been asked to determine why employees differ in their rates of adoption. Using the Unified Theory of Acceptance and Use of Technology, you developed a model that states:\n\n\nThe frequency of technology use is related to an employee’s positive attitudes towards AI, their anxiety around technology use, and their intentions to use the new technology."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#measures",
+    "href": "lectures/03-lecture-slides.html#measures",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Measures",
+    "text": "Measures\nYou measure these variables with the following questions:\n\nUsing technology such as chatbots makes me anxious. [Technology Anxiety]\n\n1: Completely Disagree to 7: Completely Agree\n\nI intend to use the chatbot to help me with my sales. [Behavioral Intentions]\n\n1: Completely Disagree to 7: Completely Agree\n\nIn the past two months, how frequently have you used the organization’s new AI powered chat bot? [Frequency of Use]\n\n1: Never to 6: All the Time"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#what-is-linear-regression",
+    "href": "lectures/03-lecture-slides.html#what-is-linear-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "What is Linear Regression?",
+    "text": "What is Linear Regression?\nLinear regression is a statistical model that allows you to test whether a change in a predictor variable, like positive attitudes towards AI, is linearly related to change in an outcome variable, like frequency of AI tool use."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#review-of-simple-regression",
+    "href": "lectures/03-lecture-slides.html#review-of-simple-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Review of Simple Regression",
+    "text": "Review of Simple Regression\nThe simple regression model is just a linear regression model with one independent variable.\n\\[Y=\\beta_0+\\beta_1X_1+\\epsilon\\]\n\n\\(\\beta_0\\): The expected value (mean) of Y when X = 0.\n\\(\\beta_1\\): The average change in Y for a one-unit increase in X.\n\\(\\epsilon\\): Variation in Y that is not explained by our model—unexplained variance."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#interpreting-the-regression-slope",
+    "href": "lectures/03-lecture-slides.html#interpreting-the-regression-slope",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Interpreting the Regression Slope",
+    "text": "Interpreting the Regression Slope\nThe most appropriate way to interpret the slope coefficient (\\(\\beta_1\\)) is as a comparison:\n\nThe average difference in the frequency with which employees use the AI tool, when comparing two people who differ in their positive attitudes towards AI by one point (e.g. 5: Agree vs 6: Strongly Agree), is equal to the value of \\(\\beta_1\\)."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#ai-adoption-example-problem-statement",
+    "href": "lectures/03-lecture-slides.html#ai-adoption-example-problem-statement",
+    "title": "An Introduction to Multiple Regression",
+    "section": "AI Adoption Example: Problem Statement",
+    "text": "AI Adoption Example: Problem Statement\nYour organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have started using the technology at different rates.\nYou have been asked to determine why employees differ in their usage rates."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#ai-adoption-example-hypothesis",
+    "href": "lectures/03-lecture-slides.html#ai-adoption-example-hypothesis",
+    "title": "An Introduction to Multiple Regression",
+    "section": "AI Adoption Example: Hypothesis",
+    "text": "AI Adoption Example: Hypothesis\nUsing the Unified Theory of Acceptance and Use of Technology, you develop the following hypotheses:\n\nAn employee’s technology anxiety is negatively related to the frequency with which they use the AI tool.\nAn employee’s intention to use the AI tool is positively related to the frequency with which they use the AI tool."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#determining-the-strength-of-the-regression-slope",
+    "href": "lectures/03-lecture-slides.html#determining-the-strength-of-the-regression-slope",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Determining the Strength of the Regression Slope",
+    "text": "Determining the Strength of the Regression Slope\nWe should be careful about using the magnitude of the regression slope to make inferences about the strength of the relationship between the predictor variable and the outcome variable unless we have transformed both our predictor and outcome so that their units are in standard deviations.\nThe magnitude of the regression coefficient is directly related to the scale of the predictor variable, so permissible changes to the scale (e.g. converting hours to minutes or Lbs to Kilograms) will change the magnitude of the regression coefficient."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-the-overall-fit-of-our-model",
+    "href": "lectures/03-lecture-slides.html#understanding-the-overall-fit-of-our-model",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding the Overall Fit of our Model",
+    "text": "Understanding the Overall Fit of our Model\nWe can separate the variance of our outcome into two additive pieces: Variance due to things we have modeled & Variance due to things we have not modeled:\n\\[\\sigma^2_Y=\\sigma^2_{model} + \\sigma^2_{error}\\]\nThe ratio of \\(\\sigma^2_{model}\\) to \\(\\sigma^2_{Y}\\) (\\(\\frac{\\sigma^2_{model}}{\\sigma^2_{Y}}\\)) is equal to the model’s \\(R^2\\), which tells us the proportion of variance in our outcome that is due to our model. The larger the \\(R^2\\), the better our model fits the data."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#the-multiple-regression-model",
+    "href": "lectures/03-lecture-slides.html#the-multiple-regression-model",
+    "title": "An Introduction to Multiple Regression",
+    "section": "The Multiple Regression Model",
+    "text": "The Multiple Regression Model\nThe multiple regression model is just a linear regression model with more than one predictor variable.\n\\[Y = \\beta_0 + \\beta_1X_1+\\beta_2X_2+...+\\beta_pX_p+\\epsilon\\]\n\n\\(\\beta_0\\) or Intercept: The expected value (mean) of \\(Y\\) when all \\(X\\) = 0.\n\\(\\beta_p\\) or Partial Regression Coefficient: The average change in \\(Y\\) for a one-unit increase in \\(X_p\\), holding all other \\(Xs\\) constant.\n\\(\\epsilon\\) or Residual: The part of Y that is not explained by our model—unexplained variance."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#why-do-we-use-multiple-regression",
+    "href": "lectures/03-lecture-slides.html#why-do-we-use-multiple-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Why Do We Use Multiple Regression?",
+    "text": "Why Do We Use Multiple Regression?\nWe use multiple regression because it allows us to:\n\nEstimate the effect of a predictor variable while controlling for the effects of the other predictor variables in the model.\nTo estimate and test the effects of multiple predictors in a single model.\nAllows us to understand how much of the total variance in our outcome variable we can explain with our predictor variables."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#what-do-we-mean-by-control",
+    "href": "lectures/03-lecture-slides.html#what-do-we-mean-by-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "What Do We Mean by Control?",
+    "text": "What Do We Mean by Control?"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#intepreting-a-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#intepreting-a-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Intepreting a Partial Regression Coefficient",
+    "text": "Intepreting a Partial Regression Coefficient\nThe average difference in frequency of AI tool use is 0.5671689 when comparing two employees who have equal levels of technological anxiety but differ in their intention to use the AI tool by one point (unit)."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#visualizing-a-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#visualizing-a-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Visualizing a Partial Regression Coefficient",
+    "text": "Visualizing a Partial Regression Coefficient"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#what-happens-if-we-fit-several-simple-regression-models",
+    "href": "lectures/03-lecture-slides.html#what-happens-if-we-fit-several-simple-regression-models",
+    "title": "An Introduction to Multiple Regression",
+    "section": "What Happens if We Fit Several Simple Regression Models?",
+    "text": "What Happens if We Fit Several Simple Regression Models?\nAs an example of how our understanding of the relationship between a predictor variable and an outcome variable changes as we include additional predictor variables, let’s look at how the relationships between technological anxiety, intentions to use the AI tool, and frequency of AI tool use change as we move from simple regression to multiple regression."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-1-positive-attitudes-prediciting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-1-positive-attitudes-prediciting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 1: Positive Attitudes Prediciting AI Use",
+    "text": "Model 1: Positive Attitudes Prediciting AI Use\n\nmodel_1 &lt;- lm(freq_use_ai ~ pos_attitude_ai, data = data_ai)\nsummary(model_1)\n\n\nCall:\nlm(formula = freq_use_ai ~ pos_attitude_ai, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.9942 -0.7443  0.2557  0.8391  3.5057 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      2.07760    0.04603   45.13   &lt;2e-16 ***\npos_attitude_ai  0.41666    0.01061   39.28   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.224 on 4998 degrees of freedom\nMultiple R-squared:  0.2359,    Adjusted R-squared:  0.2358 \nF-statistic:  1543 on 1 and 4998 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-2-technological-anxiety-predicting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-2-technological-anxiety-predicting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 2: Technological Anxiety Predicting AI Use",
+    "text": "Model 2: Technological Anxiety Predicting AI Use\n\nmodel_2 &lt;- lm(freq_use_ai ~ tech_anx, data = data_ai)\nsummary(model_2)\n\n\nCall:\nlm(formula = freq_use_ai ~ tech_anx, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.4698 -0.7707  0.2293  0.9284  2.9284 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  4.81931    0.04424  108.94   &lt;2e-16 ***\ntech_anx    -0.34954    0.01317  -26.55   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.311 on 4998 degrees of freedom\nMultiple R-squared:  0.1236,    Adjusted R-squared:  0.1234 \nF-statistic: 704.9 on 1 and 4998 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-3-attitudes-anxiety-predicting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-3-attitudes-anxiety-predicting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 3: Attitudes & Anxiety Predicting AI Use",
+    "text": "Model 3: Attitudes & Anxiety Predicting AI Use\n\nmodel_3 &lt;- lm(freq_use_ai ~ pos_attitude_ai + tech_anx, data = data_ai)\nsummary(model_3)\n\n\nCall:\nlm(formula = freq_use_ai ~ pos_attitude_ai + tech_anx, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.8202 -0.7524  0.2476  0.8917  3.1796 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      2.73606    0.08277  33.057   &lt;2e-16 ***\npos_attitude_ai  0.35595    0.01229  28.961   &lt;2e-16 ***\ntech_anx        -0.13582    0.01424  -9.535   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.214 on 4997 degrees of freedom\nMultiple R-squared:  0.2496,    Adjusted R-squared:  0.2493 \nF-statistic: 830.9 on 2 and 4997 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#omitted-variable-bias-what-happens-when-we-leave-out-a-variable",
+    "href": "lectures/03-lecture-slides.html#omitted-variable-bias-what-happens-when-we-leave-out-a-variable",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Omitted Variable Bias: What Happens When We Leave Out a Variable",
+    "text": "Omitted Variable Bias: What Happens When We Leave Out a Variable\nIf we leave out a predictor variable from our model that is related to both the predictor variable we included in our model and our outcome variable, then we should almost always find a way to include the left out variable.\nIf we do not include this variable, we commit the omitted variable bias, where the effect of the omitted predictor variable on the outcome variable gets mixed together with the effect of the included predictor variable."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#algebra-behind-ommitted-variable-bias",
+    "href": "lectures/03-lecture-slides.html#algebra-behind-ommitted-variable-bias",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Algebra Behind Ommitted Variable Bias",
+    "text": "Algebra Behind Ommitted Variable Bias\n\\[X_{\\text{Tech Anxiey}}=\\alpha_0 + \\alpha_1X_{\\text{AI Attitude}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{AI Attitude}+\\beta_2X_{\\text{Tech Anxiety}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{AI Attitude}+\\beta_2(\\alpha_0 + \\alpha_1X_{\\text{AI Attitude}})\\]\n\\[Y_{\\text{AI Use}}=(\\beta_0 + \\beta_2*\\alpha_0) + (\\beta_1+\\beta_2*\\alpha_1)X_{AI Attitude}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#prediction-error-in-multiple-regression",
+    "href": "lectures/03-lecture-slides.html#prediction-error-in-multiple-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Prediction & Error in Multiple Regression",
+    "text": "Prediction & Error in Multiple Regression"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#judging-the-strength-of-a-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#judging-the-strength-of-a-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Judging the Strength of a Partial Regression Coefficient",
+    "text": "Judging the Strength of a Partial Regression Coefficient"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#estimating-our-full-model",
+    "href": "lectures/03-lecture-slides.html#estimating-our-full-model",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Estimating Our Full Model",
+    "text": "Estimating Our Full Model\n\nmodel_full &lt;- lm(freq_use_ai ~ tech_anx + beh_intent_ai,\n                 data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.342\n0.070\n19.090\n0.000\n\n\ntech_anx\n-0.014\n0.012\n-1.132\n0.258\n\n\nbeh_intent_ai\n0.567\n0.010\n56.349\n0.000"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-1-technological-anxiety-prediciting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-1-technological-anxiety-prediciting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 1: Technological Anxiety Prediciting AI Use",
+    "text": "Model 1: Technological Anxiety Prediciting AI Use\nShould we conclude that technological anxiety is significantly and negatively related to frequency of AI tool use?\n\nmodel_1 &lt;- lm(freq_use_ai ~ tech_anx, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n4.740\n0.046\n102.682\n0\n\n\ntech_anx\n-0.322\n0.014\n-23.144\n0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-2-behavioral-intentions-predicting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-2-behavioral-intentions-predicting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 2: Behavioral Intentions Predicting AI Use",
+    "text": "Model 2: Behavioral Intentions Predicting AI Use\nShould we conclude that intention to use the AI tool is significantly and positively related to frequency of AI tool use?\n\nmodel_2 &lt;- lm(freq_use_ai ~ beh_intent_ai, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.278\n0.042\n30.665\n0\n\n\nbeh_intent_ai\n0.572\n0.009\n63.636\n0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#model-3-anxiety-intentions-predicting-ai-use",
+    "href": "lectures/03-lecture-slides.html#model-3-anxiety-intentions-predicting-ai-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Model 3: Anxiety & Intentions Predicting AI Use",
+    "text": "Model 3: Anxiety & Intentions Predicting AI Use\nHow do our previous conclusions change? What happened to technological anxiety?\n\nmodel_3 &lt;- lm(freq_use_ai ~ tech_anx + beh_intent_ai, data = data_ai)\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n1.342\n0.070\n19.090\n0.000\n\n\ntech_anx\n-0.014\n0.012\n-1.132\n0.258\n\n\nbeh_intent_ai\n0.567\n0.010\n56.349\n0.000"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias",
+    "href": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Algebra Behind the Ommitted Variable Bias",
+    "text": "Algebra Behind the Ommitted Variable Bias\n\\[X_{\\text{Behavioral Intent.}}=\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#multicollinearity-problems-when-our-predictors-are-correlated",
+    "href": "lectures/03-lecture-slides.html#multicollinearity-problems-when-our-predictors-are-correlated",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Multicollinearity: Problems when our Predictors are Correlated",
+    "text": "Multicollinearity: Problems when our Predictors are Correlated"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-1",
+    "href": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-1",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Algebra Behind the Ommitted Variable Bias",
+    "text": "Algebra Behind the Ommitted Variable Bias\n\\[X_{\\text{Behavioral Intent.}}=\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{\\text{Tech. Anxiety}}+\\beta_2X_{\\text{Behavioral Intent.}}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-2",
+    "href": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-2",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Algebra Behind the Ommitted Variable Bias",
+    "text": "Algebra Behind the Ommitted Variable Bias\n\\[X_{\\text{Behavioral Intent.}}=\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{\\text{Tech. Anxiety}}+\\beta_2X_{\\text{Behavioral Intent.}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{\\text{Tech. Anxiety}}+\\beta_2(\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}})\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-3",
+    "href": "lectures/03-lecture-slides.html#algebra-behind-the-ommitted-variable-bias-3",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Algebra Behind the Ommitted Variable Bias",
+    "text": "Algebra Behind the Ommitted Variable Bias\n\\[X_{\\text{Behavioral Intent.}}=\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{\\text{Tech. Anxiety}}+\\beta_2X_{\\text{Behavioral Intent.}}\\]\n\\[Y_{\\text{AI Use}}=\\beta_0 + \\beta_1X_{\\text{Tech. Anxiety}}+\\beta_2(\\alpha_0 + \\alpha_1X_{\\text{Tech. Anxiety}})\\]\n\\[Y_{\\text{AI Use}}=(\\beta_0 + \\beta_2*\\alpha_0) + (\\beta_1+\\beta_2*\\alpha_1)X_{\\text{Tech. Anxiety}}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#what-do-we-mean-by-statistical-control",
+    "href": "lectures/03-lecture-slides.html#what-do-we-mean-by-statistical-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "What Do We Mean by Statistical Control?",
+    "text": "What Do We Mean by Statistical Control?\nStatistical control is a fancy way of saying “what is the effect of a predictor variable on an outcome variable for people (or units) who have the same measurements on all of the other predictor variables in the model?”\n\nWhat effect does an individual’s intention to use the AI tool have on the frequency they use an AI tool, if we hold their level of technological anxiety constant?"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#an-example-of-statistical-control",
+    "href": "lectures/03-lecture-slides.html#an-example-of-statistical-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "An Example of Statistical Control",
+    "text": "An Example of Statistical Control\nConceptually, if we wanted to estimate the relationship that intention to use the AI tool has on the frequency of AI tool use, while controlling (adjusting) for the level of technological anxiety, we could create multiple new datasets from our original dataset where each new dataset had a fixed level of technological anxiety (e.g. in the first dataset, we would only look at observtations where tech_anxiety == 1).\nThen we could estimate a simple regression model that esimates the relationship between intentions to use the AI tool (beh_intent_ai) and frequency of tool use (freq_use_ai) to each dataset. The average of those seven regression slopes (one for each dataset) would be nearly equivalent to the partial coefficient estimated from a multiple regression model that included beh_intent_ai and tech_anxiety."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#why-do-we-control",
+    "href": "lectures/03-lecture-slides.html#why-do-we-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Why Do We Control",
+    "text": "Why Do We Control"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-prediction-in-multiple-regression",
+    "href": "lectures/03-lecture-slides.html#understanding-prediction-in-multiple-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding Prediction in Multiple Regression",
+    "text": "Understanding Prediction in Multiple Regression\nSimilar to simple regression, we can decompose the observed value of the outcome variable, \\(Y\\), into a model component and an error component. For multiple regression, the prediction is a linear combination of all \\(p\\) predictor variables.\n\\[\\hat{Y}_i=\\hat{\\beta}_0+\\hat{\\beta}_1X_{1}+\\hat{\\beta}_2X_{2}+...+\\hat{\\beta}_{p}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-error-in-multiple-regression",
+    "href": "lectures/03-lecture-slides.html#understanding-error-in-multiple-regression",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding Error in Multiple Regression",
+    "text": "Understanding Error in Multiple Regression\nRemember to think of error as anything that is not predicted (or modeled) by our model. This could be random noise as well as other predictor variables that we did not measure.\n\\[\\hat{e}=Y_i-\\hat{Y}_i\\] \\[\\hat{e}=\\text{Observed} - \\text{Predicted}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#judging-overall-model-strength-the-multiple-r-and-r-squared",
+    "href": "lectures/03-lecture-slides.html#judging-overall-model-strength-the-multiple-r-and-r-squared",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Judging Overall Model Strength: The Multiple R and R-Squared",
+    "text": "Judging Overall Model Strength: The Multiple R and R-Squared"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#standardized-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#standardized-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Standardized Partial Regression Coefficient",
+    "text": "Standardized Partial Regression Coefficient\nIf we put all of our predictor variables on the same scale, then we can make relative comparisons. One way to do this is by standardizing all of our predictor variables:\n\\[Z_{p}=\\frac{X_p-\\overline{X}_p}{SD(X_p)}\\]\nThe scale for each predictor variable would then be in standard deviation units."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#semipartial-correlation",
+    "href": "lectures/03-lecture-slides.html#semipartial-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Semipartial Correlation",
+    "text": "Semipartial Correlation"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-the-semipartial-correlation",
+    "href": "lectures/03-lecture-slides.html#understanding-the-semipartial-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding the Semipartial Correlation",
+    "text": "Understanding the Semipartial Correlation"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#should-you-use-the-standardized-partial-coefficeint-or-semipartial-correlation",
+    "href": "lectures/03-lecture-slides.html#should-you-use-the-standardized-partial-coefficeint-or-semipartial-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Should You Use the Standardized Partial Coefficeint or Semipartial Correlation?",
+    "text": "Should You Use the Standardized Partial Coefficeint or Semipartial Correlation?"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#why-do-we-inlcude-multiple-predictors",
+    "href": "lectures/03-lecture-slides.html#why-do-we-inlcude-multiple-predictors",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Why Do We Inlcude Multiple Predictors?",
+    "text": "Why Do We Inlcude Multiple Predictors?"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#visualize-control",
+    "href": "lectures/03-lecture-slides.html#visualize-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Visualize Control",
+    "text": "Visualize Control"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#visualize-control-1",
+    "href": "lectures/03-lecture-slides.html#visualize-control-1",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Visualize Control",
+    "text": "Visualize Control"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#an-example-of-statistical-control-example-dataset-1",
+    "href": "lectures/03-lecture-slides.html#an-example-of-statistical-control-example-dataset-1",
+    "title": "An Introduction to Multiple Regression",
+    "section": "An Example of Statistical Control: Example Dataset 1",
+    "text": "An Example of Statistical Control: Example Dataset 1\n\ndata_subset_1 &lt;- data_ai |&gt; dplyr::filter(tech_anx == 1)\n\n\n\n# A tibble: 721 × 4\n   employee_id freq_use_ai tech_anx beh_intent_ai\n   &lt;fct&gt;             &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;\n 1 760406                3        1             5\n 2 778236                5        1             4\n 3 339526                4        1             7\n 4 161547                4        1             5\n 5 708206                4        1             3\n 6 900585                5        1             5\n 7 558405                5        1             7\n 8 869289                5        1             5\n 9 739811                5        1             5\n10 584814                3        1             5\n# ℹ 711 more rows"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#visualizing-statistical-control",
+    "href": "lectures/03-lecture-slides.html#visualizing-statistical-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Visualizing Statistical Control",
+    "text": "Visualizing Statistical Control\nThe plot below shows seven different regression lines each of which estimate the effect that one’s intention to use an AI tool has on the frequency with which they actually use the AI tool at a fixed level of technological anxiety (e.g. tech_anx == 1 or tech_anx == 2)."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#visualizing-statistical-control-1",
+    "href": "lectures/03-lecture-slides.html#visualizing-statistical-control-1",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Visualizing Statistical Control",
+    "text": "Visualizing Statistical Control\nThe plot below shows the same seven simple regression lines, but now the slope of the partial regression coefficient for the effect of intention to use the AI tool on frequency of tool use controlling for technological anxiety is laid over the simple regression lines."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#why-do-we-include-multiple-predictor-variables",
+    "href": "lectures/03-lecture-slides.html#why-do-we-include-multiple-predictor-variables",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Why Do We Include Multiple Predictor Variables?",
+    "text": "Why Do We Include Multiple Predictor Variables?\nThere are two main reasons to include additional predictor variables in your regression model:\n\nThe effect of a predictor variable on an outcome variable in a simple regression model may be incorrectly estimated if we do not take into consideration other predictor variables.\nBy adding additional predictor variables into our model, we reduce the error component of our model, which makes it more likely we will find a true significant relationship between our predictor variables and outcome variable."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#omitted-variable-bias-in-our-data",
+    "href": "lectures/03-lecture-slides.html#omitted-variable-bias-in-our-data",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Omitted Variable Bias in Our Data",
+    "text": "Omitted Variable Bias in Our Data\nThis is what happens with tech_anxiety and beh_intent_ai. When we leave out beh_intent_ai in our model, part of its effect on freq_use_ai gets mixed into the effect that tech_anx has on freq_use_ai.\n\n\n\nlm(beh_intent_ai ~ tech_anx, data_ai)\n\n\n\n\n\n\nterm\nestimate\np.value\n\n\n\n\n(Intercept)\n5.99\n0\n\n\ntech_anx\n-0.54\n0\n\n\n\n\n\n\nRight column\n\nRight column"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#interpreting-a-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#interpreting-a-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Interpreting a Partial Regression Coefficient",
+    "text": "Interpreting a Partial Regression Coefficient\nLike with simple regression, the most appropriate interpretation of a partial regression coefficient is as a mean comparison between two groups that differ on their predictor variable by one point, but have identical values for the other predictor variables."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#interpreting-the-partial-coefficient-for-behavioral-intentions",
+    "href": "lectures/03-lecture-slides.html#interpreting-the-partial-coefficient-for-behavioral-intentions",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Interpreting the Partial Coefficient for Behavioral Intentions",
+    "text": "Interpreting the Partial Coefficient for Behavioral Intentions\nThe average difference in frequency of AI tool use is 0.57 points when comparing two employees who have equal levels of technological anxiety but differ in their intention to use the AI tool by one point (unit)."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#predicting-frequency-of-ai-tool-use",
+    "href": "lectures/03-lecture-slides.html#predicting-frequency-of-ai-tool-use",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Predicting Frequency of AI Tool Use",
+    "text": "Predicting Frequency of AI Tool Use\nOur best prediction for an employee who is highly anxious about technology (tech_anx == 7) and does not intend to use the AI tool (beh_intent_ai == 1):\n\\[1.84 = 1.34 + -.01_{\\text{Tech. Anx.}}*7+.57_{\\text{Beh. Int.}}*1\\]\nOur best prediction for an employee who is not anxious about technology (tech_anx == 1) and intends to use the AI tool (beh_intent_ai == 7):\n\\[5.32 = 1.34 + -.01_{\\text{Tech. Anx.}}*1+.57_{\\text{Beh. Int.}}*7\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#error-in-our-ai-model",
+    "href": "lectures/03-lecture-slides.html#error-in-our-ai-model",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Error in Our AI Model",
+    "text": "Error in Our AI Model\nBelow is a data frame that contains a sample of some of the errors our model made. How would you interpret a negative error? A positive error?\n\n\n# A tibble: 10 × 6\n   employee_id tech_anx beh_intent_ai freq_use_ai predicted_freq_use_ai error\n   &lt;fct&gt;          &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n 1 381064             1             7           4                  5.3  -1.3 \n 2 338015             7             1           1                  1.81 -0.81\n 3 703375             1             7           6                  5.3   0.7 \n 4 611741             1             7           6                  5.3   0.7 \n 5 812441             1             7           5                  5.3  -0.3 \n 6 475459             1             7           5                  5.3  -0.3 \n 7 921092             1             7           5                  5.3  -0.3 \n 8 567786             1             7           5                  5.3  -0.3 \n 9 680605             1             7           5                  5.3  -0.3 \n10 239815             7             1           2                  1.81  0.19"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#judging-overall-model-strength-the-multiple-correlation",
+    "href": "lectures/03-lecture-slides.html#judging-overall-model-strength-the-multiple-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Judging Overall Model Strength: The Multiple Correlation",
+    "text": "Judging Overall Model Strength: The Multiple Correlation\nThe multiple correlation coefficient, \\(R\\), is the correlation between our model prediction, \\(\\hat{Y}\\) and our observed outcome variable, \\(Y\\):\n\\[\\text{Multiple Corelation = }r_{Y,\\hat{Y}}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#the-muliple-correlation-in-our-ai-data",
+    "href": "lectures/03-lecture-slides.html#the-muliple-correlation-in-our-ai-data",
+    "title": "An Introduction to Multiple Regression",
+    "section": "The Muliple Correlation in Our AI Data",
+    "text": "The Muliple Correlation in Our AI Data\n\ndata_ai_pred &lt;-\n  data_ai |&gt;\n  dplyr::mutate(\n    pred_y = predict(model_3)\n  )\n\n\n\nHere is a look at our data frame which contains the actual and predicted values of freq_use_ai:\n\n\n# A tibble: 5,000 × 2\n   freq_use_ai pred_y\n         &lt;dbl&gt;  &lt;dbl&gt;\n 1           5   4.69\n 2           4   4.11\n 3           4   3.57\n 4           4   5.27\n 5           1   1.87\n 6           4   3.57\n 7           5   2.42\n 8           3   4.16\n 9           5   3.60\n10           5   3.57\n# ℹ 4,990 more rows\n\n\n\nHere is the correlation between our actual and predicted values:\n\n\n            freq_use_ai pred_y\nfreq_use_ai       1.000  0.669\npred_y            0.669  1.000"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#judging-overall-model-strength-r-squared",
+    "href": "lectures/03-lecture-slides.html#judging-overall-model-strength-r-squared",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Judging Overall Model Strength: R-Squared",
+    "text": "Judging Overall Model Strength: R-Squared\nSimilar to simple regression, we can calculate an \\(R^2\\) value which will tell us the proportion of variance in our outcome variable that is explained by all of our predictor variables:\n\n\\(R^2\\) is the square of the multiple correlation coefficient.\n\\(R^2\\) falls between 0 (no prediction) and 1 (perfect prediction).\nThe larger the value of \\(R^2\\), the better the set of predictor variables collectively predicts \\(Y\\).\n\\(R^2\\) will equal 0 only when all of the partial regression coefficients equal 0.\n\\(R^2\\) will never decrease when a new predictor variable is added to a model."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#the-r-squared-in-our-ai-data",
+    "href": "lectures/03-lecture-slides.html#the-r-squared-in-our-ai-data",
+    "title": "An Introduction to Multiple Regression",
+    "section": "The R-Squared in Our AI Data",
+    "text": "The R-Squared in Our AI Data\nThe multiple correlation is equal to 0.669, which is equal to 0.4477 when squared.\n\n\n\nCall:\nlm(formula = freq_use_ai ~ tech_anx + beh_intent_ai, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.7311 -0.6897 -0.1087  0.8499  3.1599 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    1.34183    0.07029  19.090   &lt;2e-16 ***\ntech_anx      -0.01379    0.01218  -1.132    0.258    \nbeh_intent_ai  0.56717    0.01007  56.349   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.029 on 4997 degrees of freedom\nMultiple R-squared:  0.4477,    Adjusted R-squared:  0.4475 \nF-statistic:  2025 on 2 and 4997 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#judging-the-relative-strength-of-a-partial-regression-coefficient",
+    "href": "lectures/03-lecture-slides.html#judging-the-relative-strength-of-a-partial-regression-coefficient",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Judging the Relative Strength of a Partial Regression Coefficient",
+    "text": "Judging the Relative Strength of a Partial Regression Coefficient\nBecause the magnitude of the partial regression coefficient depends on the scale of its predictor variable, we cannot compare the partial regression coefficient of one predictor variable to the partial regression of another predictor variable unless both predictor variables have identical scales."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#comparing-the-effects-of-tech-anxiety-behavioral-intentions",
+    "href": "lectures/03-lecture-slides.html#comparing-the-effects-of-tech-anxiety-behavioral-intentions",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Comparing the Effects of Tech Anxiety & Behavioral Intentions",
+    "text": "Comparing the Effects of Tech Anxiety & Behavioral Intentions\nIf we rescale the technological anxiety scale so that instead of going from 1 to 7 by 1 unit intervals it goes from 0 to .06 by .01 intervals, then we get the following results:\n\n\n\n# A tibble: 7 × 2\n  tech_anx tech_anx_rescale\n     &lt;dbl&gt;            &lt;dbl&gt;\n1        1             0   \n2        2             0.01\n3        3             0.02\n4        4             0.03\n5        5             0.04\n6        6             0.05\n7        7             0.06\n\n\n\n\n\nOriginal tech_anx scale:\n\n\n# A tibble: 3 × 5\n  term          estimate    se statistic p.value\n  &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)       1.34 0.07      19.1    0    \n2 tech_anx         -0.01 0.012     -1.13   0.258\n3 beh_intent_ai     0.57 0.01      56.3    0    \n\n\n\nRescaled tech_anx scale:\n\n\n# A tibble: 3 × 5\n  term             estimate    se statistic p.value\n  &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n1 (Intercept)          1.33 0.061     21.8    0    \n2 tech_anx_rescale    -1.38 1.22      -1.13   0.258\n3 beh_intent_ai        0.57 0.01      56.3    0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#rescale-technological-anxiety",
+    "href": "lectures/03-lecture-slides.html#rescale-technological-anxiety",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Rescale Technological Anxiety",
+    "text": "Rescale Technological Anxiety\nIf we rescale the technological anxiety scale so that instead of going from 1 to 7 it goes from 0 to .06 by .01, then we get the following results:\n\n\n# A tibble: 7 × 2\n  tech_anx tech_anx_rescale\n     &lt;dbl&gt;            &lt;dbl&gt;\n1        1             0   \n2        2             0.01\n3        3             0.02\n4        4             0.03\n5        5             0.04\n6        6             0.05\n7        7             0.06\n\n\n\n\nOriginal tech_anx scale:\n\n\n\n\n\nterm\nestimate\nse\nt.stat\np.value\n\n\n\n\n(Intercept)\n1.34\n0.07\n19.09\n0.00\n\n\ntech_anx\n-0.01\n0.01\n-1.13\n0.26\n\n\nbeh_intent_ai\n0.57\n0.01\n56.35\n0.00\n\n\n\n\n\n\nRescaled tech_anx scale:\n\n\n\n\n\nterm\nestimate\nse\nt.stat\np.value\n\n\n\n\n(Intercept)\n1.33\n0.06\n21.80\n0.00\n\n\ntech_anx_rescale\n-1.38\n1.22\n-1.13\n0.26\n\n\nbeh_intent_ai\n0.57\n0.01\n56.35\n0.00"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#standardizing-our-predictor-variables",
+    "href": "lectures/03-lecture-slides.html#standardizing-our-predictor-variables",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Standardizing Our Predictor Variables",
+    "text": "Standardizing Our Predictor Variables\nIf we standardize our predictor variables and our outcome variable, we get the following results:\n\n\n\n\n# A tibble: 7 × 3\n  original_scale tech_anx_scale beh_intent_ai_scale\n           &lt;dbl&gt;          &lt;dbl&gt;               &lt;dbl&gt;\n1              1        -1.52                -2.06 \n2              2        -0.774               -1.45 \n3              3        -0.0263              -0.829\n4              4         0.722               -0.211\n5              5         1.47                 0.407\n6              6         2.22                 1.02 \n7              7         2.97                 1.64 \n\n\n\n\n\n\n\n\nterm\nestimate\nse\np.value\n\n\n\n\n(Intercept)\n0.00\n0.01\n1.00\n\n\ntech_anx_scale\n-0.01\n0.01\n0.26\n\n\nbeh_intent_ai_scale\n0.66\n0.01\n0.00"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-the-squared-semipartial-correlation",
+    "href": "lectures/03-lecture-slides.html#understanding-the-squared-semipartial-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding the Squared Semipartial Correlation",
+    "text": "Understanding the Squared Semipartial Correlation\nAnother way to compare relative effects is the squared semipartial correlation: \\(sr_{j}^2\\).\nThe squared semipartial correlation tells us how much unique variance a predictor variable explains in an outcome variable when controlling for all the other predictor variables.\n\\[sr^2_p=R^2_{Y. X_1...X_p}-R^2_{Y.X_1...X_{p-1}}\\]"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#semipartial-correlation-with-our-ai-data",
+    "href": "lectures/03-lecture-slides.html#semipartial-correlation-with-our-ai-data",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Semipartial Correlation with our AI Data",
+    "text": "Semipartial Correlation with our AI Data\n\n\n\n\n\nMetric\nValue\nR-Squared % Change\n\n\n\n\nOverall R-Squared\n0.450\n0\n\n\nSemipartial r-squared: Behvioral Intent.\n0.351\n355\n\n\nSemipartial r-squared: Tech. Anx.\n0.000\n0"
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#understanding-statistical-control",
+    "href": "lectures/03-lecture-slides.html#understanding-statistical-control",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Understanding Statistical Control",
+    "text": "Understanding Statistical Control\nIf we wanted to estimate the relationship that intention to use the AI tool has on the frequency of AI tool use, while controlling (adjusting) for the level of technological anxiety, we could create multiple new data sets from our original dataset where each new dataset had a fixed level of technological anxiety (e.g. one dataset, where tech_anxiety == 1).\nWe could then estimate the relationship between intentions to use the AI tool and frequency of tool use to each dataset. The average of those estimated slopes (relationships) would be nearly equivalent to the partial coefficient estimated from a multiple regression model that included beh_intent_ai and tech_anxiety."
+  },
+  {
+    "objectID": "lectures/03-lecture-slides.html#should-you-use-the-standardized-partial-coefficient-or-squared-semipartial-correlation",
+    "href": "lectures/03-lecture-slides.html#should-you-use-the-standardized-partial-coefficient-or-squared-semipartial-correlation",
+    "title": "An Introduction to Multiple Regression",
+    "section": "Should You Use the Standardized Partial Coefficient or Squared Semipartial Correlation?",
+    "text": "Should You Use the Standardized Partial Coefficient or Squared Semipartial Correlation?\nPersonally, I do not think you can go wrong either way, but the best practice would be to use the squared semipartial correlation to compare the relative importance of predictor variables."
+  },
+  {
+    "objectID": "lectures/03-lecture-page.html",
+    "href": "lectures/03-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »"
+  },
+  {
+    "objectID": "lectures/03-lecture-page.html#lecture-introduction-to-simple-regression",
+    "href": "lectures/03-lecture-page.html#lecture-introduction-to-simple-regression",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Introduction to Simple Regression",
+    "text": "Lecture: Introduction to Simple Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
   }
 ]

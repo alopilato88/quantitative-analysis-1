@@ -1,0 +1,823 @@
+---
+title: "An Introduction to Multiple Regression"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+
+```
+
+```{r}
+#| echo: false
+set.seed(8756)
+
+plot_alpha <- .50
+plot_fill <- "#3F72AF"
+plot_color <- "#112D4E"
+plot_xlim <- c(-18, 18)
+
+n <- 5000
+pos_att_prob <- dnorm(1:7, mean = 4, sd = 2) / sum(dnorm(1:7, mean = 5, sd = 1))
+pos_att <- sample(1:7, n, replace = TRUE, prob = pos_att_prob)
+b1 <- .35 # Att -> Intent
+b2 <- -.25 # Tech Anx -> Intent
+b3 <- .15 # Att -> Use
+b4 <- .50 # Intent -> Use
+
+var_pos_att_b1 <- var(pos_att * b1)
+
+tech_anx_latent <- -.30 * pos_att + rnorm(n, sd = 1)
+
+data <- 
+  tibble::tibble(
+    pos_att = pos_att,
+    tech_anx_latent = tech_anx_latent
+  ) |>
+  dplyr::mutate(
+    tech_anx = dplyr::case_when(
+      tech_anx_latent < qnorm(.15, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 1,
+      tech_anx_latent < qnorm(.30, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 2,
+      tech_anx_latent < qnorm(.70, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 3,
+      tech_anx_latent < qnorm(.90, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 4,
+      tech_anx_latent < qnorm(.94, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 5,
+      tech_anx_latent < qnorm(.97, mean = mean(tech_anx_latent), sd = sqrt(var_pos_att_b1 + 1)) ~ 6,
+      TRUE ~ 7
+    ),
+    beh_intent_latent = b1 * pos_att + b2 * tech_anx + rnorm(n, sd = 1),
+    beh_intent= dplyr::case_when(
+      beh_intent_latent < qnorm(.08, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 1,
+      beh_intent_latent < qnorm(.16, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 2,
+      beh_intent_latent < qnorm(.25, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 3,
+      beh_intent_latent < qnorm(.47, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 4,
+      beh_intent_latent < qnorm(.80, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 5,
+      beh_intent_latent < qnorm(.90, mean = mean(beh_intent_latent), sd = sqrt(var(b1 * pos_att + b2 * tech_anx) + 1)) ~ 6,
+      TRUE ~ 7
+    ),
+    freq_use_latent = b3 * pos_att + b4 * beh_intent + rnorm(n, sd = 1),
+    freq_use = dplyr::case_when(
+      freq_use_latent < qnorm(.10, mean = mean(freq_use_latent), sd = sqrt(var(b3 * pos_att + b4 * beh_intent) + 1)) ~ 1,
+      freq_use_latent < qnorm(.20, mean = mean(freq_use_latent), sd = sqrt(var(b3 * pos_att + b4 * beh_intent) + 1)) ~ 2,
+      freq_use_latent < qnorm(.35, mean = mean(freq_use_latent), sd = sqrt(var(b3 * pos_att + b4 * beh_intent) + 1)) ~ 3,
+      freq_use_latent < qnorm(.65, mean = mean(freq_use_latent), sd = sqrt(var(b3 * pos_att + b4 * beh_intent) + 1)) ~ 4,
+      freq_use_latent < qnorm(.95, mean = mean(freq_use_latent), sd = sqrt(var(b3 * pos_att + b4 * beh_intent) + 1)) ~ 5,
+      TRUE ~ 6
+    )
+  )
+
+data_ai <- 
+  data |>
+  dplyr::select(
+    pos_attitude_ai = pos_att,
+    tech_anx,
+    beh_intent_ai = beh_intent,
+    freq_use_ai = freq_use
+  ) |>
+  dplyr::mutate(
+    employee_id = sample(100000:999999, n, replace = FALSE),
+    employee_id = as.factor(employee_id),
+    pos_attitude_ai_label = dplyr::case_when(
+      pos_attitude_ai == 1 ~ "Completely Disagree",
+      pos_attitude_ai == 2 ~ "Strongly Disagree",
+      pos_attitude_ai == 3 ~ "Disagree",
+      pos_attitude_ai == 4 ~ "Neutral",
+      pos_attitude_ai == 5 ~ "Agree",
+      pos_attitude_ai == 6 ~ "Strongly Agree",
+      pos_attitude_ai == 7 ~ "Completely Agree",
+    ),
+    tech_anx_label = dplyr::case_when(
+      tech_anx == 1 ~ "Completely Disagree",
+      tech_anx == 2 ~ "Strongly Disagree",
+      tech_anx == 3 ~ "Disagree",
+      tech_anx == 4 ~ "Neutral",
+      tech_anx == 5 ~ "Agree",
+      tech_anx == 6 ~ "Strongly Agree",
+      tech_anx == 7 ~ "Completely Agree",
+    ),
+    beh_intent_ai_label = dplyr::case_when(
+      beh_intent_ai == 1 ~ "Completely Disagree",
+      beh_intent_ai == 2 ~ "Strongly Disagree",
+      beh_intent_ai == 3 ~ "Disagree",
+      beh_intent_ai == 4 ~ "Neutral",
+      beh_intent_ai == 5 ~ "Agree",
+      beh_intent_ai == 6 ~ "Strongly Agree",
+      beh_intent_ai == 7 ~ "Completely Agree",
+    ),
+    freq_use_ai_label = dplyr::case_when(
+      freq_use_ai == 1 ~ "Never",
+      freq_use_ai == 2 ~ "Rarely",
+      freq_use_ai == 3 ~ "Occasionally",
+      freq_use_ai == 4 ~ "Fairly Often",
+      freq_use_ai == 5 ~ "Very Often",
+      freq_use_ai == 6 ~ "All the time"
+    )
+  ) |>
+  dplyr::relocate(
+    employee_id
+  ) |>
+  dplyr::select(
+    -pos_attitude_ai,
+    -pos_attitude_ai_label
+  )
+```
+
+## Schedule for Today
+
+* Talk about stats for ~75 mins (5 PM - 6:15 PM ET)
+* Break for 5 minutes 
+* Finish up stats / R for 40 mins (6:20 PM - 7:00 PM ET)
+
+## Overview 
+
+* A quick review of last week
+* Setup of our working example
+* Introduction to multiple regression
+
+## Goals
+
+* Develop an understanding of multiple regression
+* Write your first R script 
+
+## What is Linear Regression?
+
+Linear regression is a statistical model that allows you to test whether a change in a predictor variable, like *positive attitudes towards AI*, is **linearly** related to change in an outcome variable, like *frequency of AI tool use*. 
+
+```{r}
+#| echo: false
+#| fig-align: center
+set.seed(44352)
+n <- 1000
+x <- rnorm(n)
+x <- (x - mean(x))/sd(x)
+y1 <- .90 * x + rnorm(n, sd = sqrt(1 - var(.90 * x)))
+y2 <- 20*sin(4*x) + rnorm(n)
+
+data_plot <- 
+  tibble::tibble(
+    x = x,
+    y1 = y1,
+    y2 = y2
+  )
+
+plot_lin_reg_1 <- 
+  ggplot2::ggplot(
+    data_plot,
+    ggplot2::aes(
+      x = x,
+      y = y1
+    )
+  ) +
+  ggplot2::geom_point(
+    color = plot_color
+  ) + 
+  ggplot2::geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    fill = plot_fill,
+    lwd = 2
+  ) +
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Predictor",
+    y = "Outcome",
+    title = "Linear Relationship"
+  )
+
+plot_lin_reg_2 <- 
+  ggplot2::ggplot(
+    data_plot,
+    ggplot2::aes(
+      x = x,
+      y = y2
+    )
+  ) +
+  ggplot2::geom_point(
+    color = plot_color
+  ) + 
+  ggplot2::geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    fill = plot_fill,
+    lwd = 2
+  ) +
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Predictor",
+    y = "Outcome",
+    title = "Nonlinear Relationship"
+  )
+
+pw_lin_reg <- plot_lin_reg_1 | plot_lin_reg_2 
+pw_lin_reg & lecture_ggplot_theme_barplot
+```
+
+## Review of Simple Regression 
+
+The simple regression model is just a linear regression model with **one** independent variable. 
+
+$$Y=\beta_0+\beta_1X_1+\epsilon$$
+
+* $\beta_0$: The expected value (mean) of Y when X = 0.
+* $\beta_1$: The average change in Y for a one-unit increase in X.
+* $\epsilon$: Variation in Y that is not explained by our model---unexplained variance.
+
+## Interpreting the Regression Slope 
+
+The most appropriate way to interpret the slope coefficient ($\beta_1$) is as a comparison:
+
+<center>The **average difference** in the frequency with which employees use the AI tool, when **comparing** two people who differ in their positive attitudes towards AI by **one point (e.g. 5: Agree vs 6: Strongly Agree)**, is equal to the value of $\beta_1$.
+
+## Determining the Strength of the Regression Slope
+
+We **should be careful** about using the magnitude of the regression slope to make inferences about the strength of the relationship between the predictor variable and the outcome variable **unless** we have transformed both our predictor and outcome so that their units are in **standard deviations**. 
+
+The magnitude of the regression coefficient is directly related to the **scale of the predictor variable**, so permissible changes to the scale (e.g. converting hours to minutes or Lbs to Kilograms) will change the magnitude of the regression coefficient. 
+
+## Understanding the Overall Fit of our Model 
+
+We can separate the variance of our outcome into two additive pieces: Variance due to things we **have modeled** & Variance due to things we **have not modeled**:
+
+$$\sigma^2_Y=\sigma^2_{model} + \sigma^2_{error}$$
+
+The ratio of $\sigma^2_{model}$ to $\sigma^2_{Y}$ ($\frac{\sigma^2_{model}}{\sigma^2_{Y}}$) is equal to the model's $R^2$, which tells us **the proportion of variance in our outcome that is due to our model**. The larger the $R^2$, the better our model fits the data.
+
+## AI Adoption Example: Problem Statement 
+
+Your organization has just implemented a new generative AI tool (fancy chat bot) to help improve the efficiency of the organizations sales force. Sales employees, however, have started using the technology at different rates. 
+
+**You have been asked to determine why employees differ in their usage rates**. 
+
+## AI Adoption Example: Hypothesis
+
+Using the **Unified Theory of Acceptance and Use of Technology**, you develop the following hypotheses: 
+
+* An employee's technology anxiety is **negatively related** to the frequency with which they use the AI tool. 
+* An employee's intention to use the AI tool is **positively related** to the frequency with which they use the AI tool. 
+
+## Measures
+
+You measure these variables with the following questions: 
+
+* **Using technology such as chatbots makes me anxious.** [Technology Anxiety]
+  + 1: Completely Disagree to 7: Completely Agree
+
+* **I intend to use the chatbot to help me with my sales.** [Behavioral Intentions] 
+  + 1: Completely Disagree to 7: Completely Agree
+
+* **In the past two months, how frequently have you used the organization's new AI powered chat bot?** [Frequency of Use]
+  + 1: Never to 6: All the Time
+
+## The Multiple Regression Model
+
+The multiple regression model is just a **linear regression model with more than one predictor variable**.
+
+$$Y = \beta_0 + \beta_1X_1+\beta_2X_2+...+\beta_pX_p+\epsilon$$
+
+* $\beta_0$ or Intercept: The expected value (mean) of $Y$ when all $X$ = 0.
+* $\beta_p$ or Partial Regression Coefficient: The average change in $Y$ for a one-unit increase in $X_p$, holding all other $Xs$ constant.
+* $\epsilon$ or Residual: The part of Y that is not explained by our model---unexplained variance.
+
+## Why Do We Use Multiple Regression?
+
+We use multiple regression because it allows us to:
+
+* Estimate the effect of a predictor variable while **controlling** for the effects of the other predictor variables in the model.
+* To estimate and test the effects of multiple predictors in a single model. 
+* Allows us to understand how much of the total variance in our outcome variable we can explain with our predictor variables. 
+
+## What Do We Mean by Statistical Control? 
+
+Statistical control is a fancy way of saying "what is the effect of a predictor variable on an outcome variable for people (or units) who have the same measurements on all of the other predictor variables in the model?" 
+
+<center>**What effect does an individual's intention to use the AI tool have on the frequency they use an AI tool, if we hold their level of technological anxiety constant?**</center>
+
+## Understanding Statistical Control
+
+If we wanted to estimate the relationship that intention to use the AI tool has on the frequency of AI tool use, while controlling (adjusting) for the level of technological anxiety, we could create multiple new data sets from our original dataset where each new dataset had a fixed level of technological anxiety (e.g. one dataset, where `tech_anxiety == 1`). 
+
+We could then estimate the relationship between intentions to use the AI tool and frequency of tool use to each dataset. The average of those estimated slopes (relationships) would be nearly equivalent to the partial coefficient estimated from a multiple regression model that included `beh_intent_ai` and `tech_anxiety`.
+
+## An Example of Statistical Control: Example Dataset 1
+
+```{r}
+data_subset_1 <- data_ai |> dplyr::filter(tech_anx == 1)
+```
+
+```{r}
+#| echo: false
+data_subset_1 |>
+  dplyr::select(
+    employee_id,
+    freq_use_ai,
+    tech_anx,
+    beh_intent_ai
+  )
+```
+
+## Visualizing Statistical Control {.smaller}
+
+The plot below shows seven different regression lines each of which estimate the effect that one's intention to use an AI tool has on the frequency with which they actually use the AI tool at a fixed level of technological anxiety (e.g. `tech_anx == 1` or `tech_anx == 2`).
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_grid <- unique(data_ai$tech_anx)
+data_lines <- 
+  purrr::map_df(
+    data_grid,
+    function(x) {
+      data <- data_ai |> dplyr::filter(tech_anx == x)
+      mod <- lm(freq_use_ai ~ beh_intent_ai, data = data)
+      tibble::tibble(
+        b0 = mod$coef[1],
+        b1 = mod$coef[2]
+      )
+    }
+  )
+
+mod <- lm(freq_use_ai ~ beh_intent_ai + tech_anx, data = data_ai)
+
+data_lines <-
+  data_lines |>
+  dplyr::mutate(
+    group = 1
+  )
+
+ggplot2::ggplot(
+  data = data_lines
+) +
+  ggplot2::geom_abline(
+  ggplot2::aes(
+    intercept = b0,
+    slope = b1,
+    color = as.factor(group)
+  ),
+  lwd = 1,
+  ) + 
+  ggplot2::xlim(c(1, 7)) +
+  ggplot2::ylim(c(1, 5.50)) +
+  lecture_ggplot_theme_barplot +
+  ggplot2::scale_color_manual(values= plot_fill) +
+  ggplot2::labs(
+    x = "Intentions to Use the AI Tool",
+    y = "Frequnecy of AI Tool Use"
+  )
+```
+
+## Visualizing Statistical Control {.smaller}
+
+The plot below shows the same seven simple regression lines, but now the slope of the partial regression coefficient for the effect of intention to use the AI tool on frequency of tool use **controlling** for technological anxiety is laid over the simple regression lines.
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+  data = data_lines
+) +
+  ggplot2::geom_abline(
+  ggplot2::aes(
+    intercept = b0,
+    slope = b1,
+    color = as.factor(group)
+  ),
+  lwd = 1,
+  alpha = .50
+  ) + 
+  ggplot2::xlim(c(1, 7)) +
+  ggplot2::ylim(c(1, 5.50)) +
+  ggplot2::geom_abline(
+    intercept = mod$coefficients[1],
+    slope = mod$coefficients[2],
+    color = plot_color,
+    lwd = 1.50
+  ) + 
+  lecture_ggplot_theme_barplot +
+  ggplot2::scale_color_manual(values= plot_fill) +
+  ggplot2::labs(
+    x = "Intentions to Use the AI Tool",
+    y = "Frequnecy of AI Tool Use"
+  )
+```
+
+## Why Do We Include Multiple Predictor Variables?
+
+There are two main reasons to include additional predictor variables in your regression model: 
+
+* The effect of a predictor variable on an outcome variable in a simple regression model may be incorrectly estimated if we do not take into consideration other predictor variables.
+* By adding additional predictor variables into our model, we reduce the error component of our model, which makes it more likely we will find a true significant relationship between our predictor variables and outcome variable.
+
+## What Happens if We Fit Several Simple Regression Models?
+
+As an example of how our understanding of the relationship between a predictor variable and an outcome variable changes as we include additional predictor variables, let's look at how the relationships between technological anxiety, intentions to use the AI tool, and frequency of AI tool use change as we move from simple regression to multiple regression.
+
+## Model 1: Technological Anxiety Prediciting AI Use
+
+Should we conclude that technological anxiety is significantly and negatively related to frequency of AI tool use? 
+
+```{r}
+model_1 <- lm(freq_use_ai ~ tech_anx, data = data_ai)
+```
+
+```{r}
+#| echo: false
+broom::tidy(model_1) |> 
+  dplyr::mutate(
+    p.value = round(p.value, 3),
+    estimate = round(estimate, 3),
+    std.error = round(std.error, 3),
+    statistic = round(statistic, 3)
+  ) |>
+  knitr::kable()
+```
+
+## Model 2: Behavioral Intentions Predicting AI Use
+
+Should we conclude that intention to use the AI tool is significantly and positively related to frequency of AI tool use?
+
+```{r}
+model_2 <- lm(freq_use_ai ~ beh_intent_ai, data = data_ai)
+```
+
+```{r}
+#| echo: false
+broom::tidy(model_2) |> 
+  dplyr::mutate(
+    p.value = round(p.value, 3),
+    estimate = round(estimate, 3),
+    std.error = round(std.error, 3),
+    statistic = round(statistic, 3)
+  ) |>
+  knitr::kable()
+```
+
+## Model 3: Anxiety & Intentions Predicting AI Use
+
+How do our previous conclusions change? What happened to technological anxiety? 
+
+```{r}
+model_3 <- lm(freq_use_ai ~ tech_anx + beh_intent_ai, data = data_ai)
+```
+
+```{r}
+#| echo: false
+broom::tidy(model_3) |> 
+  dplyr::mutate(
+    p.value = round(p.value, 3),
+    estimate = round(estimate, 3),
+    std.error = round(std.error, 3),
+    statistic = round(statistic, 3)
+  ) |>
+  knitr::kable()
+```
+
+## Omitted Variable Bias: What Happens When We Leave Out a Variable
+
+If we leave out a predictor variable from our model that is **related** to **both** the predictor variable we included in our model and our outcome variable, then we should **almost always** find a way to include the left out variable. 
+
+If we do not include this variable, we commit the **omitted variable bias**, where the effect of the omitted predictor variable on the outcome variable gets mixed together with the effect of the included predictor variable.  
+
+## Interpreting a Partial Regression Coefficient 
+
+Like with simple regression, the most appropriate interpretation of a partial regression coefficient is as a mean comparison between two groups that differ on their predictor variable by one point, but have identical values for the other predictor variables. 
+
+## Interpreting the Partial Coefficient for Behavioral Intentions 
+
+The average difference in frequency of AI tool use is `r round(model_3$coefficients["beh_intent_ai"], 2)` points when **comparing two employees who have equal levels of technological anxiety** but differ in their intention to use the AI tool by one point (unit). 
+
+## Understanding Prediction in Multiple Regression
+
+Similar to simple regression, we can decompose the observed value of the outcome variable, $Y$, into a model component and an error component. For multiple regression, the prediction is a linear combination of all $p$ predictor variables.
+
+$$\hat{Y}_i=\hat{\beta}_0+\hat{\beta}_1X_{1}+\hat{\beta}_2X_{2}+...+\hat{\beta}_{p}$$
+
+## Predicting Frequency of AI Tool Use
+
+Our best prediction for an employee who is highly anxious about technology (`tech_anx == 7`) and does not intend to use the AI tool (`beh_intent_ai == 1`): 
+
+$$1.84 = 1.34 + -.01_{\text{Tech. Anx.}}*7+.57_{\text{Beh. Int.}}*1$$
+
+Our best prediction for an employee who is not anxious about technology (`tech_anx == 1`) and intends to use the AI tool (`beh_intent_ai == 7`): 
+
+$$5.32 = 1.34 + -.01_{\text{Tech. Anx.}}*1+.57_{\text{Beh. Int.}}*7$$
+
+## Understanding Error in Multiple Regression
+
+Remember to think of error as anything that is not predicted (or modeled) by our model. This could be random noise as well as other predictor variables that we did not measure. 
+
+$$\hat{e}=Y_i-\hat{Y}_i$$
+$$\hat{e}=\text{Observed} - \text{Predicted}$$
+
+## Error in Our AI Model
+
+Below is a data frame that contains a sample of some of the errors our model made. How would you interpret a negative error? A positive error? 
+
+```{r}
+#| echo: false
+set.seed(98923)
+data_pred <- 
+  data_ai |> 
+  dplyr::select(
+    employee_id,
+    tech_anx,
+    beh_intent_ai,
+    freq_use_ai
+  ) |>
+  dplyr::mutate(
+    predicted_freq_use_ai = predict(model_3),
+    error = freq_use_ai - predicted_freq_use_ai,
+    predicted_freq_use_ai = round(predicted_freq_use_ai, 2),
+    error = round(error, 2)
+  ) |>
+  dplyr::filter(
+    (tech_anx == 7 & beh_intent_ai == 1) |
+      (tech_anx == 1 & beh_intent_ai == 7)
+  ) |>
+  dplyr::slice_sample(
+    n = 10
+  ) |>
+  dplyr::arrange(
+    dplyr::desc(abs(error))
+  )
+
+data_pred
+```
+
+
+## Judging Overall Model Strength: The Multiple Correlation
+
+The **multiple correlation coefficient**, $R$, is the correlation between our model prediction, $\hat{Y}$ and our observed outcome variable, $Y$: 
+
+$$\text{Multiple Corelation = }r_{Y,\hat{Y}}$$
+
+## The Muliple Correlation in Our AI Data
+
+```{r}
+data_ai_pred <-
+  data_ai |>
+  dplyr::mutate(
+    pred_y = predict(model_3)
+  )
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Here is a look at our data frame which contains the actual and predicted values of `freq_use_ai`:
+
+```{r}
+#| echo: false
+data_ai_pred |>
+  dplyr::select(
+    freq_use_ai,
+    pred_y
+  )
+```
+
+:::
+
+::: {.column width="50%"}
+Here is the correlation between our actual and predicted values: 
+
+```{r}
+#| echo: false
+cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y)) |> round(3)
+```
+
+:::
+
+::::
+
+## Judging Overall Model Strength: R-Squared
+
+Similar to simple regression, we can calculate an $R^2$ value which will tell us the proportion of variance in our outcome variable that is explained by **all of our predictor variables**:
+
+* $R^2$ is the square of the multiple correlation coefficient. 
+* $R^2$ falls between 0 (no prediction) and 1 (perfect prediction).
+* The larger the value of $R^2$, the better the set of predictor variables collectively predicts $Y$.
+* $R^2$ will equal 0 only when all of the partial regression coefficients equal 0.
+* $R^2$ will never decrease when a new predictor variable is added to a model.
+
+## The R-Squared in Our AI Data
+
+The multiple correlation is equal to `r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2], 3)`, which is equal to `r round(cor(data_ai_pred |> dplyr::select(freq_use_ai, pred_y))[1, 2]^2, 4)` when squared.
+
+```{r}
+#| echo: false
+summary(model_3)
+```
+
+## Judging the Relative Strength of a Partial Regression Coefficient 
+
+Because the **magnitude** of the partial regression coefficient **depends on the scale** of its predictor variable, we cannot compare the partial regression coefficient of one predictor variable to the partial regression of another predictor variable **unless both predictor variables have identical scales**. 
+
+## Rescale Technological Anxiety {.smaller}
+
+If we rescale the technological anxiety scale so that instead of going from 1 to 7 it goes from 0 to .06 by .01, then we get the following results: 
+
+```{r}
+#| echo: false
+data_ai <- 
+  data_ai |>
+  dplyr::mutate(
+    tech_anx_rescale = (1/100) * (tech_anx - 1)
+  )
+
+model_4 <- lm(freq_use_ai ~ tech_anx_rescale + beh_intent_ai, data = data_ai)
+
+data_ai |> dplyr::select(tech_anx, tech_anx_rescale) |> dplyr::distinct() |> 
+  dplyr::arrange(tech_anx)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Original `tech_anx` scale:**
+
+```{r}
+#| echo: false
+model_3 |>
+  broom::tidy() |>
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    se = round(std.error, 2),
+    statistic = round(statistic, 2),
+    p.value = round(p.value, 2)
+  ) |>
+  dplyr::select(
+    term,
+    estimate,
+    se,
+    t.stat = statistic,
+    p.value
+  ) |>
+  knitr::kable()
+```
+
+:::
+
+::: {.column width="50%"}
+
+**Rescaled `tech_anx` scale:**
+
+```{r}
+#| echo: false
+model_4 |>
+  broom::tidy() |>
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    se = round(std.error, 2),
+    statistic = round(statistic,2),
+    p.value = round(p.value, 2)
+  ) |>
+  dplyr::select(
+    term,
+    estimate,
+    se,
+    t.stat = statistic,
+    p.value
+  ) |>
+  knitr::kable()
+```
+
+:::
+
+::::
+
+## Standardized Partial Regression Coefficient
+
+If we put all of our predictor variables on the same scale, then we can make relative comparisons. One way to do this is by standardizing all of our predictor variables:
+
+$$Z_{p}=\frac{X_p-\overline{X}_p}{SD(X_p)}$$
+
+The scale for each predictor variable would then be in standard deviation units. 
+
+## Standardizing Our Predictor Variables {.smaller}
+
+If we standardize our predictor variables and our outcome variable, we get the following results: 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+data_ai <- 
+  data_ai |>
+  dplyr::mutate(
+    tech_anx_scale = (tech_anx - mean(tech_anx)) / sd(tech_anx),
+    beh_intent_ai_scale = (beh_intent_ai - mean(beh_intent_ai)) / sd(beh_intent_ai),
+    freq_use_ai_scale = (freq_use_ai - mean(freq_use_ai)) / sd(freq_use_ai)
+  )
+
+model_scale <- lm(freq_use_ai_scale ~ tech_anx_scale + beh_intent_ai_scale, data_ai)
+
+data_ai |>
+  dplyr::select(
+    original_scale = tech_anx
+  ) |>
+  dplyr::distinct() |>
+  dplyr::left_join(
+    data_ai |>
+      dplyr::select(
+        tech_anx,
+        tech_anx_scale
+      ) |>
+      dplyr::distinct(),
+    by = c("original_scale" = "tech_anx")
+  ) |>
+  dplyr::left_join(
+    data_ai |>
+      dplyr::select(
+        beh_intent_ai,
+        beh_intent_ai_scale
+      ) |>
+      dplyr::distinct(),
+    by = c("original_scale" = "beh_intent_ai")
+  ) |>
+  dplyr::arrange(
+    original_scale
+  )
+```
+
+::: 
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+model_scale |>
+  broom::tidy() |>
+  dplyr::mutate(
+    estimate = round(estimate, 2),
+    std.error = round(std.error, 2),
+    statistic = round(statistic, 2),
+    p.value = round(p.value, 2)
+  ) |>
+  dplyr::rename(
+    se = std.error
+  ) |>
+  dplyr::select(
+    -statistic
+  ) |>
+  knitr::kable()
+```
+
+:::
+
+::::
+
+## Understanding the Squared Semipartial Correlation 
+
+Another way to compare relative effects is the squared semipartial correlation: $sr_{j}^2$.
+
+The squared semipartial correlation tells us how much **unique variance** a predictor variable explains in an outcome variable when controlling for all the other predictor variables. 
+
+$$sr^2_p=R^2_{Y. X_1...X_p}-R^2_{Y.X_1...X_{p-1}}$$
+
+## Semipartial Correlation with our AI Data
+
+```{r}
+#| echo: false
+sp_cor_mat <-
+  data_ai |>
+  dplyr::select(
+    freq_use_ai,
+    tech_anx,
+    beh_intent_ai
+  ) |>
+  ppcor::spcor()
+
+sp_cor_mat <- sp_cor_mat$estimate^2 |> round(3)
+r2 <- round(summary(model_3)$r.squared, 2)
+
+sp_ai_table <- 
+    tibble::tibble(
+    Metric = c("Overall R-Squared", "Semipartial r-squared: Behvioral Intent.", "Semipartial r-squared: Tech. Anx."),
+    Value = c(round(summary(model_3)$r.squared, 2), sp_cor_mat["freq_use_ai", "beh_intent_ai"], sp_cor_mat["freq_use_ai", "tech_anx"])
+  ) |>
+  dplyr::mutate(
+    `R-Squared % Change` = 100*round((r2 - (r2 - Value))/(r2 - Value), 2)
+  )
+
+sp_ai_table[1, "R-Squared % Change"] <- 0
+
+sp_ai_table |>
+  knitr::kable()
+```
+
+## Should You Use the Standardized Partial Coefficient or Squared Semipartial Correlation?
+
+Personally, I do not think you can go wrong either way, but the best practice would be to use the **squared semipartial correlation** to compare the relative importance of predictor variables.
+
+
