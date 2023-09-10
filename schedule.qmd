@@ -75,14 +75,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
   <tr>
     <td class="ts-date">11/3 - Immersion Day</td>
-    <td class="ts-topic">General Linear Model: ANOVA, ANCOVA, & MR and Diagnostics</td>
+    <td class="ts-topic">Mediation, path analysis, & regression diagnostics</td>
     <td class="ts-content"><a href="readings/reading-8.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/7</td>
-    <td class="ts-topic">Prediction</td>
+    <td class="ts-topic">Power, Precision, & Measurement Error</td>
     <td class="ts-content"><a href="readings/reading-9.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
@@ -110,7 +110,7 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
   <tr>
     <td class="ts-date">12/12</td>
-    <td class="ts-topic">Introduction to mediation & path analysis</td>
+    <td class="ts-topic">Causal mediation</td>
     <td class="ts-content"><a href="readings/reading-13.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
