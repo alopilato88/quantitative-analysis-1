@@ -1,0 +1,19 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+<h1 class="h1-reading"> Assignment 1: Simple & Multiple Regression in R </h1>
+
+<h2>Instructions</h2>
+
+<h2>Materials</h2>
+
+<strong>Assignment R Script</strong>: <a href="01-assignment.R" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<strong>Assignment Data</strong>: <a href="01-assignment-data.csv" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<h2>Data Description</h2>
+
+
+

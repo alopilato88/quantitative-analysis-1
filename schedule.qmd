@@ -35,7 +35,7 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
     <td class="ts-date">9/12</td>
     <td class="ts-topic">Measures of partial association & multiple regression</td>
     <td class="ts-content"><a href="readings/reading-3.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
-    <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="assignments/01-assignment-page.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="lectures/03-lecture-page.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
