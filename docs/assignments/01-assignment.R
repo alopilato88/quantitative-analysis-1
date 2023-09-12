@@ -1,7 +1,5 @@
 ### --- Assignment 1 --- ###
 
-Instructions: In this assignment you will 
-
 # Install and load R packages
 install.packages("tidyverse")
 
@@ -9,7 +7,7 @@ install.packages("tidyverse")
 library(tibble)
 
 # Read in the data from the class site
-data_ai <- readr::read_csv()
+data_ai <- readr::read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/01-assignment-data.csv")
 
 # View our data frame 
 View(data_ai)
