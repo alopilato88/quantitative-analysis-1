@@ -5,9 +5,10 @@ install.packages("tidyverse")
 
 # Load required R packages
 library(tibble)
+library(readr)
 
 # Read in the data from the class site
-data_ai <- readr::read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/01-assignment-data.csv")
+data_ai <- read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/01-assignment-data.csv")
 
 # View our data frame 
 View(data_ai)
