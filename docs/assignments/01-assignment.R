@@ -23,7 +23,7 @@ ncol(data_ai)
 
 # 3. What is the mean and standard deviation of perceived_ease_use?
 
-mean(data_ai$perceived_ease_use) # mean() is a function that calculates the mean of a rando variable.
+mean(data_ai$perceived_ease_use) # mean() is a function that calculates the mean of a random variable.
 sd(data_ai$perceived_ease_use) # sd() is a function that calculates the standard deviation of a random variable.
 
 # 4. What is the mean and standard deviation for perceived_useful?
@@ -33,6 +33,11 @@ sd(data_ai$perceived_ease_use) # sd() is a function that calculates the standard
 # 6a. What is the correlation between perceived_useful and perceived_ease_of_use? 
 
 # cor() is a function that calculates the correlation between two random variables
+# The cor() function requires two arguments: an x variable and a y variable.
+# Below we tell R the x variable = data$perceived_useful and y variable = data_ai$perceived_ease_use.
+# You can read the $ operator as go into the data frame: data_ai and select the variable to the right of the $ sign.
+# data_ai$perceived_useful means go into data_ai and select the column perceived_useful
+
 cor(x = data_ai$perceived_useful, y = data_ai$perceived_ease_use) 
 
 # 6b. In your own words, write out an interpretation of the correlation you calculated in 6a. 
@@ -46,6 +51,11 @@ cor(x = data_ai$perceived_useful, y = data_ai$perceived_ease_use)
 # 8b. In your own words, write out an interpretation of the correlation you calculated in 8a. 
 
 # 9a. Estimate a simple regression model that uses perceived_ease_use to predict behavioral_intention.
+
+# The lm() function used below fits a linear regression model. The lm() code translated to the following
+# regression model: behvioral_intention = B0 + B1*perceived_ease_use. 
+# In general the structure of the lm() function will look like lm(outcome_variable ~ predictor_variable, data = your_data)
+# In R, everyhing to the left of the ~ sign is an outcome variable and everything to the right is a predictor variable.
 
 model_1 <- lm(behavioral_intention ~ perceived_ease_use, data = data_ai)
 
