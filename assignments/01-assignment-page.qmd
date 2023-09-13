@@ -55,6 +55,6 @@ All three survey questions, `perceived_ease_use`, `perceived_useful`, and `behav
 4. Neither Disagree, Nor Agree
 5. Agree
 6. Strongly Agree
-7. Completely Disagree
+7. Completely Agree
 
 
