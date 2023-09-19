@@ -4,17 +4,15 @@ format:
     page-layout: custom
 ---
 <div class="page-readings">
-<h1 class="h1-reading"> Power, Precision, & Measurement Error </h1>
+<h1 class="h1-reading"> More on Mediation </h1>
 <h2 class="h2-reading">Required Readings:</h2>
 <ul class="ul-reading">
-<li>RAGLM -- Chapter 17.1: Power & Precision of Estimation</li>
-<li>RAGLM -- Chapter 17.2: Measurement Error</li>
-<li>Ree & Caretta (2006). The role of measurement error in familiar statistics.</li>
+<li>RAGLM -- Chapter 15: Mediation & Path Analysis</li>
 </ul>
 
 <h2 class="h2-reading">Supplemental Readings:</h2>
 <ul class="ul-reading">
-<li>Cortina (1993). What is coefficient alpha: An examination of theory and application</li>
+<li>VanderWeele (2016). Mediation analysis: A practitioner's guide.</li>
 </ul>
 
 <div class = "prev-next-container">

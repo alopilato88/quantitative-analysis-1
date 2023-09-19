@@ -40,14 +40,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
   <tr>
     <td class="ts-date">9/19</td>
-    <td class="ts-topic">Statistical inference for regression</td>
+    <td class="ts-topic">Review of statistical concepts & R</td>
     <td class="ts-content"><a href="readings/reading-4.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">9/29 - Immersion Day</td>
-    <td class="ts-topic">Categorical predictors & model building</td>
+    <td class="ts-topic">Statistical inference & Categorical predictors</td>
     <td class="ts-content"><a href="readings/reading-5.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
@@ -61,56 +61,56 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
   <tr>
     <td class="ts-date">10/17</td>
-    <td class="ts-topic">Nonlinear effects, interactions, & more model building</td>
+    <td class="ts-topic">Categorical predictors & Model building</td>
     <td class="ts-content"><a href="readings/reading-6.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">10/24</td>
-    <td class="ts-topic">More on interactions</td>
+    <td class="ts-topic">Model building & Moderation (Interactions)</td>
     <td class="ts-content"><a href="readings/reading-7.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/3 - Immersion Day</td>
-    <td class="ts-topic">Mediation, path analysis, & regression diagnostics</td>
+    <td class="ts-topic">Moderation & Mediation</td>
     <td class="ts-content"><a href="readings/reading-8.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/7</td>
-    <td class="ts-topic">Power, Precision, & Measurement Error</td>
+    <td class="ts-topic">More on Mediation</td>
     <td class="ts-content"><a href="readings/reading-9.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/14</td>
-    <td class="ts-topic">Introduction to causal inference</td>
+    <td class="ts-topic">Regression diagnostics</td>
     <td class="ts-content"><a href="readings/reading-10.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/28</td>
-    <td class="ts-topic">Experimental design & analysis</td>
+    <td class="ts-topic">Regression diagnostics</td>
     <td class="ts-content"><a href="readings/reading-11.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/5</td>
-    <td class="ts-topic">Causal inference with observational data</td>
+    <td class="ts-topic">Miscellaneous Topics</td>
     <td class="ts-content"><a href="readings/reading-12.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/12</td>
-    <td class="ts-topic">Causal mediation</td>
+    <td class="ts-topic">Review & Questions</td>
     <td class="ts-content"><a href="readings/reading-13.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>

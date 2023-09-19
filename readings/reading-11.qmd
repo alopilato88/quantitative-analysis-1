@@ -4,23 +4,21 @@ format:
     page-layout: custom
 ---
 <div class="page-readings">
-<h1 class="h1-reading"> Experimental vs Statistical Control </h1>
+<h1 class="h1-reading"> Regression diagnostics </h1>
 <h2 class="h2-reading">Required Readings:</h2>
 <ul class="ul-reading">
-<li>DBEP -- Chapter 20: Designing & Analyzing Experiments</li>
-<li>RAGLM -- Chapter 6: Statistical versus Experimental Control</li>
+<li>RAGLM -- Chapter 16: Detecting & Managing Irregularities</li>
+<li>RAGLM -- Chapter 17.3: An Assortment of Problems</li>
 </ul>
 
 <h2 class="h2-reading">Supplemental Readings:</h2>
 <ul class="ul-reading">
-<li>Posakoff & Podsakoff (2019). Experimental designs in management and leadership research: Strengths, limitations, and recommendations for improving publishability.</li>
-<li>Eden (2017). Field experiments in organizations.</li>
-<li>Luca & Bazerman (2020). Want to make better decisions? Start experimenting.</li>
+<li>Chatterjee & Yilmaz (1992). A review of regression diagnostics for behavioral research.</li>
 </ul>
 
 <div class = "prev-next-container">
-<a class="prev-next" href="reading-10.html">&laquo; Previous Weeks Readings</a>
-<a class="prev-next" href="reading-12.html">Next Weeks Readings &raquo;</a>
+<a class="prev-next" href="reading-9.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-11.html">Next Weeks Readings &raquo;</a>
 </div>
 
 </div>

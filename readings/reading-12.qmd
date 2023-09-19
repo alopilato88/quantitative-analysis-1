@@ -4,17 +4,9 @@ format:
     page-layout: custom
 ---
 <div class="page-readings">
-<h1 class="h1-reading"> Causation with Observational Data </h1>
-<h2 class="h2-reading">Required Readings:</h2>
-<ul class="ul-reading">
-<li>DBEP -- Chapter 21: Regression & Matching with Observational Data</li>
-<li>Narita et al. (2023). Causal inference with observational data: A tutorial on propensity score analysis.</li>
-</ul>
+<h1 class="h1-reading"> Miscellaneous Topics </h1>
 
-<h2 class="h2-reading">Supplemental Readings:</h2>
-<ul class="ul-reading">
-<li>Hernan (2018). The C-word: Scientific euphemisms do not improve causal inference from observational data.</li>
-</ul>
+No readings.
 
 <div class = "prev-next-container">
 <a class="prev-next" href="reading-11.html">&laquo; Previous Weeks Readings</a>

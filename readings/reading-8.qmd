@@ -4,19 +4,17 @@ format:
     page-layout: custom
 ---
 <div class="page-readings">
-<h1 class="h1-reading"> Introduction to Mediation & Path Analysis and Regression Diagnostics </h1>
+<h1 class="h1-reading"> Moderation & Mediation </h1>
 <h2 class="h2-reading">Required Readings:</h2>
 <ul class="ul-reading">
+<li>RAGLM -- Chapter 13: Linear Interaction</li>
 <li>RAGLM -- Chapter 15: Mediation & Path Analysis</li>
-<li>RAGLM -- Chapter 16: Detecting & Managing Irregularities</li>
-<li>RAGLM -- Chapter 17.3: An Assortment of Problems</li>
-<li>Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.</li>
 </ul>
 
 <h2 class="h2-reading">Supplemental Readings:</h2>
 <ul class="ul-reading">
+<li>Aguinis et al. (2017). Improving our understanding of moderation and mediation in strategic management research.</li>
 <li>VanderWeele (2016). Mediation analysis: A practitioner's guide.</li>
-<li>Chatterjee & Yilmaz (1992). A review of regression diagnostics for behavioral research.</li>
 </ul>
 
 <div class = "prev-next-container">
