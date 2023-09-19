@@ -1,0 +1,28 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-assignment">
+The Fall 2023 assignment schedule for Quantiative Analysis 1. Use the links below to see the assignments, due dates, and assignment answers.
+
+<table class="table-schedule">
+<thead>
+  <tr>
+    <th class="tassign-date">Due Date</th>
+    <th class="tassign-topic">Topic</th>
+    <th class="tassign-content">Assignment</th>
+    <th class="tassign-content">Answers</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tassign-date">9/29</td>
+    <td class="tassign-topic">Correlation & Regression</td>
+    <td class="tassign-content"><a href="assignments/01-assignment-page.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
+    <td class="tassign-content"><a href="assignments/01-assignment-answers.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+  </tr>
+</tbody>
+</table>
+
+</div>

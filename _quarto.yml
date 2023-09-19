@@ -10,6 +10,8 @@ website:
         text: Syllabus
       - href: schedule.qmd
         text: Schedule
+      - href: assignment.qmd
+        text: Assignments
   search: false
 
 format:
