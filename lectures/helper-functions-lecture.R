@@ -26,6 +26,11 @@ lecture_ggplot_theme_barplot <-
     legend.position = "none"
   )
 
+# ggplot2 variables
+plot_alpha <- .50
+plot_fill <- "#3F72AF"
+plot_color <- "#112D4E"
+
 #' scaled_dnorm
 #' 
 #' 

@@ -1,0 +1,104 @@
+---
+title: "Review of Statistical Concepts"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+```
+
+## Schedule for Today
+
+* Review (5 PM - 6:15 PM ET)
+* Break for 10 minutes 
+* R Coding (6:25 PM - 7:00 PM ET)
+
+## Overview 
+
+* A review of what we have covered to date
+* Live R coding
+
+## Goals
+
+* Strengthen your understanding of the concepts we have covered up until now
+* Get some experience coding in R
+
+## Broad Topics We Have Covered
+
+* Descriptive Statistics 
+  - Mean, Variance, Covariance, Correlation
+* Inferential Statistics
+  - Probability Distributions, Sampling Distributions, Significance Tests
+* Simple Linear Regression 
+  - Model Estimation, Interpretation, Fit Assessment
+* Multiple Linear Regression
+  - Model Estimation, Interpretation, Fit Assessment
+
+## Let's Answer Some Questions! 
+
+Take ~5 minutes to write out your questions:
+
+* Send me a message on Zoom (Not anonymous to me)
+* Respond to the poll (Anonymous)
+
+## Concepts in Descriptive Statistics with One Variable (Univariate Statistics)
+
+* Measures of Central Tendency
+  - Mean
+  - Median
+  - Mode
+* Measures of Spread
+  - Variance
+  - Standard Deviation
+
+## Concepts in Descriptive Statistics with Two Variables (Bivariate Statistics)
+
+* Measures of a Linear Relationship Between Two Variables
+  - Covariance
+  - Correlation
+
+## Concepts in Inferential Statistics
+
+* Probability Distributions
+  - Normal Distribution
+* Sampling Distributions
+  - Sampling Variance & Standard Error
+* Significance Test
+  - Hypotheses
+  - P-Value
+
+## Concepts in Simple Regression
+
+* Simple Regression Model
+* Estimating the Regression Coefficients
+  - Intercept & Slope
+* Interpreting the Regression Coefficients
+* Assessing the Overall fit of the Regression Model
+  - $R^2$
+  - Error Variance
+
+## Concepts in Multiple Regression
+
+* Multiple Regression Model 
+* Statistical Control
+* Interpreting the Regression Coefficients
+  - Partial Regression Coefficient
+* Assessing the Overall fit of the Regression Model
+  - $R$ & $R^2$
+  - Error Variance
+
+
+
+
+

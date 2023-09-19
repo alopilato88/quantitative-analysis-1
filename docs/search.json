@@ -2711,29 +2711,911 @@
   {
     "objectID": "lectures/04-lecture-slides.html",
     "href": "lectures/04-lecture-slides.html",
-    "title": "Inference for Linear Regression",
+    "title": "Review of Statistical Concepts",
     "section": "",
-    "text": "Talk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nFinish up stats for 35 mins (6:25 PM - 7:00 PM ET)"
+    "text": "Review (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nR Coding (6:25 PM - 7:00 PM ET)"
   },
   {
     "objectID": "lectures/04-lecture-slides.html#schedule-for-today",
     "href": "lectures/04-lecture-slides.html#schedule-for-today",
-    "title": "Inference for Linear Regression",
-    "section": "",
-    "text": "Talk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nFinish up stats for 35 mins (6:25 PM - 7:00 PM ET)"
+    "title": "Review of Statistical Concepts",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\n\nReview (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nR Coding (6:25 PM - 7:00 PM ET)"
   },
   {
     "objectID": "lectures/04-lecture-slides.html#overview",
     "href": "lectures/04-lecture-slides.html#overview",
-    "title": "Inference for Linear Regression",
+    "title": "Review of Statistical Concepts",
     "section": "Overview",
-    "text": "Overview\n\nA quick review of last week\nSetup of our working example\nIntroduction to inference for linear regression"
+    "text": "Overview\n\nA review of what we have covered to date\nLive R coding"
   },
   {
     "objectID": "lectures/04-lecture-slides.html#goals",
     "href": "lectures/04-lecture-slides.html#goals",
+    "title": "Review of Statistical Concepts",
+    "section": "Goals",
+    "text": "Goals\n\nStrengthen your understanding of the concepts we have covered up until now\nGet some experience coding in R"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#data-generating-process",
+    "href": "lectures/04-lecture-slides.html#data-generating-process",
+    "title": "Inference for Linear Regression",
+    "section": "Data Generating Process",
+    "text": "Data Generating Process"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#inferential-statistics",
+    "href": "lectures/04-lecture-slides.html#inferential-statistics",
+    "title": "Inference for Linear Regression",
+    "section": "Inferential Statistics",
+    "text": "Inferential Statistics\nUsually, when you analyze your data you want to generalize the results from your specific dataset to a broader population or more general process. This is called statistical inference."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#statistic-vs-population-parameter",
+    "href": "lectures/04-lecture-slides.html#statistic-vs-population-parameter",
+    "title": "Inference for Linear Regression",
+    "section": "Statistic vs Population Parameter",
+    "text": "Statistic vs Population Parameter\nPopulation parameters (or parameters) are numerical summaries of our population.\nStatistics are estimates of these parameters calculated from data sampled from this population.\nUsually, we do not have access to our full population of interest, so we sample our data from it and learn about its characteristics (parameters) through the statistics we compute from our sampled data."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#statistic-vs-population-parameter-1",
+    "href": "lectures/04-lecture-slides.html#statistic-vs-population-parameter-1",
+    "title": "Inference for Linear Regression",
+    "section": "Statistic vs Population Parameter",
+    "text": "Statistic vs Population Parameter"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#population-regression-model-dgp",
+    "href": "lectures/04-lecture-slides.html#population-regression-model-dgp",
+    "title": "Inference for Linear Regression",
+    "section": "Population Regression Model: DGP",
+    "text": "Population Regression Model: DGP\nThe \\(\\beta\\) coefficients and \\(\\epsilon\\) below are population parameters or just parameters. We will never truly know their value, but we can estimate them.\n\\[Y = \\beta_0+\\beta_1X_{1}+\\beta_2X_2+...+\\beta_pX_p + \\epsilon\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#estimated-regression-model",
+    "href": "lectures/04-lecture-slides.html#estimated-regression-model",
+    "title": "Inference for Linear Regression",
+    "section": "Estimated Regression Model",
+    "text": "Estimated Regression Model\nWe can estimate the regression model using our data. The estimated regression coefficients (slopes and intercepts) are statistics.\nIn simple regression, this looks like:\n\\[\\hat{\\beta}_1=\\frac{\\Sigma(X - \\overline{X})(Y-\\overline{Y})}{\\Sigma(X-\\overline{X})^2}\\]\n\\[\\hat{\\beta}_0=\\overline{Y}-\\hat{\\beta}_1\\overline{X}\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#using-our-estimated-model-to-infer-the-dgp",
+    "href": "lectures/04-lecture-slides.html#using-our-estimated-model-to-infer-the-dgp",
+    "title": "Inference for Linear Regression",
+    "section": "Using Our Estimated Model to Infer the DGP",
+    "text": "Using Our Estimated Model to Infer the DGP\n\nSignificance Tests\nCIs"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#four-components-of-a-sig-test-ci",
+    "href": "lectures/04-lecture-slides.html#four-components-of-a-sig-test-ci",
+    "title": "Inference for Linear Regression",
+    "section": "Four Components of a Sig Test & CI",
+    "text": "Four Components of a Sig Test & CI\n\nAssumptions\nHypotheses (directional or non-directional)\nTest Statistic\nP-Value (for significance tests)"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#assumptions",
+    "href": "lectures/04-lecture-slides.html#assumptions",
+    "title": "Inference for Linear Regression",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nValidity\nRepresentativeness\nLinearity\nIndependence\nHeteroscedasticity\nNormality"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#validity",
+    "href": "lectures/04-lecture-slides.html#validity",
+    "title": "Inference for Linear Regression",
+    "section": "Validity",
+    "text": "Validity"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#representativeness",
+    "href": "lectures/04-lecture-slides.html#representativeness",
+    "title": "Inference for Linear Regression",
+    "section": "Representativeness",
+    "text": "Representativeness"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#linearity",
+    "href": "lectures/04-lecture-slides.html#linearity",
+    "title": "Inference for Linear Regression",
+    "section": "Linearity",
+    "text": "Linearity"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#independence",
+    "href": "lectures/04-lecture-slides.html#independence",
+    "title": "Inference for Linear Regression",
+    "section": "Independence",
+    "text": "Independence"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#heteroscedasticity",
+    "href": "lectures/04-lecture-slides.html#heteroscedasticity",
+    "title": "Inference for Linear Regression",
+    "section": "Heteroscedasticity",
+    "text": "Heteroscedasticity"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#normality",
+    "href": "lectures/04-lecture-slides.html#normality",
+    "title": "Inference for Linear Regression",
+    "section": "Normality",
+    "text": "Normality"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#setting-up-hypotheses",
+    "href": "lectures/04-lecture-slides.html#setting-up-hypotheses",
+    "title": "Inference for Linear Regression",
+    "section": "Setting Up Hypotheses",
+    "text": "Setting Up Hypotheses"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#what-is-a-test-statistic",
+    "href": "lectures/04-lecture-slides.html#what-is-a-test-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "What is a Test Statistic?",
+    "text": "What is a Test Statistic?\nThe test statistic is a number that tells us how many standard errors our estimate falls from the parameter value specified by the null hypothesis. Generally, a test statistic has three pieces:\n\nThe estimate being tested (our estimated regression coefficient)\nThe value specified by the null hypothesis (almost always 0)\nThe standard error of the estimate"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#sampling-variance-standard-error",
+    "href": "lectures/04-lecture-slides.html#sampling-variance-standard-error",
+    "title": "Inference for Linear Regression",
+    "section": "Sampling Variance & Standard Error",
+    "text": "Sampling Variance & Standard Error"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#standard-error-of-a-partial-regression-coefficient",
+    "href": "lectures/04-lecture-slides.html#standard-error-of-a-partial-regression-coefficient",
+    "title": "Inference for Linear Regression",
+    "section": "Standard Error of a Partial Regression Coefficient",
+    "text": "Standard Error of a Partial Regression Coefficient\nThe standard error of a partial regression coefficient tells how close our estimated coefficient is to the true value of that coefficient. The SE is affected by four different components:\n\nAn estimate of the overall amount of modeling error: \\(\\hat{\\sigma}^2_{error}\\)\nThe variance of the predictor variable: \\(Var(X_j)\\)\nThe overall sample size: \\(N\\)\nThe proportion of variance in the predictor variable that is explained by the other predictor variables: \\(R^2_j\\)"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#testing-a-t-statistic",
+    "href": "lectures/04-lecture-slides.html#testing-a-t-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "Testing a T Statistic",
+    "text": "Testing a T Statistic"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#degrees-of-freedom",
+    "href": "lectures/04-lecture-slides.html#degrees-of-freedom",
+    "title": "Inference for Linear Regression",
+    "section": "Degrees of Freedom",
+    "text": "Degrees of Freedom"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#students-t-distribution-degrees-of-freedom",
+    "href": "lectures/04-lecture-slides.html#students-t-distribution-degrees-of-freedom",
+    "title": "Inference for Linear Regression",
+    "section": "Student’s T Distribution & Degrees of Freedom",
+    "text": "Student’s T Distribution & Degrees of Freedom"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#p-value-for-a-t-statistic",
+    "href": "lectures/04-lecture-slides.html#p-value-for-a-t-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "P-Value for a T-Statistic",
+    "text": "P-Value for a T-Statistic"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#testing-a-set-of-regression-coefficients",
+    "href": "lectures/04-lecture-slides.html#testing-a-set-of-regression-coefficients",
+    "title": "Inference for Linear Regression",
+    "section": "Testing a Set of Regression Coefficients",
+    "text": "Testing a Set of Regression Coefficients\nF test"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#anova-table",
+    "href": "lectures/04-lecture-slides.html#anova-table",
+    "title": "Inference for Linear Regression",
+    "section": "ANOVA Table",
+    "text": "ANOVA Table"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#f-distribution",
+    "href": "lectures/04-lecture-slides.html#f-distribution",
+    "title": "Inference for Linear Regression",
+    "section": "F Distribution",
+    "text": "F Distribution"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#p-value",
+    "href": "lectures/04-lecture-slides.html#p-value",
+    "title": "Inference for Linear Regression",
+    "section": "P-value",
+    "text": "P-value"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#inference-about-population-or-process",
+    "href": "lectures/04-lecture-slides.html#inference-about-population-or-process",
+    "title": "Inference for Linear Regression",
+    "section": "Inference about Population or Process?",
+    "text": "Inference about Population or Process?\nWhen we make statistical inferences we are generally making inferences to one of two “things”:\n\nPopulation such as all eligible US voters\nData Generating Process which is the population model you believe generated your data"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#data-generating-process-your-collected-data",
+    "href": "lectures/04-lecture-slides.html#data-generating-process-your-collected-data",
+    "title": "Inference for Linear Regression",
+    "section": "Data Generating Process & Your Collected Data",
+    "text": "Data Generating Process & Your Collected Data\nIn social scientific and behavioral research, it is usually assumed that there is a data generating process that produces the data you have collected. The specific data you collected is useful because it allows us to make an inference about the underlying data genearting process."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#our-data-generating-process-the-regression-model",
+    "href": "lectures/04-lecture-slides.html#our-data-generating-process-the-regression-model",
+    "title": "Inference for Linear Regression",
+    "section": "Our Data Generating Process: The Regression Model",
+    "text": "Our Data Generating Process: The Regression Model\nIn our course examples, we have been assuming that our data is produced by a process that we can represent as a population linear regression model:\n\\[Y = \\beta_0+\\beta_1X_{1}+\\beta_2X_2+...+\\beta_pX_p + \\epsilon\\]\nThe \\(\\beta\\) coefficients and \\(\\epsilon\\) below are the population parameters or just parameters if our data generating process."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#estimating-our-data-generating-process-with-data",
+    "href": "lectures/04-lecture-slides.html#estimating-our-data-generating-process-with-data",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating Our Data Generating Process with Data",
+    "text": "Estimating Our Data Generating Process with Data\nWe can use our data to estimate the data generating process (population regression model in this case):\n\\[Y=\\hat{\\beta}_0+\\hat{\\beta_1}X_1+\\hat{\\beta_2}X_2+...\\hat{\\beta_p}X_p+\\hat{\\epsilon}\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#an-example-of-estimating-simple-regression-coefficients",
+    "href": "lectures/04-lecture-slides.html#an-example-of-estimating-simple-regression-coefficients",
+    "title": "Inference for Linear Regression",
+    "section": "An Example of Estimating Simple Regression Coefficients",
+    "text": "An Example of Estimating Simple Regression Coefficients\nIt is easiest to illustrate what we mean when we say “estimating our data generating process” by looking at the equations used to estimate the coefficients in a simple regression model:\n\\[\\hat{\\beta}_1=\\frac{\\Sigma(X - \\overline{X})(Y-\\overline{Y})}{\\Sigma(X-\\overline{X})^2}\\]\n\\[\\hat{\\beta}_0=\\overline{Y}-\\hat{\\beta}_1\\overline{X}\\]\nBoth equations, only use the collected data."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#the-tools-of-statistical-inference",
+    "href": "lectures/04-lecture-slides.html#the-tools-of-statistical-inference",
+    "title": "Inference for Linear Regression",
+    "section": "The Tools of Statistical Inference",
+    "text": "The Tools of Statistical Inference\nWe have two inferential tools to help us determine if our data supports our data generating process:\n\nStatistical Significance Tests\nConfidence Intervals"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#the-four-components-of-a-significance-test-confidence-interval",
+    "href": "lectures/04-lecture-slides.html#the-four-components-of-a-significance-test-confidence-interval",
+    "title": "Inference for Linear Regression",
+    "section": "The Four Components of a Significance Test & Confidence Interval",
+    "text": "The Four Components of a Significance Test & Confidence Interval\nIn order to ensure our inferential tools work, we need to assess the quality of their four different components:\n\nStatistical Model Assumptions\nHypotheses (directional or non-directional)\nTest Statistic\nP-Value (for significance tests)"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#assumptions-of-linear-regression-analysis",
+    "href": "lectures/04-lecture-slides.html#assumptions-of-linear-regression-analysis",
+    "title": "Inference for Linear Regression",
+    "section": "Assumptions of Linear Regression Analysis",
+    "text": "Assumptions of Linear Regression Analysis\nTo ensure that inferences made about our regression coefficients are apporpriate, we have to make six assumptions:\n\nValidity of our Data\nRepresentativeness of our Data\nAdditivity & Linearity\nIndependence of Errors\nEqual Variance of Errors (Homoscedasticity)\nNormality of Errors"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#validity-of-our-data",
+    "href": "lectures/04-lecture-slides.html#validity-of-our-data",
+    "title": "Inference for Linear Regression",
+    "section": "Validity of Our Data",
+    "text": "Validity of Our Data\nOne of the most important assumptions we need to make is that our data maps to our research questions. We want to make sure that the data we have collected is a valid representation of the phenomenon in which we are interested!\nThere is a whole field called Psychometrics that is dedicated to issues around the validity of measurements!"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#representativeness-of-our-data",
+    "href": "lectures/04-lecture-slides.html#representativeness-of-our-data",
+    "title": "Inference for Linear Regression",
+    "section": "Representativeness of Our Data",
+    "text": "Representativeness of Our Data\nThe data you are estimating your regression model from should be represntative of the population you are making inferences about. This applies even when we are making inferences about a data generating process."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#additivity-linearity",
+    "href": "lectures/04-lecture-slides.html#additivity-linearity",
+    "title": "Inference for Linear Regression",
+    "section": "Additivity & Linearity",
+    "text": "Additivity & Linearity\nAdditivity and Linearity is the assumption that the conditional mean of the outcome variable is a linear function of the diffent predictor variables:\n\\[E[Y_{\\text{AI Freq.}}|X_{\\text{Beh. Intent.}}] = \\beta_0 + \\beta_1X_{\\text{Beh. Intent.}}\\]\nVilolations of this assumption happen when there is a nonlinear relationship between your outcome variable and at least one of your predictor variables."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#independence-of-errors",
+    "href": "lectures/04-lecture-slides.html#independence-of-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Independence of Errors",
+    "text": "Independence of Errors\nThe assumption of independent errors (homoscedasticity) means that once we control for all the predictor variables, then there should be no relationship among our model residuals (the part of our outcome variable that is not captured by our model)."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#equal-variance-of-errors",
+    "href": "lectures/04-lecture-slides.html#equal-variance-of-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Equal Variance of Errors",
+    "text": "Equal Variance of Errors"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#normality-of-errors",
+    "href": "lectures/04-lecture-slides.html#normality-of-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Normality of Errors",
+    "text": "Normality of Errors\nThe normality of errors assumption means that our errors follow a normal probability distribution with a mean of zero and a variance equal to \\(\\sigma^2_{e}\\).\nAnother way to state this assumption is that the distribution of your outcome variable when conditioned on all of your predictor variables follows normal probability distribution.\nIt is important to note that the distribution of your outcome variable without conditioning on your predictor variables need not follow a normal probability distribution!"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#a-focus-on-errors",
+    "href": "lectures/04-lecture-slides.html#a-focus-on-errors",
+    "title": "Inference for Linear Regression",
+    "section": "A Focus on Errors",
+    "text": "A Focus on Errors"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#additivity-linearity-a-graphical-view",
+    "href": "lectures/04-lecture-slides.html#additivity-linearity-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Additivity & Linearity: A Graphical View",
+    "text": "Additivity & Linearity: A Graphical View"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#independence-of-errors-a-graphical-view",
+    "href": "lectures/04-lecture-slides.html#independence-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Independence of Errors: A Graphical View",
+    "text": "Independence of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#equal-variance-of-errors-homoscedasticity",
+    "href": "lectures/04-lecture-slides.html#equal-variance-of-errors-homoscedasticity",
+    "title": "Inference for Linear Regression",
+    "section": "Equal Variance of Errors (Homoscedasticity)",
+    "text": "Equal Variance of Errors (Homoscedasticity)\nThe assumption of equal error variances means that the variance of our errors (residuals) is constant across all values of our predictor variables. A different way to say this is that our errors (residuals) are unrelated to to our predictor variables."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#equal-variance-of-errors-a-graphical-view",
+    "href": "lectures/04-lecture-slides.html#equal-variance-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Equal Variance of Errors: A Graphical View",
+    "text": "Equal Variance of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#the-probability-model-implied-by-our-assumptions",
+    "href": "lectures/04-lecture-slides.html#the-probability-model-implied-by-our-assumptions",
+    "title": "Inference for Linear Regression",
+    "section": "The Probability Model Implied By Our Assumptions",
+    "text": "The Probability Model Implied By Our Assumptions\nWhen taken all together, our linear regression assumptions imply the following probabilistic model for the conditional distribution of our outcome variable:\n\\[Y_{i}|X_{i} \\sim N(\\beta_0 + \\beta_1X_{\\text{Beh. Intent.}},\\sigma^2_e )\\]\n\\[\\epsilon_i\\sim N(0, \\sigma^2_e)\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#normality-of-errors-a-graphical-view",
+    "href": "lectures/04-lecture-slides.html#normality-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Normality of Errors: A Graphical View",
+    "text": "Normality of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#hypotheses-and-the-data-generating-process",
+    "href": "lectures/04-lecture-slides.html#hypotheses-and-the-data-generating-process",
+    "title": "Inference for Linear Regression",
+    "section": "Hypotheses and the Data Generating Process",
+    "text": "Hypotheses and the Data Generating Process\nYou can think of a hypothesis as a statement about the data generating process. This statement needs to be made before your analyses!\nTo setup a significance test, you will need to develop two kinds of hypotheses:\n\nNull Hypothesis (\\(H_0\\)): Specifies that a parameter in your DGP takes on a specific value (usually 0).\nAlternative Hypothesis (\\(H_a\\)): Specifies that a parameter takes on some alternative range of values (e.g. all positive values)."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#our-working-example-for-today",
+    "href": "lectures/04-lecture-slides.html#our-working-example-for-today",
+    "title": "Inference for Linear Regression",
+    "section": "Our Working Example for Today",
+    "text": "Our Working Example for Today\nTo keep things simple, our assumed data generating process will be:\n\\[Y_{\\text{Freq. AI Use}}=\\beta_0+\\beta_1X_{\\text{Beh. Intent.}} + \\epsilon\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#estimating-the-regression-coefficients-of-our-dgp",
+    "href": "lectures/04-lecture-slides.html#estimating-the-regression-coefficients-of-our-dgp",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating the Regression Coefficients of our DGP",
+    "text": "Estimating the Regression Coefficients of our DGP\nIt is easiest to illustrate what we mean when we say “estimating our data generating process” by looking at the equations used to estimate the coefficients in a simple regression model:\n\\[\\hat{\\beta}_1=\\frac{\\Sigma(X - \\overline{X})(Y-\\overline{Y})}{\\Sigma(X-\\overline{X})^2}\\]\n\\[\\hat{\\beta}_0=\\overline{Y}-\\hat{\\beta}_1\\overline{X}\\]\nBoth equations, only use the collected data."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#computing-model-errors",
+    "href": "lectures/04-lecture-slides.html#computing-model-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Computing Model Errors",
+    "text": "Computing Model Errors\nWe will never observe the true errors (residuals) of our regression model, \\(\\epsilon\\). For each observation in our data, we have to estimate \\(\\epsilon\\) by computing:\n\\[Y_{\\text{Freq. AI Use}}-(\\hat{\\beta}_0+\\hat{\\beta}_1X_{\\text{Beh. Intent.}})\\]\nThese observed errors are commonly referred to as residuals. The bulk of the linear regression assumptions are about the distribution of the unobserved error!"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#estimating-the-error-variance",
+    "href": "lectures/04-lecture-slides.html#estimating-the-error-variance",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating the Error Variance",
+    "text": "Estimating the Error Variance\nBecause we will never know the true model errors, we have to use the errors we computed from our regression model to estimate things like the variance and standard deviation of error:\n\\[Var(Y - \\hat{Y})=\\sigma^2_{error}\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#setting-up-the-null-hypothesis",
+    "href": "lectures/04-lecture-slides.html#setting-up-the-null-hypothesis",
+    "title": "Inference for Linear Regression",
+    "section": "Setting Up the Null Hypothesis",
+    "text": "Setting Up the Null Hypothesis\nThe null hypothesis is usually specifies that the parameter you DGP takes on is 0:\n\n\\(H_0\\): There is no relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used (\\(\\beta_1=0\\)).\n\nAlthough it is incredibly rare, the null hypothesis can specify values other than 0:\n\n\\(H_0\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is equal to -.50 (\\(\\beta_1=-.50\\))."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#setting-up-the-alternative-hypothesis",
+    "href": "lectures/04-lecture-slides.html#setting-up-the-alternative-hypothesis",
+    "title": "Inference for Linear Regression",
+    "section": "Setting Up the Alternative Hypothesis",
+    "text": "Setting Up the Alternative Hypothesis\nThe alternative hypothesis can be a directional or non-directional statement:\n\nDirectional \\(H_a\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is positive (\\(\\beta_1 &gt; 0\\)).\nNon-Directional \\(H_a\\): There is a relationship between behavioral intentions to use the AI tool and the frequecny with which the tool is used (\\(\\beta_1 \\neq 0\\)).\n\nTo balance the risk from making a more specific statement (all positive numbers), the directional hypothesis has more statistical power than a non-directional hypothesis. That is, a directional hypothesis is more likely to determine that a weak effect is significant than a non-directional hypothesis."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#t-test-the-test-statistic-for-linear-regression",
+    "href": "lectures/04-lecture-slides.html#t-test-the-test-statistic-for-linear-regression",
+    "title": "Inference for Linear Regression",
+    "section": "T-Test: The Test Statistic for Linear Regression",
+    "text": "T-Test: The Test Statistic for Linear Regression\nWe use a T-test to test the significance of any single regression coefficient:\n\\[t = \\frac{\\hat{\\beta}_1-\\beta_{\\text{Null Hyp}}}{SE(\\hat{\\beta}_1)}\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#sampling-distribution-standard-error-a-redux-from-lecture-1",
+    "href": "lectures/04-lecture-slides.html#sampling-distribution-standard-error-a-redux-from-lecture-1",
+    "title": "Inference for Linear Regression",
+    "section": "Sampling Distribution & Standard Error: A Redux from Lecture 1",
+    "text": "Sampling Distribution & Standard Error: A Redux from Lecture 1\nRemember the sampling distribution is a hypothetical distribution of all our possible \\(\\hat{\\beta}_1\\) estimates and the standard error is the standard deviation of that distribution.\nImagine collecting 1,000,000 independent, representative samples where we measure behavioral intentions to use the AI tool and frequency of tool use. Then we fit 1,000,000 simple regression models and save the estimated value of \\(\\hat{\\beta}_1\\) from each model. The standard error of \\(\\hat{\\beta}_1\\) is equal to the standard devation of those 1,000,000 \\(\\hat{\\beta}_1\\) values."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#estimating-model-errors",
+    "href": "lectures/04-lecture-slides.html#estimating-model-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating Model Errors",
+    "text": "Estimating Model Errors\nWe will never observe the true errors (residuals) of our regression model, \\(\\epsilon\\). For each observation in our data, we have to estimate \\(\\epsilon\\) by computing:\n\\[Y_{\\text{Freq. AI Use}}-(\\hat{\\beta}_0+\\hat{\\beta}_1X_{\\text{Beh. Intent.}})\\]\nThese observed errors are commonly referred to as residuals. The bulk of the linear regression assumptions are about the distribution of the unobserved error!"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#sampling-distribution-standard-error",
+    "href": "lectures/04-lecture-slides.html#sampling-distribution-standard-error",
+    "title": "Inference for Linear Regression",
+    "section": "Sampling Distribution & Standard Error",
+    "text": "Sampling Distribution & Standard Error\nRemember the sampling distribution is a hypothetical distribution of all our possible \\(\\hat{\\beta}_1\\) estimates and the standard error is the standard deviation of that distribution."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#formula-for-the-partial-regression-coefficient-se",
+    "href": "lectures/04-lecture-slides.html#formula-for-the-partial-regression-coefficient-se",
+    "title": "Inference for Linear Regression",
+    "section": "Formula for the Partial Regression Coefficient SE",
+    "text": "Formula for the Partial Regression Coefficient SE\n\\[SE(\\hat{\\beta}_j)=\\sqrt{\\frac{1}{1-R^2_j}}\\times\\sqrt{\\frac{\\hat{\\sigma}^2_{error}}{N \\times Var(X_j)}}\\]"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#calculating-the-p-value-for-a-t-statistic",
+    "href": "lectures/04-lecture-slides.html#calculating-the-p-value-for-a-t-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "Calculating the P-Value for a t-Statistic",
+    "text": "Calculating the P-Value for a t-Statistic\nTo test the significance of a t-statistic, we have to use a probability distribution called the Student’s t distribution.\nWe have to use the Student’s t distribution for one very specific reason: we are using an estimate of the model error variance (\\(\\sigma^2_e\\)) because we do not know the true value. If we knew the true value, we could use that in the SE formula and then calculate the significance of the test statistic using a normal distribution."
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#students-t-distribution",
+    "href": "lectures/04-lecture-slides.html#students-t-distribution",
+    "title": "Inference for Linear Regression",
+    "section": "Student’s T Distribution",
+    "text": "Student’s T Distribution"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#schedule-for-today",
+    "href": "lectures/05-lecture-slides.html#schedule-for-today",
+    "title": "Inference for Linear Regression",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\n\nTalk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nFinish up stats for 35 mins (6:25 PM - 7:00 PM ET)"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#overview",
+    "href": "lectures/05-lecture-slides.html#overview",
+    "title": "Inference for Linear Regression",
+    "section": "Overview",
+    "text": "Overview\n\nA review of statistical inference\nSetup of our working example\nIntroduction to inference for linear regression"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#goals",
+    "href": "lectures/05-lecture-slides.html#goals",
     "title": "Inference for Linear Regression",
     "section": "Goals",
-    "text": "Goals\n\nUnderstand the assumptions underlying linear regression\nUnderstand why we need assumptions in order to make inferences\nUnderstand hypothesis testing under linear regression"
+    "text": "Goals\n\nImprove your understanding of statistical inference\nUnderstand the assumptions underlying linear regression and their importance\nUnderstand hypothesis testing under linear regression"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#inferential-statistics",
+    "href": "lectures/05-lecture-slides.html#inferential-statistics",
+    "title": "Inference for Linear Regression",
+    "section": "Inferential Statistics",
+    "text": "Inferential Statistics\nUsually, when you analyze your data you want to generalize the results from your specific dataset to a broader population or more general process. This is called statistical inference."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#inference-about-population-or-process",
+    "href": "lectures/05-lecture-slides.html#inference-about-population-or-process",
+    "title": "Inference for Linear Regression",
+    "section": "Inference about Population or Process?",
+    "text": "Inference about Population or Process?\nWhen we make statistical inferences we are generally making inferences to one of two “things”:\n\nPopulation such as all eligible US voters\nData Generating Process which is the population model you believe generated your data"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#data-generating-process-your-collected-data",
+    "href": "lectures/05-lecture-slides.html#data-generating-process-your-collected-data",
+    "title": "Inference for Linear Regression",
+    "section": "Data Generating Process & Your Collected Data",
+    "text": "Data Generating Process & Your Collected Data\nIn social scientific and behavioral research, it is usually assumed that there is a data generating process that produces the data you have collected. The specific data you collected is useful because it allows us to make an inference about the underlying data genearting process."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#our-data-generating-process-the-regression-model",
+    "href": "lectures/05-lecture-slides.html#our-data-generating-process-the-regression-model",
+    "title": "Inference for Linear Regression",
+    "section": "Our Data Generating Process: The Regression Model",
+    "text": "Our Data Generating Process: The Regression Model\nIn our course examples, we have been assuming that our data is produced by a process that we can represent as a population linear regression model:\n\\[Y = \\beta_0+\\beta_1X_{1}+\\beta_2X_2+...+\\beta_pX_p + \\epsilon\\]\nThe \\(\\beta\\) coefficients and \\(\\epsilon\\) below are the population parameters or just parameters if our data generating process."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#estimating-our-data-generating-process-with-data",
+    "href": "lectures/05-lecture-slides.html#estimating-our-data-generating-process-with-data",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating Our Data Generating Process with Data",
+    "text": "Estimating Our Data Generating Process with Data\nWe can use our data to estimate the data generating process (population regression model in this case):\n\\[Y=\\hat{\\beta}_0+\\hat{\\beta_1}X_1+\\hat{\\beta_2}X_2+...\\hat{\\beta_p}X_p+\\hat{\\epsilon}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#our-working-example-for-today",
+    "href": "lectures/05-lecture-slides.html#our-working-example-for-today",
+    "title": "Inference for Linear Regression",
+    "section": "Our Working Example for Today",
+    "text": "Our Working Example for Today\nTo keep things simple, our assumed data generating process will be:\n\\[Y_{\\text{Freq. AI Use}}=\\beta_0+\\beta_1X_{\\text{Beh. Intent.}} + \\epsilon\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#estimating-the-regression-coefficients-of-our-dgp",
+    "href": "lectures/05-lecture-slides.html#estimating-the-regression-coefficients-of-our-dgp",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating the Regression Coefficients of our DGP",
+    "text": "Estimating the Regression Coefficients of our DGP\nIt is easiest to illustrate what we mean when we say “estimating our data generating process” by looking at the equations used to estimate the coefficients in a simple regression model:\n\\[\\hat{\\beta}_1=\\frac{\\Sigma(X - \\overline{X})(Y-\\overline{Y})}{\\Sigma(X-\\overline{X})^2}\\]\n\\[\\hat{\\beta}_0=\\overline{Y}-\\hat{\\beta}_1\\overline{X}\\]\nBoth equations, only use the collected data."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#estimating-model-errors",
+    "href": "lectures/05-lecture-slides.html#estimating-model-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating Model Errors",
+    "text": "Estimating Model Errors\nWe will never observe the true errors (residuals) of our regression model, \\(\\epsilon\\). For each observation in our data, we have to estimate \\(\\epsilon\\) by computing:\n\\[Y_{\\text{Freq. AI Use}}-(\\hat{\\beta}_0+\\hat{\\beta}_1X_{\\text{Beh. Intent.}})\\]\nThese observed errors are commonly referred to as residuals. The bulk of the linear regression assumptions are about the distribution of the unobserved error!"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#estimating-the-error-variance",
+    "href": "lectures/05-lecture-slides.html#estimating-the-error-variance",
+    "title": "Inference for Linear Regression",
+    "section": "Estimating the Error Variance",
+    "text": "Estimating the Error Variance\nBecause we will never know the true model errors, we have to use the errors we computed from our regression model to estimate things like the variance and standard deviation of error:\n\\[Var(Y - \\hat{Y})=\\sigma^2_{error}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#the-tools-of-statistical-inference",
+    "href": "lectures/05-lecture-slides.html#the-tools-of-statistical-inference",
+    "title": "Inference for Linear Regression",
+    "section": "The Tools of Statistical Inference",
+    "text": "The Tools of Statistical Inference\nWe have two inferential tools to help us determine if our data supports our data generating process:\n\nStatistical Significance Tests\nConfidence Intervals"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#the-four-components-of-a-significance-test-confidence-interval",
+    "href": "lectures/05-lecture-slides.html#the-four-components-of-a-significance-test-confidence-interval",
+    "title": "Inference for Linear Regression",
+    "section": "The Four Components of a Significance Test & Confidence Interval",
+    "text": "The Four Components of a Significance Test & Confidence Interval\nIn order to ensure our inferential tools work, we need to assess the quality of their four different components:\n\nStatistical Model Assumptions\nHypotheses (directional or non-directional)\nTest Statistic\nP-Value (for significance tests)"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#assumptions-of-linear-regression-analysis",
+    "href": "lectures/05-lecture-slides.html#assumptions-of-linear-regression-analysis",
+    "title": "Inference for Linear Regression",
+    "section": "Assumptions of Linear Regression Analysis",
+    "text": "Assumptions of Linear Regression Analysis\nTo ensure that inferences made about our regression coefficients are apporpriate, we have to make six assumptions:\n\nValidity of our Data\nRepresentativeness of our Data\nAdditivity & Linearity\nIndependence of Errors\nEqual Variance of Errors (Homoscedasticity)\nNormality of Errors"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#validity-of-our-data",
+    "href": "lectures/05-lecture-slides.html#validity-of-our-data",
+    "title": "Inference for Linear Regression",
+    "section": "Validity of Our Data",
+    "text": "Validity of Our Data\nOne of the most important assumptions we need to make is that our data maps to our research questions. We want to make sure that the data we have collected is a valid representation of the phenomenon in which we are interested!\nThere is a whole field called Psychometrics that is dedicated to issues around the validity of measurements!"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#representativeness-of-our-data",
+    "href": "lectures/05-lecture-slides.html#representativeness-of-our-data",
+    "title": "Inference for Linear Regression",
+    "section": "Representativeness of Our Data",
+    "text": "Representativeness of Our Data\nThe data you are estimating your regression model from should be represntative of the population you are making inferences about. This applies even when we are making inferences about a data generating process."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#additivity-linearity",
+    "href": "lectures/05-lecture-slides.html#additivity-linearity",
+    "title": "Inference for Linear Regression",
+    "section": "Additivity & Linearity",
+    "text": "Additivity & Linearity\nAdditivity and Linearity is the assumption that the conditional mean of the outcome variable is a linear function of the diffent predictor variables:\n\\[E[Y_{\\text{AI Freq.}}|X_{\\text{Beh. Intent.}}] = \\beta_0 + \\beta_1X_{\\text{Beh. Intent.}}\\]\nVilolations of this assumption happen when there is a nonlinear relationship between your outcome variable and at least one of your predictor variables."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#additivity-linearity-a-graphical-view",
+    "href": "lectures/05-lecture-slides.html#additivity-linearity-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Additivity & Linearity: A Graphical View",
+    "text": "Additivity & Linearity: A Graphical View"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#independence-of-errors",
+    "href": "lectures/05-lecture-slides.html#independence-of-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Independence of Errors",
+    "text": "Independence of Errors\nThe assumption of independent errors (homoscedasticity) means that once we control for all the predictor variables, then there should be no relationship among our model residuals (the part of our outcome variable that is not captured by our model)."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#independence-of-errors-a-graphical-view",
+    "href": "lectures/05-lecture-slides.html#independence-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Independence of Errors: A Graphical View",
+    "text": "Independence of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#equal-variance-of-errors-homoscedasticity",
+    "href": "lectures/05-lecture-slides.html#equal-variance-of-errors-homoscedasticity",
+    "title": "Inference for Linear Regression",
+    "section": "Equal Variance of Errors (Homoscedasticity)",
+    "text": "Equal Variance of Errors (Homoscedasticity)\nThe assumption of equal error variances means that the variance of our errors (residuals) is constant across all values of our predictor variables. A different way to say this is that our errors (residuals) are unrelated to to our predictor variables."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#equal-variance-of-errors-a-graphical-view",
+    "href": "lectures/05-lecture-slides.html#equal-variance-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Equal Variance of Errors: A Graphical View",
+    "text": "Equal Variance of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#normality-of-errors",
+    "href": "lectures/05-lecture-slides.html#normality-of-errors",
+    "title": "Inference for Linear Regression",
+    "section": "Normality of Errors",
+    "text": "Normality of Errors\nThe normality of errors assumption means that our errors follow a normal probability distribution with a mean of zero and a variance equal to \\(\\sigma^2_{e}\\).\nAnother way to state this assumption is that the distribution of your outcome variable when conditioned on all of your predictor variables follows normal probability distribution.\nIt is important to note that the distribution of your outcome variable without conditioning on your predictor variables need not follow a normal probability distribution!"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#normality-of-errors-a-graphical-view",
+    "href": "lectures/05-lecture-slides.html#normality-of-errors-a-graphical-view",
+    "title": "Inference for Linear Regression",
+    "section": "Normality of Errors: A Graphical View",
+    "text": "Normality of Errors: A Graphical View"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#the-probability-model-implied-by-our-assumptions",
+    "href": "lectures/05-lecture-slides.html#the-probability-model-implied-by-our-assumptions",
+    "title": "Inference for Linear Regression",
+    "section": "The Probability Model Implied By Our Assumptions",
+    "text": "The Probability Model Implied By Our Assumptions\nWhen taken all together, our linear regression assumptions imply the following probabilistic model for the conditional distribution of our outcome variable:\n\\[Y_{i}|X_{i} \\sim N(\\beta_0 + \\beta_1X_{\\text{Beh. Intent.}},\\sigma^2_e )\\]\n\\[\\epsilon_i\\sim N(0, \\sigma^2_e)\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#hypotheses-and-the-data-generating-process",
+    "href": "lectures/05-lecture-slides.html#hypotheses-and-the-data-generating-process",
+    "title": "Inference for Linear Regression",
+    "section": "Hypotheses and the Data Generating Process",
+    "text": "Hypotheses and the Data Generating Process\nYou can think of a hypothesis as a statement about the data generating process. This statement needs to be made before your analyses!\nTo setup a significance test, you will need to develop two kinds of hypotheses:\n\nNull Hypothesis (\\(H_0\\)): Specifies that a parameter in your DGP takes on a specific value (usually 0).\nAlternative Hypothesis (\\(H_a\\)): Specifies that a parameter takes on some alternative range of values (e.g. all positive values)."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#setting-up-the-null-hypothesis",
+    "href": "lectures/05-lecture-slides.html#setting-up-the-null-hypothesis",
+    "title": "Inference for Linear Regression",
+    "section": "Setting Up the Null Hypothesis",
+    "text": "Setting Up the Null Hypothesis\nThe null hypothesis is usually specifies that the parameter you DGP takes on is 0:\n\n\\(H_0\\): There is no relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used (\\(\\beta_1=0\\)).\n\nAlthough it is incredibly rare, the null hypothesis can specify values other than 0:\n\n\\(H_0\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is equal to -.50 (\\(\\beta_1=-.50\\))."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#setting-up-the-alternative-hypothesis",
+    "href": "lectures/05-lecture-slides.html#setting-up-the-alternative-hypothesis",
+    "title": "Inference for Linear Regression",
+    "section": "Setting Up the Alternative Hypothesis",
+    "text": "Setting Up the Alternative Hypothesis\nThe alternative hypothesis can be a directional or non-directional statement:\n\nDirectional \\(H_a\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is positive (\\(\\beta_1 &gt; 0\\)).\nNon-Directional \\(H_a\\): There is a relationship between behavioral intentions to use the AI tool and the frequecny with which the tool is used (\\(\\beta_1 \\neq 0\\)).\n\nTo balance the risk from making a more specific statement (all positive numbers), the directional hypothesis has more statistical power than a non-directional hypothesis. That is, a directional hypothesis is more likely to determine that a weak effect is significant than a non-directional hypothesis."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#what-is-a-test-statistic",
+    "href": "lectures/05-lecture-slides.html#what-is-a-test-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "What is a Test Statistic?",
+    "text": "What is a Test Statistic?\nThe test statistic is a number that tells us how many standard errors our estimate falls from the parameter value specified by the null hypothesis. Generally, a test statistic has three pieces:\n\nThe estimate being tested (our estimated regression coefficient)\nThe value specified by the null hypothesis (almost always 0)\nThe standard error of the estimate"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#t-test-the-test-statistic-for-linear-regression",
+    "href": "lectures/05-lecture-slides.html#t-test-the-test-statistic-for-linear-regression",
+    "title": "Inference for Linear Regression",
+    "section": "T-Test: The Test Statistic for Linear Regression",
+    "text": "T-Test: The Test Statistic for Linear Regression\nWe use a T-test to test the significance of any single regression coefficient:\n\\[t = \\frac{\\hat{\\beta}_1-\\beta_{\\text{Null Hyp}}}{SE(\\hat{\\beta}_1)}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#sampling-distribution-standard-error",
+    "href": "lectures/05-lecture-slides.html#sampling-distribution-standard-error",
+    "title": "Inference for Linear Regression",
+    "section": "Sampling Distribution & Standard Error",
+    "text": "Sampling Distribution & Standard Error\nRemember the sampling distribution is a hypothetical distribution of all our possible \\(\\hat{\\beta}_1\\) estimates and the standard error is the standard deviation of that distribution."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#standard-error-of-a-partial-regression-coefficient",
+    "href": "lectures/05-lecture-slides.html#standard-error-of-a-partial-regression-coefficient",
+    "title": "Inference for Linear Regression",
+    "section": "Standard Error of a Partial Regression Coefficient",
+    "text": "Standard Error of a Partial Regression Coefficient\nThe standard error of a partial regression coefficient tells how close our estimated coefficient is to the true value of that coefficient. The SE is affected by four different components:\n\nAn estimate of the overall amount of modeling error: \\(\\hat{\\sigma}^2_{error}\\)\nThe variance of the predictor variable: \\(Var(X_j)\\)\nThe overall sample size: \\(N\\)\nThe proportion of variance in the predictor variable that is explained by the other predictor variables: \\(R^2_j\\)"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#formula-for-the-partial-regression-coefficient-se",
+    "href": "lectures/05-lecture-slides.html#formula-for-the-partial-regression-coefficient-se",
+    "title": "Inference for Linear Regression",
+    "section": "Formula for the Partial Regression Coefficient SE",
+    "text": "Formula for the Partial Regression Coefficient SE\n\\[SE(\\hat{\\beta}_j)=\\sqrt{\\frac{1}{1-R^2_j}}\\times\\sqrt{\\frac{\\hat{\\sigma}^2_{error}}{N \\times Var(X_j)}}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#calculating-the-p-value-for-a-t-statistic",
+    "href": "lectures/05-lecture-slides.html#calculating-the-p-value-for-a-t-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "Calculating the P-Value for a t-Statistic",
+    "text": "Calculating the P-Value for a t-Statistic\nTo test the significance of a t-statistic, we have to use a probability distribution called the Student’s t distribution.\nWe have to use the Student’s t distribution for one very specific reason: we are using an estimate of the model error variance (\\(\\sigma^2_e\\)) because we do not know the true value. If we knew the true value, we could use that in the SE formula and then calculate the significance of the test statistic using a normal distribution."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#students-t-distribution",
+    "href": "lectures/05-lecture-slides.html#students-t-distribution",
+    "title": "Inference for Linear Regression",
+    "section": "Student’s T Distribution",
+    "text": "Student’s T Distribution"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#students-t-distribution-degrees-of-freedom",
+    "href": "lectures/05-lecture-slides.html#students-t-distribution-degrees-of-freedom",
+    "title": "Inference for Linear Regression",
+    "section": "Student’s T Distribution & Degrees of Freedom",
+    "text": "Student’s T Distribution & Degrees of Freedom"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#p-value-for-a-t-statistic",
+    "href": "lectures/05-lecture-slides.html#p-value-for-a-t-statistic",
+    "title": "Inference for Linear Regression",
+    "section": "P-Value for a T-Statistic",
+    "text": "P-Value for a T-Statistic"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#testing-a-set-of-regression-coefficients",
+    "href": "lectures/05-lecture-slides.html#testing-a-set-of-regression-coefficients",
+    "title": "Inference for Linear Regression",
+    "section": "Testing a Set of Regression Coefficients",
+    "text": "Testing a Set of Regression Coefficients\nF test"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#anova-table",
+    "href": "lectures/05-lecture-slides.html#anova-table",
+    "title": "Inference for Linear Regression",
+    "section": "ANOVA Table",
+    "text": "ANOVA Table"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#f-distribution",
+    "href": "lectures/05-lecture-slides.html#f-distribution",
+    "title": "Inference for Linear Regression",
+    "section": "F Distribution",
+    "text": "F Distribution"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#p-value",
+    "href": "lectures/05-lecture-slides.html#p-value",
+    "title": "Inference for Linear Regression",
+    "section": "P-value",
+    "text": "P-value"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#broad-topics-we-have-covered",
+    "href": "lectures/04-lecture-slides.html#broad-topics-we-have-covered",
+    "title": "Review of Statistical Concepts",
+    "section": "Broad Topics We Have Covered",
+    "text": "Broad Topics We Have Covered\n\nDescriptive Statistics\n\nMean, Variance, Covariance, Correlation\n\nInferential Statistics\n\nProbability Distributions, Sampling Distributions, Significance Tests\n\nSimple Linear Regression\n\nModel Estimation, Interpretation, Fit Assessment\n\nMultiple Linear Regression\n\nModel Estimation, Interpretation, Fit Assessment"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#lets-answer-some-questions",
+    "href": "lectures/04-lecture-slides.html#lets-answer-some-questions",
+    "title": "Review of Statistical Concepts",
+    "section": "Let’s Answer Some Questions!",
+    "text": "Let’s Answer Some Questions!\nTake ~5 minutes to write out your questions:\n\nSend me a message on Zoom (Not anonymous to me)\nRespond to the poll (Anonymous)"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#concepts-in-descriptive-statistics-with-one-variable-univariate-statistics",
+    "href": "lectures/04-lecture-slides.html#concepts-in-descriptive-statistics-with-one-variable-univariate-statistics",
+    "title": "Review of Statistical Concepts",
+    "section": "Concepts in Descriptive Statistics with One Variable (Univariate Statistics)",
+    "text": "Concepts in Descriptive Statistics with One Variable (Univariate Statistics)\n\nMeasures of Central Tendency\n\nMean\nMedian\nMode\n\nMeasures of Spread\n\nVariance\nStandard Deviation"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#concepts-in-descriptive-statistics-with-two-variables-bivariate-statistics",
+    "href": "lectures/04-lecture-slides.html#concepts-in-descriptive-statistics-with-two-variables-bivariate-statistics",
+    "title": "Review of Statistical Concepts",
+    "section": "Concepts in Descriptive Statistics with Two Variables (Bivariate Statistics)",
+    "text": "Concepts in Descriptive Statistics with Two Variables (Bivariate Statistics)\n\nMeasures of a Linear Relationship Between Two Variables\n\nCovariance\nCorrelation"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#concepts-in-inferential-statistics",
+    "href": "lectures/04-lecture-slides.html#concepts-in-inferential-statistics",
+    "title": "Review of Statistical Concepts",
+    "section": "Concepts in Inferential Statistics",
+    "text": "Concepts in Inferential Statistics\n\nProbability Distributions\n\nNormal Distribution\n\nSampling Distributions\n\nSampling Variance & Standard Error\n\nSignificance Test\n\nHypotheses\nP-Value"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#concepts-in-simple-regression",
+    "href": "lectures/04-lecture-slides.html#concepts-in-simple-regression",
+    "title": "Review of Statistical Concepts",
+    "section": "Concepts in Simple Regression",
+    "text": "Concepts in Simple Regression\n\nSimple Regression Model\nEstimating the Regression Coefficients\n\nIntercept & Slope\n\nInterpreting the Regression Coefficients\nAssessing the Overall fit of the Regression Model\n\n\\(R^2\\)\nError Variance"
+  },
+  {
+    "objectID": "lectures/04-lecture-slides.html#concepts-in-multiple-regression",
+    "href": "lectures/04-lecture-slides.html#concepts-in-multiple-regression",
+    "title": "Review of Statistical Concepts",
+    "section": "Concepts in Multiple Regression",
+    "text": "Concepts in Multiple Regression\n\nMultiple Regression Model\nStatistical Control\nInterpreting the Regression Coefficients\n\nPartial Regression Coefficient\n\nAssessing the Overall fit of the Regression Model\n\n\\(R\\) & \\(R^2\\)\nError Variance"
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#assignment-setup",
+    "href": "assignments/01-assignment-answers.html#assignment-setup",
+    "title": "Answers to Assignment 1",
+    "section": "",
+    "text": "# Load required R packages\nlibrary(tibble)\nlibrary(readr)\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/01-assignment-data.csv\")\n\n# View our data frame \nhead(data_ai)\n\nThe code chunk above tells R to do three, broad tasks:\n\nLoad the packages we need for the code in the code chunks below using the library function (e.g. library(tibble))\nRead a .csv file using its URL using the read_csv function and save the .csv file in an object named data_ai\nUse the head function to print out the first 6 rows of our new object: data_ai (head(data_ai))\n\nWe told R to use a function to accomplish those three tasks. A function is a set of code that does one specific thing. For example, read_csv is a function that only reads .csv files. It does nothing else.\nNext, a package such as readr is a collection of functions that all share a similar goal. The package readr contains different functions such as read_csv, read_file, and write_csv, which are all functions that can be used to read or write different kinds of files."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-1.",
+    "href": "assignments/01-assignment-answers.html#question-1.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 1.",
+    "text": "Question 1.\n\n# 1. What is the sample size of your dataset (hint: It's the number of rows)? \n\nnrow(data_ai)\n\n[1] 500\n\n\nThe sample size of our data is the number of observations in our dataset. This is equivalent to the number of rows in our dataset—one row for each observation. So we can use the R function nrow to tell us the number of row. In this case there are 500 rows in our dataset, which means our sample size is 500."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-2.",
+    "href": "assignments/01-assignment-answers.html#question-2.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 2.",
+    "text": "Question 2.\n\n# 2. How many variables are in your dataset (hint: It's the number of columns)? \n\nncol(data_ai)\n\n[1] 4\n\n\nIn general, we will store our data in a .csv file where each column is a different variable. We can use the R function ncol to count the number of columns in our dataset. In our dataset, there are 4 columns, so we have 4 variables in our dataset."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-3.",
+    "href": "assignments/01-assignment-answers.html#question-3.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 3.",
+    "text": "Question 3.\n\n# 3. What is the mean and standard deviation of perceived_ease_use?\n\nmean(data_ai$perceived_ease_use) # mean() is a function that calculates the mean of a rando variable.\n\n[1] 4.078\n\nsd(data_ai$perceived_ease_use) # sd() is a function that calculates the standard deviation of a random variable.\n\n[1] 1.661758\n\n\nWhen you start R and RStudio, a handful of packages are loaded automatically. These packages make a lot of different functions immediately available to you. Two such functions are mean and sd.\nThe function mean only needs one argument—something that the use inputs—to work: a numeric R object otherwise known as a collection of numbers. mean then returns the mean value for the provided numeric object. In our class, the only numeric objects we will be providing to mean are the quantitative variables from our dataset. So to get the mean of perceived_ease_use, we use it as the argument in mean: mean(data_ai$perceived_ease_use), which returns 4.078.\nThe $ symbol used in the mean function tells the mean function to “look for” the variable perceived_ease_use in the dataset data_ai. If we did not include data_ai$ before perceived_ease_use, then the mean function would not where to find perceived_ease_use and the function would return an error message.\nSimilarly, to calculate the standard deviation of perceived_ease_use, we can use the preloaded R function: sd. Like mean, sd only requires one numeric object as an argument and it returns the standard deviation of the numeric values stored in the object. In our assignment, our numeric objects will almost always be the quantitative varialbes in our dataset. So to get the standard deviation of perceived_ease_use, we use perceived_ease_use as the argument in sd: sd(data_ai$perceived_ease_use), which returns 1.6617578.\nAgain we have to use the $ to tell sd to find perceived_ease_use in our dataset data_ai."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-4.",
+    "href": "assignments/01-assignment-answers.html#question-4.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 4.",
+    "text": "Question 4.\n\n# 4. What is the mean and standard deviation for perceived_useful?\n\nmean(data_ai$perceived_useful)\n\n[1] 4.76\n\nsd(data_ai$perceived_useful)\n\n[1] 1.755153\n\n\nJust like question 3, we can use the mean function to calculate the mean of perceived_useful and the sd function to calculate its standard deviation. Again we have to tell R where to find the variable by using data_ai$."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html",
+    "href": "assignments/01-assignment-answers.html",
+    "title": "Answers to Assignment 1",
+    "section": "",
+    "text": "# Load required R packages\nlibrary(tibble)\nlibrary(readr)\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/01-assignment-data.csv\")\n\n# View our data frame \nhead(data_ai)\n\nThe code chunk above tells R to do three, broad tasks:\n\nLoad the packages we need for the code in the code chunks below using the library function (e.g. library(tibble))\nRead a .csv file using its URL using the read_csv function and save the .csv file in an object named data_ai\nUse the head function to print out the first 6 rows of our new object: data_ai (head(data_ai))\n\nWe told R to use a function to accomplish those three tasks. A function is a set of code that does one specific thing. For example, read_csv is a function that only reads .csv files. It does nothing else.\nNext, a package such as readr is a collection of functions that all share a similar goal. The package readr contains different functions such as read_csv, read_file, and write_csv, which are all functions that can be used to read or write different kinds of files."
+  },
+  {
+    "objectID": "lectures/05-lecture-page.html",
+    "href": "lectures/05-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »"
+  },
+  {
+    "objectID": "lectures/05-lecture-page.html#lecture-inference-for-linear-regression",
+    "href": "lectures/05-lecture-page.html#lecture-inference-for-linear-regression",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Inference for Linear Regression",
+    "text": "Lecture: Inference for Linear Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-5.",
+    "href": "assignments/01-assignment-answers.html#question-5.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 5.",
+    "text": "Question 5.\n\n# 5. What is the mean and standard deviation for behavioral_intention?\n\nmean(data_ai$behavioral_intention)\n\n[1] 4.314\n\nsd(data_ai$behavioral_intention)\n\n[1] 1.563423\n\n\nJust like the previous two questions, we can use the mean function to calculate the mean of behvioral_intention and the sd function to calculate its standard deviation. Again we have to tell R where to find the variable by using data_ai$."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-6.",
+    "href": "assignments/01-assignment-answers.html#question-6.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 6.",
+    "text": "Question 6.\n\n# 6a. What is the correlation between perceived_useful and perceived_ease_of_use? \n\n# cor() is a function that calculates the correlation between two random variables\n# The cor() function requires two arguments: an x variable and a y variable.\n# Below we tell R the x variable = data$perceived_useful and y variable = data_ai$perceived_ease_use.\n# You can read the $ operator as go into the data frame: data_ai and select the variable to the right of the $ sign.\n# data_ai$perceived_useful means go into data_ai and select the column perceived_useful\n\ncor(x = data_ai$perceived_useful, y = data_ai$perceived_ease_use) \n\n[1] 0.5423654\n\n# 6b. In your own words, write out an interpretation of the correlation you calculated in 6a. \n\nTo determine the correlation between two or more variables, we can use the preloaded R function: cor. For this homework, we only need to provide cor with two arguments, which are the variables we are interested in calculating a correlation coefficient for: perceived_useful and perceived_ease_use.\ncor(x = data_ai$perceived_useful, y = data_ai$perceived_ease_use) will go into our dataset, data_ai, and use the formula for the correlation coefficient to caluclate the correlation between perceived_useful and perceived_ease_use.\nWe will get the same correlation coefficient if we switch the order of our variables in the cor function: cor(x = data_ai$perceived_ease_use, y = data_ai$perceived_useful) as the correlation is symmetric. This means that the correlation between perceived_ease_use and perceived_useful is identical to the correlation between perceived_useful and perceived_ease_use.\nAs for the interpretation of the correlation, we can interpret it as:\nIn our dataset, the correlation between percieved_useful and perceived_ease_use is 0.5423654. Because the correlation is positive, we know that values of percieved_ease_use above the mean occur with values of perceived_useful that are above its mean. Similary the size of the correlation coefficient tells us that the two variables are moderately related to one another."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-7.",
+    "href": "assignments/01-assignment-answers.html#question-7.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 7.",
+    "text": "Question 7.\n\n# 7a. What is the correlation between perceived_useful and behavioral_intention? \ncor(x = data_ai$perceived_useful, y = data_ai$behavioral_intention) \n\n[1] 0.3795281\n\n# 7b. In your own words, write out an interpretation of the correlation you calculated in 7a. \n\nAgain we can use the cor function. We determine that the correlation between perceived_useful and behavioral_intention is 0.3795281, which means that perceived_useful and behavioral_intention are positively and moderately correlated to one another. High values of perceived_useful will tend to occur with high values of behavioral_intention, on average."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-8.",
+    "href": "assignments/01-assignment-answers.html#question-8.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 8.",
+    "text": "Question 8.\n\n# 8a. What is the correlation between perceived_ease_use and behavioral_intention? \ncor(x = data_ai$perceived_ease_use, y = data_ai$behavioral_intention) \n\n[1] 0.412486\n\n# 8b. In your own words, write out an interpretation of the correlation you calculated in 8a. \n\nAgain we can use the cor function. We determine that the correlation between perceived_ease_use and behavioral_intention is 0.412486, which means that perceived_ease_use and behavioral_intention are positively and moderately correlated to one another. High values of perceived_ease_use will tend to occur with high values of behavioral_intention, on average."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-9.",
+    "href": "assignments/01-assignment-answers.html#question-9.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 9.",
+    "text": "Question 9.\n\n# 9a. Estimate a simple regression model that uses perceived_ease_use to predict behavioral_intention.\n\n# The lm() function used below fits a linear regression model. The lm() code translated to the following\n# regression model: behvioral_intention = B0 + B1*perceived_ease_use. \n# In general the structure of the lm() function will look like lm(outcome_variable ~ predictor_variable, data = your_data)\n# In R, everyhing to the left of the ~ sign is an outcome variable and everything to the right is a predictor variable.\n\nmodel_1 &lt;- lm(behavioral_intention ~ perceived_ease_use, data = data_ai)\n\n# 9b. Print out the results of your regression model and write out an interpretation of the effect of perceived_ease_use on\n#     behavioral_intentions.\n\nsummary(model_1)\n\n\nCall:\nlm(formula = behavioral_intention ~ perceived_ease_use, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.6718 -1.0599 -0.0599  0.9401  3.4924 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)         2.73142    0.16910   16.15   &lt;2e-16 ***\nperceived_ease_use  0.38808    0.03841   10.11   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.426 on 498 degrees of freedom\nMultiple R-squared:  0.1701,    Adjusted R-squared:  0.1685 \nF-statistic: 102.1 on 1 and 498 DF,  p-value: &lt; 2.2e-16\n\n# 9c. What is the R-squared value for model_1? Write out an interpretation of the R-squared.\n\nTo estimate a linear regression model in R, we will use the lm function. The lm function is automatically made available to us when we start R and RStudio, so we do not need to tell R to load it.\nlm requires two main arguments: the lm regression formula and the dataset that contains the predictor and outcome variables for the regression model.\nFirst, the lm formula will always look like outcome_variable_name ~ predictor_variable_name_1, which we can read as estimate a linear regression model where the outcome variable is outcome_variable_name and the predictor variable is predictor_variable_name_1. In general, any variable to the left of ~ is treated as an outcome variable by lm and any variable to the right of lm is treated as a predictor variable.\nNext, the lm function needs to know to where to find the dataset that contains our outcome and predictor variables. We can tell lm where to find our dataset by providing it with its second argument: data = data_ai. Now lm knows that data_ai contains the outcome and predictor variables used in the lm formula.\nNow that we have provide lm with its two necessary arguments, we can estimate it and save it in an object we call model_1. This is all happening in the line of code: model_1 &lt;- lm(behavioral_intention ~ perceived_ease_use, data = data_ai. lm is estimating a regression model where behavioral_intention is the outcome variable and perceived_ease_use is the predictor variable, both of which it knows to find in data_ai. Then it is storing the results of that model in an object (think of it like a box) called model_1.\nWe know R is storing the results of the model into an object named model_1 because of this part of the code: model_1 &lt;-. The &lt;- is called the assignment operator and it creates an object named model_1 and assigns it the results of lm(behavioral_intention ~ perceived_ease_use, data = data_ai.\n\nModel Interpretation\nNow that we have estimated our model, we can use the function summary to display the detailed results of our model. You should see from the results above that summary provides the coefficient estimates (Estimate), there standard errors (Std. Error), and a p-value (Pr(&gt;|t|)) along with more results like the R-squared value.\nWe can interpret the results as follows. When comparing two groups who differ by one unit on their response to perceived_ease_use, the average response to behavioral_intetions for the group with the higher response to perceived_ease_use will be 0.39 units higher than the group with the lower response.\nWe could also say: For every one unit increase in an individual’s perceptions of how easy it is to use the AI tool (perceived_ease_use), we will see their intentions to use the AI tool increase by 0.39. I find that this interpretation is easier to understand when compared to the group comparison interpretation, but it is less accurate.\nThe R-squared value in our model is 0.1701447, which means that 17% of the variance in behavioral_intention can be explained by perceived_ease_use."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-10.",
+    "href": "assignments/01-assignment-answers.html#question-10.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 10.",
+    "text": "Question 10.\n\n# 10a. Estimate a simple regression model that uses perceived_useful to predict behavioral_intention. Name the model: model_2.\n\nmodel_2 &lt;- lm(behavioral_intention ~ perceived_useful, data = data_ai)\n\n# 10b. Print out the results of your regression model and write out an interpretation of the effect of perceived_useful on\n#     behavioral_intentions.\n\nsummary(model_2)\n\n\nCall:\nlm(formula = behavioral_intention ~ perceived_useful, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.0713 -1.0571 -0.0571  0.9429  3.6191 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       2.70479    0.18733  14.439   &lt;2e-16 ***\nperceived_useful  0.33807    0.03693   9.154   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.448 on 498 degrees of freedom\nMultiple R-squared:  0.144, Adjusted R-squared:  0.1423 \nF-statistic:  83.8 on 1 and 498 DF,  p-value: &lt; 2.2e-16\n\n# 10c. What is the R-squared value for model_2? Write out an interpretation of the R-squared.\n\nThe steps used to answer this question are identical to those we used in question 9.\nWe can interpret the results as follows. When comparing two groups who differ by one unit on their response to perceived_useful, the average response to behavioral_intetions for the group with the higher response to perceived_useful will be 0.34 units higher than the group with the lower response.\nWe could also say: For every one unit increase in an individual’s perceptions of how useful the AI tool is (perceived_useful), we will see their intentions to use the AI tool increase by 0.34.\nThe R-squared value in our model is 0.1440416, which means that 14% of the variance in behavioral_intention can be explained by perceived_useful."
+  },
+  {
+    "objectID": "assignments/01-assignment-answers.html#question-11.",
+    "href": "assignments/01-assignment-answers.html#question-11.",
+    "title": "Answers to Assignment 1",
+    "section": "Question 11.",
+    "text": "Question 11.\n\n# 11a. Estimate a multiple regression model that uses perceived_useful and perceived_ease_use to predict behavioral_intention.\n\nmodel_3 &lt;- lm(behavioral_intention ~ perceived_ease_use + perceived_useful, data = data_ai)\n\n# 11b. Print out the results of your multiple regression model and write out an interpretation of both partial regression \n#      coefficients.\n\n# 11c. What is the R-squared value for model_3? Write out an interpretation of the R-squared.\n\nThe steps used to answer this question are identical to those we used in questions 9 and 10. The only difference is that instead of estimating a model with one predictor variable, we are estimating a model with two predictor variables: perceived_ease_use + perceived_useful. To add more predictor variables to our model, we just write: + predictor_variable_name_1 + predictor_variable_name_2 + predictor_variable_name_3 for as many predictor variables as we would like to add. Nothing else about the lm function changes.\nWe can interpret the results as follows:\n\nWhen comparing two groups who differ by one unit on their response to perceived_useful, but who have the same response to perceived_ease_use, the average response to behavioral_intetions for the group with the higher response to perceived_useful will be 0.2 units higher than the group with the lower response.\nWhen comparing two groups who differ by one unit on their response to perceived_ease_use, but who have the same response to perceived_useful, the average response to behavioral_intetions for the group with the higher response to perceived_ease_of_use will be 0.28 units higher than the group with the lower response.\n\nWe could also say: While controlling for perceived_ease_use, for every one unit increase in an individual’s perceptions of how useful the AI tool is (perceived_useful), we will see their intentions to use the AI tool increase by 0.2.\nThe R-squared value in our model is 0.2045388, which means that 20% of the variance in behavioral_intention can be explained by perceived_useful and perceived_ease_use together."
   }
 ]
