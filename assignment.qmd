@@ -6,7 +6,7 @@ format:
 <div class="page-assignment">
 The Fall 2023 assignment schedule for Quantiative Analysis 1. Use the links below to see the assignments, due dates, and assignment answers.
 
-<table class="table-schedule">
+<table class="table-assignment">
 <thead>
   <tr>
     <th class="tassign-date">Due Date</th>

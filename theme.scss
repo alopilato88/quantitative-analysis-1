@@ -121,6 +121,14 @@ h1, h2 {
 
 // Assignment Table Rules
 
+.table-assignment {
+  width: auto;
+}
+
+.table-assignment th {
+  border-bottom: 2px solid #112D4E;
+}
+
 .tassign-date {
   text-align: left;
   width: 25%;
