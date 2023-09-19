@@ -17,8 +17,8 @@ format:
 </ul>
 
 <div class = "prev-next-container">
-<a class="prev-next" href="reading-9.html">&laquo; Previous Weeks Readings</a>
-<a class="prev-next" href="reading-11.html">Next Weeks Readings &raquo;</a>
+<a class="prev-next" href="reading-10.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-12.html">Next Weeks Readings &raquo;</a>
 </div>
 
 </div>
