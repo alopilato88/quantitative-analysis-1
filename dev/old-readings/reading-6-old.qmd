@@ -1,0 +1,26 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+<div class="page-readings">
+<h1 class="h1-reading"> Nonlinear Effects, Interactions, & Model Building </h1>
+<h2 class="h2-reading">Required Readings:</h2>
+<ul class="ul-reading">
+<li>RAGLM -- Chapter 12.1 & 12.2: Nonlinear Relationships</li>
+<li>RAGLM -- Chapter 13: Linear Interaction</li>
+
+</ul>
+
+<h2 class="h2-reading">Supplemental Readings:</h2>
+<ul class="ul-reading">
+<li><a href="https://r4ds.hadley.nz/layers.html">R for Data Science -- 10: Layers</a></li>
+<li><a href="https://r4ds.hadley.nz/eda">R for Data Science -- Chapter 11: Exploratory Data Analysis</a></li>
+</ul>
+
+<div class = "prev-next-container">
+<a class="prev-next" href="reading-5.html">&laquo; Previous Weeks Readings</a>
+<a class="prev-next" href="reading-7.html">Next Weeks Readings &raquo;</a>
+</div>
+
+</div>
