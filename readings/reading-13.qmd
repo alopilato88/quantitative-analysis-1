@@ -9,8 +9,7 @@ format:
 No readings.
 
 <div class = "prev-next-container">
-<a class="prev-next" href="reading-13.html">&laquo; Previous Weeks Readings</a>
-<a class="prev-next" href="reading-15.html">Next Weeks Readings &raquo;</a>
+<a class="prev-next" href="reading-12.html">&laquo; Previous Weeks Readings</a>
 </div>
 
 </div>
