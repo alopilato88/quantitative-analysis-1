@@ -52,3 +52,13 @@ geom_norm_density <- function(mean, sd, fun, args, y_offset, color, fill,
     alpha = alpha
   )
 }
+
+#' calc_t_confint
+#' 
+#' 
+calc_t_confint <- function(x, estimate, se, df) {
+  
+  t <- (x - estimate)/se
+  dt(t, df = df)
+  
+} 

@@ -3210,7 +3210,7 @@
     "href": "lectures/05-lecture-slides.html#data-generating-process-your-collected-data",
     "title": "Inference for Linear Regression",
     "section": "Data Generating Process & Your Collected Data",
-    "text": "Data Generating Process & Your Collected Data\nIn social scientific and behavioral research, it is usually assumed that there is a data generating process that produces the data you have collected. The specific data you collected is useful because it allows us to make an inference about the underlying data genearting process."
+    "text": "Data Generating Process & Your Collected Data\nIn social scientific and behavioral research, it is usually assumed that there is a data generating process that produces the data you have collected. The specific data you collected is useful because it allows us to make an inference about the underlying data generating process."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#our-data-generating-process-the-regression-model",
@@ -3273,7 +3273,7 @@
     "href": "lectures/05-lecture-slides.html#assumptions-of-linear-regression-analysis",
     "title": "Inference for Linear Regression",
     "section": "Assumptions of Linear Regression Analysis",
-    "text": "Assumptions of Linear Regression Analysis\nTo ensure that inferences made about our regression coefficients are apporpriate, we have to make six assumptions:\n\nValidity of our Data\nRepresentativeness of our Data\nAdditivity & Linearity\nIndependence of Errors\nEqual Variance of Errors (Homoscedasticity)\nNormality of Errors"
+    "text": "Assumptions of Linear Regression Analysis\nTo ensure that inferences made about our regression coefficients are appropriate, we have to make six assumptions:\n\nValidity of our Data\nRepresentativeness of our Data\nAdditivity & Linearity\nIndependence of Errors\nEqual Variance of Errors (Homoscedasticity)\nNormality of Errors"
   },
   {
     "objectID": "lectures/05-lecture-slides.html#validity-of-our-data",
@@ -3287,14 +3287,14 @@
     "href": "lectures/05-lecture-slides.html#representativeness-of-our-data",
     "title": "Inference for Linear Regression",
     "section": "Representativeness of Our Data",
-    "text": "Representativeness of Our Data\nThe data you are estimating your regression model from should be represntative of the population you are making inferences about. This applies even when we are making inferences about a data generating process."
+    "text": "Representativeness of Our Data\nThe data you are estimating your regression model from should be representative of the population you are making inferences about. This applies even when we are making inferences about a data generating process."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#additivity-linearity",
     "href": "lectures/05-lecture-slides.html#additivity-linearity",
     "title": "Inference for Linear Regression",
     "section": "Additivity & Linearity",
-    "text": "Additivity & Linearity\nAdditivity and Linearity is the assumption that the conditional mean of the outcome variable is a linear function of the diffent predictor variables:\n\\[E[Y_{\\text{AI Freq.}}|X_{\\text{Beh. Intent.}}] = \\beta_0 + \\beta_1X_{\\text{Beh. Intent.}}\\]\nVilolations of this assumption happen when there is a nonlinear relationship between your outcome variable and at least one of your predictor variables."
+    "text": "Additivity & Linearity\nAdditivity and Linearity is the assumption that the conditional mean of the outcome variable is a linear function of the different predictor variables:\n\\[E[Y_{\\text{AI Freq.}}|X_{\\text{Beh. Intent.}}] = \\beta_0 + \\beta_1X_{\\text{Beh. Intent.}}\\]\nViolations of this assumption happen when there is a nonlinear relationship between your outcome variable and at least one of your predictor variables."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#additivity-linearity-a-graphical-view",
@@ -3371,7 +3371,7 @@
     "href": "lectures/05-lecture-slides.html#setting-up-the-alternative-hypothesis",
     "title": "Inference for Linear Regression",
     "section": "Setting Up the Alternative Hypothesis",
-    "text": "Setting Up the Alternative Hypothesis\nThe alternative hypothesis can be a directional or non-directional statement:\n\nDirectional \\(H_a\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is positive (\\(\\beta_1 &gt; 0\\)).\nNon-Directional \\(H_a\\): There is a relationship between behavioral intentions to use the AI tool and the frequecny with which the tool is used (\\(\\beta_1 \\neq 0\\)).\n\nTo balance the risk from making a more specific statement (all positive numbers), the directional hypothesis has more statistical power than a non-directional hypothesis. That is, a directional hypothesis is more likely to determine that a weak effect is significant than a non-directional hypothesis."
+    "text": "Setting Up the Alternative Hypothesis\nThe alternative hypothesis can be a directional or non-directional statement:\n\nDirectional \\(H_a\\): The relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used is positive (\\(\\beta_1 &gt; 0\\)).\nNon-Directional \\(H_a\\): There is a relationship between behavioral intentions to use the AI tool and the frequency with which the tool is used (\\(\\beta_1 \\neq 0\\))."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#what-is-a-test-statistic",
@@ -3413,28 +3413,28 @@
     "href": "lectures/05-lecture-slides.html#calculating-the-p-value-for-a-t-statistic",
     "title": "Inference for Linear Regression",
     "section": "Calculating the P-Value for a t-Statistic",
-    "text": "Calculating the P-Value for a t-Statistic\nTo test the significance of a t-statistic, we have to use a probability distribution called the Student’s t distribution.\nWe have to use the Student’s t distribution for one very specific reason: we are using an estimate of the model error variance (\\(\\sigma^2_e\\)) because we do not know the true value. If we knew the true value, we could use that in the SE formula and then calculate the significance of the test statistic using a normal distribution."
+    "text": "Calculating the P-Value for a t-Statistic\nTo test the significance of a t-statistic, we have to use a probability distribution called the Student’s t distribution.\nWe have to use the Student’s t distribution for one very specific reason: we are using an estimate of the model error variance (\\(\\sigma^2_e\\)) because we do not know the true value. If we knew the true value, we could use that in the SE formula and then calculate the significance of the test statistic using the Normal distribution."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#students-t-distribution",
     "href": "lectures/05-lecture-slides.html#students-t-distribution",
     "title": "Inference for Linear Regression",
-    "section": "Student’s T Distribution",
-    "text": "Student’s T Distribution"
+    "section": "Student’s t Distribution",
+    "text": "Student’s t Distribution\nThe Student’s t Distribution or t distribution is a probability distribution that in many ways is like the Normal distribution (symmetrical around its mean of 0). However, the t distribution allows for more extreme observations compared to the Normal distribution—the t distribution tails are fatter than the Normal distribution tails."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#students-t-distribution-degrees-of-freedom",
     "href": "lectures/05-lecture-slides.html#students-t-distribution-degrees-of-freedom",
     "title": "Inference for Linear Regression",
     "section": "Student’s T Distribution & Degrees of Freedom",
-    "text": "Student’s T Distribution & Degrees of Freedom"
+    "text": "Student’s T Distribution & Degrees of Freedom\nThe shape of the t distribution is controlled by something called the degrees of freedom. The larger the degrees of freedom, the more similar the t distribution is to the Normal distribution."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#p-value-for-a-t-statistic",
     "href": "lectures/05-lecture-slides.html#p-value-for-a-t-statistic",
     "title": "Inference for Linear Regression",
     "section": "P-Value for a T-Statistic",
-    "text": "P-Value for a T-Statistic"
+    "text": "P-Value for a T-Statistic\nTo calculate a p-value for our t-statistic, we need three things:\n\nT-Statistic\n\\(df_{Residual}\\): This tells us which t distribution to use\nThe direction of the hypothesis (directional or non-directional)\n\nThe p-value will tell us the probability of seeing a value as large or larger than our t-statistic, if we believe the true t-statistic should be 0.” Then, if the p-value is very small (less than or equal to .05), we say it’s pretty unlikely, so we can reject our null hypothesis."
   },
   {
     "objectID": "lectures/05-lecture-slides.html#testing-a-set-of-regression-coefficients",
@@ -3567,7 +3567,7 @@
     "href": "lectures/05-lecture-page.html#lecture-inference-for-linear-regression",
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Inference for Linear Regression",
-    "text": "Lecture: Inference for Linear Regression\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
+    "text": "Lecture: Inference for Linear Regression\n\n\nTo download a pdf version of these slides, click here."
   },
   {
     "objectID": "assignments/01-assignment-answers.html#question-5.",
@@ -3624,5 +3624,544 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Review of Statistical Concepts",
     "text": "Lecture: Review of Statistical Concepts\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#what-on-earth-are-degrees-of-freedom",
+    "href": "lectures/05-lecture-slides.html#what-on-earth-are-degrees-of-freedom",
+    "title": "Inference for Linear Regression",
+    "section": "What on Earth are Degrees of Freedom?",
+    "text": "What on Earth are Degrees of Freedom?\nThink of your data as “statistical cash” to be spent on estimating the regression coefficients of your model. Degrees of freedom is almost like an accounting system that tracks:\n\nTotal net worth at the start: \\(df_{Total} = N\\)\nCash spent on your model: \\(df_{Model} = k + 1\\)\nCash remaining: \\(df_{Residual} = N-k-1\\)"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#confidence-interval",
+    "href": "lectures/05-lecture-slides.html#confidence-interval",
+    "title": "Inference for Linear Regression",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#statistical-accounting-with-degress-of-freedom",
+    "href": "lectures/05-lecture-slides.html#statistical-accounting-with-degress-of-freedom",
+    "title": "Inference for Linear Regression",
+    "section": "Statistical Accounting with Degress of Freedom",
+    "text": "Statistical Accounting with Degress of Freedom"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#why-is-it-called-a-t-test",
+    "href": "lectures/05-lecture-slides.html#why-is-it-called-a-t-test",
+    "title": "Inference for Linear Regression",
+    "section": "Why is it called a t-test?",
+    "text": "Why is it called a t-test?\nTo test the significance of a t-statistic, we have to use a probability distribution called the Student’s t distribution.\nWe have to use the Student’s t distribution for one very specific reason: we are using an estimate of the model error variance (\\(\\sigma^2_e\\)) because we do not know the true value. If we knew the true value, we could use that in the SE formula and then calculate the significance of the test statistic using the Normal distribution."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#dont-go-broke",
+    "href": "lectures/05-lecture-slides.html#dont-go-broke",
+    "title": "Inference for Linear Regression",
+    "section": "Don’t Go Broke",
+    "text": "Don’t Go Broke\nYou always want to have a positive (and large) amount for \\(df_{Residual}\\). We need a positive amount of \\(df_{Residual}\\) in order to test how well our model fits (e.g. calculate the \\(R^2\\)). If we spend ALL of our statistical cash on estimating regression coefficients, then we will not have any cash left over to determine our model fit."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#an-example-with-our-data",
+    "href": "lectures/05-lecture-slides.html#an-example-with-our-data",
+    "title": "Inference for Linear Regression",
+    "section": "An Example with our Data",
+    "text": "An Example with our Data\n\nmodel &lt;- lm(freq_use_ai ~ beh_intent_ai + tech_anx, data = data_lecture)\nsummary(model)\n\n\nCall:\nlm(formula = freq_use_ai ~ beh_intent_ai + tech_anx, data = data_lecture)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.7311 -0.6897 -0.1087  0.8499  3.1599 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    1.34183    0.07029  19.090   &lt;2e-16 ***\nbeh_intent_ai  0.56717    0.01007  56.349   &lt;2e-16 ***\ntech_anx      -0.01379    0.01218  -1.132    0.258    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.029 on 4997 degrees of freedom\nMultiple R-squared:  0.4477,    Adjusted R-squared:  0.4475 \nF-statistic:  2025 on 2 and 4997 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#a-quick-note-on-p-values-for-directional-hypotheses",
+    "href": "lectures/05-lecture-slides.html#a-quick-note-on-p-values-for-directional-hypotheses",
+    "title": "Inference for Linear Regression",
+    "section": "A Quick Note on P-Values for Directional Hypotheses",
+    "text": "A Quick Note on P-Values for Directional Hypotheses\nR (and all other statistical software programs) provide the p-value for a non-directional hypothesis. It is totally fine to use this p-value even if you specify a directional hypothesis, you just need to be aware that the p-value for a directional hypothesis will always equal:\n\\[\\text{p-value}_{\\text{Directional}}=\\frac{\\text{p-value}_{\\text{Non-Directioanl}}}{2}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#f-test",
+    "href": "lectures/05-lecture-slides.html#f-test",
+    "title": "Inference for Linear Regression",
+    "section": "F-Test!?",
+    "text": "F-Test!?\nThe F-Test is a test of two identical null hypotheses:\n\n\\(R^2 = 0\\)\n\\(\\beta_1=\\beta_2=...=\\beta_p=0\\)\n\nIf the p-value for the F-test is less than or equal to .05 you can conclude that the \\(R^2\\) is not equal to 0 and that at least one of your regression coefficients is not equal to 0."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#the-underlying-math-of-the-f-test",
+    "href": "lectures/05-lecture-slides.html#the-underlying-math-of-the-f-test",
+    "title": "Inference for Linear Regression",
+    "section": "The Underlying Math of the F-Test",
+    "text": "The Underlying Math of the F-Test\nSee me after class if you really want to know this…"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#what-is-a-confidence-interval",
+    "href": "lectures/05-lecture-slides.html#what-is-a-confidence-interval",
+    "title": "Inference for Linear Regression",
+    "section": "What is a Confidence Interval?",
+    "text": "What is a Confidence Interval?\nA confidence interval is a range of values that the true parameter likely falls within."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#the-components-of-a-confidence-interval",
+    "href": "lectures/05-lecture-slides.html#the-components-of-a-confidence-interval",
+    "title": "Inference for Linear Regression",
+    "section": "The Components of a Confidence Interval",
+    "text": "The Components of a Confidence Interval\n\\[\\hat{\\beta} \\pm \\text{SE}_\\beta \\times T_{\\text{Perc.}}\\]\n\nEstimate: The regression coefficient from your model\nStandard Error: The standard error of that regression coefficient\nT Value for the 97.5th Percentile: A value that is roughly 2"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#confident-vs-95-confident",
+    "href": "lectures/05-lecture-slides.html#confident-vs-95-confident",
+    "title": "Inference for Linear Regression",
+    "section": "99% Confident vs 95% Confident",
+    "text": "99% Confident vs 95% Confident"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#math-behind-confidence-intervals",
+    "href": "lectures/05-lecture-slides.html#math-behind-confidence-intervals",
+    "title": "Inference for Linear Regression",
+    "section": "Math Behind Confidence Intervals",
+    "text": "Math Behind Confidence Intervals"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#visualizing-a-confidence-interval-for-behavioral-intention",
+    "href": "lectures/05-lecture-slides.html#visualizing-a-confidence-interval-for-behavioral-intention",
+    "title": "Inference for Linear Regression",
+    "section": "Visualizing a Confidence Interval for Behavioral Intention",
+    "text": "Visualizing a Confidence Interval for Behavioral Intention\nWe are 95% confident that the true value for the effect of behavioral intention on frequency of AI use is in this range: 0.55, 0.59"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#compatability",
+    "href": "lectures/05-lecture-slides.html#compatability",
+    "title": "Inference for Linear Regression",
+    "section": "Compatability",
+    "text": "Compatability"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#confidence-interval-for-behavioral-intention",
+    "href": "lectures/05-lecture-slides.html#confidence-interval-for-behavioral-intention",
+    "title": "Inference for Linear Regression",
+    "section": "Confidence Interval for Behavioral Intention",
+    "text": "Confidence Interval for Behavioral Intention\nWe are 95% confident that the true value for the effect of behavioral intention on frequency of AI use is in this range: 0.547, 0.587"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#compability-interval-confidence-intveral",
+    "href": "lectures/05-lecture-slides.html#compability-interval-confidence-intveral",
+    "title": "Inference for Linear Regression",
+    "section": "Compability Interval > Confidence Intveral",
+    "text": "Compability Interval &gt; Confidence Intveral\nI believe the best way to understand the confidence interval is as a compatibility interval. The interval tells us the range of null hypothesis values that we would not be able to reject (they would have p-values greater than or equal to .05).\n\n\n\n\n\nNull Value\nP-Value\n\n\n\n\n0.546\n0.036\n\n\n0.547\n0.050\n\n\n0.587\n0.050\n\n\n0.588\n0.039"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#why-confidence-compatability-intervals-trump-p-values",
+    "href": "lectures/05-lecture-slides.html#why-confidence-compatability-intervals-trump-p-values",
+    "title": "Inference for Linear Regression",
+    "section": "Why Confidence (Compatability Intervals) Trump P-Values",
+    "text": "Why Confidence (Compatability Intervals) Trump P-Values\nHere is a example where a finding is statistically different from 0, but not practically different. The P-Value does not tell you the estimate is not practically different from 0, but the confidence interval does:\n\n\n\n\n\n\n\n\n\n\n\n\n\nEffect\nEstimate\nStd. Error\nP-Value\nLower Bound\nUpper Bound\n\n\n\n\n(Intercept)\n2.231\n4.310\n0.606\n-6.322\n10.784\n\n\nPredictor Var.\n5.075\n2.144\n0.020\n0.821\n9.329"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#schedule-for-today",
+    "href": "lectures/06-lecture-slides.html#schedule-for-today",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\n\nTalk about stats for ~75 mins (5 PM - 6:15 PM ET)\nBreak for 10 minutes\nFinish up stats for 35 mins (6:25 PM - 7:00 PM ET)"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#overview",
+    "href": "lectures/06-lecture-slides.html#overview",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Overview",
+    "text": "Overview\n\nReview of categorical predictor examples\nSetup of our working example\nIntroduction to using categorical variables in linear regression"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#goals",
+    "href": "lectures/06-lecture-slides.html#goals",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Goals",
+    "text": "Goals\n\nUnderstand how to use categorical variables as predictors\nUnderstand how to makes inferences about categorical predictors"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#what-is-a-categorical-predictor",
+    "href": "lectures/06-lecture-slides.html#what-is-a-categorical-predictor",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "What is a Categorical Predictor?",
+    "text": "What is a Categorical Predictor?\nA categorical predictor is a variable where the values denote membership to a specific group."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#examples-of-categorical-predictors",
+    "href": "lectures/06-lecture-slides.html#examples-of-categorical-predictors",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Examples of Categorical Predictors?",
+    "text": "Examples of Categorical Predictors?\nSome common categorical predictors are:\n\nBiological sex assigned at birth (Male or Female)\nEducational Level (Some HS, HS, College, Graduate)\nEmployment Status (Full Time or Part Time)\n\nCan anyone think of any others?"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#dichotomous-vs-multicategorical-predictors",
+    "href": "lectures/06-lecture-slides.html#dichotomous-vs-multicategorical-predictors",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Dichotomous vs Multicategorical Predictors",
+    "text": "Dichotomous vs Multicategorical Predictors\nWe will distinguish between categorical predictors that have two groups and those that have three or more groups:\n\nDichotomous or Binary Predictors: Two groups\nMulticategorical Predictors: Three or more groups"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#our-working-example",
+    "href": "lectures/06-lecture-slides.html#our-working-example",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Our Working Example",
+    "text": "Our Working Example\nWe want to understand if an employee’s previous experience with AI-based technology affects the frequency with which they adopt to the organization’s new gen AI chatbot.\nOur data generating process (theoretical model):\n\\[Y_{\\text{Freq Use.}}=\\beta_0+\\beta_1X_{\\text{Prev. Exp. Tech.}} \\]\nWhere the variable previous experience with technology is a dichotomous variable with the values: Yes or No."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#representing-a-dichotomous-predictor-with-numbers",
+    "href": "lectures/06-lecture-slides.html#representing-a-dichotomous-predictor-with-numbers",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Representing a Dichotomous Predictor with Numbers",
+    "text": "Representing a Dichotomous Predictor with Numbers\nTo be able to use a dichotomous predictor in a statistical model, we have to represent the categories as numbers:\n\n\n\n\n\nPrev. Exp.\nCode 1\nCode 2\nCode 3\nCode 4\n\n\n\n\nNo\n-0.5\n-1\n1\n0\n\n\nYes\n0.5\n1\n2\n1"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#dummy-coding",
+    "href": "lectures/06-lecture-slides.html#dummy-coding",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Dummy Coding",
+    "text": "Dummy Coding\nWe can use any coding scheme as long as observations in the same group are assigned the same number and these numbers are different across groups. There is, however, one coding scheme that makes the most sense for regression: Dummy Coding.\n\n\n\n\n\nPrev. Exp.\nDummy Code\n\n\n\n\nNo\n0\n\n\nYes\n1"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#storing-a-dichtomous-predictor-in-your-data",
+    "href": "lectures/06-lecture-slides.html#storing-a-dichtomous-predictor-in-your-data",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Storing a Dichtomous Predictor in Your Data",
+    "text": "Storing a Dichtomous Predictor in Your Data\nIt is good practice to have the numerical and categorical representation of your categorical variable in your dataset:\n\n\n# A tibble: 10 × 3\n   prev_exp_cat prev_exp freq_use\n   &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;\n 1 No                  0        3\n 2 No                  0        1\n 3 No                  0        3\n 4 No                  0        2\n 5 No                  0        4\n 6 No                  0        4\n 7 No                  0        1\n 8 Yes                 1        6\n 9 Yes                 1        3\n10 Yes                 1        2"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#what-happens-to-the-regression-model-with-two-groups",
+    "href": "lectures/06-lecture-slides.html#what-happens-to-the-regression-model-with-two-groups",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "What Happens to the Regression Model with Two Groups?",
+    "text": "What Happens to the Regression Model with Two Groups?"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output",
+    "href": "lectures/06-lecture-slides.html#r-output",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output\n\nmodel &lt;- lm(freq_use ~ prev_exp_cat, data = data_lecture_multicat)\nsummary(model)\n\n\nCall:\nlm(formula = freq_use ~ prev_exp_cat, data = data_lecture_multicat)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n -2.65  -0.76   0.24   1.24   3.24 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           2.76000    0.06098  45.262  &lt; 2e-16 ***\nprev_exp_catmoderate  0.82667    0.11133   7.425  3.9e-13 ***\nprev_exp_cathigh      1.89000    0.12936  14.611  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.141 on 597 degrees of freedom\nMultiple R-squared:  0.2762,    Adjusted R-squared:  0.2737 \nF-statistic: 113.9 on 2 and 597 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#interpreting-the-regression-coefficients",
+    "href": "lectures/06-lecture-slides.html#interpreting-the-regression-coefficients",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Interpreting the Regression Coefficients",
+    "text": "Interpreting the Regression Coefficients\nThe reason we use indicator coding is because it makes the regression coefficients very easy to interpret:\n\\[\\beta_0=\\overline{Y}_{\\text{Group: 0}}\\]\n\\[\\beta_1 = \\overline{Y}_{\\text{Group: 1}}-\\overline{Y}_{\\text{Group: 0}}\\]"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#setting-a-reference-group",
+    "href": "lectures/06-lecture-slides.html#setting-a-reference-group",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Setting a Reference Group",
+    "text": "Setting a Reference Group\nThe reference group is the group that receives a 0 across all of the indicator variables for the categorical variable. In our example, the reference group is low as observations in the low group receive values of 0 across both the prev_exp_mod and prev_exp_high indicator variables.\nThere are no real statistical consequences for your choice of reference group, I generally recommend picking the group with the largest group size or the group you want to compare to all of the remaining groups."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output-1",
+    "href": "lectures/06-lecture-slides.html#r-output-1",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#mean-comparison-using-a-t-test",
+    "href": "lectures/06-lecture-slides.html#mean-comparison-using-a-t-test",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Mean Comparison using a T-Test",
+    "text": "Mean Comparison using a T-Test"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#equivalence-of-a-t-test-for-two-means",
+    "href": "lectures/06-lecture-slides.html#equivalence-of-a-t-test-for-two-means",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Equivalence of a t-test for two means",
+    "text": "Equivalence of a t-test for two means"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#including-a-continuous-predictor-variable",
+    "href": "lectures/06-lecture-slides.html#including-a-continuous-predictor-variable",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Including a Continuous Predictor Variable",
+    "text": "Including a Continuous Predictor Variable"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output-2",
+    "href": "lectures/06-lecture-slides.html#r-output-2",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#interpreting-the-coefficients",
+    "href": "lectures/06-lecture-slides.html#interpreting-the-coefficients",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Interpreting the Coefficients",
+    "text": "Interpreting the Coefficients"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#examples-of-multicategorical-predictors",
+    "href": "lectures/06-lecture-slides.html#examples-of-multicategorical-predictors",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Examples of Multicategorical Predictors?",
+    "text": "Examples of Multicategorical Predictors?"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#building-a-mulitcategoical-predictor",
+    "href": "lectures/06-lecture-slides.html#building-a-mulitcategoical-predictor",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Building a Mulitcategoical Predictor",
+    "text": "Building a Mulitcategoical Predictor"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#dummy-coding-g-1-predictors",
+    "href": "lectures/06-lecture-slides.html#dummy-coding-g-1-predictors",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Dummy Coding: g-1 Predictors",
+    "text": "Dummy Coding: g-1 Predictors"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#storing-a-mulitcategorical-predictor-in-your-data",
+    "href": "lectures/06-lecture-slides.html#storing-a-mulitcategorical-predictor-in-your-data",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Storing a Mulitcategorical Predictor in Your Data",
+    "text": "Storing a Mulitcategorical Predictor in Your Data\nTo numerically represent a multicategorical variable, we need to create g - 1 indicator variables, where g equals the number of groups.\n\n\n# A tibble: 10 × 4\n   prev_exp_cat prev_exp_mod prev_exp_high freq_use\n   &lt;fct&gt;               &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n 1 low                     0             0        3\n 2 low                     0             0        4\n 3 low                     0             0        3\n 4 low                     0             0        3\n 5 moderate                1             0        3\n 6 moderate                1             0        3\n 7 moderate                1             0        3\n 8 high                    0             1        6\n 9 high                    0             1        5\n10 high                    0             1        3"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#what-happens-to-the-regression-model-with-multiple-groups",
+    "href": "lectures/06-lecture-slides.html#what-happens-to-the-regression-model-with-multiple-groups",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "What Happens to the Regression Model with Multiple Groups?",
+    "text": "What Happens to the Regression Model with Multiple Groups?"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output-3",
+    "href": "lectures/06-lecture-slides.html#r-output-3",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#interpreting-the-regression-coefficients-1",
+    "href": "lectures/06-lecture-slides.html#interpreting-the-regression-coefficients-1",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Interpreting the Regression Coefficients",
+    "text": "Interpreting the Regression Coefficients"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#setting-a-reference-group-1",
+    "href": "lectures/06-lecture-slides.html#setting-a-reference-group-1",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Setting a Reference Group",
+    "text": "Setting a Reference Group"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output-4",
+    "href": "lectures/06-lecture-slides.html#r-output-4",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#group-comparison-using-an-anova",
+    "href": "lectures/06-lecture-slides.html#group-comparison-using-an-anova",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Group Comparison using an ANOVA",
+    "text": "Group Comparison using an ANOVA"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#anova-table",
+    "href": "lectures/06-lecture-slides.html#anova-table",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "ANOVA Table",
+    "text": "ANOVA Table"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#equivalence-of-an-anova",
+    "href": "lectures/06-lecture-slides.html#equivalence-of-an-anova",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Equivalence of an ANOVA",
+    "text": "Equivalence of an ANOVA"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#including-a-continuous-predictor-variable-1",
+    "href": "lectures/06-lecture-slides.html#including-a-continuous-predictor-variable-1",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Including a Continuous Predictor Variable",
+    "text": "Including a Continuous Predictor Variable"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#r-output-5",
+    "href": "lectures/06-lecture-slides.html#r-output-5",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "R Output",
+    "text": "R Output"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#interpreting-the-coefficients-1",
+    "href": "lectures/06-lecture-slides.html#interpreting-the-coefficients-1",
+    "title": "Using Categoical Predictors in Linear Regression",
+    "section": "Interpreting the Coefficients",
+    "text": "Interpreting the Coefficients"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#mean-differences-in-our-data",
+    "href": "lectures/06-lecture-slides.html#mean-differences-in-our-data",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Mean Differences in Our Data",
+    "text": "Mean Differences in Our Data\nThe table below contains the averages for freq_use by prev_exp group:"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#estimating-mean-differences-with-regression",
+    "href": "lectures/06-lecture-slides.html#estimating-mean-differences-with-regression",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Estimating Mean Differences with Regression",
+    "text": "Estimating Mean Differences with Regression\n\nmodel &lt;- lm(freq_use ~ prev_exp_cat, data = data_lecture)\nsummary(model)\n\n\nCall:\nlm(formula = freq_use ~ prev_exp_cat, data = data_lecture)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3600 -0.8343  0.1657  1.1657  3.1657 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      2.83429    0.06485   43.71   &lt;2e-16 ***\nprev_exp_catYes  1.52571    0.11839   12.89   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.213 on 498 degrees of freedom\nMultiple R-squared:  0.2501,    Adjusted R-squared:  0.2486 \nF-statistic: 166.1 on 1 and 498 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#changing-the-reference-group",
+    "href": "lectures/06-lecture-slides.html#changing-the-reference-group",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Changing the Reference Group",
+    "text": "Changing the Reference Group\nThe reference group is the group that is assigned the value of 0. Nothing happens to the overall model fit when you switch the reference groups, the regression coefficients will change, however:\n\n\n\nCall:\nlm(formula = freq_use ~ prev_exp_cat, data = data_lecture)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3600 -0.8343  0.1657  1.1657  3.1657 \n\nCoefficients:\n               Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)     4.36000    0.09906   44.02   &lt;2e-16 ***\nprev_exp_catNo -1.52571    0.11839  -12.89   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.213 on 498 degrees of freedom\nMultiple R-squared:  0.2501,    Adjusted R-squared:  0.2486 \nF-statistic: 166.1 on 1 and 498 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#indicator-coding",
+    "href": "lectures/06-lecture-slides.html#indicator-coding",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Indicator Coding",
+    "text": "Indicator Coding\nWe can use any coding scheme as long as observations in the same group are assigned the same number and these numbers are different across groups. There is, however, one coding scheme that makes the most sense for regression: Indicator Coding.\n\n\n\n\n\nPrev. Exp.\nIndicator Code\n\n\n\n\nNo\n0\n\n\nYes\n1"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#including-a-quantitative-predictor",
+    "href": "lectures/06-lecture-slides.html#including-a-quantitative-predictor",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Including a Quantitative Predictor",
+    "text": "Including a Quantitative Predictor\nYou can, and often will, include quantitative (continuous) predictor in a model that contains a categorical predictor. The interpretations of the regression intercept and slope for the categorical variable change, however.\n\nIntercept: The estimated mean of the reference group when all other predictor variables equal 0.\nSlope for Categorical Variable: The mean difference between the two groups at different levels of the predictor."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#our-revised-example",
+    "href": "lectures/06-lecture-slides.html#our-revised-example",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Our Revised Example",
+    "text": "Our Revised Example\nWe are going to assume the same data generating process as earlier, but now the categorical variable previous experience with technology has three different categories: low, moderate, or high.\n\\[Y_{\\text{Freq Use.}}=\\beta_0+\\beta_1X_{\\text{Mod. Exp.}}+ \\beta_2X_{\\text{High Exp.}}\\]"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#indicator-coding-for-multicategorical-predictors",
+    "href": "lectures/06-lecture-slides.html#indicator-coding-for-multicategorical-predictors",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Indicator Coding for Multicategorical Predictors",
+    "text": "Indicator Coding for Multicategorical Predictors\nIndicator coding for multicategorical predictors works just like indicator coding for dichotomous variables with one exception: we need multiple indicator variables.\n\n\n\n\n\nPrev. Exp.\nIndicator Code: Moderate\nIndicator Code: High\n\n\n\n\nlow\n0\n0\n\n\nmoderate\n1\n0\n\n\nhigh\n0\n1"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#interpreting-regression-coefficients-for-indicator-variables",
+    "href": "lectures/06-lecture-slides.html#interpreting-regression-coefficients-for-indicator-variables",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Interpreting Regression Coefficients for Indicator Variables",
+    "text": "Interpreting Regression Coefficients for Indicator Variables\nThe reason we use indicator coding is because it makes the regression coefficients very easy to interpret:\n\\[\\beta_0=\\overline{Y}_{\\text{Group: Low (Reference)}}\\]\n\\[\\beta_{\\text{Mod.}} = \\overline{Y}_{\\text{Group: Moderate}}-\\overline{Y}_{\\text{Group: Low}}\\]\n\\[\\beta_{\\text{High}} = \\overline{Y}_{\\text{Group: High}}-\\overline{Y}_{\\text{Group: Low}}\\]"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#mean-differences-in-our-data-1",
+    "href": "lectures/06-lecture-slides.html#mean-differences-in-our-data-1",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Mean Differences in Our Data",
+    "text": "Mean Differences in Our Data\nThe table below contains the averages for freq_use by prev_exp group:"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#multiple-tests",
+    "href": "lectures/06-lecture-slides.html#multiple-tests",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Multiple Tests",
+    "text": "Multiple Tests"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#do-not-artificially-group-your-data",
+    "href": "lectures/06-lecture-slides.html#do-not-artificially-group-your-data",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Do Not Artificially Group Your Data",
+    "text": "Do Not Artificially Group Your Data\nIf you have a continuous (quantitative) predictor variable, you should not try to transform it into a categorical predictor by creating artificial groups based on the responses to the continuous predictors unless:\n\nYou are truly interested in group differences\nResponses to the continuous variable are clustering in groups"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#do-not-standardize-categorical-predictors",
+    "href": "lectures/06-lecture-slides.html#do-not-standardize-categorical-predictors",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Do Not Standardize Categorical Predictors",
+    "text": "Do Not Standardize Categorical Predictors\nStandardized categorical predictors do not make any sense as standardizing changes the scale of the variable and the scale matters for categorical predictors!"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#including-a-quantitative-predictor-variable",
+    "href": "lectures/06-lecture-slides.html#including-a-quantitative-predictor-variable",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Including a Quantitative Predictor Variable",
+    "text": "Including a Quantitative Predictor Variable\nWhen you include a quantitative predictor variable alongside your categorical predictor, you have to interpret the regression coefficients for the categorical variable as group mean differences at a specific level of the quantitative variable or group mean differences while controlling for the effects of the other variables."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#comparison-to-a-t-test",
+    "href": "lectures/06-lecture-slides.html#comparison-to-a-t-test",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Comparison to a T-Test",
+    "text": "Comparison to a T-Test\nWhen a regression model only includes a single dichotomous predictor, it is equivalent to a Student’s T-Test—a common statistical method used to test the means of two groups are significantly different:\n\n\n\n\n\nMethod\n95% Conf. Int. Lower\n95% Conf. Int. Upper\nT Value\n\n\n\n\nT-Test\n-1.76\n-1.29\n-12.89\n\n\nRegression\n-1.76\n-1.29\n-12.89"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#model-summary-freq_use-prev_exp_cat",
+    "href": "lectures/06-lecture-slides.html#model-summary-freq_use-prev_exp_cat",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Model Summary: freq_use ~ prev_exp_cat",
+    "text": "Model Summary: freq_use ~ prev_exp_cat\n\nmodel &lt;- lm(freq_use ~ prev_exp_cat, data = data_lecture_multicat)\nsummary(model)\n\n\nCall:\nlm(formula = freq_use ~ prev_exp_cat, data = data_lecture_multicat)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n -2.65  -0.76   0.24   1.24   3.24 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           2.76000    0.06098  45.262  &lt; 2e-16 ***\nprev_exp_catmoderate  0.82667    0.11133   7.425  3.9e-13 ***\nprev_exp_cathigh      1.89000    0.12936  14.611  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.141 on 597 degrees of freedom\nMultiple R-squared:  0.2762,    Adjusted R-squared:  0.2737 \nF-statistic: 113.9 on 2 and 597 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#using-the-f-test",
+    "href": "lectures/06-lecture-slides.html#using-the-f-test",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Using the F Test",
+    "text": "Using the F Test\nRemember the F test tests the hypothesis that all regression slope coefficients are equal to 0. When your model only includes a single multicategorical predictor, this is equivalent to testing if the means across the different groups are all equal as the regression slopes are tests of group mean difference.\nA significant F means that at least one group mean is different from the other group means."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#comparison-to-a-one-way-anova",
+    "href": "lectures/06-lecture-slides.html#comparison-to-a-one-way-anova",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Comparison to a One-Way ANOVA",
+    "text": "Comparison to a One-Way ANOVA\nWhen the regression model includes only a single multicategorical predictor, it is equivalent to an ANOVA—a common statistical method used to test for mean differences across three or more groups:\n\n\n\n\n\nMethod\nF value\n\n\n\n\nANOVA\n113.89\n\n\nRegression\n113.89"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#how-do-we-make-multiple-comparisons",
+    "href": "lectures/06-lecture-slides.html#how-do-we-make-multiple-comparisons",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "How Do We Make Multiple Comparisons?",
+    "text": "How Do We Make Multiple Comparisons?\nIndicator coding will only give you a subset of the possible mean comparisons you can make:\n\nModerate - Low: 0.83\nHigh - Low: 1.89\nModerate - High: ??\n\nTo get all the possible comparisons, you will need to change your reference group accordingly and refit your regression model."
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#the-bonferonni-correction",
+    "href": "lectures/06-lecture-slides.html#the-bonferonni-correction",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "The Bonferonni Correction",
+    "text": "The Bonferonni Correction\nWhen you start making multiple comparisons, you are essentially reusing your data over and over again, which increases the chance of finding a significant finding by chance.\nTo protect against this, you need to make it harder to find a significant result by changing the threshold at which you would have declared a finding significant to:\n\\[\\text{New Threshold}=\\frac{\\text{Old Threshold (.05)}}{\\text{# of Comparisons}}\\]"
+  },
+  {
+    "objectID": "lectures/06-lecture-slides.html#changing-prev_exp-reference-group-to-high",
+    "href": "lectures/06-lecture-slides.html#changing-prev_exp-reference-group-to-high",
+    "title": "Categorical Predictors in Linear Regression",
+    "section": "Changing prev_exp Reference Group to high",
+    "text": "Changing prev_exp Reference Group to high\n\ndata_lecture_multicat &lt;- \n  data_lecture_multicat |&gt;\n  dplyr::mutate(\n    prev_exp_cat = relevel(prev_exp_cat, ref = \"high\")\n  )\n\nlm(freq_use ~ prev_exp_cat, data = data_lecture_multicat) |&gt; summary()\n\n\nCall:\nlm(formula = freq_use ~ prev_exp_cat, data = data_lecture_multicat)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n -2.65  -0.76   0.24   1.24   3.24 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)            4.6500     0.1141   40.76  &lt; 2e-16 ***\nprev_exp_catlow       -1.8900     0.1294  -14.61  &lt; 2e-16 ***\nprev_exp_catmoderate  -1.0633     0.1473   -7.22 1.59e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.141 on 597 degrees of freedom\nMultiple R-squared:  0.2762,    Adjusted R-squared:  0.2737 \nF-statistic: 113.9 on 2 and 597 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#p-values-non-directional-directional-hypotheses",
+    "href": "lectures/05-lecture-slides.html#p-values-non-directional-directional-hypotheses",
+    "title": "Inference for Linear Regression",
+    "section": "P-Values Non-Directional & Directional Hypotheses",
+    "text": "P-Values Non-Directional & Directional Hypotheses\nT-Values that fall in the shaded area allow us to reject the null hypothesis."
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#calculating-p-values-for-directional-hypotheses",
+    "href": "lectures/05-lecture-slides.html#calculating-p-values-for-directional-hypotheses",
+    "title": "Inference for Linear Regression",
+    "section": "Calculating P-Values for Directional Hypotheses",
+    "text": "Calculating P-Values for Directional Hypotheses\nR (and all other statistical software programs) provide the p-value for a non-directional hypothesis. It is totally fine to use this p-value even if you specify a directional hypothesis, you just need to be aware that the p-value for a directional hypothesis will always equal:\n\\[\\text{p-value}_{\\text{Directional}}=\\frac{\\text{p-value}_{\\text{Non-Directional}}}{2}\\]"
+  },
+  {
+    "objectID": "lectures/05-lecture-slides.html#critical-regions-for-non-directional-directional-hypotheses",
+    "href": "lectures/05-lecture-slides.html#critical-regions-for-non-directional-directional-hypotheses",
+    "title": "Inference for Linear Regression",
+    "section": "Critical Regions for Non-Directional & Directional Hypotheses",
+    "text": "Critical Regions for Non-Directional & Directional Hypotheses\nThe shaded areas are called critical (or rejection) regions."
+  },
+  {
+    "objectID": "lectures/05-lecture-page.html#lecture-categorical-predictors-in-linear-regression",
+    "href": "lectures/05-lecture-page.html#lecture-categorical-predictors-in-linear-regression",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Categorical Predictors in Linear Regression",
+    "text": "Lecture: Categorical Predictors in Linear Regression\n\n\nTo download a pdf version of these slides, click here."
   }
 ]

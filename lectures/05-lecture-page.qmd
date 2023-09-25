@@ -1,0 +1,25 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+
+<div class = "prev-next-container">
+<a class="prev-next" href="06-lecture-page.html">Next Week's Materials &raquo;</a>
+</div>
+
+## Lecture: Inference for Linear Regression
+
+<iframe src="05-lecture-slides.html" name="05-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="05-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+## Lecture: Categorical Predictors in Linear Regression
+
+<iframe src="06-lecture-slides.html" name="06-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="06-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+
+
+

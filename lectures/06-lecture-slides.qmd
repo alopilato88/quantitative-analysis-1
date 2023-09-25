@@ -1,0 +1,515 @@
+---
+title: "Categorical Predictors in Linear Regression"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+```
+
+## Overview 
+
+* Review of categorical predictor examples
+* Setup of our working example
+* Introduction to using categorical variables in linear regression
+
+## Goals
+
+* Understand how to use categorical variables as predictors 
+* Understand how to makes inferences about categorical predictors 
+
+## What is a Categorical Predictor? 
+
+A categorical predictor is a variable where the values denote membership to a specific group. 
+
+## Examples of Categorical Predictors?
+
+Some common categorical predictors are: 
+
+* Biological sex assigned at birth (Male or Female)
+* Educational Level (Some HS, HS, College, Graduate)
+* Employment Status (Full Time or Part Time)
+
+Can anyone think of any others? 
+
+## Dichotomous vs Multicategorical Predictors 
+
+We will distinguish between categorical predictors that have two groups and those that have three or more groups:
+
+* **Dichotomous or Binary Predictors**: Two groups 
+* **Multicategorical Predictors**: Three or more groups
+
+# Dichotomous (Binary) Predictors
+
+## Our Working Example 
+
+```{r}
+#| echo: false
+set.seed(5443)
+n1 <- 350
+n2 <- 150
+n <- n1 + n2
+group <- c(rep(0, n1), rep(1, n2))
+
+# r2 <- .40
+r2 <- .25
+var_x <- var(group)
+b <- sqrt(r2 / var(group))
+var_e <- 1 - var_x * b^2
+
+y_latent <- b * group + rnorm(n, 0, sd = sqrt(var_e))
+
+var_xb <- var(b * group)
+std_error <- sqrt(var_e)
+
+data_lecture <-
+  tibble::tibble(
+    freq_use_latent = y_latent,
+    prev_exp = group
+  ) |>
+  dplyr::mutate(
+    freq_use = dplyr::case_when(
+      freq_use_latent < qnorm(.10, mean = mean(freq_use_latent), sd = sqrt(var(b * prev_exp) + var_e)) ~ 1,
+      freq_use_latent < qnorm(.30, mean = mean(freq_use_latent), sd = sqrt(var(b * prev_exp) + var_e)) ~ 2,
+      freq_use_latent < qnorm(.55, mean = mean(freq_use_latent), sd = sqrt(var(b * prev_exp) + var_e)) ~ 3,
+      freq_use_latent < qnorm(.80, mean = mean(freq_use_latent), sd = sqrt(var(b * prev_exp) + var_e)) ~ 4,
+      freq_use_latent < qnorm(.95, mean = mean(freq_use_latent), sd = sqrt(var(b * prev_exp) + var_e)) ~ 5,
+      TRUE ~ 6
+    ),
+    prev_exp_cat = dplyr::if_else(prev_exp == 0, "No", "Yes")
+  )
+
+```
+
+We want to understand if an employee's previous experience with AI-based technology affects the frequency with which they adopt to the organization's new gen AI chatbot. 
+
+Our data generating process (theoretical model): 
+
+$$Y_{\text{Freq Use.}}=\beta_0+\beta_1X_{\text{Prev. Exp. Tech.}} $$
+
+Where the variable **previous experience with technology** is a dichotomous variable with the values: Yes or No. 
+
+## Representing a Dichotomous Predictor with Numbers
+
+To be able to use a dichotomous predictor in a statistical model, we have to represent the categories as numbers:
+
+```{r}
+#| echo: false
+#| fig-align: center
+cat_code_example <- 
+  data_lecture |>
+  dplyr::select(
+    `Prev. Exp.` = prev_exp_cat
+  ) |>
+  dplyr::distinct() |>
+  dplyr::mutate(
+    `Code 1` = c(-.50, .50),
+    `Code 2` = c(-1, 1),
+    `Code 3` = c(1, 2),
+    `Code 4` = c(0, 1)
+  )
+
+cat_code_example |>
+  knitr::kable()
+```
+
+## Indicator Coding 
+
+We can use any coding scheme as long as observations in the same group are assigned the same number and these numbers are different across groups. There is, however, one coding scheme that makes the most sense for regression: **Indicator Coding**.
+
+```{r}
+#| echo: false
+#| fig-align: center
+cat_code_example |>
+  dplyr::select(
+    `Prev. Exp.`,
+    `Indicator Code` = `Code 4`
+  ) |>
+  knitr::kable()
+```
+
+## Storing a Dichtomous Predictor in Your Data
+
+It is good practice to have the numerical and categorical representation of your categorical variable in your dataset: 
+
+```{r}
+#| echo: false
+set.seed(1)
+data_lecture |>
+  dplyr::slice_sample(n = 10) |>
+  dplyr::arrange(prev_exp_cat) |>
+  dplyr::select(-freq_use_latent) |>
+  dplyr::relocate(
+    prev_exp_cat
+  )
+```
+
+## Interpreting the Regression Coefficients
+
+The reason we use indicator coding is because it makes the regression coefficients very easy to interpret: 
+
+$$\beta_0=\overline{Y}_{\text{Group: 0}}$$
+
+$$\beta_1 = \overline{Y}_{\text{Group: 1}}-\overline{Y}_{\text{Group: 0}}$$
+
+## Estimating Mean Differences with Regression
+
+```{r}
+model <- lm(freq_use ~ prev_exp_cat, data = data_lecture)
+summary(model)
+```
+
+## Mean Differences in Our Data
+
+The table below contains the averages for `freq_use` by `prev_exp` group: 
+
+```{r}
+#| echo: false
+#| fig-align: center
+table_mean <- 
+  data_lecture |>
+  dplyr::summarize(
+    mean_freq_use = mean(freq_use),
+    .by = prev_exp_cat
+  ) |>
+  tidyr::pivot_wider(
+    names_from = prev_exp_cat,
+    values_from = mean_freq_use,
+    names_prefix = "Prev. Exp.: "
+  ) |>
+  dplyr::mutate(
+    `Mean Diff.` = `Prev. Exp.: Yes` - `Prev. Exp.: No`
+  )
+
+table_mean <- round(table_mean, 2)
+
+ggplot2::ggplot(
+  data = data_lecture |>
+    dplyr::summarize(
+      mean_freq = mean(freq_use),
+      .by = prev_exp_cat
+    ) |>
+    dplyr::mutate(
+      mean_freq = round(mean_freq, 2)
+    ),
+  ggplot2::aes(
+    x = prev_exp_cat,
+    y = mean_freq
+  )
+) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    position = ggplot2::position_dodge(),
+    fill = plot_fill,
+    color = plot_color
+  ) + 
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "Previous Experience with Similar Technology",
+    y = "Average Frequency of Use"
+  ) + 
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = mean_freq
+    ),
+    nudge_y = .10,
+    fontface = "bold"
+  )
+```
+
+## Changing the Reference Group
+
+The reference group is the group that is assigned the value of 0. Nothing happens to the overall model fit when you switch the reference groups, the regression coefficients will change, however:
+
+```{r}
+#| echo: false
+data_lecture <- 
+  data_lecture |>
+  dplyr::mutate(
+    prev_exp_cat = as.factor(prev_exp_cat),
+    prev_exp_cat = relevel(prev_exp_cat, ref = "Yes")
+  )
+
+model_2 <- lm(freq_use ~ prev_exp_cat, data = data_lecture)
+summary(model_2)
+```
+
+## Comparison to a T-Test 
+
+When a regression model only includes a single dichotomous predictor, it is equivalent to a Student's T-Test---a common statistical method used to test the means of two groups are significantly different:
+
+```{r}
+#| echo: false
+freq_use_no_group <- data_lecture$freq_use[data_lecture$prev_exp_cat == "No"]
+freq_use_yes_group <- data_lecture$freq_use[data_lecture$prev_exp_cat == "Yes"]
+t_test_res <- t.test(freq_use_no_group, freq_use_yes_group, var.equal = TRUE)
+tibble::tibble(
+    Method = c("T-Test", "Regression"),
+    `95% Conf. Int. Lower` = round(c(t_test_res$conf.int[1], confint(model_2)[2, 1]), 2),
+    `95% Conf. Int. Upper` = round(c(t_test_res$conf.int[2], confint(model_2)[2, 2]), 2),
+    `T Value` = round(c(t_test_res$statistic, summary(model_2)$coefficients[2, 3]), 2)
+  ) |>
+  knitr::kable()
+```
+
+## Including a Quantitative Predictor
+
+You can, and often will, include quantitative (continuous) predictor in a model that contains a categorical predictor. The interpretations of the regression intercept and slope for the categorical variable change, however. 
+
+* **Intercept**: The estimated mean of the reference group when all other predictor variables equal 0.
+* **Slope for Categorical Variable**: The mean difference between the two groups at different levels of the predictor.
+
+# Multiple Groups
+
+## Our Revised Example
+
+```{r}
+#| echo: false
+set.seed(534874)
+n1 <- 350
+n2 <- 150
+n3 <- 100
+n <- n1 + n2 + n3
+group_mod <- c(rep(0, n1), rep(1, n2), rep(0, n3))
+group_high <- c(rep(0, n1), rep(0, n2), rep(1, n3))
+
+b1 <- .50
+b2 <- 1.50
+var_e <- 1 - var(b1 * group_mod + b2 * group_high)
+
+y_latent <- b1 * group_mod + b2 * group_high + rnorm(n, 0, sd = sqrt(var_e))
+
+var_xb <- var(b * group)
+std_error <- sqrt(var_e)
+
+data_lecture_multicat <-
+  tibble::tibble(
+    freq_use_latent = y_latent,
+    prev_exp_mod = group_mod,
+    prev_exp_high = group_high
+  ) |>
+  dplyr::mutate(
+    freq_use = dplyr::case_when(
+      freq_use_latent < qnorm(.10, mean = mean(freq_use_latent), sd = sd(freq_use_latent)) ~ 1,
+      freq_use_latent < qnorm(.30, mean = mean(freq_use_latent), sd = sd(freq_use_latent)) ~ 2,
+      freq_use_latent < qnorm(.55, mean = mean(freq_use_latent), sd = sd(freq_use_latent)) ~ 3,
+      freq_use_latent < qnorm(.80, mean = mean(freq_use_latent), sd = sd(freq_use_latent)) ~ 4,
+      freq_use_latent < qnorm(.95, mean = mean(freq_use_latent), sd = sd(freq_use_latent)) ~ 5,
+      TRUE ~ 6
+    ),
+    prev_exp_cat = dplyr::case_when(
+      prev_exp_mod == 1 ~ "moderate",
+      prev_exp_high == 1 ~ "high",
+      TRUE ~ "low"
+    ),
+    prev_exp_cat = factor(prev_exp_cat, levels = c("low", "moderate", "high"))
+  )
+
+```
+
+We are going to assume the same data generating process as earlier, but now the categorical variable **previous experience with technology** has three different categories: low, moderate, or high.
+
+$$Y_{\text{Freq Use.}}=\beta_0+\beta_1X_{\text{Mod. Exp.}}+ \beta_2X_{\text{High Exp.}}$$
+
+## Indicator Coding for Multicategorical Predictors 
+
+Indicator coding for multicategorical predictors works just like indicator coding for dichotomous variables with one exception: **we need multiple indicator variables**. 
+
+```{r}
+#| echo: false
+#| fig-align: center
+cat_code_example <- 
+  data_lecture_multicat |>
+  dplyr::select(
+    `Prev. Exp.` = prev_exp_cat
+  ) |>
+  dplyr::distinct() |>
+  dplyr::mutate(
+    `Indicator Code: Moderate` = c(0, 1, 0),
+    `Indicator Code: High` = c(0, 0, 1)
+  )
+
+cat_code_example |>
+  knitr::kable()
+```
+
+## Storing a Mulitcategorical Predictor in Your Data
+
+To numerically represent a multicategorical variable, we need to create **g - 1 indicator variables**, where **g equals the number of groups**. 
+
+```{r}
+#| echo: false
+set.seed(987)
+data_lecture_multicat |>
+  dplyr::slice_sample(n = 10) |>
+  dplyr::arrange(
+    prev_exp_cat
+  ) |>
+  dplyr::select(
+    -freq_use_latent
+  ) |>
+  dplyr::relocate(
+    prev_exp_cat
+  )
+```
+
+## Setting a Reference Group
+
+The reference group is the group that receives a 0 across all of the indicator variables for the categorical variable. In our example, the reference group is `low` as observations in the `low` group receive values of 0 across both the `prev_exp_mod` and `prev_exp_high` indicator variables.
+
+There are no real statistical consequences for your choice of reference group, I generally recommend picking the group with the largest group size or the group you want to compare to all of the remaining groups. 
+
+## Interpreting Regression Coefficients for Indicator Variables
+
+The reason we use indicator coding is because it makes the regression coefficients very easy to interpret: 
+
+$$\beta_0=\overline{Y}_{\text{Group: Low (Reference)}}$$
+
+$$\beta_{\text{Mod.}} = \overline{Y}_{\text{Group: Moderate}}-\overline{Y}_{\text{Group: Low}}$$
+
+$$\beta_{\text{High}} = \overline{Y}_{\text{Group: High}}-\overline{Y}_{\text{Group: Low}}$$
+
+## Model Summary: `freq_use ~ prev_exp_cat`
+
+```{r}
+model <- lm(freq_use ~ prev_exp_cat, data = data_lecture_multicat)
+summary(model)
+```
+
+## Mean Differences in Our Data
+
+The table below contains the averages for `freq_use` by `prev_exp` group: 
+
+```{r}
+#| echo: false
+#| fig-align: center
+table_mean <- 
+  data_lecture_multicat |>
+  dplyr::summarize(
+    mean_freq_use = mean(freq_use),
+    .by = prev_exp_cat
+  ) |>
+  tidyr::pivot_wider(
+    names_from = prev_exp_cat,
+    values_from = mean_freq_use,
+    names_prefix = "Prev. Exp.: "
+  ) |>
+  dplyr::mutate(
+    `Mean Diff.: Mod - Low` = `Prev. Exp.: moderate` - `Prev. Exp.: low`,
+    `Mean Diff.: High - Low` = `Prev. Exp.: high` - `Prev. Exp.: low`
+  )
+
+table_mean <- round(table_mean, 2)
+
+ggplot2::ggplot(
+  data = data_lecture_multicat |>
+    dplyr::summarize(
+      mean_freq = mean(freq_use),
+      .by = prev_exp_cat
+    ) |>
+    dplyr::mutate(
+      mean_freq = round(mean_freq, 2)
+    ),
+  ggplot2::aes(
+    x = prev_exp_cat,
+    y = mean_freq
+  )
+) +
+  ggplot2::geom_bar(
+    stat = "identity",
+    position = ggplot2::position_dodge(),
+    fill = plot_fill,
+    color = plot_color
+  ) + 
+  lecture_ggplot_theme_barplot +
+  ggplot2::labs(
+    x = "Previous Experience with Similar Technology",
+    y = "Average Frequency of Use"
+  ) + 
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = mean_freq
+    ),
+    nudge_y = .10,
+    fontface = "bold"
+  )
+```
+
+## Using the F Test 
+
+Remember the F test tests the hypothesis that **all regression slope coefficients are equal to 0**. When your model only includes a single multicategorical predictor, this is equivalent to testing if **the means across the different groups are all equal** as the regression slopes are tests of group mean difference. 
+
+A significant F means that **at least one group mean** is different from the other group means. 
+
+## Comparison to a One-Way ANOVA
+
+When the regression model includes only a single multicategorical predictor, it is equivalent to an ANOVA---a common statistical method used to test for mean differences across three or more groups:
+
+```{r}
+#| echo: false
+anova_res <- aov(freq_use ~ prev_exp_cat, data_lecture_multicat)
+anova_summ <- unlist(summary(anova_res))
+  tibble::tibble(
+    Method = c("ANOVA", "Regression"),
+    `F value` = round(c(anova_summ["F value1"], summary(model)$fstatistic[1]), 2)
+  ) |>
+    knitr::kable()
+```
+
+## How Do We Make Multiple Comparisons? 
+
+Indicator coding will **only** give you a subset of the possible mean comparisons you can make:
+
+* Moderate - Low: `r round(model$coefficients[2], 2)` 
+* High - Low: `r round(model$coefficients[3], 2)` 
+* Moderate - High: ??
+
+To get all the possible comparisons, you will need to change your reference group accordingly and refit your regression model.
+
+## Changing `prev_exp` Reference Group to `high`
+
+```{r}
+data_lecture_multicat <- 
+  data_lecture_multicat |>
+  dplyr::mutate(
+    prev_exp_cat = relevel(prev_exp_cat, ref = "high")
+  )
+
+lm(freq_use ~ prev_exp_cat, data = data_lecture_multicat) |> summary()
+```
+
+## The Bonferonni Correction
+
+When you start making multiple comparisons, you are essentially reusing your data over and over again, which **increases the chance of finding a significant finding by chance**. 
+
+To protect against this, you need to make it harder to find a significant result by changing the threshold at which you would have declared a finding significant to: 
+
+$$\text{New Threshold}=\frac{\text{Old Threshold (.05)}}{\text{# of Comparisons}}$$
+
+## Including a Quantitative Predictor Variable
+
+When you include a quantitative predictor variable alongside your categorical predictor, you have to interpret the regression coefficients for the categorical variable as group mean differences at a specific level of the quantitative variable or group mean differences while controlling for the effects of the other variables. 
+
+# General Considerations with Categorical Predictors
+
+## Do Not Artificially Group Your Data
+
+If you have a continuous (quantitative) predictor variable, **you should not** try to transform it into a categorical predictor by creating artificial groups based on the responses to the continuous predictors unless:
+
+* You are truly interested in group differences
+* Responses to the continuous variable are clustering in groups
+
+## Do Not Standardize Categorical Predictors
+
+Standardized categorical predictors do not make any sense as standardizing changes the scale of the variable and the scale matters for categorical predictors! 
