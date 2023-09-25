@@ -52,7 +52,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
-    <tr>
+  <tr>
+    <td class="ts-date">10/3</td>
+    <td class="ts-topic">Multicategorical predictors</td>
+    <td class="ts-content"><a href="readings/reading-6.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+  </tr>
+  <tr>
     <td class="ts-date">10/10</td>
     <td class="ts-topic">Fall Break - No Class</td>
     <td class="ts-content"><a href="readings/reading-6.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
@@ -61,14 +68,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
   </tr>
   <tr>
     <td class="ts-date">10/17</td>
-    <td class="ts-topic">Categorical predictors & Model building</td>
+    <td class="ts-topic">Model building</td>
     <td class="ts-content"><a href="readings/reading-6.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">10/24</td>
-    <td class="ts-topic">Model building & Moderation (Interactions)</td>
+    <td class="ts-topic">Moderation (Interactions)</td>
     <td class="ts-content"><a href="readings/reading-7.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
