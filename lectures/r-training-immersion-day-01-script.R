@@ -107,12 +107,10 @@ dplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)
 ## dplyr -- Operate on Groups 
 
 data_employees_tbl |>
-  dplyr::group_by(
-    job_lvl
-  ) |>
   dplyr::summarize(
     annual_comp_mean = mean(annual_comp),
-    annual_comp_median = median(annual_comp)
+    annual_comp_median = median(annual_comp),
+    .by = "job_lvl"
   )
 
 ## dplyr -- Table Functions
@@ -128,6 +126,3 @@ data_job_payroll <-
     by = "employee_id"
   )
 
-## dplyr -- Conditional functions
-
-if_else()

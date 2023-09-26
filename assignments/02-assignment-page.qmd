@@ -1,0 +1,64 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+<h1 class="h1-reading"> Assignment 2: Statistical Inference & Categorical Predictors</h1>
+
+<h2>Instructions</h2>
+
+In this assignment you will practice some of the statistical methods we have talked about so far: multiple regression with categorical predictors and a t-test. **This assignment will be due on or before 10-09-2023.**
+
+**For R users**: 
+
+1. Download the assignment R script, which can be found <a href="#materials">below</a>.
+2. Open the R script in RStudio.
+3. Begin the assignment.
+4. For the questions that require a written answer, save your answer either as a comment directly in the R script or in a separate Word document (or something similar).
+5. Upload your completed R script and any other files you created, such as a Word document, into the class Brightspace. 
+
+**For non-R users**:
+
+1. Download the assignment R script, which can be found <a href="#materials">below</a>.
+2. Download the assignment dataset. 
+3. Open the R script in a generic text editor as it contains the assignment questions. 
+4. For the questions that require a written answer, save your answers in a separate Word document (or something similar).
+5. Save the script you used to complete the assignment and its subsequent output as a Word or text file.
+6. Upload your script, output, and written answers into the class Brightspace.
+
+**If you run into any issues, please email me.** 
+
+<h2>Materials</h2>
+
+<strong>Assignment R Script</strong>: <a href="02-assignment.R" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<strong>Assignment Data</strong>: <a href="02-assignment-data.csv" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<h2>Data Description</h2>
+
+Your organization is planning a wide-scale release of a new generative AI chatbot designed to support your organization's sales force. Among other features the AI chatbot can find answers to the customer's question, identifying new promotions tailored to the customer, and generally help the sales representative meet the customer's demands.
+
+Your organization, however, is not sure if the sales representatives will begin using the new AI technology, so they have asked you design a survey study on a sample of the organization's sales representatives to understand what predicts a sale's representative's intentions to use the new AI tool. You ultimately decide to measure four variables with your survey: The AI tool's perceived ease of use (`perceived_ease_use`), the AI tool's perceived usefulness for the sales job (`perceived_useful`), the previous experience a sales represntative has had with an AI-enhanced sales tool (`previous_exp`) and the sales rep's intentions to use the new AI tool (`behavioral_intention`). 
+
+The dataset for this assignment contains the following variables:
+
+* `employee_id`: A unique 6-digit employee identifier. 
+* `perceived_ease_use`: Responses to the question: "I find the AI tool easy to use." 
+* `perceived_useful`: Responses to the question: "I believe the AI tool is useful for my job."
+* `previous_exp`: Responses to the question: "I have had previous experience with an AI-enhanced sales tool."
+* `behavioral_intention`: Responses to the question: "I plan to use the system in the next month."
+
+The three survey questions, `perceived_ease_use`, `perceived_useful`, and `behavioral_intention`, are on a seven point agreement response scale: 
+
+1. Completely Disagree
+2. Strongly Disagree
+3. Disagree
+4. Neither Disagree, Nor Agree
+5. Agree
+6. Strongly Agree
+7. Completely Agree
+
+The survey question, `previous_exp` is a dichotomous variables with responses being either:
+
+1. yes
+2. no
