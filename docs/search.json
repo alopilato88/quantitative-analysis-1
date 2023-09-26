@@ -4177,5 +4177,474 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Categorical Predictors in Linear Regression",
     "text": "Lecture: Categorical Predictors in Linear Regression\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#objects-in-r",
+    "href": "lectures/r-training-immerision-day-1.html#objects-in-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Objects in R",
+    "text": "Objects in R\nEverything you do in R will involve some kind of object that you have created. Think of an object like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator &lt;- which is how R knows to assign value to object_name.\n\nobject_name &lt;- value"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#atomic-vectors",
+    "href": "lectures/r-training-immerision-day-1.html#atomic-vectors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Atomic Vectors",
+    "text": "Atomic Vectors\n\nAn atomic vector is just a simple vector of data.\nR recognizes six types of atomic vectors:\n\nIntegers\nDoubles (Numeric)\nCharacters\nLogicals\nComplex\nRaw"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#integer-numeric-vectors",
+    "href": "lectures/r-training-immerision-day-1.html#integer-numeric-vectors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Integer & Numeric Vectors",
+    "text": "Integer & Numeric Vectors\nInteger vectors contain only integers. Add L after each number so R recognizes it as an integer. Numeric (doubles) vectors contain real numbers. These are the default vectors for numbers.\n\ninteger_vec &lt;- c(1L, 2L, 50L)\nnumeric_vec &lt;- c(1, 2, 50, 45.23)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#character-vector",
+    "href": "lectures/r-training-immerision-day-1.html#character-vector",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Character Vector",
+    "text": "Character Vector\nCharacter vectors contain only text data also referred to as string data. Basically anything surrounded by \"\" or '' is considered string data.\n\ncharacter_vec &lt;- c(\"1\", \"abc\", \"$#2\")"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#logical-vector",
+    "href": "lectures/r-training-immerision-day-1.html#logical-vector",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Logical Vector",
+    "text": "Logical Vector\nLogical vectors are vectors that can only contain TRUE or FALSE values also referred to as boolean values.\n\nlogical_vec &lt;- c(TRUE, FALSE)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#adding-attributes",
+    "href": "lectures/r-training-immerision-day-1.html#adding-attributes",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Adding Attributes",
+    "text": "Adding Attributes\nYou can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#names-attribute",
+    "href": "lectures/r-training-immerision-day-1.html#names-attribute",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "names Attribute",
+    "text": "names Attribute\n\ndays_of_week &lt;- 1:7 \nnames(days_of_week) &lt;- c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\")\nnames(days_of_week)\n\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\"  \n\nattributes(days_of_week)\n\n$names\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\""
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#dim-attribute",
+    "href": "lectures/r-training-immerision-day-1.html#dim-attribute",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "dim Attribute",
+    "text": "dim Attribute\n\ndays_of_week &lt;- 1:14\ndim(days_of_week) &lt;- c(2, 7) # 2 Rows, 7 Columns\nattributes(days_of_week)\n\n$dim\n[1] 2 7\n\nclass(days_of_week)\n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#creating-factors",
+    "href": "lectures/r-training-immerision-day-1.html#creating-factors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Creating Factors",
+    "text": "Creating Factors\nR stores categorical data using factors, which are integer vectors with two attributes: class and levels.\n\ndays_of_week &lt;- factor(c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\"))\ntypeof(days_of_week)\n\n[1] \"integer\"\n\nattributes(days_of_week)\n\n$levels\n[1] \"fri\"   \"mon\"   \"sat\"   \"sun\"   \"thurs\" \"tues\"  \"wed\"  \n\n$class\n[1] \"factor\""
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#data-frames-best-way-to-represent-data",
+    "href": "lectures/r-training-immerision-day-1.html#data-frames-best-way-to-represent-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Data Frames: Best way to Represent Data",
+    "text": "Data Frames: Best way to Represent Data\nData frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet.\nEach column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column.\n\ndata_frame_1 &lt;- data.frame(NUMERIC = c(1, 3), CHARACTER = c(\"a\", \"b\"), \n                           LOGICAL = c(TRUE, FALSE))\ndata_frame_1\n\n  NUMERIC CHARACTER LOGICAL\n1       1         a    TRUE\n2       3         b   FALSE"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#viewing-your-data",
+    "href": "lectures/r-training-immerision-day-1.html#viewing-your-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Viewing Your Data",
+    "text": "Viewing Your Data\nYou can use View() to open up a spreadsheet-like view of your data.\n\nView(data_frame_1)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#selecting-data-from-data-frames",
+    "href": "lectures/r-training-immerision-day-1.html#selecting-data-from-data-frames",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Selecting Data from Data Frames",
+    "text": "Selecting Data from Data Frames\nYou will mainly select data from data frames using one of the two following methods:\n\ndata_frame_1[1, 1] # Index the row and/or column\n\n[1] 1\n\ndata_frame_1[, 1] # Leaving the column or row index blank selects the whole vector\n\n[1] 1 3\n\ndata_frame_1$NUMERIC # Use a $ operator to reference the column name\n\n[1] 1 3"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#functions-in-r",
+    "href": "lectures/r-training-immerision-day-1.html#functions-in-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Functions in R",
+    "text": "Functions in R\nFunctions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output.\n\nsum(c(1, 3))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#the-elements-of-a-function",
+    "href": "lectures/r-training-immerision-day-1.html#the-elements-of-a-function",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\nR comes with a variety of predefined functions and they all follow the same structure:\n\nA name for the function.\nThe arguments that change across different function calls.\nThe body which contains the code that is repeated across different calls."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#the-elements-of-a-function-1",
+    "href": "lectures/r-training-immerision-day-1.html#the-elements-of-a-function-1",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\n\nname &lt;- function(argument) {\n  body\n}"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#example-base-function",
+    "href": "lectures/r-training-immerision-day-1.html#example-base-function",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Example Base Function",
+    "text": "Example Base Function\n\nx &lt;- c(1, 4, 6)\nsum(x) \n\n[1] 11\n\nmean(x)\n\n[1] 3.666667\n\nmin(x)\n\n[1] 1"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#linking-functions-together",
+    "href": "lectures/r-training-immerision-day-1.html#linking-functions-together",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Linking Functions Together",
+    "text": "Linking Functions Together\nR lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward.\n\nsum(abs(c(-1, -1, 1, 1)))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#using-the-pipe",
+    "href": "lectures/r-training-immerision-day-1.html#using-the-pipe",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using the pipe |>",
+    "text": "Using the pipe |&gt;\nThe |&gt; operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the |&gt; makes it easier to read your code, which is a good thing.\n\nc(-1, -1, 1, 1) |&gt;\n  abs() |&gt;\n  sum()\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#packages-the-lifeblood-of-r",
+    "href": "lectures/r-training-immerision-day-1.html#packages-the-lifeblood-of-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Packages: The Lifeblood of R",
+    "text": "Packages: The Lifeblood of R\nA lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one!"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#installing-loading-packages",
+    "href": "lectures/r-training-immerision-day-1.html#installing-loading-packages",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Installing & Loading Packages",
+    "text": "Installing & Loading Packages\nYou can use install.packages to install a package once and then library to load that package and gain access to all of its functions.\n\ninstall.packages(\"package_name\")\nlibrary(package_name)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#reading-and-writing-data",
+    "href": "lectures/r-training-immerision-day-1.html#reading-and-writing-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Reading and Writing Data",
+    "text": "Reading and Writing Data\nThere are a number of different methods to read and write data into R. The two most common functions are:\n\ndata &lt;- read.csv(\"filepath/file-name.csv\")\n\nwrite.csv(data, \"filepath/file-name.csv\")"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#importing-data-from-an-r-package",
+    "href": "lectures/r-training-immerision-day-1.html#importing-data-from-an-r-package",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Importing Data from an R Package",
+    "text": "Importing Data from an R Package\nOftentimes, R packages will come with their own datasets that we can load into R. The peopleanalytics package has many such datasets that we will use today:\n\ndata_employees &lt;- peopleanalytics::employees"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#getting-help-with-r",
+    "href": "lectures/r-training-immerision-day-1.html#getting-help-with-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Getting Help with R",
+    "text": "Getting Help with R\nThere are two ways to get help in R:\n\nAdd ? in front of your function, which will result in RStudio displaying the help page for that function.\nGoogle what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!\n\n\n?sum()"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#what-is-the-tidyverse",
+    "href": "lectures/r-training-immerision-day-1.html#what-is-the-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "What is the Tidyverse?",
+    "text": "What is the Tidyverse?\nThe tidyverse is a collection of R packages that “share a common philosophy of data and R programming and are designed to work together.”"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#installing-packages-from-the-tidyverse",
+    "href": "lectures/r-training-immerision-day-1.html#installing-packages-from-the-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Installing Packages from the Tidyverse",
+    "text": "Installing Packages from the Tidyverse\n\ninstall.packages(\"tidyverse\")"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#tibble-data-frame-of-tidyverse",
+    "href": "lectures/r-training-immerision-day-1.html#tibble-data-frame-of-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "tibble: Data frame of Tidyverse",
+    "text": "tibble: Data frame of Tidyverse\nTibbles are the tidyverse’s version of a data.frame. They can be loaded from the tidyverse package: tibble.\n\ndata_employees_tbl &lt;- tibble::as_tibble(data_employees)\ndata_employees_tbl\n\n# A tibble: 1,470 × 36\n   employee_id active stock_opt_lvl trainings   age commute_dist ed_lvl ed_field\n         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   \n 1        1001 No                 0         0    41            1      2 Life Sc…\n 2        1002 Yes                1         3    49            8      1 Life Sc…\n 3        1003 No                 0         3    37            2      2 Other   \n 4        1004 Yes                0         3    33            3      4 Life Sc…\n 5        1005 Yes                1         3    27            2      1 Medical \n 6        1006 Yes                0         2    32            2      2 Life Sc…\n 7        1007 Yes                3         3    59            3      3 Medical \n 8        1008 Yes                1         2    30           24      1 Life Sc…\n 9        1009 Yes                0         2    38           23      3 Life Sc…\n10        1010 Yes                2         3    36           27      3 Medical \n# ℹ 1,460 more rows\n# ℹ 28 more variables: gender &lt;chr&gt;, marital_sts &lt;chr&gt;, dept &lt;chr&gt;,\n#   engagement &lt;int&gt;, job_lvl &lt;int&gt;, job_title &lt;chr&gt;, overtime &lt;chr&gt;,\n#   business_travel &lt;chr&gt;, hourly_rate &lt;int&gt;, daily_comp &lt;int&gt;,\n#   monthly_comp &lt;int&gt;, annual_comp &lt;int&gt;, ytd_leads &lt;int&gt;, ytd_sales &lt;int&gt;,\n#   standard_hrs &lt;int&gt;, salary_hike_pct &lt;int&gt;, perf_rating &lt;int&gt;,\n#   prior_emplr_cnt &lt;int&gt;, env_sat &lt;int&gt;, job_sat &lt;int&gt;, rel_sat &lt;int&gt;, …"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#dplyr-your-data-multitool",
+    "href": "lectures/r-training-immerision-day-1.html#dplyr-your-data-multitool",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "dplyr: Your Data Multitool",
+    "text": "dplyr: Your Data Multitool\nThe package dplyr should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#the-philosophy-of-dplyr-functions",
+    "href": "lectures/r-training-immerision-day-1.html#the-philosophy-of-dplyr-functions",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Philosophy of dplyr Functions",
+    "text": "The Philosophy of dplyr Functions\nEvery function in dplyr follows this philosophy:\n\nFirst argument is always a data frame.\nRemaining arguments are usually names of columns on which to operate.\nThe output is always a new data frame (tibble).\n\ndplyr functions are also further grouped by whether they operate on rows, columns, groups, or tables."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-rows",
+    "href": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-rows",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Rows",
+    "text": "Using dplyr to Operate on Rows\nThe following dplyr functions can filter, reduce, or reorder the rows of a data frame:\n\ndplyr::filter(data_employees_tbl, job_level %in% c(4, 5))\n\ndplyr::distinct(data_employees_tbl, ed_lvl, ed_field)\n\ndplyr::arrange(data_employees_tbl, work_exp)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-columns",
+    "href": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-columns",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Columns",
+    "text": "Using dplyr to Operate on Columns\nThe following dplyr functions can select, rename, add/change, or relocate the columns of a data frame:\n\ndplyr::select(data_employees_tbl, dept)\n\ndplyr::rename(data_employees_tbl, job_level = job_lvl)\n\ndplyr::mutate(data_employees_tbl, salary = monthly_comp * 12)\n\ndplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-groups",
+    "href": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-groups",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Groups",
+    "text": "Using dplyr to Operate on Groups\nThe following dplyr functions can group and summarize your data by a predefined group indicator:\n\ndata_employees_tbl |&gt;\n  dplyr::group_by(\n    job_lvl\n  ) |&gt;\n  dplyr::summarize(\n    annual_comp_mean = mean(annual_comp),\n    annual_comp_median = median(annual_comp)\n  )\n\nIn this code chunk, we have grouped by an employee’s job level and summarized their annual salary by job level."
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-tables",
+    "href": "lectures/r-training-immerision-day-1.html#using-dplyr-to-operate-on-tables",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Tables",
+    "text": "Using dplyr to Operate on Tables\nThe followingdplyr functions can be used to join different tables (data frames) together by a unique identifier:\n\ndata_job &lt;- peopleanalytics::job |&gt; tibble::as_tibble()\n\ndata_payroll &lt;- peopleanalytics::payroll |&gt; tibble::as_tibble()\n\ndata_job_payroll &lt;- \n  data_job |&gt;\n  dplyr::left_join(\n    data_payroll,\n    by = \"employee_id\"\n  )"
+  },
+  {
+    "objectID": "lectures/r-training-immerision-day-1.html#r-resources",
+    "href": "lectures/r-training-immerision-day-1.html#r-resources",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "R Resources",
+    "text": "R Resources\nhttps://r4ds.hadley.nz/"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#objects-in-r",
+    "href": "lectures/r-training-immersion-day-01.html#objects-in-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Objects in R",
+    "text": "Objects in R\nEverything you do in R will involve some kind of object that you have created. Think of an object like a box that you can place data in, so that R can later access and manipulate the data. An important of the code below is the assignment operator &lt;- which is how R knows to assign value to object_name.\n\nobject_name &lt;- value"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#atomic-vectors",
+    "href": "lectures/r-training-immersion-day-01.html#atomic-vectors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Atomic Vectors",
+    "text": "Atomic Vectors\n\nAn atomic vector is just a simple vector of data.\nR recognizes six types of atomic vectors:\n\nIntegers\nDoubles (Numeric)\nCharacters\nLogicals\nComplex\nRaw"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#integer-numeric-vectors",
+    "href": "lectures/r-training-immersion-day-01.html#integer-numeric-vectors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Integer & Numeric Vectors",
+    "text": "Integer & Numeric Vectors\nInteger vectors contain only integers. Add L after each number so R recognizes it as an integer. Numeric (doubles) vectors contain real numbers. These are the default vectors for numbers.\n\ninteger_vec &lt;- c(1L, 2L, 50L)\nnumeric_vec &lt;- c(1, 2, 50, 45.23)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#character-vector",
+    "href": "lectures/r-training-immersion-day-01.html#character-vector",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Character Vector",
+    "text": "Character Vector\nCharacter vectors contain only text data also referred to as string data. Basically anything surrounded by \"\" or '' is considered string data.\n\ncharacter_vec &lt;- c(\"1\", \"abc\", \"$#2\")"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#logical-vector",
+    "href": "lectures/r-training-immersion-day-01.html#logical-vector",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Logical Vector",
+    "text": "Logical Vector\nLogical vectors are vectors that can only contain TRUE or FALSE values also referred to as boolean values.\n\nlogical_vec &lt;- c(TRUE, FALSE)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#adding-attributes",
+    "href": "lectures/r-training-immersion-day-01.html#adding-attributes",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Adding Attributes",
+    "text": "Adding Attributes\nYou can think of attributes as metadata for R objects. As a user you will not need to worry too much about attributes directly, but attributes tell R how to interact with the specific object and allow the user to store information that is secondary to the analyses they are conducting."
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#names-attribute",
+    "href": "lectures/r-training-immersion-day-01.html#names-attribute",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "names Attribute",
+    "text": "names Attribute\n\ndays_of_week &lt;- 1:7 \nnames(days_of_week) &lt;- c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\")\nnames(days_of_week)\n\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\"  \n\nattributes(days_of_week)\n\n$names\n[1] \"mon\"   \"tues\"  \"wed\"   \"thurs\" \"fri\"   \"sat\"   \"sun\""
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#dim-attribute",
+    "href": "lectures/r-training-immersion-day-01.html#dim-attribute",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "dim Attribute",
+    "text": "dim Attribute\n\ndays_of_week &lt;- 1:14\ndim(days_of_week) &lt;- c(2, 7) # 2 Rows, 7 Columns\nattributes(days_of_week)\n\n$dim\n[1] 2 7\n\nclass(days_of_week)\n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#creating-factors",
+    "href": "lectures/r-training-immersion-day-01.html#creating-factors",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Creating Factors",
+    "text": "Creating Factors\nR stores categorical data using factors, which are integer vectors with two attributes: class and levels.\n\ndays_of_week &lt;- factor(c(\"mon\", \"tues\", \"wed\", \"thurs\", \"fri\", \"sat\", \"sun\"))\ntypeof(days_of_week)\n\n[1] \"integer\"\n\nattributes(days_of_week)\n\n$levels\n[1] \"fri\"   \"mon\"   \"sat\"   \"sun\"   \"thurs\" \"tues\"  \"wed\"  \n\n$class\n[1] \"factor\""
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#data-frames-best-way-to-represent-data",
+    "href": "lectures/r-training-immersion-day-01.html#data-frames-best-way-to-represent-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Data Frames: Best way to Represent Data",
+    "text": "Data Frames: Best way to Represent Data\nData frames are the best way to structure and store data in R. Data frames are sort of the R equivalent of an excel spreadsheet.\nEach column in a data frame is a vector, so a data frame can combine a numeric vector as one column with a character vector as another column.\n\ndata_frame_1 &lt;- data.frame(NUMERIC = c(1, 3), CHARACTER = c(\"a\", \"b\"), \n                           LOGICAL = c(TRUE, FALSE))\ndata_frame_1\n\n  NUMERIC CHARACTER LOGICAL\n1       1         a    TRUE\n2       3         b   FALSE"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#viewing-your-data",
+    "href": "lectures/r-training-immersion-day-01.html#viewing-your-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Viewing Your Data",
+    "text": "Viewing Your Data\nYou can use View() to open up a spreadsheet-like view of your data.\n\nView(data_frame_1)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#selecting-data-from-data-frames",
+    "href": "lectures/r-training-immersion-day-01.html#selecting-data-from-data-frames",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Selecting Data from Data Frames",
+    "text": "Selecting Data from Data Frames\nYou will mainly select data from data frames using one of the two following methods:\n\ndata_frame_1[1, 1] # Index the row and/or column\n\n[1] 1\n\ndata_frame_1[, 1] # Leaving the column or row index blank selects the whole vector\n\n[1] 1 3\n\ndata_frame_1$NUMERIC # Use a $ operator to reference the column name\n\n[1] 1 3"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#functions-in-r",
+    "href": "lectures/r-training-immersion-day-01.html#functions-in-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Functions in R",
+    "text": "Functions in R\nFunctions are objects in R that take user inputs, apply some predefined set of operations, and return an expected output.\n\nsum(c(1, 3))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#the-elements-of-a-function",
+    "href": "lectures/r-training-immersion-day-01.html#the-elements-of-a-function",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\nR comes with a variety of predefined functions and they all follow the same structure:\n\nA name for the function.\nThe arguments that change across different function calls.\nThe body which contains the code that is repeated across different calls."
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#the-elements-of-a-function-1",
+    "href": "lectures/r-training-immersion-day-01.html#the-elements-of-a-function-1",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Elements of a Function",
+    "text": "The Elements of a Function\n\nname &lt;- function(argument) {\n  body\n}"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#example-base-function",
+    "href": "lectures/r-training-immersion-day-01.html#example-base-function",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Example Base Function",
+    "text": "Example Base Function\n\nx &lt;- c(1, 4, 6)\nsum(x) \n\n[1] 11\n\nmean(x)\n\n[1] 3.666667\n\nmin(x)\n\n[1] 1"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#linking-functions-together",
+    "href": "lectures/r-training-immersion-day-01.html#linking-functions-together",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Linking Functions Together",
+    "text": "Linking Functions Together\nR lets you link any number of functions together by nesting them. R will start with the innermost function and then work its way outward.\n\nsum(abs(c(-1, -1, 1, 1)))\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#using-the-pipe",
+    "href": "lectures/r-training-immersion-day-01.html#using-the-pipe",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using the pipe |>",
+    "text": "Using the pipe |&gt;\nThe |&gt; operator allows you to take the output of one function and feed it directly into the first argument of the next function. Using the |&gt; makes it easier to read your code, which is a good thing.\n\nc(-1, -1, 1, 1) |&gt;\n  abs() |&gt;\n  sum()\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#packages-the-lifeblood-of-r",
+    "href": "lectures/r-training-immersion-day-01.html#packages-the-lifeblood-of-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Packages: The Lifeblood of R",
+    "text": "Packages: The Lifeblood of R\nA lot of what makes R such an effective programming language (especially for statistics) is the sheer number of available R packages. An R package is a collection of functions that complement one another for a given task. New packages are always being developed and anyone can author one!"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#installing-loading-packages",
+    "href": "lectures/r-training-immersion-day-01.html#installing-loading-packages",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Installing & Loading Packages",
+    "text": "Installing & Loading Packages\nYou can use install.packages to install a package once and then library to load that package and gain access to all of its functions.\n\ninstall.packages(\"package_name\")\nlibrary(package_name)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#reading-and-writing-data",
+    "href": "lectures/r-training-immersion-day-01.html#reading-and-writing-data",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Reading and Writing Data",
+    "text": "Reading and Writing Data\nThere are a number of different methods to read and write data into R. The two most common functions are:\n\ndata &lt;- read.csv(\"filepath/file-name.csv\")\n\nwrite.csv(data, \"filepath/file-name.csv\")"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#importing-data-from-an-r-package",
+    "href": "lectures/r-training-immersion-day-01.html#importing-data-from-an-r-package",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Importing Data from an R Package",
+    "text": "Importing Data from an R Package\nOftentimes, R packages will come with their own datasets that we can load into R. The peopleanalytics package has many such datasets that we will use today:\n\ndata_employees &lt;- peopleanalytics::employees"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#getting-help-with-r",
+    "href": "lectures/r-training-immersion-day-01.html#getting-help-with-r",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Getting Help with R",
+    "text": "Getting Help with R\nThere are two ways to get help in R:\n\nAdd ? in front of your function, which will result in RStudio displaying the help page for that function.\nGoogle what you are trying to do. More often than not, someone else has run into your problem, found a solution, and posted it. Stand on their shoulders!\n\n\n?sum()"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#what-is-the-tidyverse",
+    "href": "lectures/r-training-immersion-day-01.html#what-is-the-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "What is the Tidyverse?",
+    "text": "What is the Tidyverse?\nThe tidyverse is a collection of R packages that “share a common philosophy of data and R programming and are designed to work together.”"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#installing-packages-from-the-tidyverse",
+    "href": "lectures/r-training-immersion-day-01.html#installing-packages-from-the-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Installing Packages from the Tidyverse",
+    "text": "Installing Packages from the Tidyverse\n\ninstall.packages(\"tidyverse\")"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#tibble-data-frame-of-tidyverse",
+    "href": "lectures/r-training-immersion-day-01.html#tibble-data-frame-of-tidyverse",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "tibble: Data frame of Tidyverse",
+    "text": "tibble: Data frame of Tidyverse\nTibbles are the tidyverse’s version of a data.frame. They can be loaded from the tidyverse package: tibble.\n\ndata_employees_tbl &lt;- tibble::as_tibble(data_employees)\ndata_employees_tbl\n\n# A tibble: 1,470 × 36\n   employee_id active stock_opt_lvl trainings   age commute_dist ed_lvl ed_field\n         &lt;int&gt; &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   \n 1        1001 No                 0         0    41            1      2 Life Sc…\n 2        1002 Yes                1         3    49            8      1 Life Sc…\n 3        1003 No                 0         3    37            2      2 Other   \n 4        1004 Yes                0         3    33            3      4 Life Sc…\n 5        1005 Yes                1         3    27            2      1 Medical \n 6        1006 Yes                0         2    32            2      2 Life Sc…\n 7        1007 Yes                3         3    59            3      3 Medical \n 8        1008 Yes                1         2    30           24      1 Life Sc…\n 9        1009 Yes                0         2    38           23      3 Life Sc…\n10        1010 Yes                2         3    36           27      3 Medical \n# ℹ 1,460 more rows\n# ℹ 28 more variables: gender &lt;chr&gt;, marital_sts &lt;chr&gt;, dept &lt;chr&gt;,\n#   engagement &lt;int&gt;, job_lvl &lt;int&gt;, job_title &lt;chr&gt;, overtime &lt;chr&gt;,\n#   business_travel &lt;chr&gt;, hourly_rate &lt;int&gt;, daily_comp &lt;int&gt;,\n#   monthly_comp &lt;int&gt;, annual_comp &lt;int&gt;, ytd_leads &lt;int&gt;, ytd_sales &lt;int&gt;,\n#   standard_hrs &lt;int&gt;, salary_hike_pct &lt;int&gt;, perf_rating &lt;int&gt;,\n#   prior_emplr_cnt &lt;int&gt;, env_sat &lt;int&gt;, job_sat &lt;int&gt;, rel_sat &lt;int&gt;, …"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#dplyr-your-data-multitool",
+    "href": "lectures/r-training-immersion-day-01.html#dplyr-your-data-multitool",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "dplyr: Your Data Multitool",
+    "text": "dplyr: Your Data Multitool\nThe package dplyr should become your go-to data manipulation and structuring tool! It contains many useful functions that make it surprisingly easy to manipulate and structure your data."
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#the-philosophy-of-dplyr-functions",
+    "href": "lectures/r-training-immersion-day-01.html#the-philosophy-of-dplyr-functions",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "The Philosophy of dplyr Functions",
+    "text": "The Philosophy of dplyr Functions\nEvery function in dplyr follows this philosophy:\n\nFirst argument is always a data frame.\nRemaining arguments are usually names of columns on which to operate.\nThe output is always a new data frame (tibble).\n\ndplyr functions are also further grouped by whether they operate on rows, columns, groups, or tables."
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-rows",
+    "href": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-rows",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Rows",
+    "text": "Using dplyr to Operate on Rows\nThe following dplyr functions can filter, reduce, or reorder the rows of a data frame:\n\ndplyr::filter(data_employees_tbl, job_level %in% c(4, 5))\n\ndplyr::distinct(data_employees_tbl, ed_lvl, ed_field)\n\ndplyr::arrange(data_employees_tbl, work_exp)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-columns",
+    "href": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-columns",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Columns",
+    "text": "Using dplyr to Operate on Columns\nThe following dplyr functions can select, rename, add/change, or relocate the columns of a data frame:\n\ndplyr::select(data_employees_tbl, dept)\n\ndplyr::rename(data_employees_tbl, job_level = job_lvl)\n\ndplyr::mutate(data_employees_tbl, salary = monthly_comp * 12)\n\ndplyr::relocate(data_employees_tbl, job_lvl, .before = employee_id)"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-groups",
+    "href": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-groups",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Groups",
+    "text": "Using dplyr to Operate on Groups\nThe following dplyr functions can group and summarize your data by a predefined group indicator:\n\ndata_employees_tbl |&gt;\n  dplyr::group_by(\n    job_lvl\n  ) |&gt;\n  dplyr::summarize(\n    annual_comp_mean = mean(annual_comp),\n    annual_comp_median = median(annual_comp)\n  )\n\nIn this code chunk, we have grouped by an employee’s job level and summarized their annual salary by job level."
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-tables",
+    "href": "lectures/r-training-immersion-day-01.html#using-dplyr-to-operate-on-tables",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "Using dplyr to Operate on Tables",
+    "text": "Using dplyr to Operate on Tables\nThe followingdplyr functions can be used to join different tables (data frames) together by a unique identifier:\n\ndata_job &lt;- peopleanalytics::job |&gt; tibble::as_tibble()\n\ndata_payroll &lt;- peopleanalytics::payroll |&gt; tibble::as_tibble()\n\ndata_job_payroll &lt;- \n  data_job |&gt;\n  dplyr::left_join(\n    data_payroll,\n    by = \"employee_id\"\n  )"
+  },
+  {
+    "objectID": "lectures/r-training-immersion-day-01.html#r-resources",
+    "href": "lectures/r-training-immersion-day-01.html#r-resources",
+    "title": "An Introduction to Base R & the Tidyverse",
+    "section": "R Resources",
+    "text": "R Resources\nhttps://r4ds.hadley.nz/"
+  },
+  {
+    "objectID": "lectures/05-lecture-page.html#lecture-introduction-to-base-r-and-the-tidyverse",
+    "href": "lectures/05-lecture-page.html#lecture-introduction-to-base-r-and-the-tidyverse",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Introduction to Base R and the Tidyverse",
+    "text": "Lecture: Introduction to Base R and the Tidyverse\n\n\nTo download a pdf version of these slides, click here.\nTo download the R script that follows the R portion of the lecture, click here."
   }
 ]

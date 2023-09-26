@@ -20,6 +20,13 @@ To download a pdf version of these slides, click <a href="05-lecture-slides.pdf"
 
 To download a pdf version of these slides, click <a href="06-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
 
+## Lecture: Introduction to Base R and the Tidyverse
+
+<iframe src="r-training-immersion-day-01.html" name="r-training-immersion-day-01"></iframe>
+
+To download a pdf version of these slides, click <a href="r-training-immersion-day-01-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+To download the R script that follows the R portion of the lecture, click <a href="r-training-immersion-day-01-script.R" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
 
 
 
