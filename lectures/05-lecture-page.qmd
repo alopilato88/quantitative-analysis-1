@@ -8,6 +8,34 @@ format:
 <a class="prev-next" href="06-lecture-page.html">Next Week's Materials &raquo;</a>
 </div>
 
+**Welcome to your first Immersion Day!**
+
+On this page, you will find the schedule for our first Immersion Day, the lectures, and the R script you will need if you want to follow along the introduction to Tidyverse portion of the day. 
+
+## Schedule for Today
+
++---------------------------------------+----------------------+
+| Topic                                 | Time                 |
++:======================================+:=====================+
+| **Statistical Inference**             | 9 to 10:15 AM        |
++---------------------------------------+----------------------+
+| **Break**                             | 10:15 to 10:30 AM    |
++---------------------------------------+----------------------+
+| **Statistical Inference**             | 10:30 to 11:45 AM    |
++---------------------------------------+----------------------+
+| **Break for Lunch**                   | 11:45 AM to 1 PM     |
++---------------------------------------+----------------------+
+| **Intro to Categorical Predictors**   | 1 to 2 PM            |
++---------------------------------------+----------------------+
+| **Break**                             | 2 to 2:15 PM         |
++---------------------------------------+----------------------+
+| **Intro to Base R and Tidyverse**     | 2:15 to 3:15 PM      |
++---------------------------------------+----------------------+
+| **Break**                             | 3:15 to 3:30 PM      |
++---------------------------------------+----------------------+
+| **Headstart on R Coding Assignment**  | 3:30 to 4 PM         |
++---------------------------------------+----------------------+
+
 ## Lecture: Inference for Linear Regression
 
 <iframe src="05-lecture-slides.html" name="05-lecture-slides"></iframe>

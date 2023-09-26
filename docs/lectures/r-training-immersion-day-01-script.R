@@ -130,4 +130,14 @@ data_job_payroll <-
 
 ## dplyr -- Conditional functions
 
-if_else()
+if_else(TRUE, 1, 0)
+if_else(FALSE, 1, 0)
+
+if_else(1 == 1, "yes", "no")
+if_else(1 != 1, "yes", "no")
+
+data_job_payroll <-
+  data_job_payroll |>
+  mutate(
+    dept_r_and_d = if_else(dept == "Research & Development", "yes", "no")
+  )
