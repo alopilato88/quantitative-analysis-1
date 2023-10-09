@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantitative Analysis 1 - Answers to Assignment 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles-lecture-slides.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Quantitative Analysis 1</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignment.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#assignment-setup" id="toc-assignment-setup" class="nav-link active" data-scroll-target="#assignment-setup">Assignment Setup</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">3A</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">3B</a></li>
+  </ul></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a>
+  <ul class="collapse">
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1">4A</a></li>
+  <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1">4B</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">4C</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">4D</a></li>
+  </ul></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a>
+  <ul class="collapse">
+  <li><a href="#a-2" id="toc-a-2" class="nav-link" data-scroll-target="#a-2">6A</a></li>
+  <li><a href="#b-2" id="toc-b-2" class="nav-link" data-scroll-target="#b-2">6B</a></li>
+  </ul></li>
+  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a>
+  <ul class="collapse">
+  <li><a href="#a-3" id="toc-a-3" class="nav-link" data-scroll-target="#a-3">7A</a></li>
+  <li><a href="#b-3" id="toc-b-3" class="nav-link" data-scroll-target="#b-3">7B</a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1">7C</a></li>
+  </ul></li>
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a></li>
+  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a>
+  <ul class="collapse">
+  <li><a href="#a-4" id="toc-a-4" class="nav-link" data-scroll-target="#a-4">9A</a></li>
+  <li><a href="#b-4" id="toc-b-4" class="nav-link" data-scroll-target="#b-4">9B</a></li>
+  <li><a href="#c-2" id="toc-c-2" class="nav-link" data-scroll-target="#c-2">9C</a></li>
+  </ul></li>
+  <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">Bonus</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Answers to Assignment 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="assignment-setup" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-setup">Assignment Setup</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data from the class site</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. What is the sample size of your dataset (hint: It's the number of rows)? </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 500</code></pre>
+</div>
+</div>
+<p>There are 500 survey respondents in my dataset.</p>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. How many variables are in your dataset (hint: It's the number of columns)? </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>There are 5 variables in my dataset.</p>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">3A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3a. Use the functions summarize (from dplyr), mean, and sd to calculate means and sds for perceived_ease_use and perceived_useful. (Some of the code has been started.)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data_ai <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_perceived_ease_use =</span> <span class="fu">mean</span>(perceived_ease_use),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd_perceived_ease_use =</span> <span class="fu">sd</span>(perceived_ease_use),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_perceived_useful =</span> <span class="fu">mean</span>(perceived_useful),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd_perceived_useful =</span> <span class="fu">sd</span>(perceived_useful)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  mean_perceived_ease_use sd_perceived_ease_use mean_perceived_useful
+                    &lt;dbl&gt;                 &lt;dbl&gt;                 &lt;dbl&gt;
+1                    4.08                  1.66                  4.76
+# ℹ 1 more variable: sd_perceived_useful &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">3B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3b. Describe what the |&gt; operator is doing in the code above.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The pipe operator, <code>|&gt;</code>, is taking the results from one line of code and plugging them into the function on the following line of code.</p>
+</section>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1">4A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4a. Estimate a multiple regression model that uses perceived_useful and perceived_ease_use to predict behavioral_intention. Save the model in an object named: model_1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>model_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> perceived_useful <span class="sc">+</span> perceived_ease_use, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b-1" class="level3">
+<h3 class="anchored" data-anchor-id="b-1">4B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. Use the summary function to print out the results of your model and write out: </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 4b1: What is the null hypothesis being tested for both perceived_useful &amp; perceived_ease_use? </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 4b2: Can you reject the null hypothesis? If yes, why? If no, why? </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ perceived_useful + perceived_ease_use, 
+    data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7330 -0.9235 -0.0084  0.9357  3.5256 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         2.25480    0.19503  11.562  &lt; 2e-16 ***
+perceived_useful    0.19663    0.04242   4.636 4.55e-06 ***
+perceived_ease_use  0.27544    0.04480   6.148 1.61e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.397 on 497 degrees of freedom
+Multiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 
+F-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>For both <code>perceived_useful</code> and <code>perceived_ease_use</code>, we are testing the null hypothesis that the regression slope for each predictor variable is equal to 0. That is, we are testing the null hypothesis that there is no relationship between <code>perceived_useful</code> and <code>behvioral_intention</code> and <code>perceived_ease_use</code> and <code>behavioral_intention</code>.</p>
+<p>For both <code>perceived_useful</code> and <code>perceived_ease_use</code>, we can reject the null hypothesis because their p-values (<code>Pr&gt;|t|</code>) are less than or equal to .05. This means that if there was truly no relationship between <code>perceived_useful</code> and <code>behavioral_intention</code>, then we would expect to see a value of 0.2 or larger less than 5% of the time. Because the p-value is so small, we feel safe rejecting the null hypothesis that states there is no relationship.</p>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">4C</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4c. Calculate the confidence intervals for all three regression coefficients (intercept and two slopes) in model_1.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model_1) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   2.5 % 97.5 %
+(Intercept)        1.872  2.638
+perceived_useful   0.113  0.280
+perceived_ease_use 0.187  0.363</code></pre>
+</div>
+</div>
+</section>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">4D</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4d. What information does the confidence interval for perceived_useful give you? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The confidence interval for <code>perceived_useful</code> tells us that we can be 95% confident that the true (population) value for <code>perceived_useful</code>’s regression slope is somewhere between 0.113 and 0.28.</p>
+<p>Said differently, our data would not allow us to reject a null hypothesis that hypothesized the true value for <code>perceived_useful</code>’s regression slope was equal to a value contained in the confidence interval: 0.113 to 0.28.</p>
+</section>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Finish the code below to create standardized variables for perceived_ease_use and behavioral_intention. </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    Name the standardized variables: perceived_ease_use_stand and behavioral_intention_stand.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  data_ai <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">perceived_useful_stand =</span> (perceived_useful <span class="sc">-</span> <span class="fu">mean</span>(perceived_useful)) <span class="sc">/</span> <span class="fu">sd</span>(perceived_useful),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">perceived_ease_use_stand =</span> (perceived_ease_use <span class="sc">-</span> <span class="fu">mean</span>(perceived_ease_use)) <span class="sc">/</span> <span class="fu">sd</span>(perceived_ease_use),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">behavioral_intention_stand =</span> (behavioral_intention <span class="sc">-</span> <span class="fu">mean</span>(behavioral_intention)) <span class="sc">/</span> <span class="fu">sd</span>(behavioral_intention),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<section id="a-2" class="level3">
+<h3 class="anchored" data-anchor-id="a-2">6A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6a. Estimate a multiple regression model that uses perceived_useful_stand and perceived_ease_use_stand to predict behavioral_intention_stand. </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     Save the model in an object named: model_2</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention_stand <span class="sc">~</span> perceived_useful_stand <span class="sc">+</span> perceived_ease_use_stand, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b-2" class="level3">
+<h3 class="anchored" data-anchor-id="b-2">6B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6b. Use the summary function to print out the results of your model and write out: </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention_stand ~ perceived_useful_stand + 
+    perceived_ease_use_stand, data = data_ai)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.38769 -0.59069 -0.00538  0.59851  2.25507 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              -2.920e-17  3.997e-02   0.000        1    
+perceived_useful_stand    2.207e-01  4.762e-02   4.636 4.55e-06 ***
+perceived_ease_use_stand  2.928e-01  4.762e-02   6.148 1.61e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.8937 on 497 degrees of freedom
+Multiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 
+F-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 6b1: Do your conclusions about the significance of perceived_useful and perceived_ease_use change compared to the conclusions you made from model_1? </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 6b2: Are the t values in model_2 for the regression coefficients (intercept and slopes) different from model_1? If so, which ones are different?</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 6b3: Is the model_2 multiple R-squared value different than the model_1 multiple R-squared value? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>None of my conclusions about the significance of either predictor variable (<code>perceived_useful</code> and <code>perceived_ease_use</code>) change because the t-values for <code>perceived_useful</code> and <code>perceived_ease_use</code> are identical across <code>model_1</code> and <code>model_2</code>. Similarly, the R<sup>2</sup> is identical across <code>model_1</code> and <code>model_2</code>. Thus, standardizing our variables had no effect on the statistical conclusions we make from our models.</p>
+</section>
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<section id="a-3" class="level3">
+<h3 class="anchored" data-anchor-id="a-3">7A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7a. Use the summarize function to calculate means for behavioral_intention when previous_exp = Yes and previous_exp = No: </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>data_ai <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    previous_exp</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_behavioral_intention =</span> <span class="fu">mean</span>(behavioral_intention)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  previous_exp mean_behavioral_intention
+  &lt;chr&gt;                            &lt;dbl&gt;
+1 no                                4.35
+2 yes                               4.22</code></pre>
+</div>
+</div>
+</section>
+<section id="b-3" class="level3">
+<h3 class="anchored" data-anchor-id="b-3">7B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7b. Add-on to code above to calculate both the mean and sd for behavioral_intention when previous_exp = Yes and previous_exp = No:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data_ai <span class="sc">|&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    previous_exp</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_behavioral_intention =</span> <span class="fu">mean</span>(behavioral_intention),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_behavioral_intention =</span> <span class="fu">sd</span>(behavioral_intention)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  previous_exp mean_behavioral_intention sd_behavioral_intention
+  &lt;chr&gt;                            &lt;dbl&gt;                   &lt;dbl&gt;
+1 no                                4.35                    1.39
+2 yes                               4.22                    1.94</code></pre>
+</div>
+</div>
+</section>
+<section id="c-1" class="level3">
+<h3 class="anchored" data-anchor-id="c-1">7C</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7c. Do the group means look different from one another? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>While they group means are different from one another (4.35 vs 4.22), this difference is small and unlikely to be significant.</p>
+</section>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Finish the function below to create an indicator variable from previous_exp:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  data_ai <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">previous_exp_ind =</span> <span class="fu">if_else</span>(previous_exp <span class="sc">==</span> <span class="st">"no"</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<section id="a-4" class="level3">
+<h3 class="anchored" data-anchor-id="a-4">9A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 9a. Estimate a simple regression model using previous_exp_ind to predict behavioral_intention. Call it model_3.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>model_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> previous_exp_ind, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b-4" class="level3">
+<h3 class="anchored" data-anchor-id="b-4">9B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 9b. Interpret the regression coefficient for previous_exp_ind. What is it telling you? </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ previous_exp_ind, data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3518 -1.2158 -0.2158  0.6482  2.7842 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        4.2158     0.1326  31.784   &lt;2e-16 ***
+previous_exp_ind   0.1360     0.1561   0.871    0.384    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.564 on 498 degrees of freedom
+Multiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 
+F-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841</code></pre>
+</div>
+</div>
+<p>The regression coefficient (slope) for <code>pervious_exp_ind</code> tells me that the the mean <code>behavioral_intention</code> for respondents with no experience is 0.136 units greater than the mean for respondents who have previous experience.</p>
+</section>
+<section id="c-2" class="level3">
+<h3 class="anchored" data-anchor-id="c-2">9C</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 9c. What null hypothesis is being tested by previous_exp_ind? Can we reject the null hypothesis? Why or why not?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The null hypothesis being tested is that the regression slope for <code>previous_exp_ind</code> is equal to 0, which is equivalent to saying that the mean difference on <code>behavioral_intention</code> between the yes and no group is equal to 0. We cannot reject the null hypothesis because the p-value is greater than .05.</p>
+</section>
+</section>
+<section id="question-10" class="level2">
+<h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. Estimate a simple regression model using previous_exp (NOT previous_exp_ind) to predict behavioral_intention. Call it model_4.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     Is anything different about model_4 compared to model_3? (Hint: Is the reference category for previous_exp different from previous_exp_ind?)</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>model_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> previous_exp, <span class="at">data =</span> data_ai)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ previous_exp, data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3518 -1.2158 -0.2158  0.6482  2.7842 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***
+previous_expyes -0.13597    0.15610  -0.871    0.384    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.564 on 498 degrees of freedom
+Multiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 
+F-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841</code></pre>
+</div>
+</div>
+<p>In <code>model_4</code>, the reference category for <code>previous_exp</code> is <code>yes</code> whereas for <code>model_3</code> it is <code>no</code>. Thus, the the sign of the regression coefficient is flipped across models (positive in <code>model_3</code> and negative in <code>model_4</code>), but the absolute magnitude of the regression coefficient is identical across models.</p>
+</section>
+<section id="bonus" class="level2">
+<h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two new R objects: </span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   behavioral_intention_exp_yes, which contains only behavioral_intention responses for the group where previous_exp == "yes"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   behavioral_intention_exp_no, which contains only the behavioral_intention responses for the group where previous_exp == "no".</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate a t-test to test if the means of the new objects are different. Some of the code is started below:</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>behavioral_intention_exp_yes <span class="ot">&lt;-</span> data_ai<span class="sc">$</span>behavioral_intention[data_ai<span class="sc">$</span>previous_exp <span class="sc">==</span> <span class="st">"yes"</span>]</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>behavioral_intention_exp_no <span class="ot">&lt;-</span> data_ai<span class="sc">$</span>behavioral_intention[data_ai<span class="sc">$</span>previous_exp <span class="sc">==</span> <span class="st">"no"</span>]</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Finish this line of code. Hint: What variable is it missing? </span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(behavioral_intention_exp_yes, behavioral_intention_exp_no, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the results of the t-test to those from model_4. Are the t-values and degrees of freedom different? How about the p-value? </span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>t_test_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  behavioral_intention_exp_yes and behavioral_intention_exp_no
+t = -0.87106, df = 498, p-value = 0.3841
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4426709  0.1707244
+sample estimates:
+mean of x mean of y 
+ 4.215827  4.351801 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ previous_exp, data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3518 -1.2158 -0.2158  0.6482  2.7842 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***
+previous_expyes -0.13597    0.15610  -0.871    0.384    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.564 on 498 degrees of freedom
+Multiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 
+F-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841</code></pre>
+</div>
+</div>
+<p>The results across these different models are identical. The t-values (-.871) and degrees of freedom (df = 498) are identical across models, which means the p-values will be identical as well. This tells us that a t-test of mean differences is a special case of linear regression where only a single, binary predictor variable is used to explain variation in the outcome variable.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,269 @@
+---
+title: "Answers to Assignment 1"
+format: 
+  html:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css 
+    toc: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Assignment Setup
+
+```{r}
+#| label: setup
+#| output: false
+
+library("tidyverse")
+
+# Read in the data from the class site
+data_ai <- readr::read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv")
+```
+
+## Question 1
+
+```{r}
+# 1. What is the sample size of your dataset (hint: It's the number of rows)? 
+
+nrow(data_ai)
+```
+
+There are `r nrow(data_ai)` survey respondents in my dataset. 
+
+## Question 2
+
+```{r}
+# 2. How many variables are in your dataset (hint: It's the number of columns)? 
+
+ncol(data_ai)
+```
+
+There are `r ncol(data_ai)` variables in my dataset.
+
+## Question 3
+
+### 3A
+
+```{r}
+# 3a. Use the functions summarize (from dplyr), mean, and sd to calculate means and sds for perceived_ease_use and perceived_useful. (Some of the code has been started.)
+
+data_ai |>
+summarize(
+  mean_perceived_ease_use = mean(perceived_ease_use),
+  sd_perceived_ease_use = sd(perceived_ease_use),
+  mean_perceived_useful = mean(perceived_useful),
+  sd_perceived_useful = sd(perceived_useful)
+)
+```
+
+### 3B
+
+```{r}
+# 3b. Describe what the |> operator is doing in the code above.
+```
+
+The pipe operator, `|>`, is taking the results from one line of code and plugging them into the function on the following line of code.
+
+## Question 4
+
+### 4A
+
+```{r}
+# 4a. Estimate a multiple regression model that uses perceived_useful and perceived_ease_use to predict behavioral_intention. Save the model in an object named: model_1
+
+model_1 <- lm(behavioral_intention ~ perceived_useful + perceived_ease_use, data = data_ai)
+```
+
+### 4B
+
+```{r}
+# 4b. Use the summary function to print out the results of your model and write out: 
+
+## 4b1: What is the null hypothesis being tested for both perceived_useful & perceived_ease_use? 
+
+## 4b2: Can you reject the null hypothesis? If yes, why? If no, why? 
+
+summary(model_1)
+```
+
+For both `perceived_useful` and `perceived_ease_use`, we are testing the null hypothesis that the regression slope for each predictor variable is equal to 0. That is, we are testing the null hypothesis that there is no relationship between `perceived_useful` and `behvioral_intention` and `perceived_ease_use` and `behavioral_intention`. 
+
+For both `perceived_useful` and `perceived_ease_use`, we can reject the null hypothesis because their p-values (`Pr>|t|`) are less than or equal to .05. This means that if there was truly no relationship between `perceived_useful` and `behavioral_intention`, then we would expect to see a value of `r round(model_1$coefficients[2], 2)` or larger less than 5% of the time. Because the p-value is so small, we feel safe rejecting the null hypothesis that states there is no relationship. 
+
+### 4C
+
+```{r}
+# 4c. Calculate the confidence intervals for all three regression coefficients (intercept and two slopes) in model_1.
+
+confint(model_1) |> round(3)
+```
+
+### 4D
+```{r}
+# 4d. What information does the confidence interval for perceived_useful give you? 
+```
+
+The confidence interval for `perceived_useful` tells us that we can be 95% confident that the true (population) value for `perceived_useful`'s regression slope is somewhere between `r round(confint(model_1)[2, 1], 3)` and `r round(confint(model_1)[2, 2], 3)`. 
+
+Said differently, our data would not allow us to reject a null hypothesis that hypothesized the true value for `perceived_useful`'s regression slope was equal to a value contained in the confidence interval: `r round(confint(model_1)[2, 1], 3)` to `r round(confint(model_1)[2, 2], 3)`.
+
+## Question 5
+
+```{r}
+# 5. Finish the code below to create standardized variables for perceived_ease_use and behavioral_intention. 
+#    Name the standardized variables: perceived_ease_use_stand and behavioral_intention_stand.
+
+data_ai <- 
+  data_ai |>
+  mutate(
+    perceived_useful_stand = (perceived_useful - mean(perceived_useful)) / sd(perceived_useful),
+    perceived_ease_use_stand = (perceived_ease_use - mean(perceived_ease_use)) / sd(perceived_ease_use),
+    behavioral_intention_stand = (behavioral_intention - mean(behavioral_intention)) / sd(behavioral_intention),
+  )
+```
+
+## Question 6
+
+### 6A 
+
+```{r}
+# 6a. Estimate a multiple regression model that uses perceived_useful_stand and perceived_ease_use_stand to predict behavioral_intention_stand. 
+#     Save the model in an object named: model_2
+
+model_2 <- lm(behavioral_intention_stand ~ perceived_useful_stand + perceived_ease_use_stand, data = data_ai)
+```
+
+### 6B
+
+```{r}
+# 6b. Use the summary function to print out the results of your model and write out: 
+
+summary(model_2)
+
+## 6b1: Do your conclusions about the significance of perceived_useful and perceived_ease_use change compared to the conclusions you made from model_1? 
+
+## 6b2: Are the t values in model_2 for the regression coefficients (intercept and slopes) different from model_1? If so, which ones are different?
+
+## 6b3: Is the model_2 multiple R-squared value different than the model_1 multiple R-squared value? 
+```
+
+None of my conclusions about the significance of either predictor variable (`perceived_useful` and `perceived_ease_use`) change because the t-values for `perceived_useful` and `perceived_ease_use` are identical across `model_1` and `model_2`. Similarly, the R^2^ is identical across `model_1` and `model_2`. Thus, standardizing our variables had no effect on the statistical conclusions we make from our models. 
+
+## Question 7
+
+### 7A
+
+```{r}
+# 7a. Use the summarize function to calculate means for behavioral_intention when previous_exp = Yes and previous_exp = No: 
+
+data_ai |>
+  group_by(
+    previous_exp
+  ) |>
+  summarize(
+    mean_behavioral_intention = mean(behavioral_intention)
+  )
+```
+
+### 7B
+
+```{r}
+# 7b. Add-on to code above to calculate both the mean and sd for behavioral_intention when previous_exp = Yes and previous_exp = No:
+data_ai |>
+  group_by(
+    previous_exp
+  ) |>
+  summarize(
+    mean_behavioral_intention = mean(behavioral_intention),
+    sd_behavioral_intention = sd(behavioral_intention)
+  )
+```
+
+### 7C
+
+```{r}
+# 7c. Do the group means look different from one another? 
+```
+
+While they group means are different from one another (4.35 vs 4.22), this difference is small and unlikely to be significant. 
+
+## Question 8
+
+```{r}
+# 8. Finish the function below to create an indicator variable from previous_exp:
+
+data_ai <-
+  data_ai |>
+  dplyr::mutate(
+    previous_exp_ind = if_else(previous_exp == "no", 1, 0)
+  )
+```
+
+## Question 9
+
+### 9A
+
+```{r}
+# 9a. Estimate a simple regression model using previous_exp_ind to predict behavioral_intention. Call it model_3.
+
+model_3 <- lm(behavioral_intention ~ previous_exp_ind, data = data_ai)
+```
+
+### 9B
+
+```{r}
+# 9b. Interpret the regression coefficient for previous_exp_ind. What is it telling you? 
+
+summary(model_3)
+```
+
+The regression coefficient (slope) for `pervious_exp_ind` tells me that the the mean `behavioral_intention` for respondents with no experience is `r round(model_3$coefficients[2], 3)` units greater than the mean for respondents who have previous experience. 
+
+### 9C
+
+```{r}
+# 9c. What null hypothesis is being tested by previous_exp_ind? Can we reject the null hypothesis? Why or why not?
+```
+
+The null hypothesis being tested is that the regression slope for `previous_exp_ind` is equal to 0, which is equivalent to saying that the mean difference on `behavioral_intention` between the yes and no group is equal to 0. We cannot reject the null hypothesis because the p-value is greater than .05. 
+
+## Question 10
+
+```{r}
+# 10. Estimate a simple regression model using previous_exp (NOT previous_exp_ind) to predict behavioral_intention. Call it model_4.
+#     Is anything different about model_4 compared to model_3? (Hint: Is the reference category for previous_exp different from previous_exp_ind?)
+
+model_4 <- lm(behavioral_intention ~ previous_exp, data = data_ai)
+
+summary(model_4)
+```
+
+In `model_4`, the reference category for `previous_exp` is `yes` whereas for `model_3` it is `no`. Thus, the the sign of the regression coefficient is flipped across models (positive in `model_3` and negative in `model_4`), but the absolute magnitude of the regression coefficient is identical across models. 
+
+## Bonus
+
+```{r}
+# Create two new R objects: 
+#   behavioral_intention_exp_yes, which contains only behavioral_intention responses for the group where previous_exp == "yes"
+#   behavioral_intention_exp_no, which contains only the behavioral_intention responses for the group where previous_exp == "no".
+#
+# Estimate a t-test to test if the means of the new objects are different. Some of the code is started below:
+
+behavioral_intention_exp_yes <- data_ai$behavioral_intention[data_ai$previous_exp == "yes"]
+behavioral_intention_exp_no <- data_ai$behavioral_intention[data_ai$previous_exp == "no"]
+
+# Finish this line of code. Hint: What variable is it missing? 
+t_test_result <- t.test(behavioral_intention_exp_yes, behavioral_intention_exp_no, var.equal = TRUE)
+
+# Compare the results of the t-test to those from model_4. Are the t-values and degrees of freedom different? How about the p-value? 
+t_test_result
+
+summary(model_4)
+```
+
+The results across these different models are identical. The t-values (-.871) and degrees of freedom (df = 498) are identical across models, which means the p-values will be identical as well. This tells us that a t-test of mean differences is a special case of linear regression where only a single, binary predictor variable is used to explain variation in the outcome variable.  
+
+

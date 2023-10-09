@@ -4660,5 +4660,96 @@
     "title": "Quantitative Analysis 1",
     "section": "Schedule for Today",
     "text": "Schedule for Today\n\n\n\n\n\n\n\nTopic\nTime\n\n\n\n\nStatistical Inference\n9 to 10:15 AM\n\n\nBreak\n10:15 to 10:30 AM\n\n\nStatistical Inference\n10:30 to 11:45 AM\n\n\nBreak for Lunch\n11:45 AM to 1 PM\n\n\nIntro to Categorical Predictors\n1 to 2 PM\n\n\nBreak\n2 to 2:15 PM\n\n\nIntro to Base R and Tidyverse\n2:15 to 3:15 PM\n\n\nBreak\n3:15 to 3:30 PM\n\n\nHeadstart on R Coding Assignment\n3:30 to 4 PM"
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html",
+    "href": "assignments/02-assignment-answers.html",
+    "title": "Answers to Assignment 1",
+    "section": "",
+    "text": "library(\"tidyverse\")\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#assignment-setup",
+    "href": "assignments/02-assignment-answers.html#assignment-setup",
+    "title": "Answers to Assignment 1",
+    "section": "",
+    "text": "library(\"tidyverse\")\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-1",
+    "href": "assignments/02-assignment-answers.html#question-1",
+    "title": "Answers to Assignment 1",
+    "section": "Question 1",
+    "text": "Question 1\n\n# 1. What is the sample size of your dataset (hint: It's the number of rows)? \n\nnrow(data_ai)\n\n[1] 500\n\n\nThere are 500 survey respondents in my dataset."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-2",
+    "href": "assignments/02-assignment-answers.html#question-2",
+    "title": "Answers to Assignment 1",
+    "section": "Question 2",
+    "text": "Question 2\n\n# 2. How many variables are in your dataset (hint: It's the number of columns)? \n\nncol(data_ai)\n\n[1] 5\n\n\nThere are 5 variables in my dataset."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-3",
+    "href": "assignments/02-assignment-answers.html#question-3",
+    "title": "Answers to Assignment 1",
+    "section": "Question 3",
+    "text": "Question 3\n\n3A\n\n# 3a. Use the functions summarize (from dplyr), mean, and sd to calculate means and sds for perceived_ease_use and perceived_useful. (Some of the code has been started.)\n\ndata_ai |&gt;\nsummarize(\n  mean_perceived_ease_use = mean(perceived_ease_use),\n  sd_perceived_ease_use = sd(perceived_ease_use),\n  mean_perceived_useful = mean(perceived_useful),\n  sd_perceived_useful = sd(perceived_useful)\n)\n\n# A tibble: 1 × 4\n  mean_perceived_ease_use sd_perceived_ease_use mean_perceived_useful\n                    &lt;dbl&gt;                 &lt;dbl&gt;                 &lt;dbl&gt;\n1                    4.08                  1.66                  4.76\n# ℹ 1 more variable: sd_perceived_useful &lt;dbl&gt;\n\n\n\n\n3B\n\n# 3b. Describe what the |&gt; operator is doing in the code above.\n\nThe pipe operator, |&gt;, is taking the results from one line of code and plugging them into the function on the following line of code."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-4",
+    "href": "assignments/02-assignment-answers.html#question-4",
+    "title": "Answers to Assignment 1",
+    "section": "Question 4",
+    "text": "Question 4\n\n4A\n\n# 4a. Estimate a multiple regression model that uses perceived_useful and perceived_ease_use to predict behavioral_intention. Save the model in an object named: model_1\n\nmodel_1 &lt;- lm(behavioral_intention ~ perceived_useful + perceived_ease_use, data = data_ai)\n\n\n\n4B\n\n# 4b. Use the summary function to print out the results of your model and write out: \n\n## 4b1: What is the null hypothesis being tested for both perceived_useful & perceived_ease_use? \n\n## 4b2: Can you reject the null hypothesis? If yes, why? If no, why? \n\nsummary(model_1)\n\n\nCall:\nlm(formula = behavioral_intention ~ perceived_useful + perceived_ease_use, \n    data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.7330 -0.9235 -0.0084  0.9357  3.5256 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)         2.25480    0.19503  11.562  &lt; 2e-16 ***\nperceived_useful    0.19663    0.04242   4.636 4.55e-06 ***\nperceived_ease_use  0.27544    0.04480   6.148 1.61e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.397 on 497 degrees of freedom\nMultiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 \nF-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n\nFor both perceived_useful and perceived_ease_use, we are testing the null hypothesis that the regression slope for each predictor variable is equal to 0. That is, we are testing the null hypothesis that there is no relationship between perceived_useful and behvioral_intention and perceived_ease_use and behavioral_intention.\nFor both perceived_useful and perceived_ease_use, we can reject the null hypothesis because their p-values (Pr&gt;|t|) are less than or equal to .05. This means that if there was truly no relationship between perceived_useful and behavioral_intention, then we would expect to see a value of 0.2 or larger less than 5% of the time. Because the p-value is so small, we feel safe rejecting the null hypothesis that states there is no relationship.\n\n\n4C\n\n# 4c. Calculate the confidence intervals for all three regression coefficients (intercept and two slopes) in model_1.\n\nconfint(model_1) |&gt; round(3)\n\n                   2.5 % 97.5 %\n(Intercept)        1.872  2.638\nperceived_useful   0.113  0.280\nperceived_ease_use 0.187  0.363\n\n\n\n\n4D\n\n# 4d. What information does the confidence interval for perceived_useful give you? \n\nThe confidence interval for perceived_useful tells us that we can be 95% confident that the true (population) value for perceived_useful’s regression slope is somewhere between 0.113 and 0.28.\nSaid differently, our data would not allow us to reject a null hypothesis that hypothesized the true value for perceived_useful’s regression slope was equal to a value contained in the confidence interval: 0.113 to 0.28."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-5",
+    "href": "assignments/02-assignment-answers.html#question-5",
+    "title": "Answers to Assignment 1",
+    "section": "Question 5",
+    "text": "Question 5\n\n# 5. Finish the code below to create standardized variables for perceived_ease_use and behavioral_intention. \n#    Name the standardized variables: perceived_ease_use_stand and behavioral_intention_stand.\n\ndata_ai &lt;- \n  data_ai |&gt;\n  mutate(\n    perceived_useful_stand = (perceived_useful - mean(perceived_useful)) / sd(perceived_useful),\n    perceived_ease_use_stand = (perceived_ease_use - mean(perceived_ease_use)) / sd(perceived_ease_use),\n    behavioral_intention_stand = (behavioral_intention - mean(behavioral_intention)) / sd(behavioral_intention),\n  )"
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-6",
+    "href": "assignments/02-assignment-answers.html#question-6",
+    "title": "Answers to Assignment 1",
+    "section": "Question 6",
+    "text": "Question 6\n\n6A\n\n# 6a. Estimate a multiple regression model that uses perceived_useful_stand and perceived_ease_use_stand to predict behavioral_intention_stand. \n#     Save the model in an object named: model_2\n\nmodel_2 &lt;- lm(behavioral_intention_stand ~ perceived_useful_stand + perceived_ease_use_stand, data = data_ai)\n\n\n\n6B\n\n# 6b. Use the summary function to print out the results of your model and write out: \n\nsummary(model_2)\n\n\nCall:\nlm(formula = behavioral_intention_stand ~ perceived_useful_stand + \n    perceived_ease_use_stand, data = data_ai)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.38769 -0.59069 -0.00538  0.59851  2.25507 \n\nCoefficients:\n                           Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)              -2.920e-17  3.997e-02   0.000        1    \nperceived_useful_stand    2.207e-01  4.762e-02   4.636 4.55e-06 ***\nperceived_ease_use_stand  2.928e-01  4.762e-02   6.148 1.61e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.8937 on 497 degrees of freedom\nMultiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 \nF-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n## 6b1: Do your conclusions about the significance of perceived_useful and perceived_ease_use change compared to the conclusions you made from model_1? \n\n## 6b2: Are the t values in model_2 for the regression coefficients (intercept and slopes) different from model_1? If so, which ones are different?\n\n## 6b3: Is the model_2 multiple R-squared value different than the model_1 multiple R-squared value? \n\nNone of my conclusions about the significance of either predictor variable (perceived_useful and perceived_ease_use) change because the t-values for perceived_useful and perceived_ease_use are identical across model_1 and model_2. Similarly, the R2 is identical across model_1 and model_2. Thus, standardizing our variables had no effect on the statistical conclusions we make from our models."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-7",
+    "href": "assignments/02-assignment-answers.html#question-7",
+    "title": "Answers to Assignment 1",
+    "section": "Question 7",
+    "text": "Question 7\n\n7A\n\n# 7a. Use the summarize function to calculate means for behavioral_intention when previous_exp = Yes and previous_exp = No: \n\ndata_ai |&gt;\n  group_by(\n    previous_exp\n  ) |&gt;\n  summarize(\n    mean_behavioral_intention = mean(behavioral_intention)\n  )\n\n# A tibble: 2 × 2\n  previous_exp mean_behavioral_intention\n  &lt;chr&gt;                            &lt;dbl&gt;\n1 no                                4.35\n2 yes                               4.22\n\n\n\n\n7B\n\n# 7b. Add-on to code above to calculate both the mean and sd for behavioral_intention when previous_exp = Yes and previous_exp = No:\ndata_ai |&gt;\n  group_by(\n    previous_exp\n  ) |&gt;\n  summarize(\n    mean_behavioral_intention = mean(behavioral_intention),\n    sd_behavioral_intention = sd(behavioral_intention)\n  )\n\n# A tibble: 2 × 3\n  previous_exp mean_behavioral_intention sd_behavioral_intention\n  &lt;chr&gt;                            &lt;dbl&gt;                   &lt;dbl&gt;\n1 no                                4.35                    1.39\n2 yes                               4.22                    1.94\n\n\n\n\n7C\n\n# 7c. Do the group means look different from one another? \n\nWhile they group means are different from one another (4.35 vs 4.22), this difference is small and unlikely to be significant."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-8",
+    "href": "assignments/02-assignment-answers.html#question-8",
+    "title": "Answers to Assignment 1",
+    "section": "Question 8",
+    "text": "Question 8\n\n# 8. Finish the function below to create an indicator variable from previous_exp:\n\ndata_ai &lt;-\n  data_ai |&gt;\n  dplyr::mutate(\n    previous_exp_ind = if_else(previous_exp == \"no\", 1, 0)\n  )"
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-9",
+    "href": "assignments/02-assignment-answers.html#question-9",
+    "title": "Answers to Assignment 1",
+    "section": "Question 9",
+    "text": "Question 9\n\n9A\n\n# 9a. Estimate a simple regression model using previous_exp_ind to predict behavioral_intention. Call it model_3.\n\nmodel_3 &lt;- lm(behavioral_intention ~ previous_exp_ind, data = data_ai)\n\n\n\n9B\n\n# 9b. Interpret the regression coefficient for previous_exp_ind. What is it telling you? \n\nsummary(model_3)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp_ind, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)        4.2158     0.1326  31.784   &lt;2e-16 ***\nprevious_exp_ind   0.1360     0.1561   0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nThe regression coefficient (slope) for pervious_exp_ind tells me that the the mean behavioral_intention for respondents with no experience is 0.136 units greater than the mean for respondents who have previous experience.\n\n\n9C\n\n# 9c. What null hypothesis is being tested by previous_exp_ind? Can we reject the null hypothesis? Why or why not?\n\nThe null hypothesis being tested is that the regression slope for previous_exp_ind is equal to 0, which is equivalent to saying that the mean difference on behavioral_intention between the yes and no group is equal to 0. We cannot reject the null hypothesis because the p-value is greater than .05."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#question-10",
+    "href": "assignments/02-assignment-answers.html#question-10",
+    "title": "Answers to Assignment 1",
+    "section": "Question 10",
+    "text": "Question 10\n\n# 10. Estimate a simple regression model using previous_exp (NOT previous_exp_ind) to predict behavioral_intention. Call it model_4.\n#     Is anything different about model_4 compared to model_3? (Hint: Is the reference category for previous_exp different from previous_exp_ind?)\n\nmodel_4 &lt;- lm(behavioral_intention ~ previous_exp, data = data_ai)\n\nsummary(model_4)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***\nprevious_expyes -0.13597    0.15610  -0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nIn model_4, the reference category for previous_exp is yes whereas for model_3 it is no. Thus, the the sign of the regression coefficient is flipped across models (positive in model_3 and negative in model_4), but the absolute magnitude of the regression coefficient is identical across models."
+  },
+  {
+    "objectID": "assignments/02-assignment-answers.html#bonus",
+    "href": "assignments/02-assignment-answers.html#bonus",
+    "title": "Answers to Assignment 1",
+    "section": "Bonus",
+    "text": "Bonus\n\n# Create two new R objects: \n#   behavioral_intention_exp_yes, which contains only behavioral_intention responses for the group where previous_exp == \"yes\"\n#   behavioral_intention_exp_no, which contains only the behavioral_intention responses for the group where previous_exp == \"no\".\n#\n# Estimate a t-test to test if the means of the new objects are different. Some of the code is started below:\n\nbehavioral_intention_exp_yes &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"yes\"]\nbehavioral_intention_exp_no &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"no\"]\n\n# Finish this line of code. Hint: What variable is it missing? \nt_test_result &lt;- t.test(behavioral_intention_exp_yes, behavioral_intention_exp_no, var.equal = TRUE)\n\n# Compare the results of the t-test to those from model_4. Are the t-values and degrees of freedom different? How about the p-value? \nt_test_result\n\n\n    Two Sample t-test\n\ndata:  behavioral_intention_exp_yes and behavioral_intention_exp_no\nt = -0.87106, df = 498, p-value = 0.3841\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.4426709  0.1707244\nsample estimates:\nmean of x mean of y \n 4.215827  4.351801 \n\nsummary(model_4)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***\nprevious_expyes -0.13597    0.15610  -0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nThe results across these different models are identical. The t-values (-.871) and degrees of freedom (df = 498) are identical across models, which means the p-values will be identical as well. This tells us that a t-test of mean differences is a special case of linear regression where only a single, binary predictor variable is used to explain variation in the outcome variable."
   }
 ]
