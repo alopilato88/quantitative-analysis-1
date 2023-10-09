@@ -1,5 +1,5 @@
 ---
-title: "Answers to Assignment 1"
+title: "Answers to Assignment 2"
 format: 
   html:
     theme: [default, theme-lecture-slides.scss] 
