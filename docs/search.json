@@ -4751,5 +4751,271 @@
     "title": "Answers to Assignment 2",
     "section": "Bonus",
     "text": "Bonus\n\n# Create two new R objects: \n#   behavioral_intention_exp_yes, which contains only behavioral_intention responses for the group where previous_exp == \"yes\"\n#   behavioral_intention_exp_no, which contains only the behavioral_intention responses for the group where previous_exp == \"no\".\n#\n# Estimate a t-test to test if the means of the new objects are different. Some of the code is started below:\n\nbehavioral_intention_exp_yes &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"yes\"]\nbehavioral_intention_exp_no &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"no\"]\n\n# Finish this line of code. Hint: What variable is it missing? \nt_test_result &lt;- t.test(behavioral_intention_exp_yes, behavioral_intention_exp_no, var.equal = TRUE)\n\n# Compare the results of the t-test to those from model_4. Are the t-values and degrees of freedom different? How about the p-value? \nt_test_result\n\n\n    Two Sample t-test\n\ndata:  behavioral_intention_exp_yes and behavioral_intention_exp_no\nt = -0.87106, df = 498, p-value = 0.3841\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.4426709  0.1707244\nsample estimates:\nmean of x mean of y \n 4.215827  4.351801 \n\nsummary(model_4)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***\nprevious_expyes -0.13597    0.15610  -0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nThe results across these different models are identical. The t-values (-.871) and degrees of freedom (df = 498) are identical across models, which means the p-values will be identical as well. This tells us that a t-test of mean differences is a special case of linear regression where only a single, binary predictor variable is used to explain variation in the outcome variable."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#overview",
+    "href": "lectures/07-lecture-slides.html#overview",
+    "title": "Model Building",
+    "section": "Overview",
+    "text": "Overview\n\nDifference between a theory and a model\nExplore the different relationship types conveyed by a model\nBuild and communicate a path diagram\nReview a published article"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#goals",
+    "href": "lectures/07-lecture-slides.html#goals",
+    "title": "Model Building",
+    "section": "Goals",
+    "text": "Goals"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#what-is-a-theory",
+    "href": "lectures/07-lecture-slides.html#what-is-a-theory",
+    "title": "Model Building",
+    "section": "What is a Theory",
+    "text": "What is a Theory\n\nA theory is a set of concepts whose proposed relationships offer explanation, understanding, or appreciation of a phenomenon of interest.\n\n— Hatch, 2013, p. 5"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#what-is-a-model",
+    "href": "lectures/07-lecture-slides.html#what-is-a-model",
+    "title": "Model Building",
+    "section": "What is a Model",
+    "text": "What is a Model\nModels are derived from theories to test a particular aspect of that theory. Models are useful because they allow us to communicate and test simplified pieces of our theory, thus providing a more local understanding of our phenomenon.\n\n\nFried (2020). Theories and models: What they are, what they are for, and what they are about. Psychological Inquiry, 31(4), 336-334."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#using-models-to-test-theories",
+    "href": "lectures/07-lecture-slides.html#using-models-to-test-theories",
+    "title": "Model Building",
+    "section": "Using Models to Test Theories",
+    "text": "Using Models to Test Theories"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#visualizing-models-with-a-path-diagram",
+    "href": "lectures/07-lecture-slides.html#visualizing-models-with-a-path-diagram",
+    "title": "Model Building",
+    "section": "Visualizing Models with a Path Diagram",
+    "text": "Visualizing Models with a Path Diagram"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#types-of-relationships-among-variables",
+    "href": "lectures/07-lecture-slides.html#types-of-relationships-among-variables",
+    "title": "Model Building",
+    "section": "Types of Relationships Among Variables",
+    "text": "Types of Relationships Among Variables\nHere are the three main relationships we will be working with in this course."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#the-model-behind-your-homework",
+    "href": "lectures/07-lecture-slides.html#the-model-behind-your-homework",
+    "title": "Model Building",
+    "section": "The Model Behind Your Homework",
+    "text": "The Model Behind Your Homework"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#direct-relationships",
+    "href": "lectures/07-lecture-slides.html#direct-relationships",
+    "title": "Model Building",
+    "section": "Direct Relationships",
+    "text": "Direct Relationships\nA direct relationship, causal or otherwise, is a relationship in which a predictor variable (or independent variable) has a direct impact on an outcome variable."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#examples-of-direct-relationships",
+    "href": "lectures/07-lecture-slides.html#examples-of-direct-relationships",
+    "title": "Model Building",
+    "section": "Examples of Direct Relationships",
+    "text": "Examples of Direct Relationships"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#moderated-relationships-the-how-strong-heuristic",
+    "href": "lectures/07-lecture-slides.html#moderated-relationships-the-how-strong-heuristic",
+    "title": "Model Building",
+    "section": "Moderated Relationships: The “How Strong” Heuristic",
+    "text": "Moderated Relationships: The “How Strong” Heuristic\nA moderated relationship, causal or otherwise, involves three variables in which the relationship between two variables, a predictor and outcome variable, changes depending on the value of a third variable, the moderating variable or moderator."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#thinking-about-moderation-with-plots",
+    "href": "lectures/07-lecture-slides.html#thinking-about-moderation-with-plots",
+    "title": "Model Building",
+    "section": "Thinking About Moderation with Plots",
+    "text": "Thinking About Moderation with Plots\nWhen you are hypothesizing a moderation—also referred to as an interaction—effect, it is helpful to draw a plot of your hypothesized effect."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#indirect-mediated-relationships-the-why-heuristic",
+    "href": "lectures/07-lecture-slides.html#indirect-mediated-relationships-the-why-heuristic",
+    "title": "Model Building",
+    "section": "Indirect (Mediated) Relationships: The “Why” Heuristic",
+    "text": "Indirect (Mediated) Relationships: The “Why” Heuristic"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#thinking-about-indirect-direct-and-total-effects",
+    "href": "lectures/07-lecture-slides.html#thinking-about-indirect-direct-and-total-effects",
+    "title": "Model Building",
+    "section": "Thinking About Indirect, Direct, and Total Effects",
+    "text": "Thinking About Indirect, Direct, and Total Effects\nWhen we hypothesize a mediated relationship, we can talk about three different effects:\n\nThe indirect effect of X on Y\nThe direct effect of X on Y\nThe total effect of X on Y"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#what-does-a-path-diagram-tell-you",
+    "href": "lectures/07-lecture-slides.html#what-does-a-path-diagram-tell-you",
+    "title": "Model Building",
+    "section": "What Does a Path Diagram Tell You?",
+    "text": "What Does a Path Diagram Tell You?"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#hypotheses-and-path-diagrams",
+    "href": "lectures/07-lecture-slides.html#hypotheses-and-path-diagrams",
+    "title": "Model Building",
+    "section": "Hypotheses and Path Diagrams",
+    "text": "Hypotheses and Path Diagrams"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#regression-equations-and-path-diagrams",
+    "href": "lectures/07-lecture-slides.html#regression-equations-and-path-diagrams",
+    "title": "Model Building",
+    "section": "Regression Equations and Path Diagrams",
+    "text": "Regression Equations and Path Diagrams"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#an-example",
+    "href": "lectures/07-lecture-slides.html#an-example",
+    "title": "Model Building",
+    "section": "An Example",
+    "text": "An Example"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#testing-theories-with-models-and-data",
+    "href": "lectures/07-lecture-slides.html#testing-theories-with-models-and-data",
+    "title": "Model Building",
+    "section": "Testing Theories with Models and Data",
+    "text": "Testing Theories with Models and Data\nTheories inform the development of models, which go on to inform what data to collect and what hypotheses or propositions we should empirically test with real data and statistical models.\nThe more empirical tests a theory survives, the more confidence we tend to have in that theory."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#communicating-models-with-a-path-diagram",
+    "href": "lectures/07-lecture-slides.html#communicating-models-with-a-path-diagram",
+    "title": "Model Building",
+    "section": "Communicating Models with a Path Diagram",
+    "text": "Communicating Models with a Path Diagram\nPath diagrams are used to visually communicate models and the relationships they posit among variables.\nPath diagrams follow several graphical conventions:\n\nVariables (or phenomena) are represented by a shape usually a square or circle.\nCausal and predictive relationships among variables are represented with a unidirectional arrow.\nNon-causal and non-predictive relationships (i.e. correlations) among variables are represented with curved, non-directional arrows."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#a-more-advanced-example",
+    "href": "lectures/07-lecture-slides.html#a-more-advanced-example",
+    "title": "Model Building",
+    "section": "A More Advanced Example",
+    "text": "A More Advanced Example"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#mediated-indirect-relationships-the-why-heuristic",
+    "href": "lectures/07-lecture-slides.html#mediated-indirect-relationships-the-why-heuristic",
+    "title": "Model Building",
+    "section": "Mediated (Indirect) Relationships: The “Why” Heuristic",
+    "text": "Mediated (Indirect) Relationships: The “Why” Heuristic\nA mediated (indirect) relationship is one where a predictor variable influences an outcome variable indirectly through its influence on a mediating variable referred to as a mediator."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#why-use-a-path-diagram",
+    "href": "lectures/07-lecture-slides.html#why-use-a-path-diagram",
+    "title": "Model Building",
+    "section": "Why Use a Path Diagram?",
+    "text": "Why Use a Path Diagram?\nA path diagram is useful as it is a simple way to graphically communicate our:\n\nThe phenomena (variables) we are interested in\nHypotheses or theoretical propositions about the relationships among variables\nThe regression equations needed to test the hypothesized model"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#the-model-behind-your-homework-as-an-example",
+    "href": "lectures/07-lecture-slides.html#the-model-behind-your-homework-as-an-example",
+    "title": "Model Building",
+    "section": "The Model Behind Your Homework as an Example",
+    "text": "The Model Behind Your Homework as an Example"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#path-diagrams-and-hypotheses",
+    "href": "lectures/07-lecture-slides.html#path-diagrams-and-hypotheses",
+    "title": "Model Building",
+    "section": "Path Diagrams and Hypotheses",
+    "text": "Path Diagrams and Hypotheses\nFrom the path diagram for our homework, we can infer several different hypotheses/propositions:\n\nThe effect of perceived ease of use is partially mediated through a tool’s perceived usefulness.\nThe effect of perceived ease of use on one’s intention to use the tool is moderated by one’s previous experience with a similar tool.\nThe effect of perceived usefulness on one’s intention to use the tool is moderated by one’s previous experience with a similar tool."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#path-diagrams-and-regression-equations",
+    "href": "lectures/07-lecture-slides.html#path-diagrams-and-regression-equations",
+    "title": "Model Building",
+    "section": "Path Diagrams and Regression Equations",
+    "text": "Path Diagrams and Regression Equations\nWe can also infer the regression equations needed to test our hypotheses from the path diagram:\n\\[X_{\\text{Per. Useful.}}=\\beta_0 + \\beta_1X_{\\text{Perc. Ease Use}}+\\epsilon\\] \\[Y_{\\text{Beh. Intet.}}=\\beta_0+\\beta_1X_{\\text{Per. Ease Use}}+\\beta_2X_{\\text{Per. Useful.}}+\\beta_3Z_{\\text{Mod.}}+\\epsilon\\]"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#a-published-example",
+    "href": "lectures/07-lecture-slides.html#a-published-example",
+    "title": "Model Building",
+    "section": "A Published Example",
+    "text": "A Published Example\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#a-more-advanced-published-example",
+    "href": "lectures/07-lecture-slides.html#a-more-advanced-published-example",
+    "title": "Model Building",
+    "section": "A More Advanced Published Example",
+    "text": "A More Advanced Published Example\n\n\n\n\n\n\n\n\n\n\n\nSteiner et al. (2023). Crossover effects of parent work-to-family experiences on child work centrality: A moderated mediation model. Journal of Applied Psychology, 108(6), 934-953."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#the-human-costs-of-mergers-a-published-example",
+    "href": "lectures/07-lecture-slides.html#the-human-costs-of-mergers-a-published-example",
+    "title": "Model Building",
+    "section": "The Human Costs of Mergers: A Published Example",
+    "text": "The Human Costs of Mergers: A Published Example\n\n\n\n\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#mediation-hypotheses-h1-to-h3",
+    "href": "lectures/07-lecture-slides.html#mediation-hypotheses-h1-to-h3",
+    "title": "Model Building",
+    "section": "Mediation Hypotheses: H1 to H3",
+    "text": "Mediation Hypotheses: H1 to H3\n\nH1: Merging organizations will experience greater decreases in job satisfaction relative to nonmerging organizations within the same context and time period. [Total Effect]\nH2: Merging organizations will experience greater increases in absenteeism relative to nonmerging organizations within the same context and time period. [Direct Effect]\nH3: The increases in absenteeism for merging organizations will be (partially) mediated by decreases in job satisfaction. [Indirect Effect]\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#moderation-hypothesis-h4",
+    "href": "lectures/07-lecture-slides.html#moderation-hypothesis-h4",
+    "title": "Model Building",
+    "section": "Moderation Hypothesis: H4",
+    "text": "Moderation Hypothesis: H4\n\nH4: The decreases in job satisfaction for merged versus nonmerged organizations will be moderated by changes in supportive leadership at the midlevel management level, such that this relationship will be weaker for organizations with increasing levels of supportive leadership.\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#moderated-mediation-hypothesis-h5",
+    "href": "lectures/07-lecture-slides.html#moderated-mediation-hypothesis-h5",
+    "title": "Model Building",
+    "section": "Moderated Mediation Hypothesis: H5",
+    "text": "Moderated Mediation Hypothesis: H5\n\nH5: The increases in absenteeism for merging organizations relative to nonmerging organizations as mediated by the decreases in job satisfaction will be moderated by changes in supportive leadership at the midlevel management level, such that the indirect effect of mergers on absenteeism via job satisfaction will be weaker when there is an increase in supportive leadership.\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#tests-of-mediation-hypotheses",
+    "href": "lectures/07-lecture-slides.html#tests-of-mediation-hypotheses",
+    "title": "Model Building",
+    "section": "Tests of Mediation Hypotheses",
+    "text": "Tests of Mediation Hypotheses"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#tests-of-moderation-hypotheses",
+    "href": "lectures/07-lecture-slides.html#tests-of-moderation-hypotheses",
+    "title": "Model Building",
+    "section": "Tests of Moderation Hypotheses",
+    "text": "Tests of Moderation Hypotheses"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#moderation-plot",
+    "href": "lectures/07-lecture-slides.html#moderation-plot",
+    "title": "Model Building",
+    "section": "Moderation Plot",
+    "text": "Moderation Plot\n\n\n\n\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#regression-models-mediation-hypotheses",
+    "href": "lectures/07-lecture-slides.html#regression-models-mediation-hypotheses",
+    "title": "Model Building",
+    "section": "Regression Models: Mediation Hypotheses",
+    "text": "Regression Models: Mediation Hypotheses\n\n\n\n\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#regression-models-moderation-hypotheses",
+    "href": "lectures/07-lecture-slides.html#regression-models-moderation-hypotheses",
+    "title": "Model Building",
+    "section": "Regression Models: Moderation Hypotheses",
+    "text": "Regression Models: Moderation Hypotheses\n\n\n\n\n\n\n\nGiessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. Journal of Applied Psychology, 108(4), 686-697."
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#using-theories-to-build-models",
+    "href": "lectures/07-lecture-slides.html#using-theories-to-build-models",
+    "title": "Model Building",
+    "section": "Using Theories to build Models",
+    "text": "Using Theories to build Models\nGiessner et al. (2023) use two broad theories to build their more narrow model:\n\nOrganizational support theory\nConservation of resources theory"
   }
 ]

@@ -26,11 +26,23 @@ lecture_ggplot_theme_barplot <-
     legend.position = "none"
   )
 
+lecture_ggplot_theme_moderation_plot <- 
+  ggplot2::theme(
+    plot.background = element_rect(fill = "#F9F7F7", colour = "#F9F7F7"),
+    panel.background = element_rect(fill = "#F9F7F7"),
+    axis.line.x = element_line(colour = "#3D3C42"),
+    axis.line.y = ggplot2::element_blank(),
+    panel.grid.minor = element_line(colour = "#F9F7F7"),
+    panel.grid.major = element_line(colour = "#F9F7F7"),
+    legend.background = element_rect(fill = "#F9F7F7", color = "black"),
+    strip.background = element_rect(fill = "#F9F7F7", color = "black")
+  )
+
 # ggplot2 variables
 plot_alpha <- .50
 plot_fill <- "#3F72AF"
 plot_color <- "#112D4E"
-
+ggplot2::theme
 #' scaled_dnorm
 #' 
 #' 

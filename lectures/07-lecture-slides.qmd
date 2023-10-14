@@ -1,0 +1,252 @@
+---
+title: "Model Building"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+```
+
+## Overview 
+
+* Difference between a theory and a model
+* Explore the different relationship types conveyed by a model
+* Build and communicate a path diagram
+* Review a published article
+
+## What is a Theory
+
+> A theory is a set of concepts whose proposed relationships offer explanation, understanding, or appreciation of a phenomenon of interest.
+> `r tufte::quote_footer("--- Hatch, 2013, p. 5")`
+
+## What is a Model
+
+**Models** are derived from theories to test a particular aspect of that theory. Models are useful because they allow us to communicate and test simplified pieces of our theory, thus providing a more local understanding of our phenomenon. 
+
+::: aside
+Fried (2020). Theories and models: What they are, what they are for, and what they are about. *Psychological Inquiry*, *31*(4), 336-334.
+:::
+
+## Testing Theories with Models and Data
+
+Theories inform the development of models, which go on to inform what data to collect and what hypotheses or propositions we should **empirically test with real data and statistical models**.
+
+The more empirical tests a theory survives, the more confidence we tend to have in that theory.
+
+## Communicating Models with a Path Diagram
+
+Path diagrams are used to visually communicate models and the relationships they posit among variables. 
+
+Path diagrams follow several graphical conventions: 
+
+1. Variables (or phenomena) are represented by a shape usually a square or circle.
+2. Causal and predictive relationships among variables are represented with a unidirectional arrow. 
+3. Non-causal and non-predictive relationships (i.e. correlations) among variables are represented with curved, non-directional arrows.
+
+## Types of Relationships Among Variables
+
+Here are the three main relationships we will be working with in this course. 
+
+![](lecture-imgs/types-of-relationships.png){fig-align="center"}
+
+## Direct Relationships
+
+A **direct relationship**, causal or otherwise, is a relationship in which a predictor variable (or independent variable) has a direct impact on an outcome variable.
+
+<br>
+<br>
+
+![](lecture-imgs/direct-relationship.png){.width-direct-image fig-align="center"}
+
+
+## Moderated Relationships: The "How Strong" Heuristic
+
+A **moderated relationship**, causal or otherwise, involves three variables in which the relationship between two variables, a predictor and outcome variable, changes depending on the value of a third variable, the moderating variable or moderator. 
+
+<br> 
+
+![](lecture-imgs/moderated-relationship.png){.width-moderated-image fig-align="center" }
+
+## Thinking About Moderation with Plots
+
+When you are hypothesizing a moderation---also referred to as an interaction---effect, it is helpful to draw a plot of your hypothesized effect.
+
+```{r}
+#| fig-align: center
+#| echo: false
+x <- seq(0, 10, by = .50)
+z <- c("Low", "High")
+type <- c("none", "strength", "flip")
+
+data <- 
+  tidyr::expand_grid(x, z, type) |>
+  dplyr::mutate(
+    y = dplyr::case_when(
+      type == "none" & z == "Low" ~ 2 + 2*x,
+      type == "none" & z == "High" ~ 4 + 2*x,
+      type == "strength" & z == "Low" ~ 5 + .01*x,
+      type == "strength" & z == "High" ~ 7 + 2*x,
+      z == "Low" ~ 5 - 2*x,
+      TRUE ~ 5 + 2*x
+    ),
+    type_label = dplyr::case_when(
+      type == "none" ~ "No Moderation",
+      type == "strength" ~ "Strengthening Effect",
+      type == "flip" ~ "Reversing Effect"
+    ),
+    type_label = factor(type_label, 
+                        levels = c("No Moderation", "Strengthening Effect", "Reversing Effect"))
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = y,
+    lty = z
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill,
+    lwd = 1.25
+  ) + 
+  ggplot2::facet_wrap(
+    ~ type_label,
+    scales = "free"
+  ) +
+  ggplot2::labs(
+    x = "Ability",
+    y = "Performance",
+    lty = "Effort"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+
+```
+
+
+## Mediated (Indirect) Relationships: The "Why" Heuristic
+
+A **mediated (indirect) relationship** is one where a predictor variable influences an outcome variable **indirectly** through its influence on a mediating variable referred to as a **mediator**.
+
+<br>
+
+![](lecture-imgs/mediated-relationship.png){.width-mediated-image fig-align="center" }
+
+## Thinking About Indirect, Direct, and Total Effects
+
+When we hypothesize a mediated relationship, we can talk about three different effects: 
+
+1. The indirect effect of X on Y
+2. The direct effect of X on Y
+3. The total effect of X on Y
+
+## Why Use a Path Diagram? 
+
+A path diagram is useful as it is a simple way to graphically communicate our:
+
+1. The phenomena (variables) we are interested in
+2. Hypotheses or theoretical propositions about the relationships among variables
+3. The regression equations needed to test the hypothesized model 
+
+## The Model Behind Your Homework as an Example
+
+![](lecture-imgs/homework-model.png){fig-align="center"}
+
+## Path Diagrams and Hypotheses 
+
+From the path diagram for our homework, we can infer several different hypotheses/propositions: 
+
+1. The effect of perceived ease of use is partially **mediated** through a tool's perceived usefulness.
+2. The effect of perceived ease of use on one's intention to use the tool is **moderated** by one's previous experience with a similar tool.
+3. The effect of perceived usefulness on one's intention to use the tool is **moderated** by one's previous experience with a similar tool.
+
+## Path Diagrams and Regression Equations
+
+We can also infer the regression equations needed to test our hypotheses from the path diagram: 
+
+$$X_{\text{Per. Useful.}}=\beta_0 + \beta_1X_{\text{Perc. Ease Use}}+\epsilon$$
+$$Y_{\text{Beh. Intet.}}=\beta_0+\beta_1X_{\text{Per. Ease Use}}+\beta_2X_{\text{Per. Useful.}}+\beta_3Z_{\text{Mod.}}+\epsilon$$
+
+## The Human Costs of Mergers: A Published Example 
+
+![](lecture-imgs/merger-model.png){fig-align="center"}
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Using Theories to build Models
+
+Giessner et al. (2023) use two broad theories to build their more narrow model: 
+
+* Organizational support theory
+* Conservation of resources theory
+
+## Mediation Hypotheses: H1 to H3 
+
+* *H1*: Merging organizations will experience greater decreases in job satisfaction relative to nonmerging organizations within the same context and time period. **[Total Effect]**
+* *H2*: Merging organizations will experience greater increases in absenteeism relative to nonmerging organizations within the same context and time period. **[Direct Effect]**
+* *H3*: The increases in absenteeism for merging organizations will be **(partially) mediated** by decreases in job satisfaction. **[Indirect Effect]**
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Moderation Hypothesis: H4
+
+* *H4*: The decreases in job satisfaction for merged versus nonmerged organizations will be **moderated** by changes in supportive leadership at the midlevel management level, such that **this relationship will be weaker for organizations with increasing levels of supportive leadership**.
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Moderated Mediation Hypothesis: H5
+
+* *H5*: The increases in absenteeism for merging organizations relative to nonmerging organizations as **mediated by the decreases in job satisfaction** will be **moderated by changes in supportive leadership** at the midlevel management level, such that **the indirect effect of mergers on absenteeism via job satisfaction will be weaker when there is an increase in supportive leadership**.
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Regression Models: Mediation Hypotheses
+
+![](lecture-imgs/merger-mediation-test.png){fig-align="center"}
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Regression Models: Moderation Hypotheses
+
+![](lecture-imgs/merger-moderation-test.png){fig-align="center"}
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## Moderation Plot
+
+![](lecture-imgs/merger-moderation-plot.png){width=65% fig-align="center"}
+
+::: aside
+Giessner et al. (2023). The impact of supportive leadership on employee outcomes during organizational mergers: An organizational-level field study. *Journal of Applied Psychology*, *108*(4), 686-697.
+:::
+
+## A More Advanced Published Example 
+
+![](lecture-imgs/advanced-path-diagram.png){fig-align="center"}
+
+::: aside
+Steiner et al. (2023). Crossover effects of parent work-to-family experiences on child work centrality: A moderated mediation model. *Journal of Applied Psychology*, *108*(6), 934-953.
+:::
