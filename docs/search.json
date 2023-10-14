@@ -4932,7 +4932,7 @@
     "href": "lectures/07-lecture-slides.html#path-diagrams-and-regression-equations",
     "title": "Model Building",
     "section": "Path Diagrams and Regression Equations",
-    "text": "Path Diagrams and Regression Equations\nWe can also infer the regression equations needed to test our hypotheses from the path diagram:\n\\[X_{\\text{Per. Useful.}}=\\beta_0 + \\beta_1X_{\\text{Perc. Ease Use}}+\\epsilon\\] \\[Y_{\\text{Beh. Intet.}}=\\beta_0+\\beta_1X_{\\text{Per. Ease Use}}+\\beta_2X_{\\text{Per. Useful.}}+\\beta_3Z_{\\text{Mod.}}+\\epsilon\\]"
+    "text": "Path Diagrams and Regression Equations\nWe can also infer the regression equations needed to test our hypotheses from the path diagram:\n\\[X_{\\text{Useful.}}=\\beta_0 + \\beta_1X_{\\text{Ease Use}}+\\epsilon\\] \\[Y_{\\text{Beh. Int.}}=\\beta_0+\\beta_1X_{\\text{Ease Use}}+\\beta_2X_{\\text{Useful.}}+\\beta_3Z_{\\text{Mod.}}+\\epsilon\\]"
   },
   {
     "objectID": "lectures/07-lecture-slides.html#a-published-example",
@@ -5015,7 +5015,14 @@
     "objectID": "lectures/07-lecture-slides.html#using-theories-to-build-models",
     "href": "lectures/07-lecture-slides.html#using-theories-to-build-models",
     "title": "Model Building",
-    "section": "Using Theories to build Models",
-    "text": "Using Theories to build Models\nGiessner et al. (2023) use two broad theories to build their more narrow model:\n\nOrganizational support theory\nConservation of resources theory"
+    "section": "Using Theories to Build Models",
+    "text": "Using Theories to Build Models\nGiessner et al. (2023) use two broad theories to build their more narrow model:\n\nOrganizational support theory\nConservation of resources theory"
+  },
+  {
+    "objectID": "lectures/07-lecture-slides.html#a-more-complex-published-example",
+    "href": "lectures/07-lecture-slides.html#a-more-complex-published-example",
+    "title": "Model Building",
+    "section": "A More Complex Published Example",
+    "text": "A More Complex Published Example\n\n\n\n\n\n\n\n\n\n\n\nSteiner et al. (2023). Crossover effects of parent work-to-family experiences on child work centrality: A moderated mediation model. Journal of Applied Psychology, 108(6), 934-953."
   }
 ]
