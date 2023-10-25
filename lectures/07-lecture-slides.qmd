@@ -195,8 +195,8 @@ Giessner et al. (2023) use two broad theories to build their more narrow model:
 
 ## Mediation Hypotheses: H1 to H3 
 
-* *H1*: Merging organizations will experience greater decreases in job satisfaction relative to nonmerging organizations within the same context and time period. **[Total Effect]**
-* *H2*: Merging organizations will experience greater increases in absenteeism relative to nonmerging organizations within the same context and time period. **[Direct Effect]**
+* *H1*: Merging organizations will experience greater decreases in job satisfaction relative to nonmerging organizations within the same context and time period.
+* *H2*: Merging organizations will experience greater increases in absenteeism relative to nonmerging organizations within the same context and time period. **[Total Effect]**
 * *H3*: The increases in absenteeism for merging organizations will be **(partially) mediated** by decreases in job satisfaction. **[Indirect Effect]**
 
 ::: aside
