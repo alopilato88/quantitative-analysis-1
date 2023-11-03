@@ -1,0 +1,62 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+
+<div class = "prev-next-container">
+<a class="prev-next" href="09-lecture-page.html">Next Week's Materials &raquo;</a>
+</div>
+
+**Welcome to Immersion Day!**
+
+On this page, you will find the schedule for our Immersion Day, the lectures, and the R script you will need if you want to follow along the introduction to Tidyverse portion of the day. 
+
+## Schedule for Today
+
++---------------------------------------+----------------------+
+| Topic                                 | Time                 |
++:======================================+:=====================+
+| **R Refresher**                       | 9 to 9:30 AM         |
++---------------------------------------+----------------------+
+| **Intro to Moderation**               | 9:30 to 10:15 AM     |
++---------------------------------------+----------------------+
+| **Break**                             | 10:15 to 10:30 AM    |
++---------------------------------------+----------------------+
+| **More Moderation**                   | 10:30 to 11:45 AM    |
++---------------------------------------+----------------------+
+| **Break for Lunch**                   | 11:45 AM to 1 PM     |
++---------------------------------------+----------------------+
+| **Intro to Mediation Analysis**       | 1 to 2 PM            |
++---------------------------------------+----------------------+
+| **Break**                             | 2 to 2:15 PM         |
++---------------------------------------+----------------------+
+| **Intro to ggplot2**                  | 2:15 to 3:15 PM      |
++---------------------------------------+----------------------+
+| **Break**                             | 3:15 to 3:30 PM      |
++---------------------------------------+----------------------+
+| **Headstart on R Coding Assignment**  | 3:30 to 4 PM         |
++---------------------------------------+----------------------+
+
+## Live Coding: R Refresher
+
+To download the R script that follows the R portion of the lecture, click <a href="r-refresher-immersion-2-script.R" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+## Lecture: Introduction to Moderation
+
+<iframe src="08-lecture-slides.html" name="08-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="08-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+## Lecture: Introduction to Mediation Analysis
+
+<iframe src="09-lecture-slides.html" name="09-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="09-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+## Live Coding: Introduction to ggplot2
+
+To download the R script that follows the R portion of the lecture, click <a href="ggplot2-training-script.R" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+
+

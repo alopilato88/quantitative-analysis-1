@@ -5038,5 +5038,978 @@
     "title": "Quantitative Analysis 1",
     "section": "Lecture: Model Building",
     "text": "Lecture: Model Building\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#overview",
+    "href": "lectures/08-lecture-slides.html#overview",
+    "title": "An Introduction to Moderation",
+    "section": "Overview",
+    "text": "Overview\n\nIntroduction to moderation\nLearn how to estimate and test moderation effects\nLearn how to estimate and test nonlinear effects"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#job-demands-resources-jdr-theory-our-example",
+    "href": "lectures/08-lecture-slides.html#job-demands-resources-jdr-theory-our-example",
+    "title": "An Introduction to Moderation",
+    "section": "Job Demands-Resources (JDR) Theory: Our Example",
+    "text": "Job Demands-Resources (JDR) Theory: Our Example\nThe JDR Theory explains how job resources and demands influence one’s engagement and burnout:\n\nPerformance feedback moderates the relationship between cognitive demands and burnout\nRecovery opportunities moderate the relationship between emotional demands and burnout\nWork complexity moderates the relationship between performance feedback and engagement"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#multiple-regression-model",
+    "href": "lectures/08-lecture-slides.html#multiple-regression-model",
+    "title": "An Introduction to Moderation",
+    "section": "Multiple Regression Model",
+    "text": "Multiple Regression Model\n\nmod_cog_demands &lt;- lm(burnout ~ cog_demands + perf_feedback, data = data_1)"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-a-linear-regression-model",
+    "href": "lectures/08-lecture-slides.html#interpreting-a-linear-regression-model",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting a Linear Regression Model",
+    "text": "Interpreting a Linear Regression Model\n\nsummary(mod_cog_demands)\n\n\nCall:\nlm(formula = burnout ~ cog_demands + perf_feedback, data = data_1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.1974 -0.8014  0.0171  0.6926  3.7431 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    3.57583    0.15481  23.098  &lt; 2e-16 ***\ncog_demands    0.18149    0.03113   5.830 7.49e-09 ***\nperf_feedback -0.07148    0.02125  -3.364 0.000797 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9979 on 997 degrees of freedom\nMultiple R-squared:  0.04263,   Adjusted R-squared:  0.04071 \nF-statistic:  22.2 on 2 and 997 DF,  p-value: 3.709e-10"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#the-unconditional-effect-of-cognitive-demands-on-burnout",
+    "href": "lectures/08-lecture-slides.html#the-unconditional-effect-of-cognitive-demands-on-burnout",
+    "title": "An Introduction to Moderation",
+    "section": "The Unconditional Effect of Cognitive Demands on Burnout",
+    "text": "The Unconditional Effect of Cognitive Demands on Burnout"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#what-is-moderation-statistical-interaction",
+    "href": "lectures/08-lecture-slides.html#what-is-moderation-statistical-interaction",
+    "title": "An Introduction to Moderation",
+    "section": "What is Moderation (Statistical Interaction)?",
+    "text": "What is Moderation (Statistical Interaction)?\nModeration or interaction, causal or otherwise, involves at least three variables in which the relationship between two variables, a focal predictor and outcome variable, changes depending on the value of a third variable, the moderating variable or moderator."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#some-moderation-jargon",
+    "href": "lectures/08-lecture-slides.html#some-moderation-jargon",
+    "title": "An Introduction to Moderation",
+    "section": "Some Moderation Jargon",
+    "text": "Some Moderation Jargon\nWhen reading about moderation, you will likely come across several of these terms:\n\nFocal Predictor: Predictor who’s relationship with the outcome is changing because of the moderator.\nModerating Variable: Predictor that is altering (moderating) the relationship between the focal predictor and outcome.\nConditional Effects: The effect of the focal predictor at a specific value of the moderator.\n\nMain Effects\nLower & Higher Order Effects\nSimple Slopes"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#modeling-an-interaction-as-a-cross-product",
+    "href": "lectures/08-lecture-slides.html#modeling-an-interaction-as-a-cross-product",
+    "title": "An Introduction to Moderation",
+    "section": "Modeling an Interaction as a Cross-Product",
+    "text": "Modeling an Interaction as a Cross-Product\nTo estimate an interaction effect, we create a new variable that is the product of the focal predictor and the moderator:\n\\[Y = \\beta_0+\\beta_1X+\\beta_2Z+\\beta_3XZ\\] \\[Y = (\\beta_0 + \\beta_2Z) + (\\beta_1 + \\beta_3Z)X\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interaction-between-two-quantitative-variables",
+    "href": "lectures/08-lecture-slides.html#interaction-between-two-quantitative-variables",
+    "title": "An Introduction to Moderation",
+    "section": "Interaction Between Two Quantitative Variables",
+    "text": "Interaction Between Two Quantitative Variables\nBelow we fit a model looking at how two quantitative variables interact. Specifically, we are interested in determining if performance feedback moderates the relationship between cognitive demands and burnout:\n\nmod_cog_demands_int &lt;- lm(burnout ~ cog_demands + perf_feedback + cog_demands * perf_feedback, data = data_1)\n\nmod_cog_demands_int &lt;- lm(burnout ~ cog_demands * perf_feedback, data = data_1)"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-the-coefficients",
+    "href": "lectures/08-lecture-slides.html#interpreting-the-coefficients",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting the Coefficients",
+    "text": "Interpreting the Coefficients\n\nIntercept: Is the estimate of the outcome variable when the focal predictor and moderator both equal 0.\nSlope of the Focal Predictor: The estimated difference in the outcome variable between two cases that differ by 1 unit on the focal predictor and whose response to the moderator variable equals 0. It is the conditional effect of the focal predictor when the moderator equals 0.\nSlope of the Moderator: The estimated difference in the outcome variable between two cases that differ by 1 unit on the moderator and whose response to the focal predictor equals 0. It is the conditional effect of the moderator when the focal predictor equals 0.\nSlope of the Interaction: The estimated change in the conditional effect of the focal predictor as the moderator changes by one unit; The estimated change in the conditional effect of the moderator as the focal predictor changes by one unit."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-the-coefficients-1",
+    "href": "lectures/08-lecture-slides.html#interpreting-the-coefficients-1",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting the Coefficients",
+    "text": "Interpreting the Coefficients\n\nmod_cog_demands_int\n\n\nCall:\nlm(formula = burnout ~ cog_demands * perf_feedback, data = data_1)\n\nCoefficients:\n              (Intercept)                cog_demands  \n                  -0.3391                     1.1538  \n            perf_feedback  cog_demands:perf_feedback  \n                   0.8426                    -0.2265"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#calculating-the-conditional-effect-of-cognitive-demands",
+    "href": "lectures/08-lecture-slides.html#calculating-the-conditional-effect-of-cognitive-demands",
+    "title": "An Introduction to Moderation",
+    "section": "Calculating the Conditional Effect of Cognitive Demands",
+    "text": "Calculating the Conditional Effect of Cognitive Demands\nWe can calculate the conditional effect for Cognitive Demands when the response to the Performance Feedback question is 7:\n\\[Y = (-.34 \\space + \\space .84\\times7) \\space + (1.15 \\space + \\space -.23\\times7)X\\]\n\\[Y = 5.54 \\space + \\space -.46X\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#calculating-the-conditional-effect-of-cognitive-demands-1",
+    "href": "lectures/08-lecture-slides.html#calculating-the-conditional-effect-of-cognitive-demands-1",
+    "title": "An Introduction to Moderation",
+    "section": "Calculating the Conditional Effect of Cognitive Demands",
+    "text": "Calculating the Conditional Effect of Cognitive Demands\nWe can calculate the conditional effect for Cognitive Demands when the response to the Performance Feedback question is 1:\n\\[Y = (-.34 \\space + \\space .84\\times1) \\space + (1.15 \\space + \\space -.23\\times1)X\\]\n\\[Y = .50 \\space + \\space .92X\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-conditional-effect-of-cognitive-demands-on-burnout",
+    "href": "lectures/08-lecture-slides.html#plotting-the-conditional-effect-of-cognitive-demands-on-burnout",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Conditional Effect of Cognitive Demands on Burnout",
+    "text": "Plotting the Conditional Effect of Cognitive Demands on Burnout"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#tips-on-plotting-the-interaction-effect",
+    "href": "lectures/08-lecture-slides.html#tips-on-plotting-the-interaction-effect",
+    "title": "An Introduction to Moderation",
+    "section": "Tips on Plotting the Interaction Effect",
+    "text": "Tips on Plotting the Interaction Effect\nIf you do not want to plot the conditional effect of the focal predictor at every level of the moderator, then you can choose the 36th, 50th, and 84th percentile of the moderator:"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect",
+    "text": "Testing the Interaction Effect\nTo determine if two variables interact with one another, we can use the p-value of the interaction regression slope to determine if the effect is significantly different than 0, or we can construct a 95% confidence interval around the regression slope and see if 0 is outside of the interval."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interaction-between-a-quantitative-and-binary-variable",
+    "href": "lectures/08-lecture-slides.html#interaction-between-a-quantitative-and-binary-variable",
+    "title": "An Introduction to Moderation",
+    "section": "Interaction Between a Quantitative and Binary Variable",
+    "text": "Interaction Between a Quantitative and Binary Variable\nBelow we estimate a model where a binary variable, recovery opportunities, moderates a quantitative variable, emotional demands:\n\nmod_emot_demands_int &lt;- lm(burnout ~ emot_demands * rec_opp_factor, data = data_2)"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients",
+    "href": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting the Regression Coefficients",
+    "text": "Interpreting the Regression Coefficients\n\nIntercept: The estimated value of the outcome when both the focal predictor and moderator equal 0.\nSlope of the Focal Predictor (Quantitative): The conditional effect of the focal predictor for the reference group (when the moderator equals 0).\nSlope of the Moderator (Binary Variable): The conditional effect of the moderator when the focal predictor equals 0.\nSlope of the Interaction: The estimated change in the conditional effect of the focal predictor as the moderator changes by one unit."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-interaction",
+    "href": "lectures/08-lecture-slides.html#plotting-the-interaction",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Interaction",
+    "text": "Plotting the Interaction"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-1",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-1",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect",
+    "text": "Testing the Interaction Effect\nMultiple R2"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interaction-between-a-quantitative-and-multicategorical-variable",
+    "href": "lectures/08-lecture-slides.html#interaction-between-a-quantitative-and-multicategorical-variable",
+    "title": "An Introduction to Moderation",
+    "section": "Interaction Between a Quantitative and Multicategorical Variable",
+    "text": "Interaction Between a Quantitative and Multicategorical Variable\nBelow we estimate a model where a multicategorical variable, work complexity, moderates a quantitative variable, performance feedback:\n\nmod_perf_feed_int &lt;- lm(engage ~ perf_feedback*work_complex)"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients-1",
+    "href": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients-1",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting the Regression Coefficients",
+    "text": "Interpreting the Regression Coefficients\n\nmod_emot_demands_int\n\n\nCall:\nlm(formula = burnout ~ emot_demands * rec_opp_factor, data = data_2)\n\nCoefficients:\n                   (Intercept)                    emot_demands  \n                        3.8469                          0.2194  \n             rec_opp_factorYes  emot_demands:rec_opp_factorYes  \n                        0.1653                         -0.2858"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-interaction-1",
+    "href": "lectures/08-lecture-slides.html#plotting-the-interaction-1",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Interaction",
+    "text": "Plotting the Interaction"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-2",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-2",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect",
+    "text": "Testing the Interaction Effect\nMultiple R2"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#probing-interactions-vs-testing-interactions",
+    "href": "lectures/08-lecture-slides.html#probing-interactions-vs-testing-interactions",
+    "title": "An Introduction to Moderation",
+    "section": "Probing Interactions vs Testing Interactions",
+    "text": "Probing Interactions vs Testing Interactions"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#probing-interactions-the-analysis-of-simple-slopes",
+    "href": "lectures/08-lecture-slides.html#probing-interactions-the-analysis-of-simple-slopes",
+    "title": "An Introduction to Moderation",
+    "section": "Probing Interactions: The Analysis of Simple Slopes",
+    "text": "Probing Interactions: The Analysis of Simple Slopes"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#keeping-the-lower-order-terms",
+    "href": "lectures/08-lecture-slides.html#keeping-the-lower-order-terms",
+    "title": "An Introduction to Moderation",
+    "section": "Keeping the Lower Order Terms",
+    "text": "Keeping the Lower Order Terms"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#mean-centering-predictors",
+    "href": "lectures/08-lecture-slides.html#mean-centering-predictors",
+    "title": "An Introduction to Moderation",
+    "section": "Mean Centering Predictors",
+    "text": "Mean Centering Predictors"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#do-not-artifically-categorize-quantitative-variables",
+    "href": "lectures/08-lecture-slides.html#do-not-artifically-categorize-quantitative-variables",
+    "title": "An Introduction to Moderation",
+    "section": "Do Not Artifically Categorize Quantitative Variables",
+    "text": "Do Not Artifically Categorize Quantitative Variables"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#nonlinear-effects",
+    "href": "lectures/08-lecture-slides.html#nonlinear-effects",
+    "title": "An Introduction to Moderation",
+    "section": "Nonlinear Effects",
+    "text": "Nonlinear Effects"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#too-much-of-a-good-thing-effects",
+    "href": "lectures/08-lecture-slides.html#too-much-of-a-good-thing-effects",
+    "title": "An Introduction to Moderation",
+    "section": "Too Much of a Good Thing Effects",
+    "text": "Too Much of a Good Thing Effects"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#polynomial-regression",
+    "href": "lectures/08-lecture-slides.html#polynomial-regression",
+    "title": "An Introduction to Moderation",
+    "section": "Polynomial Regression",
+    "text": "Polynomial Regression"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#thinking-of-nonlinear-effects-as-interactions",
+    "href": "lectures/08-lecture-slides.html#thinking-of-nonlinear-effects-as-interactions",
+    "title": "An Introduction to Moderation",
+    "section": "Thinking of Nonlinear Effects as Interactions",
+    "text": "Thinking of Nonlinear Effects as Interactions\nNonlinear effects occur whenever the relationship between a focal predictor and an outcome changes at different values of the focal predictor.\nIn a way, this is similar to the idea of moderation where X would be both the focal predictor and moderator."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-statistical-test",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-statistical-test",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect: Statistical Test",
+    "text": "Testing the Interaction Effect: Statistical Test\n\nsummary(mod_cog_demands_int)\n\n\nCall:\nlm(formula = burnout ~ cog_demands * perf_feedback, data = data_1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.2701 -0.6116  0.0199  0.5999  3.1046 \n\nCoefficients:\n                          Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)               -0.33909    0.35570  -0.953    0.341    \ncog_demands                1.15384    0.08579  13.450   &lt;2e-16 ***\nperf_feedback              0.84261    0.07842  10.744   &lt;2e-16 ***\ncog_demands:perf_feedback -0.22652    0.01880 -12.048   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9327 on 996 degrees of freedom\nMultiple R-squared:  0.1644,    Adjusted R-squared:  0.1619 \nF-statistic: 65.32 on 3 and 996 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-confidence-interval",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-confidence-interval",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect: Confidence Interval",
+    "text": "Testing the Interaction Effect: Confidence Interval\n\nconfint(mod_cog_demands_int)\n\n                               2.5 %     97.5 %\n(Intercept)               -1.0370943  0.3589094\ncog_demands                0.9854904  1.3221892\nperf_feedback              0.6887085  0.9965023\ncog_demands:perf_feedback -0.2634147 -0.1896266"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-statistical-test-1",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-statistical-test-1",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect: Statistical Test",
+    "text": "Testing the Interaction Effect: Statistical Test\n\nsummary(mod_emot_demands_int)\n\n\nCall:\nlm(formula = burnout ~ emot_demands * rec_opp_factor, data = data_2)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.7468 -0.7246  0.1868  0.3195  3.2532 \n\nCoefficients:\n                               Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)                     3.84691    0.23799  16.164  &lt; 2e-16 ***\nemot_demands                    0.21943    0.05692   3.855 0.000123 ***\nrec_opp_factorYes               0.16529    0.28035   0.590 0.555606    \nemot_demands:rec_opp_factorYes -0.28577    0.06704  -4.263 2.21e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9448 on 996 degrees of freedom\nMultiple R-squared:  0.2021,    Adjusted R-squared:  0.1997 \nF-statistic:  84.1 on 3 and 996 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients-2",
+    "href": "lectures/08-lecture-slides.html#interpreting-the-regression-coefficients-2",
+    "title": "An Introduction to Moderation",
+    "section": "Interpreting the Regression Coefficients",
+    "text": "Interpreting the Regression Coefficients\nThe coefficients have similar interpretations as the previous models, but we just have a few more because we need multiple coefficients to capture the multicategorical variable:\n\nsummary(mod_perf_feed_int)$coefficients[, 1:2] |&gt; round(3)\n\n                                   Estimate Std. Error\n(Intercept)                          -1.119      0.287\nperf_feedback                         0.613      0.064\nwork_complexlow                       0.946      0.549\nwork_complexmoderate                  0.936      0.484\nperf_feedback:work_complexlow        -0.746      0.120\nperf_feedback:work_complexmoderate   -0.505      0.110"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#calculating-the-conditional-effects-of-emotional-demands",
+    "href": "lectures/08-lecture-slides.html#calculating-the-conditional-effects-of-emotional-demands",
+    "title": "An Introduction to Moderation",
+    "section": "Calculating the Conditional Effects of Emotional Demands",
+    "text": "Calculating the Conditional Effects of Emotional Demands\nWe can calculate the conditional effect of emotional demands for the group that receives recovery opportunities as:\n\\[Y = (3.85 + .17\\times1)\\space+\\space(.22 \\space + \\space-.29\\times1)X\\] \\[Y = 4.02 \\space + \\space -.07X\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-conditional-effects-of-emotional-demands",
+    "href": "lectures/08-lecture-slides.html#plotting-the-conditional-effects-of-emotional-demands",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Conditional Effects of Emotional Demands",
+    "text": "Plotting the Conditional Effects of Emotional Demands"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#regression-model-for-moderation-with-a-multicategorical-variable",
+    "href": "lectures/08-lecture-slides.html#regression-model-for-moderation-with-a-multicategorical-variable",
+    "title": "An Introduction to Moderation",
+    "section": "Regression Model for Moderation with a Multicategorical Variable",
+    "text": "Regression Model for Moderation with a Multicategorical Variable\n\\[Y = \\beta_0 +\\beta_1X+\\beta_2Z_{\\text{Low}}+\\beta_3Z_{\\text{Mod.}} + \\beta_4XZ_{\\text{Low}}+\\beta_5XZ_{\\text{Mod.}}\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#calculating-the-conditional-effects-of-performance-feedback",
+    "href": "lectures/08-lecture-slides.html#calculating-the-conditional-effects-of-performance-feedback",
+    "title": "An Introduction to Moderation",
+    "section": "Calculating the Conditional Effects of Performance Feedback",
+    "text": "Calculating the Conditional Effects of Performance Feedback\nWe can calculate the conditional effect of performance feedback for the low work complexity group as:\n\\[Y = (-1.12 + .95\\times1 + .94\\times0) + (.61 + -.75\\times1 + -.50\\times0)X\\] \\[Y = -.17 + -.14X\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-conditional-effects-of-performance-feedback",
+    "href": "lectures/08-lecture-slides.html#plotting-the-conditional-effects-of-performance-feedback",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Conditional Effects of Performance Feedback",
+    "text": "Plotting the Conditional Effects of Performance Feedback"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-with-a-multicategorical-moderator",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-with-a-multicategorical-moderator",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect with a Multicategorical Moderator",
+    "text": "Testing the Interaction Effect with a Multicategorical Moderator\nBecause a multicategorical moderator will have multiple interaction terms, referred to as a set, we cannot determine the significance of the overall set by looking at the significance of each individual interaction.\nInstead, we will use something called an F-test to determine if including the set of interaction terms significantly increased the model’s R2 compared to the model without the set of interaction terms."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-the-interaction-effect-with-a-multicategorical-moderator-1",
+    "href": "lectures/08-lecture-slides.html#testing-the-interaction-effect-with-a-multicategorical-moderator-1",
+    "title": "An Introduction to Moderation",
+    "section": "Testing the Interaction Effect with a Multicategorical Moderator",
+    "text": "Testing the Interaction Effect with a Multicategorical Moderator\n\n# Fit a model without interactions and one with interactions\nmod_no_int &lt;- lm(engage ~ perf_feedback + work_complex, data = data_3)\nmod_int &lt;- lm(engage ~ perf_feedback * work_complex, data = data_3)\n\n# Test the two models\nanova(mod_no_int, mod_int)\n\nAnalysis of Variance Table\n\nModel 1: engage ~ perf_feedback + work_complex\nModel 2: engage ~ perf_feedback * work_complex\n  Res.Df    RSS Df Sum of Sq      F   Pr(&gt;F)    \n1    996 910.32                                 \n2    994 872.88  2    37.432 21.313 8.65e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#the-f-test",
+    "href": "lectures/08-lecture-slides.html#the-f-test",
+    "title": "An Introduction to Moderation",
+    "section": "The F-Test",
+    "text": "The F-Test\nThe test we just conducted is referred to as an F-Test. It allows us to compare two models where one model is a subset of the other model, which is referred to as the full model.\nIt tests whether the R2 of the full model is significantly larger than the R2 of the reduced model:\n\\[R^2_{Full}-R^2_{Reduced}&gt;0\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#testing-interactions-vs-probing-interactions",
+    "href": "lectures/08-lecture-slides.html#testing-interactions-vs-probing-interactions",
+    "title": "An Introduction to Moderation",
+    "section": "Testing Interactions vs Probing Interactions",
+    "text": "Testing Interactions vs Probing Interactions\nSo far we have only tested our interactions.\nTesting an interaction is when you use either a statistical test or confidence interval to determine if the interaction’s regression slope is statistically different from 0.\nProbing an interaction is when you construct significance tests to determine at which values of the moderator the conditional effect (simple slope) of the focal predictor is significant."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback",
+    "href": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback",
+    "title": "An Introduction to Moderation",
+    "section": "Probing Interactions: Cognitive Demands X Performance Feedback",
+    "text": "Probing Interactions: Cognitive Demands X Performance Feedback\nWe will use the pick a point approach to probe our interactions. This is where you pick a specific value (point) of the moderator and test whether the conditional effect of the focal predictor is significant:\n\nmod_min &lt;- lm(burnout ~ cog_demands * I(perf_feedback - 1), data = data_1)\nmod_median &lt;- lm(burnout ~ cog_demands * I(perf_feedback - 4), data = data_1)\nmod_max &lt;- lm(burnout ~ cog_demands * I(perf_feedback - 7), data = data_1)"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback-1",
+    "href": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback-1",
+    "title": "An Introduction to Moderation",
+    "section": "Probing Interactions: Cognitive Demands x Performance Feedback",
+    "text": "Probing Interactions: Cognitive Demands x Performance Feedback\n\nsummary(mod_min)$coefficients |&gt; round(3)\n\n                                 Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)                         0.504      0.283   1.778    0.076\ncog_demands                         0.927      0.068  13.557    0.000\nI(perf_feedback - 1)                0.843      0.078  10.744    0.000\ncog_demands:I(perf_feedback - 1)   -0.227      0.019 -12.048    0.000"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback-2",
+    "href": "lectures/08-lecture-slides.html#probing-interactions-cognitive-demands-x-performance-feedback-2",
+    "title": "An Introduction to Moderation",
+    "section": "Probing Interactions: Cognitive Demands x Performance Feedback",
+    "text": "Probing Interactions: Cognitive Demands x Performance Feedback\n\n\n\n\n\nConditional Effect\nEstimate\nStd. Error\nt value\np-value\n\n\n\n\nMin\n0.927\n0.068\n13.557\n0\n\n\nMedian\n0.248\n0.030\n8.366\n0\n\n\nMax\n-0.432\n0.059\n-7.364\n0"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#guidance-for-modeling-interactions",
+    "href": "lectures/08-lecture-slides.html#guidance-for-modeling-interactions",
+    "title": "An Introduction to Moderation",
+    "section": "Guidance for Modeling Interactions",
+    "text": "Guidance for Modeling Interactions\n\nAlways keep the lower order terms in the model even if they are not significant.\nYou do not have to mean center your focal predictor and moderator before creating the interaction term.\nDo not artificially categorize a quantitative variable to make an interaction term."
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#using-polynomial-regression-to-model-nonlinear-effects",
+    "href": "lectures/08-lecture-slides.html#using-polynomial-regression-to-model-nonlinear-effects",
+    "title": "An Introduction to Moderation",
+    "section": "Using Polynomial Regression to Model Nonlinear Effects",
+    "text": "Using Polynomial Regression to Model Nonlinear Effects\nWe can use linear regression to approximate most nonlinear functions by creating higher order (e.g. squaring, cubing) terms from the focal predictor:\n\\[Y = \\beta_0 + \\beta_1X + \\beta_2X^2 + \\beta_3X^3\\]"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#plotting-the-nonlinear-relationship",
+    "href": "lectures/08-lecture-slides.html#plotting-the-nonlinear-relationship",
+    "title": "An Introduction to Moderation",
+    "section": "Plotting the Nonlinear Relationship",
+    "text": "Plotting the Nonlinear Relationship"
+  },
+  {
+    "objectID": "lectures/08-lecture-slides.html#an-example-of-polynomial-regression",
+    "href": "lectures/08-lecture-slides.html#an-example-of-polynomial-regression",
+    "title": "An Introduction to Moderation",
+    "section": "An Example of Polynomial Regression",
+    "text": "An Example of Polynomial Regression\nWe will estimate the curvilinear (nonlinear) relationship between procrastination and creativity:\n\nmod &lt;- lm(creativity ~ procrastination + I(procrastination^2))\n\nsummary(mod)$coefficients\n\n                        Estimate  Std. Error   t value      Pr(&gt;|t|)\n(Intercept)           7.32168766 0.159464662  45.91417 3.431270e-248\nprocrastination       0.52784158 0.034775741  15.17844  5.707781e-47\nI(procrastination^2) -0.02598866 0.001601668 -16.22599  1.016472e-52"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#overview",
+    "href": "lectures/09-lecture-slides.html#overview",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Overview",
+    "text": "Overview\n\nIntroduction to mediation analysis\nLearn how to estimate mediation models\nLearn how to test mediation effects with the bootstrap method\nFirst glimpse at path analysis"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#job-demands-resources-jdr-theory-our-example",
+    "href": "lectures/09-lecture-slides.html#job-demands-resources-jdr-theory-our-example",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Job Demands-Resources (JDR) Theory: Our Example",
+    "text": "Job Demands-Resources (JDR) Theory: Our Example\nThe JDR Theory explains how job resources and demands influence one’s engagement and burnout which goes onto influence one’s job performance:\n\nPerformance feedback affects job performance through its relationship with engagement\nSocial support affects job performance through its relationship with burnout and engagement"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#what-is-mediation",
+    "href": "lectures/09-lecture-slides.html#what-is-mediation",
+    "title": "An Introduction to Mediation",
+    "section": "What is Mediation?",
+    "text": "What is Mediation?\nMediation describes a set of relationships, causal or predictive, where one variable, the antecdent variable, influences an outcome variable indirectly through its influence on a mediating variable referred to as a mediator."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#some-mediation-jargon",
+    "href": "lectures/09-lecture-slides.html#some-mediation-jargon",
+    "title": "An Introduction to Mediation",
+    "section": "Some Mediation Jargon",
+    "text": "Some Mediation Jargon\nLike all things statistical, mediation comes with its own set of jargon:\n\nAntecedent Variable\nMediator or Mediating Variable\nPath Analysis\nTotal, Direct, & Indirect Effects"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#is-mediation-important-to-know",
+    "href": "lectures/09-lecture-slides.html#is-mediation-important-to-know",
+    "title": "An Introduction to Mediation",
+    "section": "Is Mediation Important to Know?",
+    "text": "Is Mediation Important to Know?"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#mediation-effects-total-indirect-and-direct-effects",
+    "href": "lectures/09-lecture-slides.html#mediation-effects-total-indirect-and-direct-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Mediation Effects: Total, Indirect, and Direct Effects",
+    "text": "Mediation Effects: Total, Indirect, and Direct Effects\nMediation analysis allows us to decompose the total effect that the antecedent variable has on the outcome variable into two pieces:\n\nDirect Effect: The effect the antecedent variable has on the outcome variable, while controlling for the mediator.\nIndirect Effect: The effect the antecedent has on the outcome variable through the mediator.\nTotal Effect: The sum of the direct and indirect effects. It is the effect of the antecedent variable on the outcome variable without controlling for the mediator."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#path-model-performance-feedback-to-engagement-to-job-performance",
+    "href": "lectures/09-lecture-slides.html#path-model-performance-feedback-to-engagement-to-job-performance",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Path Model: Performance Feedback to Engagement to Job Performance",
+    "text": "Path Model: Performance Feedback to Engagement to Job Performance"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#the-algebra-of-mediation",
+    "href": "lectures/09-lecture-slides.html#the-algebra-of-mediation",
+    "title": "An Introduction to Mediation",
+    "section": "The Algebra of Mediation",
+    "text": "The Algebra of Mediation\n\\[Y = \\beta_0 + \\beta_1X\\] \\[Y = \\beta_0 + \\beta_2X + \\beta_3M\\] \\[M = \\beta_0+\\beta_4X\\] \\[\\text{Indirect Effect} = \\beta_4\\times\\beta_3\\] \\[\\text{Total Effect} = \\beta_2 + \\beta_4\\times\\beta_3\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#estimating-a-mediation-model-with-linear-regression-performance-feedback",
+    "href": "lectures/09-lecture-slides.html#estimating-a-mediation-model-with-linear-regression-performance-feedback",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Estimating a Mediation Model with Linear Regression: Performance Feedback",
+    "text": "Estimating a Mediation Model with Linear Regression: Performance Feedback\nWe can use the following regression models to test for simple mediation:\n\nmod_total &lt;- lm(job_perf ~ perf_feedback, data = data_mediator)\nmod_de &lt;- lm(job_perf ~ engagement + perf_feedback, data = data_mediator)\nmod_ie &lt;- lm(engagement ~ perf_feedback, data = data_mediator)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-total-effect",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-total-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Total Effect",
+    "text": "Interpreting the Total Effect"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-direct-effect",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-direct-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Direct Effect",
+    "text": "Interpreting the Direct Effect\nWe can interpret and draw inferences about the direct effect just like we do any regression effect:\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n-0.017\n0.036\n-0.473\n0.637\n\n\nengagement\n0.258\n0.048\n5.352\n0.000\n\n\nperf_feedback\n0.105\n0.039\n2.703\n0.007"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#calculating-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#calculating-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Calculating the Indirect Effect",
+    "text": "Calculating the Indirect Effect\nTo calculate the indirect effect, we need to multiply the regression coefficient that captures the effect of performance feedback on engagement by the regression coefficient that captures the effect of engagement on job performance:\n\n\nmod_de$coefficients[\"engagement\"] * mod_ie$coefficients[\"perf_feedback\"]\n\n\n\nengagement \n     0.092"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Indirect Effect",
+    "text": "Interpreting the Indirect Effect\nFor every one unit increase in performance feedback, job performance changes by 0.092 as a result of performance feedback’s effect on engagement which, in turn, affects job performance."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-total-effect",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-total-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference About the Total Effect",
+    "text": "Inference About the Total Effect"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-direct-effect",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-direct-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference About the Direct Effect",
+    "text": "Inference About the Direct Effect"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#how-do-we-test-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#how-do-we-test-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "How Do We Test the Indirect Effect?",
+    "text": "How Do We Test the Indirect Effect?\n\nNormal Distribution (Theory) Approach\nBootstrap Confidence Intervals\nMonte Carlo Confidence Intervals"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-normal-theory-approach",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-normal-theory-approach",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference About the Indirect Effect: Normal Theory Approach",
+    "text": "Inference About the Indirect Effect: Normal Theory Approach\nThe Normal Theory approach:\n\nCalculates an approximate standard error for the indirect effect\nCalculates a test statistic by dividing the indirect effect by the approximate standard error\nUses the normal distribution to determine the p-value associated with the test statistic"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-bootstrap-confidence-intervals",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-bootstrap-confidence-intervals",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference About the Indirect Effect: Bootstrap Confidence Intervals",
+    "text": "Inference About the Indirect Effect: Bootstrap Confidence Intervals\nThe bootstrap method is a computationally intensive way to calculate confidence intervals for any statistic (e.g. regression slope or indirect effect) by:\n\nRandomly sample with replacement N rows from your dataset.\nEstimate your statistic from your sampled data and save it.\nRepeat this process A LOT of times (at least 1,000 times).\nUse the distribution of your saved estimates to build a confidence interval."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Confidence Intervals",
+    "text": "Coding Bootstrap Confidence Intervals\n\ncalc_ie &lt;- function(data, indices, formula_1, formula_2, \n                    x_name, m_name) {\n  \n  d &lt;- data[indices, ]\n  mod_1 &lt;- lm(formula_1, data = d)\n  mod_2 &lt;- lm(formula_2, data = d)\n  \n  ie &lt;- mod_1$coef[x_name] * mod_2$coef[m_name]\n  \n  return(ie)\n  \n}\n\ntest &lt;- boot::boot(\n  data = data_mediator,\n  statistic = calc_ie,\n  R = 1000,\n  formula_1 = engagement ~ perf_feedback,\n  formula_2 = job_perf ~ engagement + perf_feedback,\n  x_name = \"perf_feedback\",\n  m_name = \"engagement\"\n)\n\nboot::boot.ci(test)\n\nBOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS\nBased on 1000 bootstrap replicates\n\nCALL : \nboot::boot.ci(boot.out = test)\n\nIntervals : \nLevel      Normal              Basic         \n95%   ( 0.0570,  0.1268 )   ( 0.0565,  0.1256 )  \n\nLevel     Percentile            BCa          \n95%   ( 0.0590,  0.1280 )   ( 0.0590,  0.1293 )  \nCalculations and Intervals on Original Scale"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-monte-carlo-confidence-intervals",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-indirect-effect-monte-carlo-confidence-intervals",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference About the Indirect Effect: Monte Carlo Confidence Intervals",
+    "text": "Inference About the Indirect Effect: Monte Carlo Confidence Intervals\nWe can use the estimated regression coefficients and their standard errors to simulate a normal sampling distribution:\n\nEstimate the necessary linear regression models.\nSave the necessary estimates from the linear models.\nUse an algorithm such as rnorm to generate a lot of observations with a mean equal to the estimated regression coefficient and standard deviation equal to the estimated standard error.\nDo step 3 for both \\(\\beta_3\\) and \\(\\beta_4\\) and multiply each observation together to create a sampling distribution for the indirect effect: \\(\\beta_3\\beta_4\\)."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#multiple-mediator-model-influence-of-social-support-through-burnout-and-engagement",
+    "href": "lectures/09-lecture-slides.html#multiple-mediator-model-influence-of-social-support-through-burnout-and-engagement",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Multiple Mediator Model: Influence of Social Support through Burnout and Engagement",
+    "text": "Multiple Mediator Model: Influence of Social Support through Burnout and Engagement"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#estimating-a-multiple-mediator-model-with-linear-regression",
+    "href": "lectures/09-lecture-slides.html#estimating-a-multiple-mediator-model-with-linear-regression",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Estimating a Multiple Mediator Model with Linear Regression",
+    "text": "Estimating a Multiple Mediator Model with Linear Regression\nWe can use the following regression models to test for simple mediation:\n\nmod_total &lt;- lm(job_perf ~ social_supp, data = data_mediator)\nmod_de &lt;- lm(job_perf ~ engagement + burnout + social_supp, data = data_mediator)\nmod_ie_engage &lt;- lm(engagement ~ social_supp, data = data_mediator)\nmod_ie_burnout &lt;- lm(burnout ~ social_supp, data = data_mediator)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-total-effects",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-total-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Total Effects",
+    "text": "Interpreting the Total Effects"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-direct-effects",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-direct-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Direct Effects",
+    "text": "Interpreting the Direct Effects"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#calculating-the-indirect-effects",
+    "href": "lectures/09-lecture-slides.html#calculating-the-indirect-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Calculating the Indirect Effects",
+    "text": "Calculating the Indirect Effects\nNow we have two indirect effects to calculate:\n\nIndirect effect of social support through engagement\nIndirect effect of social support through burnout\n\n\n\nmod_de$coefficients[\"engagement\"] * mod_ie_engage$coefficients[\"social_supp\"]\nmod_de$coefficients[\"burnout\"] * mod_ie_burnout$coefficients[\"social_supp\"]\n\n\n\nengagement \n     0.041 \n\n\nburnout \n  0.167"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-the-indirect-effects",
+    "href": "lectures/09-lecture-slides.html#interpreting-the-indirect-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting the Indirect Effects",
+    "text": "Interpreting the Indirect Effects"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#inference-about-the-indirect-effects-bootstrap-confidence-intervals",
+    "href": "lectures/09-lecture-slides.html#inference-about-the-indirect-effects-bootstrap-confidence-intervals",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Inference about the Indirect Effects: Bootstrap Confidence Intervals",
+    "text": "Inference about the Indirect Effects: Bootstrap Confidence Intervals\nTo calculate the 95% confidence intervals for each indirect effect, we will use the bootstrap method as it is typically the most accurate compared to the other two methods."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#causality-mediation",
+    "href": "lectures/09-lecture-slides.html#causality-mediation",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Causality & Mediation",
+    "text": "Causality & Mediation\nMediation is inherently causal. It is very tricky to talk about mediation without invoking causality. Because most of you likely will not be able to conduct a true experiment, here are a couple pointers on arguing for causality:\n\nYou must be able to make a strong argument that X occurs before M, in time, and M occurs before Y.\nYou will need to have a strong theory underlying your mediation model."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#advances-in-mediation",
+    "href": "lectures/09-lecture-slides.html#advances-in-mediation",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Advances in Mediation",
+    "text": "Advances in Mediation\nThere are many new advances in mediation analysis. Here are a few:\n\nCategorical Antecedent Variables\nCategorical Mediator Variables\nModerated Mediation"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#what-is-a-path-model",
+    "href": "lectures/09-lecture-slides.html#what-is-a-path-model",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "What is a Path Model",
+    "text": "What is a Path Model"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#our-path-model",
+    "href": "lectures/09-lecture-slides.html#our-path-model",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Our Path Model",
+    "text": "Our Path Model"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#estimating-a-path-model-with-lavaan",
+    "href": "lectures/09-lecture-slides.html#estimating-a-path-model-with-lavaan",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Estimating a Path Model with lavaan",
+    "text": "Estimating a Path Model with lavaan"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpreting-a-path-model",
+    "href": "lectures/09-lecture-slides.html#interpreting-a-path-model",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpreting a Path Model",
+    "text": "Interpreting a Path Model\n\nsummary(path_model_est)\n\nlavaan 0.6.16 ended normally after 1 iteration\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                        10\n\n  Number of observations                          1000\n\nModel Test User Model:\n                                                      \n  Test statistic                                 0.567\n  Degrees of freedom                                 2\n  P-value (Chi-square)                           0.753\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Expected\n  Information saturated (h1) model          Structured\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  engagement ~                                        \n    scl_s (m_ss_n)    0.135    0.023    5.765    0.000\n    prf_f   (m_p_)    0.355    0.023   15.775    0.000\n  burnout ~                                           \n    scl_s (m_ss_b)   -0.466    0.033  -14.098    0.000\n  job_perf ~                                          \n    enggm   (de_n)    0.218    0.045    4.807    0.000\n    burnt   (de_b)   -0.358    0.032  -11.134    0.000\n    scl_s             0.037    0.037    0.978    0.328\n    prf_f             0.121    0.036    3.346    0.001\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .engagement        0.543    0.024   22.361    0.000\n   .burnout           1.081    0.048   22.361    0.000\n   .job_perf          1.119    0.050   22.361    0.000\n\nDefined Parameters:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n    ie_ss_en          0.030    0.008    3.692    0.000\n    ie_ss_bo          0.167    0.019    8.738    0.000\n    ie_pdf_en         0.078    0.017    4.598    0.000"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#what-a-path-model-gives-us",
+    "href": "lectures/09-lecture-slides.html#what-a-path-model-gives-us",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "What a Path Model Gives Us",
+    "text": "What a Path Model Gives Us"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#what-is-mediation-analysis",
+    "href": "lectures/09-lecture-slides.html#what-is-mediation-analysis",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "What is Mediation Analysis?",
+    "text": "What is Mediation Analysis?\nMediation analysis is a statistical method used to test a set of relationships, causal or predictive, where one variable, the antecedent variable, influences an outcome variable indirectly through its influence on a mediating variable referred to as a mediator."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#some-mediation-analysis-jargon",
+    "href": "lectures/09-lecture-slides.html#some-mediation-analysis-jargon",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Some Mediation Analysis Jargon",
+    "text": "Some Mediation Analysis Jargon\nLike all things statistical, mediation analysis comes with its own set of jargon:\n\nAntecedent Variable\nMediator or Mediating Variable\nMechanism\nPath Analysis & Path Model\nTotal, Direct, & Indirect Effects\nSimple vs Multiple Mediation"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#is-mediation-analysis-important-to-know",
+    "href": "lectures/09-lecture-slides.html#is-mediation-analysis-important-to-know",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Is Mediation Analysis Important to Know?",
+    "text": "Is Mediation Analysis Important to Know?\nYes.\nMediation is present in everywhere and all interesting theories propose some model where mediation is present."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-the-total-effect",
+    "href": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-the-total-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "The Algebra of Mediation: Estimating the Total Effect",
+    "text": "The Algebra of Mediation: Estimating the Total Effect\nYou can estimate the total effect by regressing the outcome variable, Y, onto the antecedent variable, X.\n\\[Y = \\beta_0 + \\beta_1X\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-components-of-the-indirect-effects",
+    "href": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-components-of-the-indirect-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "The Algebra of Mediation: Estimating Components of the Indirect Effects",
+    "text": "The Algebra of Mediation: Estimating Components of the Indirect Effects\nBy regressing the outcome variable onto the mediator and the mediator onto the antecedent variable, you estimate the two component pieces that make up the indirect effect: \\(\\beta_3\\) & \\(\\beta_4\\).\n\\[Y = \\beta_0 + \\beta_2X + \\beta_3M\\] \\[M = \\beta_0+\\beta_4X\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#the-algebra-of-mediation-calculating-the-indirect-total-effects",
+    "href": "lectures/09-lecture-slides.html#the-algebra-of-mediation-calculating-the-indirect-total-effects",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "The Algebra of Mediation: Calculating the Indirect & Total Effects",
+    "text": "The Algebra of Mediation: Calculating the Indirect & Total Effects\nYou can calculate the indirect effect by multiplying together its component pieces, the effect of X on M and the effect of M on Y. You can calculate the total effect by adding the direct and indirect effects.\n\\[Y = \\beta_0 + \\beta_2X + \\beta_3M\\] \\[M = \\beta_0+\\beta_4X\\] \\[\\text{Indirect Effect} = \\beta_4\\times\\beta_3\\] \\[\\text{Total Effect} = \\beta_2 + \\beta_4\\times\\beta_3\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-the-direct-effect",
+    "href": "lectures/09-lecture-slides.html#the-algebra-of-mediation-estimating-the-direct-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "The Algebra of Mediation: Estimating the Direct Effect",
+    "text": "The Algebra of Mediation: Estimating the Direct Effect\nYou can estimate the direct effect of the antecedent variable on the outcome variable by regressing the outcome variable, Y, onto both the antecedent variable and mediator.\n\\[Y = \\beta_0 + \\beta_2X + \\beta_3M\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpretation-inference-of-the-total-effect",
+    "href": "lectures/09-lecture-slides.html#interpretation-inference-of-the-total-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpretation & Inference of the Total Effect",
+    "text": "Interpretation & Inference of the Total Effect\nWe can interpret and draw inferences about the total effect just like we do any regression effect:\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n-0.004\n0.037\n-0.116\n0.908\n\n\nperf_feedback\n0.197\n0.035\n5.585\n0.000"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#how-do-we-make-inferences-about-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#how-do-we-make-inferences-about-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "How Do We Make Inferences About the Indirect Effect?",
+    "text": "How Do We Make Inferences About the Indirect Effect?\nMaking inferences about the indirect effect is more challenging as the indirect effect is the product of two regression coefficients. This presents two challenges:\n\nWe can only approximate the standard error\nThe distribution of a product term (like the indirect effect) is not normal"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#methods-to-make-inferences-about-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#methods-to-make-inferences-about-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Methods to Make Inferences About the Indirect Effect",
+    "text": "Methods to Make Inferences About the Indirect Effect\nWe have a few methods available to make inferences about indirect effects:\n\nNormal Theory (Distribution) Approach\nBootstrap Confidence Intervals\nMonte Carlo Confidence Intervals"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#normal-theory-example",
+    "href": "lectures/09-lecture-slides.html#normal-theory-example",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Normal Theory: Example",
+    "text": "Normal Theory: Example\n\nb3 &lt;- mod_de$coefficients[\"engagement\"]\nb4 &lt;- mod_ie$coefficients[\"perf_feedback\"]\n\nse_b3 &lt;- summary(mod_de)$coefficients[\"engagement\", \"Std. Error\"]\nse_b4 &lt;- summary(mod_ie)$coefficients[\"perf_feedback\", \"Std. Error\"]\n\nse_ie &lt;- sqrt(b4^2 * se_b3^2 + b3^2 * se_b4^2)\n\ntest_stat &lt;- (b3 * b4) / se_ie\n\np_value &lt;- pnorm(test_stat, lower.tail = FALSE) * 2 \n\n\n\n\n\n\n\nIndirect Effect\nSE\nTest Stat.\np value\n\n\n\n\n0.092\n0.018\n5.063\n0"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#normal-theory-approximate-standard-error",
+    "href": "lectures/09-lecture-slides.html#normal-theory-approximate-standard-error",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Normal Theory: Approximate Standard Error",
+    "text": "Normal Theory: Approximate Standard Error\n\\[\\text{SE}(\\beta_4\\beta_3)=\\sqrt{\\beta_4^2\\text{SE}^2(\\beta_3) + \\beta^2_3\\text{SE}^2(\\beta_4)}\\]"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpretation-inference-of-the-direct-effect",
+    "href": "lectures/09-lecture-slides.html#interpretation-inference-of-the-direct-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpretation & Inference of the Direct Effect",
+    "text": "Interpretation & Inference of the Direct Effect\nWe can interpret and draw inferences about the direct effect just like we do any regression effect:\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n-0.017\n0.036\n-0.473\n0.637\n\n\nengagement\n0.258\n0.048\n5.352\n0.000\n\n\nperf_feedback\n0.105\n0.039\n2.703\n0.007"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-a-bootstrap-method-for-the-mean",
+    "href": "lectures/09-lecture-slides.html#coding-a-bootstrap-method-for-the-mean",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding a Bootstrap Method for the Mean",
+    "text": "Coding a Bootstrap Method for the Mean\n\nset.seed(1)\nx &lt;- rnorm(100, mean = 8, sd = 1)\nsaved_mean &lt;- numeric(1000)\n\nfor(i in 1:1000) {\n  \n  sample_rows &lt;- sample(1:length(x), size = length(x), replace = TRUE)\n  new_data &lt;- x[sample_rows]\n  saved_mean[i] &lt;- mean(new_data)\n  \n}"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-a-bootstrap-method-for-the-mean-1",
+    "href": "lectures/09-lecture-slides.html#coding-a-bootstrap-method-for-the-mean-1",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding a Bootstrap Method for the Mean",
+    "text": "Coding a Bootstrap Method for the Mean"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-a-bootstrap-intervals-for-the-mean",
+    "href": "lectures/09-lecture-slides.html#coding-a-bootstrap-intervals-for-the-mean",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding a Bootstrap Intervals for the Mean",
+    "text": "Coding a Bootstrap Intervals for the Mean\n\nset.seed(1)\nx &lt;- rnorm(100, mean = 8, sd = 1)\nsaved_mean &lt;- numeric(1000)\n\nfor(i in 1:1000) {\n  \n  sample_rows &lt;- sample(1:length(x), size = length(x), replace = TRUE)\n  new_data &lt;- x[sample_rows]\n  saved_mean[i] &lt;- mean(new_data)\n  \n}"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals-for-the-mean",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals-for-the-mean",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Confidence Intervals for the Mean",
+    "text": "Coding Bootstrap Confidence Intervals for the Mean"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals-for-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-confidence-intervals-for-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Confidence Intervals for the Indirect Effect",
+    "text": "Coding Bootstrap Confidence Intervals for the Indirect Effect\nInstead of writing our own bootstrap function, we can use the boot function from the boot package.\nFirst we have to write a function that estimates our statistic:\n\ncalc_ie &lt;- function(data, indices, formula_de, formula_m, \n                    x_name, m_name) {\n  \n  d &lt;- data[indices, ]\n  mod_de &lt;- lm(formula_de, data = d)\n  mod_m &lt;- lm(formula_m, data = d)\n  \n  ie &lt;- mod_de$coef[m_name] * mod_m$coef[x_name]\n  \n  return(ie)\n  \n}"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Intervals for the Indirect Effect",
+    "text": "Coding Bootstrap Intervals for the Indirect Effect\nThen we provide our function to the boot function along with some additional arguments such as the number of bootstraps to take, R = 1000:\n\nset.seed(54)\n\nie_boot &lt;- boot::boot(\n  data = data_mediator,\n  statistic = calc_ie,\n  R = 1000,\n  formula_m = engagement ~ perf_feedback,\n  formula_de = job_perf ~ engagement + perf_feedback,\n  x_name = \"perf_feedback\",\n  m_name = \"engagement\"\n)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-1",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-1",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Intervals for the Indirect Effect",
+    "text": "Coding Bootstrap Intervals for the Indirect Effect\nFinally, we can use the boot.ci function to calculate the bootstrap confidence intervals:\n\nboot::boot.ci(ie_boot, conf = .95, type = \"perc\")\n\nBOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS\nBased on 1000 bootstrap replicates\n\nCALL : \nboot::boot.ci(boot.out = ie_boot, conf = 0.95, type = \"perc\")\n\nIntervals : \nLevel     Percentile     \n95%   ( 0.0585,  0.1282 )  \nCalculations and Intervals on Original Scale"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-monte-carlo-intervals",
+    "href": "lectures/09-lecture-slides.html#coding-monte-carlo-intervals",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Monte Carlo Intervals",
+    "text": "Coding Monte Carlo Intervals\n\nnorm_b3 &lt;- rnorm(1000, mean = b3, sd = se_b3)\nnorm_b4 &lt;- rnorm(1000, mean = b4, sd = se_b4)\nnorm_ie &lt;- norm_b3 * norm_b4\n\nquantile(norm_ie, c(.025, .975))\n\n      2.5%      97.5% \n0.05530038 0.12792893"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-monte-carlo-intervals-1",
+    "href": "lectures/09-lecture-slides.html#coding-monte-carlo-intervals-1",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Monte Carlo Intervals",
+    "text": "Coding Monte Carlo Intervals"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpretation-inference-of-the-total-effect-1",
+    "href": "lectures/09-lecture-slides.html#interpretation-inference-of-the-total-effect-1",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpretation & Inference of the Total Effect",
+    "text": "Interpretation & Inference of the Total Effect\nWe can interpret and draw inferences about the total effect just like we do any regression effect:\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n0.002\n0.036\n0.046\n0.963\n\n\nsocial_supp\n0.237\n0.037\n6.481\n0.000"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#interpretation-inference-of-the-direct-effect-1",
+    "href": "lectures/09-lecture-slides.html#interpretation-inference-of-the-direct-effect-1",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Interpretation & Inference of the Direct Effect",
+    "text": "Interpretation & Inference of the Direct Effect\nWe can interpret and draw inferences about the direct effect just like we do any regression effect:\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n-0.019\n0.034\n-0.574\n0.566\n\n\nengagement\n0.286\n0.041\n6.985\n0.000\n\n\nburnout\n-0.358\n0.032\n-11.028\n0.000\n\n\nsocial_supp\n0.030\n0.038\n0.789\n0.431"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-the-bootstrap-confidence-interval",
+    "href": "lectures/09-lecture-slides.html#coding-the-bootstrap-confidence-interval",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding the Bootstrap Confidence Interval",
+    "text": "Coding the Bootstrap Confidence Interval\n\ncalc_ie &lt;- function(data, indices, formula_de, formula_m1, formula_m2, \n                    x_name, m1_name, m2_name) {\n  \n  d &lt;- data[indices, ]\n  mod_de &lt;- lm(formula_de, data = d)\n  mod_m1 &lt;- lm(formula_m1, data = d)\n  mod_m2 &lt;- lm(formula_m2, data = d)\n  \n  ie_m1 &lt;- mod_de$coef[m1_name] * mod_m1$coef[x_name]\n  ie_m2 &lt;- mod_de$coef[m2_name] * mod_m2$coef[x_name]\n  \n  results &lt;- c(ie_m1, ie_m2)\n  \n  return(results)\n  \n}"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-2",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-2",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Intervals for the Indirect Effect",
+    "text": "Coding Bootstrap Intervals for the Indirect Effect\nThen we provide our function to the boot function along with some additional arguments such as the number of bootstraps to take, R = 1000:\n\nset.seed(674)\n\nie_boot &lt;- boot::boot(\n  data = data_mediator,\n  statistic = calc_ie,\n  R = 1000,\n  formula_m1 = engagement ~ social_supp,\n  formula_m2 = burnout ~ social_supp,\n  formula_de = job_perf ~ engagement + burnout + social_supp,\n  x_name = \"social_supp\",\n  m1_name = \"engagement\",\n  m2_name = \"burnout\"\n)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-3",
+    "href": "lectures/09-lecture-slides.html#coding-bootstrap-intervals-for-the-indirect-effect-3",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Coding Bootstrap Intervals for the Indirect Effect",
+    "text": "Coding Bootstrap Intervals for the Indirect Effect\nFinally, we can use the boot.ci function to calculate the bootstrap confidence intervals for each indirect effect:\n\nboot::boot.ci(ie_boot, conf = .95, type = \"perc\", index = 1)\nboot::boot.ci(ie_boot, conf = .95, type = \"perc\", index = 2)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#what-is-path-analysis-with-sem",
+    "href": "lectures/09-lecture-slides.html#what-is-path-analysis-with-sem",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "What is Path Analysis with SEM?",
+    "text": "What is Path Analysis with SEM?\nPath analysis is really no different from linear regression. But instead of a single regression equation, path analysis works with a set (system) of regression equations.\nSEM is a linear method that allows us to fit our path model all at once rather than estimate each regression equation separately."
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#building-a-path-model-with-lavaan",
+    "href": "lectures/09-lecture-slides.html#building-a-path-model-with-lavaan",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Building a Path Model with lavaan",
+    "text": "Building a Path Model with lavaan\n\npath_model &lt;- '\nengagement ~ m_ss_en*social_supp + m_pf_en*perf_feedback\nburnout ~ m_ss_bo*social_supp\njob_perf ~ de_en*engagement + de_bo*burnout + social_supp + perf_feedback\n\nie_ss_en := m_ss_en * de_en\nie_ss_bo := m_ss_bo * de_bo\nie_pdf_en := m_pf_en * de_en\n'"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#estimating-our-path-model",
+    "href": "lectures/09-lecture-slides.html#estimating-our-path-model",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Estimating our Path Model",
+    "text": "Estimating our Path Model\n\npath_model_est &lt;- lavaan::sem(path_model, data = data_mediator)"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#full-path-model",
+    "href": "lectures/09-lecture-slides.html#full-path-model",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Full Path Model",
+    "text": "Full Path Model"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#confidence-intervals-for-the-indirect-effect-through-engagement",
+    "href": "lectures/09-lecture-slides.html#confidence-intervals-for-the-indirect-effect-through-engagement",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Confidence Intervals for the Indirect Effect Through Engagement",
+    "text": "Confidence Intervals for the Indirect Effect Through Engagement\n\nboot::boot.ci(ie_boot, conf = .95, type = \"perc\", index = 1)\n\nBOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS\nBased on 1000 bootstrap replicates\n\nCALL : \nboot::boot.ci(boot.out = ie_boot, conf = 0.95, type = \"perc\", \n    index = 1)\n\nIntervals : \nLevel     Percentile     \n95%   ( 0.0251,  0.0605 )  \nCalculations and Intervals on Original Scale"
+  },
+  {
+    "objectID": "lectures/09-lecture-slides.html#confidence-intervals-for-the-indirect-effect-through-burnout",
+    "href": "lectures/09-lecture-slides.html#confidence-intervals-for-the-indirect-effect-through-burnout",
+    "title": "An Introduction to Mediation Analysis",
+    "section": "Confidence Intervals for the Indirect Effect Through Burnout",
+    "text": "Confidence Intervals for the Indirect Effect Through Burnout\n\nboot::boot.ci(ie_boot, conf = .95, type = \"perc\", index = 2)\n\nBOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS\nBased on 1000 bootstrap replicates\n\nCALL : \nboot::boot.ci(boot.out = ie_boot, conf = 0.95, type = \"perc\", \n    index = 2)\n\nIntervals : \nLevel     Percentile     \n95%   ( 0.1304,  0.2040 )  \nCalculations and Intervals on Original Scale"
+  },
+  {
+    "objectID": "lectures/08-lecture-page.html",
+    "href": "lectures/08-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »\nWelcome to Immersion Day!\nOn this page, you will find the schedule for our Immersion Day, the lectures, and the R script you will need if you want to follow along the introduction to Tidyverse portion of the day."
+  },
+  {
+    "objectID": "lectures/08-lecture-page.html#schedule-for-today",
+    "href": "lectures/08-lecture-page.html#schedule-for-today",
+    "title": "Quantitative Analysis 1",
+    "section": "Schedule for Today",
+    "text": "Schedule for Today\n\n\n\n\n\n\n\nTopic\nTime\n\n\n\n\nR Refresher\n9 to 9:30 AM\n\n\nIntro to Moderation\n9:30 to 10:15 AM\n\n\nBreak\n10:15 to 10:30 AM\n\n\nMore Moderation\n10:30 to 11:45 AM\n\n\nBreak for Lunch\n11:45 AM to 1 PM\n\n\nIntro to Mediation Analysis\n1 to 2 PM\n\n\nBreak\n2 to 2:15 PM\n\n\nIntro to ggplot2\n2:15 to 3:15 PM\n\n\nBreak\n3:15 to 3:30 PM\n\n\nHeadstart on R Coding Assignment\n3:30 to 4 PM"
+  },
+  {
+    "objectID": "lectures/08-lecture-page.html#lecture-introduction-to-moderation",
+    "href": "lectures/08-lecture-page.html#lecture-introduction-to-moderation",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Introduction to Moderation",
+    "text": "Lecture: Introduction to Moderation\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/08-lecture-page.html#lecture-introduction-to-mediation-analysis",
+    "href": "lectures/08-lecture-page.html#lecture-introduction-to-mediation-analysis",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: Introduction to Mediation Analysis",
+    "text": "Lecture: Introduction to Mediation Analysis\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/08-lecture-page.html#live-coding-introduction-to-ggplot2",
+    "href": "lectures/08-lecture-page.html#live-coding-introduction-to-ggplot2",
+    "title": "Quantitative Analysis 1",
+    "section": "Live Coding: Introduction to ggplot2",
+    "text": "Live Coding: Introduction to ggplot2\nTo download the R script that follows the R portion of the lecture, click here."
+  },
+  {
+    "objectID": "assignments/03-assignment-page.html",
+    "href": "assignments/03-assignment-page.html",
+    "title": "\nOptional Assignment\n",
+    "section": "",
+    "text": "Optional Assignment\n\n\nInstructions\n\nIn this assignment you will practice some of the statistical methods we have talked about so far: multiple regression with categorical predictors and a t-test. This assignment will be due on or before 10-09-2023.\nFor R users:\n\nDownload the assignment R script, which can be found below.\nOpen the R script in RStudio.\nBegin the assignment.\nFor the questions that require a written answer, save your answer either as a comment directly in the R script or in a separate Word document (or something similar).\nUpload your completed R script and any other files you created, such as a Word document, into the class Brightspace.\n\nFor non-R users:\n\nDownload the assignment R script, which can be found below.\nDownload the assignment dataset.\nOpen the R script in a generic text editor as it contains the assignment questions.\nFor the questions that require a written answer, save your answers in a separate Word document (or something similar).\nSave the script you used to complete the assignment and its subsequent output as a Word or text file.\nUpload your script, output, and written answers into the class Brightspace.\n\nIf you run into any issues, please email me.\n\nMaterials\n\nAssignment R Script: Download\nAssignment Data: Download\n\nData Description\n\nYour organization is planning a wide-scale release of a new generative AI chatbot designed to support your organization’s sales force. Among other features the AI chatbot can find answers to the customer’s question, identifying new promotions tailored to the customer, and generally help the sales representative meet the customer’s demands.\nYour organization, however, is not sure if the sales representatives will begin using the new AI technology, so they have asked you design a survey study on a sample of the organization’s sales representatives to understand what predicts a sale’s representative’s intentions to use the new AI tool. You ultimately decide to measure four variables with your survey: The AI tool’s perceived ease of use (perceived_ease_use), the AI tool’s perceived usefulness for the sales job (perceived_useful), the previous experience a sales represntative has had with an AI-enhanced sales tool (previous_exp) and the sales rep’s intentions to use the new AI tool (behavioral_intention).\nThe dataset for this assignment contains the following variables:\n\nemployee_id: A unique 6-digit employee identifier.\nperceived_ease_use: Responses to the question: “I find the AI tool easy to use.”\nperceived_useful: Responses to the question: “I believe the AI tool is useful for my job.”\nprevious_exp: Responses to the question: “I have had previous experience with an AI-enhanced sales tool.”\nbehavioral_intention: Responses to the question: “I plan to use the system in the next month.”\n\nThe three survey questions, perceived_ease_use, perceived_useful, and behavioral_intention, are on a seven point agreement response scale:\n\nCompletely Disagree\nStrongly Disagree\nDisagree\nNeither Disagree, Nor Agree\nAgree\nStrongly Agree\nCompletely Agree\n\nThe survey question, previous_exp is a dichotomous variables with responses being either:\n\nyes\nno"
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html",
+    "href": "assignments/testassignment-answers.html",
+    "title": "Answers to Assignment 2",
+    "section": "",
+    "text": "library(\"tidyverse\")\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#assignment-setup",
+    "href": "assignments/testassignment-answers.html#assignment-setup",
+    "title": "Answers to Assignment 2",
+    "section": "",
+    "text": "library(\"tidyverse\")\n\n# Read in the data from the class site\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/02-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-1",
+    "href": "assignments/testassignment-answers.html#question-1",
+    "title": "Answers to Assignment 2",
+    "section": "Question 1",
+    "text": "Question 1\n\n# 1. What is the sample size of your dataset (hint: It's the number of rows)? \n\nnrow(data_ai)\n\n[1] 500\n\n\nThere are 500 survey respondents in my dataset."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-2",
+    "href": "assignments/testassignment-answers.html#question-2",
+    "title": "Answers to Assignment 2",
+    "section": "Question 2",
+    "text": "Question 2\n\n# 2. How many variables are in your dataset (hint: It's the number of columns)? \n\nncol(data_ai)\n\n[1] 5\n\n\nThere are 5 variables in my dataset."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-3",
+    "href": "assignments/testassignment-answers.html#question-3",
+    "title": "Answers to Assignment 2",
+    "section": "Question 3",
+    "text": "Question 3\n\n3A\n\n# 3a. Use the functions summarize (from dplyr), mean, and sd to calculate means and sds for perceived_ease_use and perceived_useful. (Some of the code has been started.)\n\ndata_ai |&gt;\nsummarize(\n  mean_perceived_ease_use = mean(perceived_ease_use),\n  sd_perceived_ease_use = sd(perceived_ease_use),\n  mean_perceived_useful = mean(perceived_useful),\n  sd_perceived_useful = sd(perceived_useful)\n)\n\n# A tibble: 1 × 4\n  mean_perceived_ease_use sd_perceived_ease_use mean_perceived_useful\n                    &lt;dbl&gt;                 &lt;dbl&gt;                 &lt;dbl&gt;\n1                    4.08                  1.66                  4.76\n# ℹ 1 more variable: sd_perceived_useful &lt;dbl&gt;\n\nsummarize(\n  data_ai,\n  mean_perceived_ease_use = mean(perceived_ease_use),\n  sd_perceived_ease_use = sd(perceived_ease_use),\n  mean_perceived_useful = mean(perceived_useful),\n  sd_perceived_useful = sd(perceived_useful)\n)\n\n# A tibble: 1 × 4\n  mean_perceived_ease_use sd_perceived_ease_use mean_perceived_useful\n                    &lt;dbl&gt;                 &lt;dbl&gt;                 &lt;dbl&gt;\n1                    4.08                  1.66                  4.76\n# ℹ 1 more variable: sd_perceived_useful &lt;dbl&gt;\n\n\n\n\n3B\n\n# 3b. Describe what the |&gt; operator is doing in the code above.\n\nThe pipe operator, |&gt;, is taking the results from one line of code and plugging them into the function on the following line of code."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-4",
+    "href": "assignments/testassignment-answers.html#question-4",
+    "title": "Answers to Assignment 2",
+    "section": "Question 4",
+    "text": "Question 4\n\n4A\n\n# 4a. Estimate a multiple regression model that uses perceived_useful and perceived_ease_use to predict behavioral_intention. Save the model in an object named: model_1\n\nmodel_1 &lt;- lm(behavioral_intention ~ perceived_useful + perceived_ease_use,\n              data = data_ai)\n\n\n\n4B\n\n# 4b. Use the summary function to print out the results of your model and write out: \n\n## 4b1: What is the null hypothesis being tested for both perceived_useful & perceived_ease_use? \n\n## 4b2: Can you reject the null hypothesis? If yes, why? If no, why? \n\nsummary(model_1)\n\n\nCall:\nlm(formula = behavioral_intention ~ perceived_useful + perceived_ease_use, \n    data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.7330 -0.9235 -0.0084  0.9357  3.5256 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)         2.25480    0.19503  11.562  &lt; 2e-16 ***\nperceived_useful    0.19663    0.04242   4.636 4.55e-06 ***\nperceived_ease_use  0.27544    0.04480   6.148 1.61e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.397 on 497 degrees of freedom\nMultiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 \nF-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n\nFor both perceived_useful and perceived_ease_use, we are testing the null hypothesis that the regression slope for each predictor variable is equal to 0. That is, we are testing the null hypothesis that there is no relationship between perceived_useful and behvioral_intention and perceived_ease_use and behavioral_intention.\nFor both perceived_useful and perceived_ease_use, we can reject the null hypothesis because their p-values (Pr&gt;|t|) are less than or equal to .05. This means that if there was truly no relationship between perceived_useful and behavioral_intention, then we would expect to see a value of 0.2 or larger less than 5% of the time. Because the p-value is so small, we feel safe rejecting the null hypothesis that states there is no relationship.\n\n\n4C\n\n# 4c. Calculate the confidence intervals for all three regression coefficients (intercept and two slopes) in model_1.\n\nconfint(model_1) |&gt; round(3)\n\n                   2.5 % 97.5 %\n(Intercept)        1.872  2.638\nperceived_useful   0.113  0.280\nperceived_ease_use 0.187  0.363\n\n\n\n\n4D\n\n# 4d. What information does the confidence interval for perceived_useful give you? \n\nThe confidence interval for perceived_useful tells us that we can be 95% confident that the true (population) value for perceived_useful’s regression slope is somewhere between 0.113 and 0.28.\nSaid differently, our data would not allow us to reject a null hypothesis that hypothesized the true value for perceived_useful’s regression slope was equal to a value contained in the confidence interval: 0.113 to 0.28."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-5",
+    "href": "assignments/testassignment-answers.html#question-5",
+    "title": "Answers to Assignment 2",
+    "section": "Question 5",
+    "text": "Question 5\n\n# 5. Finish the code below to create standardized variables for perceived_ease_use and behavioral_intention. \n#    Name the standardized variables: perceived_ease_use_stand and behavioral_intention_stand.\n\ndata_ai &lt;- \n  data_ai |&gt;\n  mutate(\n    perceived_useful_stand = (perceived_useful - mean(perceived_useful)) / sd(perceived_useful),\n    perceived_ease_use_stand = (perceived_ease_use - mean(perceived_ease_use)) / sd(perceived_ease_use),\n    behavioral_intention_stand = (behavioral_intention - mean(behavioral_intention)) / sd(behavioral_intention),\n  )"
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-6",
+    "href": "assignments/testassignment-answers.html#question-6",
+    "title": "Answers to Assignment 2",
+    "section": "Question 6",
+    "text": "Question 6\n\n6A\n\n# 6a. Estimate a multiple regression model that uses perceived_useful_stand and perceived_ease_use_stand to predict behavioral_intention_stand. \n#     Save the model in an object named: model_2\n\nmodel_2 &lt;- lm(behavioral_intention_stand ~ perceived_useful_stand + perceived_ease_use_stand, data = data_ai)\n\n\n\n6B\n\n# 6b. Use the summary function to print out the results of your model and write out: \n\nsummary(model_2)\n\n\nCall:\nlm(formula = behavioral_intention_stand ~ perceived_useful_stand + \n    perceived_ease_use_stand, data = data_ai)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.38769 -0.59069 -0.00538  0.59851  2.25507 \n\nCoefficients:\n                           Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)              -2.920e-17  3.997e-02   0.000        1    \nperceived_useful_stand    2.207e-01  4.762e-02   4.636 4.55e-06 ***\nperceived_ease_use_stand  2.928e-01  4.762e-02   6.148 1.61e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.8937 on 497 degrees of freedom\nMultiple R-squared:  0.2045,    Adjusted R-squared:  0.2013 \nF-statistic:  63.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n## 6b1: Do your conclusions about the significance of perceived_useful and perceived_ease_use change compared to the conclusions you made from model_1? \n\n## 6b2: Are the t values in model_2 for the regression coefficients (intercept and slopes) different from model_1? If so, which ones are different?\n\n## 6b3: Is the model_2 multiple R-squared value different than the model_1 multiple R-squared value? \n\nNone of my conclusions about the significance of either predictor variable (perceived_useful and perceived_ease_use) change because the t-values for perceived_useful and perceived_ease_use are identical across model_1 and model_2. Similarly, the R2 is identical across model_1 and model_2. Thus, standardizing our variables had no effect on the statistical conclusions we make from our models."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-7",
+    "href": "assignments/testassignment-answers.html#question-7",
+    "title": "Answers to Assignment 2",
+    "section": "Question 7",
+    "text": "Question 7\n\n7A\n\n# 7a. Use the summarize function to calculate means for behavioral_intention when previous_exp = Yes and previous_exp = No: \n\ndata_ai |&gt;\n  group_by(\n    previous_exp\n  ) |&gt;\n  summarize(\n    mean_behavioral_intention = mean(behavioral_intention)\n  )\n\n# A tibble: 2 × 2\n  previous_exp mean_behavioral_intention\n  &lt;chr&gt;                            &lt;dbl&gt;\n1 no                                4.35\n2 yes                               4.22\n\n\n\n\n7B\n\n# 7b. Add-on to code above to calculate both the mean and sd for behavioral_intention when previous_exp = Yes and previous_exp = No:\ndata_ai |&gt;\n  group_by(\n    previous_exp\n  ) |&gt;\n  summarize(\n    mean_behavioral_intention = mean(behavioral_intention),\n    sd_behavioral_intention = sd(behavioral_intention)\n  )\n\n# A tibble: 2 × 3\n  previous_exp mean_behavioral_intention sd_behavioral_intention\n  &lt;chr&gt;                            &lt;dbl&gt;                   &lt;dbl&gt;\n1 no                                4.35                    1.39\n2 yes                               4.22                    1.94\n\n\n\n\n7C\n\n# 7c. Do the group means look different from one another? \n\nWhile they group means are different from one another (4.35 vs 4.22), this difference is small and unlikely to be significant."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-8",
+    "href": "assignments/testassignment-answers.html#question-8",
+    "title": "Answers to Assignment 2",
+    "section": "Question 8",
+    "text": "Question 8\n\n# 8. Finish the function below to create an indicator variable from previous_exp:\n\ndata_ai &lt;-\n  data_ai |&gt;\n  dplyr::mutate(\n    previous_exp_ind = if_else(previous_exp == \"no\", 1, 0)\n  )"
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-9",
+    "href": "assignments/testassignment-answers.html#question-9",
+    "title": "Answers to Assignment 2",
+    "section": "Question 9",
+    "text": "Question 9\n\n9A\n\n# 9a. Estimate a simple regression model using previous_exp_ind to predict behavioral_intention. Call it model_3.\n\nmodel_3 &lt;- lm(behavioral_intention ~ previous_exp_ind, data = data_ai)\n\n\n\n9B\n\n# 9b. Interpret the regression coefficient for previous_exp_ind. What is it telling you? \n\nsummary(model_3)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp_ind, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)        4.2158     0.1326  31.784   &lt;2e-16 ***\nprevious_exp_ind   0.1360     0.1561   0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nThe regression coefficient (slope) for pervious_exp_ind tells me that the the mean behavioral_intention for respondents with no experience is 0.136 units greater than the mean for respondents who have previous experience.\n\n\n9C\n\n# 9c. What null hypothesis is being tested by previous_exp_ind? Can we reject the null hypothesis? Why or why not?\n\nThe null hypothesis being tested is that the regression slope for previous_exp_ind is equal to 0, which is equivalent to saying that the mean difference on behavioral_intention between the yes and no group is equal to 0. We cannot reject the null hypothesis because the p-value is greater than .05."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#question-10",
+    "href": "assignments/testassignment-answers.html#question-10",
+    "title": "Answers to Assignment 2",
+    "section": "Question 10",
+    "text": "Question 10\n\n# 10. Estimate a simple regression model using previous_exp (NOT previous_exp_ind) to predict behavioral_intention. Call it model_4.\n#     Is anything different about model_4 compared to model_3? (Hint: Is the reference category for previous_exp different from previous_exp_ind?)\n\nmodel_4 &lt;- lm(behavioral_intention ~ previous_exp, data = data_ai)\n\nsummary(model_4)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***\nprevious_expyes -0.13597    0.15610  -0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nIn model_4, the reference category for previous_exp is yes whereas for model_3 it is no. Thus, the the sign of the regression coefficient is flipped across models (positive in model_3 and negative in model_4), but the absolute magnitude of the regression coefficient is identical across models."
+  },
+  {
+    "objectID": "assignments/testassignment-answers.html#bonus",
+    "href": "assignments/testassignment-answers.html#bonus",
+    "title": "Answers to Assignment 2",
+    "section": "Bonus",
+    "text": "Bonus\n\n# Create two new R objects: \n#   behavioral_intention_exp_yes, which contains only behavioral_intention responses for the group where previous_exp == \"yes\"\n#   behavioral_intention_exp_no, which contains only the behavioral_intention responses for the group where previous_exp == \"no\".\n#\n# Estimate a t-test to test if the means of the new objects are different. Some of the code is started below:\n\nbehavioral_intention_exp_yes &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"yes\"]\nbehavioral_intention_exp_no &lt;- data_ai$behavioral_intention[data_ai$previous_exp == \"no\"]\n\n# Finish this line of code. Hint: What variable is it missing? \nt_test_result &lt;- t.test(behavioral_intention_exp_yes, behavioral_intention_exp_no, var.equal = TRUE)\n\n# Compare the results of the t-test to those from model_4. Are the t-values and degrees of freedom different? How about the p-value? \nt_test_result\n\n\n    Two Sample t-test\n\ndata:  behavioral_intention_exp_yes and behavioral_intention_exp_no\nt = -0.87106, df = 498, p-value = 0.3841\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.4426709  0.1707244\nsample estimates:\nmean of x mean of y \n 4.215827  4.351801 \n\nsummary(model_4)\n\n\nCall:\nlm(formula = behavioral_intention ~ previous_exp, data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.3518 -1.2158 -0.2158  0.6482  2.7842 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)      4.35180    0.08231  52.874   &lt;2e-16 ***\nprevious_expyes -0.13597    0.15610  -0.871    0.384    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.564 on 498 degrees of freedom\nMultiple R-squared:  0.001521,  Adjusted R-squared:  -0.0004837 \nF-statistic: 0.7587 on 1 and 498 DF,  p-value: 0.3841\n\n\nThe results across these different models are identical. The t-values (-.871) and degrees of freedom (df = 498) are identical across models, which means the p-values will be identical as well. This tells us that a t-test of mean differences is a special case of linear regression where only a single, binary predictor variable is used to explain variation in the outcome variable."
   }
 ]

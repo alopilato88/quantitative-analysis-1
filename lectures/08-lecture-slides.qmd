@@ -1,0 +1,660 @@
+---
+title: "An Introduction to Moderation"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+
+```
+
+```{r}
+#| echo: false
+
+# Quant Variables: Performance Feedback, Cognitive Demands
+# Binary: Recovery Opp. (Present, Absent)
+# Multicat: Work Complexity (Low, Med, High)
+
+set.seed(4353)
+n <- 1000
+
+# Cognitive Demands x Performance Feedback on Burnout 
+
+cog_demands <- sample(1:7, size = n, replace = TRUE, 
+                      prob = dnorm(seq(-3,3,len = 7)) / sum(dnorm(seq(-3,3,len = 7))))
+
+perf_feedback <- sample(1:7, size = n, replace = TRUE, 
+                        prob = c(.05, .10, .15, .25, .275, .10, .075))
+
+burnout_1 <- -.10*(cog_demands - 5) + -.20*(perf_feedback - 6) + -.15*(cog_demands - 5)*(perf_feedback - 6) 
+e1 <- sqrt(var(burnout_1)*.80 / (1 - .80))
+
+burnout_1 <- burnout_1 + rnorm(n, sd = e1)
+
+data_moderation <- 
+  tibble::tibble(
+    cog_demands,
+    perf_feedback,
+    burnout_1_true = burnout_1
+  ) |>
+  dplyr::mutate(
+    burnout_1 = dplyr::case_when(
+      burnout_1_true <= qnorm(.004, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 1,
+      burnout_1_true <= qnorm(.058, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 2,
+      burnout_1_true <= qnorm(.300, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 3,
+      burnout_1_true <= qnorm(.70, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 4,
+      burnout_1_true <= qnorm(.94, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 5,
+      burnout_1_true <= qnorm(.98, mean = mean(burnout_1_true), sd = sd(burnout_1_true)) ~ 6,
+      TRUE ~ 7
+    )
+  )
+
+# Emotional Demands x Recovery Opp. on Burnout
+set.seed(54463)
+emot_demands <- sample(1:7, size = n, replace = TRUE, 
+                      prob = dnorm(seq(-3,3,len = 7)) / sum(dnorm(seq(-3,3,len = 7))))
+
+rec_opp <- c(rep(0, floor(n*.30)), rep(1, n - floor(n*.30)))
+
+burnout_2 <- .50*emot_demands + -1*rec_opp + -.60*emot_demands*rec_opp 
+e2 <- sqrt(var(burnout_2)*.80 / (1 - .80))
+
+burnout_2 <- burnout_2 + rnorm(n, sd = e2)
+
+data_moderation <- 
+  data_moderation |>
+  dplyr::mutate(
+    emot_demands = emot_demands,
+    rec_opp = rec_opp,
+    burnout_2_true = burnout_2,
+    burnout_2 = dplyr::case_when(
+      burnout_2_true <= qnorm(.004, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 1,
+      burnout_2_true <= qnorm(.058, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 2,
+      burnout_2_true <= qnorm(.300, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 3,
+      burnout_2_true <= qnorm(.70, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 4,
+      burnout_2_true <= qnorm(.94, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 5,
+      burnout_2_true <= qnorm(.98, mean = mean(burnout_2_true), sd = sd(burnout_2_true)) ~ 6,
+      TRUE ~ 7
+    )
+  )
+
+# Work Complexity x Performance Feedback on Engagement
+set.seed(53425)
+
+work_complex <- c(rep("low", floor(n*.20)), rep("moderate", floor(n*.30)),
+                  rep("high", n - (floor(n*.20) + floor(n*.30)))) 
+
+work_complex_quant <- model.matrix(~as.factor(work_complex))
+
+engage <- .70*(perf_feedback - 2) + 0*work_complex_quant[, 2] + 0*work_complex_quant[, 3] + 
+  -.90*(perf_feedback - 2) *work_complex_quant[, 2] + -.60*(perf_feedback - 2) *work_complex_quant[, 3]
+
+e3 <- sqrt(var(engage)*.80 / (1 - .80))
+engage <- engage + rnorm(n, 0, sd = e3)
+
+data_moderation <- 
+  data_moderation |>
+  dplyr::mutate(
+    engage_true = engage,
+    work_complex = work_complex,
+    engage = dplyr::case_when(
+      engage_true <= qnorm(.004, mean = mean(engage_true), sd = sd(engage_true)) ~ 1,
+      engage_true <= qnorm(.058, mean = mean(engage_true), sd = sd(engage_true)) ~ 2,
+      engage_true <= qnorm(.300, mean = mean(engage_true), sd = sd(engage_true)) ~ 3,
+      engage_true <= qnorm(.70, mean = mean(engage_true), sd = sd(engage_true)) ~ 4,
+      engage_true <= qnorm(.94, mean = mean(engage_true), sd = sd(engage_true)) ~ 5,
+      engage_true <= qnorm(.98, mean = mean(engage_true), sd = sd(engage_true)) ~ 6,
+      TRUE ~ 7
+    )
+  )
+
+data_1 <- 
+  data_moderation |>
+  dplyr::select(
+    burnout = burnout_1,
+    cog_demands, 
+    perf_feedback
+  )
+
+data_2 <- 
+  data_moderation |> 
+  dplyr::select(
+    burnout = burnout_2,
+    emot_demands,
+    rec_opp
+  ) |>
+  dplyr::mutate(
+    rec_opp_factor = dplyr::if_else(rec_opp == 0, "No", "Yes"),
+    rec_opp_factor = as.factor(rec_opp_factor)
+  )
+
+data_3 <- 
+  data_moderation |>
+  dplyr::select(
+    engage,
+    perf_feedback,
+    work_complex
+  )
+
+```
+
+## Overview 
+
+* Introduction to moderation
+* Learn how to estimate and test moderation effects
+* Learn how to estimate and test nonlinear effects
+
+## Job Demands-Resources (JDR) Theory: Our Example
+
+The JDR Theory explains how job resources and demands influence one's engagement and burnout:
+
+* Performance feedback moderates the relationship between cognitive demands and burnout
+* Recovery opportunities moderate the relationship between emotional demands and burnout
+* Work complexity moderates the relationship between performance feedback and engagement
+
+## Multiple Regression Model
+
+```{r}
+mod_cog_demands <- lm(burnout ~ cog_demands + perf_feedback, data = data_1)
+```
+
+## Interpreting a Linear Regression Model
+
+```{r}
+summary(mod_cog_demands)
+```
+
+## The Unconditional Effect of Cognitive Demands on Burnout
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_plot_1 <- 
+  tidyr::expand_grid(
+    cog_demands = unique(data_1$cog_demands),
+    perf_feedback = unique(data_1$perf_feedback)
+  ) |>
+  dplyr::arrange(
+    perf_feedback,
+    cog_demands
+  )
+
+data_plot_1 <-
+  data_plot_1 |>
+  dplyr::mutate(
+    predict_burnout = predict(mod_cog_demands, newdata = data_plot_1)
+  )
+
+ggplot2::ggplot(
+  data = data_plot_1,
+  ggplot2::aes(
+    x = cog_demands,
+    y = predict_burnout,
+    lty = as.factor(perf_feedback)
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Cognitive Demands",
+    y = "Predicted Burnout",
+    lty = "Performance Feedback",
+    title = "Effect of Cognitive Demands on Burnout"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## What is Moderation (Statistical Interaction)?
+
+**Moderation or interaction**, causal or otherwise, involves at least three variables in which the relationship between two variables, a focal predictor and outcome variable, changes depending on the value of a third variable, the moderating variable or moderator. 
+
+## Some Moderation Jargon 
+
+When reading about moderation, you will likely come across several of these terms: 
+
+* Focal Predictor: Predictor who's relationship with the outcome is changing because of the moderator. 
+* Moderating Variable: Predictor that is altering (moderating) the relationship between the focal predictor and outcome.
+* Conditional Effects: The effect of the focal predictor at a specific value of the moderator.
+  - Main Effects
+  - Lower & Higher Order Effects
+  - Simple Slopes
+
+## Modeling an Interaction as a Cross-Product
+
+To estimate an interaction effect, we create a new variable that is the product of the focal predictor and the moderator:
+
+$$Y = \beta_0+\beta_1X+\beta_2Z+\beta_3XZ$$
+$$Y = (\beta_0 + \beta_2Z) + (\beta_1 + \beta_3Z)X$$
+
+## Interaction Between Two Quantitative Variables
+
+Below we fit a model looking at how two quantitative variables interact. Specifically, we are interested in determining if performance feedback moderates the relationship between cognitive demands and burnout:
+
+```{r}
+mod_cog_demands_int <- lm(burnout ~ cog_demands + perf_feedback + cog_demands * perf_feedback, data = data_1)
+
+mod_cog_demands_int <- lm(burnout ~ cog_demands * perf_feedback, data = data_1)
+```
+
+## Interpreting the Coefficients {.smaller}
+
+* **Intercept**: Is the estimate of the outcome variable when the focal predictor and moderator both equal 0. 
+* **Slope of the Focal Predictor**: The estimated difference in the outcome variable between two cases that differ by 1 unit on the focal predictor and whose response to the moderator variable equals 0. It is the conditional effect of the focal predictor when the moderator equals 0. 
+* **Slope of the Moderator**: The estimated difference in the outcome variable between two cases that differ by 1 unit on the moderator and whose response to the focal predictor equals 0. It is the conditional effect of the moderator when the focal predictor equals 0. 
+* **Slope of the Interaction**: The estimated change in the conditional effect of the focal predictor as the moderator changes by one unit; The estimated change in the conditional effect of the moderator as the focal predictor changes by one unit.
+
+## Interpreting the Coefficients
+
+```{r}
+mod_cog_demands_int
+```
+
+## Calculating the Conditional Effect of Cognitive Demands
+
+We can calculate the conditional effect for Cognitive Demands **when the response to the Performance Feedback question is 7**:
+
+$$Y = (-.34 \space + \space .84\times7) \space + (1.15 \space + \space -.23\times7)X$$
+
+$$Y = 5.54 \space + \space -.46X$$
+
+## Calculating the Conditional Effect of Cognitive Demands
+
+We can calculate the conditional effect for Cognitive Demands **when the response to the Performance Feedback question is 1**:
+
+$$Y = (-.34 \space + \space .84\times1) \space + (1.15 \space + \space -.23\times1)X$$
+
+$$Y = .50 \space + \space .92X$$
+
+## Plotting the Conditional Effect of Cognitive Demands on Burnout
+
+```{r}
+#| echo: false
+#| fig-align: center
+mod_cog_demands_int <- lm(burnout ~ cog_demands * perf_feedback, data = data_1)
+
+data_plot_1 <-
+  data_plot_1 |>
+  dplyr::mutate(
+    predict_burnout = predict(mod_cog_demands_int, newdata = data_plot_1)
+  )
+
+ggplot2::ggplot(
+  data = data_plot_1,
+  ggplot2::aes(
+    x = cog_demands,
+    y = predict_burnout,
+    lty = as.factor(perf_feedback)
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Cognitive Demands",
+    y = "Predicted Burnout",
+    lty = "Performance Feedback",
+    title = "Effect of Cognitive Demands on Burnout"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Tips on Plotting the Interaction Effect
+
+If you do not want to plot the conditional effect of the focal predictor at every level of the moderator, then you can choose the 36th, 50th, and 84th percentile of the moderator: 
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_plot_2 <- 
+  tidyr::expand_grid(
+    cog_demands = 1:7,
+    perf_feedback = quantile(data_1$perf_feedback, c(.36, .50, .84))
+  ) |>
+  dplyr::distinct()
+
+data_plot_2 <-
+  data_plot_2 |>
+  dplyr::mutate(
+    predict_burnout = predict(mod_cog_demands_int, newdata = data_plot_2)
+  ) 
+
+ggplot2::ggplot(
+  data = data_plot_2,
+  ggplot2::aes(
+    x = cog_demands,
+    y = predict_burnout,
+    lty = as.factor(perf_feedback)
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Cognitive Demands",
+    y = "Predicted Burnout",
+    lty = "Performance Feedback",
+    title = "Effect of Cognitive Demands on Burnout"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Testing the Interaction Effect
+
+To determine if two variables interact with one another, we can use the p-value of the interaction regression slope to determine if the effect is significantly different than 0, or we can construct a 95% confidence interval around the regression slope and see if 0 is outside of the interval. 
+
+## Testing the Interaction Effect: Statistical Test
+
+```{r}
+summary(mod_cog_demands_int)
+```
+
+## Testing the Interaction Effect: Confidence Interval
+
+```{r}
+confint(mod_cog_demands_int)
+```
+
+## Interaction Between a Quantitative and Binary Variable 
+
+Below we estimate a model where a binary variable, recovery opportunities, moderates a quantitative variable, emotional demands:
+
+```{r}
+mod_emot_demands_int <- lm(burnout ~ emot_demands * rec_opp_factor, data = data_2)
+```
+
+## Interpreting the Regression Coefficients 
+
+* **Intercept**: The estimated value of the outcome when both the focal predictor and moderator equal 0. 
+* **Slope of the Focal Predictor (Quantitative)**: The conditional effect of the focal predictor for the reference group (when the moderator equals 0).
+* **Slope of the Moderator (Binary Variable)**: The conditional effect of the moderator when the focal predictor equals 0. 
+* **Slope of the Interaction**: The estimated change in the conditional effect of the focal predictor as the moderator changes by one unit.
+
+## Interpreting the Regression Coefficients
+
+```{r}
+mod_emot_demands_int
+```
+
+## Calculating the Conditional Effects of Emotional Demands
+
+We can calculate the conditional effect of emotional demands for the group that receives recovery opportunities as: 
+
+$$Y = (3.85 + .17\times1)\space+\space(.22 \space + \space-.29\times1)X$$
+$$Y = 4.02 \space + \space -.07X$$
+
+## Plotting the Conditional Effects of Emotional Demands
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_plot_3 <- 
+  tidyr::expand_grid(
+    emot_demands = 1:7,
+    rec_opp_factor = c("No", "Yes")
+  )
+
+data_plot_3 <- 
+  data_plot_3 |>
+  dplyr::mutate(
+    predict_burnout = predict(mod_emot_demands_int, newdata = data_plot_3)
+  )
+
+ggplot2::ggplot(
+  data = data_plot_3,
+  ggplot2::aes(
+    x = emot_demands,
+    y = predict_burnout,
+    lty = as.factor(rec_opp_factor)
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Emotional Demands",
+    y = "Predicted Burnout",
+    lty = "Recovery Opportunities",
+    title = "Effect of Emotional Demands on Burnout"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Testing the Interaction Effect: Statistical Test
+
+```{r}
+summary(mod_emot_demands_int)
+```
+
+## Interaction Between a Quantitative and Multicategorical Variable
+
+Below we estimate a model where a multicategorical variable, work complexity, moderates a quantitative variable, performance feedback:
+
+```{r}
+mod_perf_feed_int <- lm(engage ~ perf_feedback*work_complex)
+```
+
+## Regression Model for Moderation with a Multicategorical Variable
+
+$$Y = \beta_0 +\beta_1X+\beta_2Z_{\text{Low}}+\beta_3Z_{\text{Mod.}} + \beta_4XZ_{\text{Low}}+\beta_5XZ_{\text{Mod.}}$$
+
+## Interpreting the Regression Coefficients 
+
+The coefficients have similar interpretations as the previous models, but we just have a few more because we need multiple coefficients to capture the multicategorical variable: 
+
+```{r}
+summary(mod_perf_feed_int)$coefficients[, 1:2] |> round(3)
+```
+
+## Calculating the Conditional Effects of Performance Feedback {.smaller}
+
+We can calculate the conditional effect of performance feedback for the low work complexity group as:
+
+$$Y = (-1.12 + .95\times1 + .94\times0) + (.61 + -.75\times1 + -.50\times0)X$$
+$$Y = -.17 + -.14X$$
+
+## Plotting the Conditional Effects of Performance Feedback
+
+```{r}
+#| echo: false
+#| fig-align: center
+data_plot_4 <- 
+  tidyr::expand_grid(
+    perf_feedback = 1:7,
+    work_complex = c("low", "moderate", "high")
+  )
+
+data_plot_4 <- 
+  data_plot_4 |>
+  dplyr::mutate(
+    predict_engage = predict(mod_perf_feed_int, newdata = data_plot_4),
+    work_complex = factor(work_complex,
+                          levels = c("low", "moderate", "high"))
+  )
+
+ggplot2::ggplot(
+  data = data_plot_4,
+  ggplot2::aes(
+    x = perf_feedback,
+    y = predict_engage,
+    lty = as.factor(work_complex)
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Emotional Demands",
+    y = "Predicted Burnout",
+    lty = "Recovery Opportunities",
+    title = "Effect of Emotional Demands on Burnout"
+  ) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Testing the Interaction Effect with a Multicategorical Moderator
+
+Because a multicategorical moderator will have multiple interaction terms, referred to as a set, we cannot determine the significance of the overall set by looking at the significance of each individual interaction. 
+
+Instead, we will use something called an F-test to determine if including the set of interaction terms significantly increased the model's R^2^ compared to the model without the set of interaction terms.
+
+## Testing the Interaction Effect with a Multicategorical Moderator 
+
+```{r}
+# Fit a model without interactions and one with interactions
+mod_no_int <- lm(engage ~ perf_feedback + work_complex, data = data_3)
+mod_int <- lm(engage ~ perf_feedback * work_complex, data = data_3)
+
+# Test the two models
+anova(mod_no_int, mod_int)
+```
+
+## The F-Test 
+
+The test we just conducted is referred to as an F-Test. It allows us to compare two models where one model is a subset of the other model, which is referred to as the full model.
+
+It tests whether the R^2^ of the full model is significantly larger than the R^2^ of the reduced model:
+
+$$R^2_{Full}-R^2_{Reduced}>0$$
+
+## Testing Interactions vs Probing Interactions
+
+So far we have only tested our interactions. 
+
+**Testing an interaction** is when you use either a statistical test or confidence interval to determine if the interaction's regression slope is statistically different from 0.
+
+**Probing an interaction** is when you construct significance tests to determine at which values of the moderator the conditional effect (simple slope) of the focal predictor is significant. 
+
+## Probing Interactions: Cognitive Demands X Performance Feedback
+
+We will use the **pick a point** approach to probe our interactions. This is where you pick a specific value (point) of the moderator and test whether the conditional effect of the focal predictor is significant:
+
+```{r}
+mod_min <- lm(burnout ~ cog_demands * I(perf_feedback - 1), data = data_1)
+mod_median <- lm(burnout ~ cog_demands * I(perf_feedback - 4), data = data_1)
+mod_max <- lm(burnout ~ cog_demands * I(perf_feedback - 7), data = data_1)
+```
+
+## Probing Interactions: Cognitive Demands x Performance Feedback
+
+```{r}
+summary(mod_min)$coefficients |> round(3)
+```
+
+## Probing Interactions: Cognitive Demands x Performance Feedback
+
+```{r}
+#| echo: false
+#| fig-align: center
+simp_slope_min <- summary(mod_min)$coefficients[2, ] |> round(3)
+simp_slope_median <- summary(mod_median)$coefficients[2, ] |> round(3)
+simp_slope_max <- summary(mod_max)$coefficients[2, ] |> round(3)
+
+data_simple_slope <- 
+  tibble::tibble(
+    `Conditional Effect` = c("Min", "Median", "Max")
+  ) |>
+  dplyr::bind_cols(
+    dplyr::bind_rows(
+      simp_slope_min,
+      simp_slope_median,
+      simp_slope_max
+    )
+  ) |>
+  dplyr::rename(
+    `p-value` = `Pr(>|t|)`
+  ) |>
+  knitr::kable()
+
+data_simple_slope
+```
+
+## Guidance for Modeling Interactions
+
+* **Always** keep the lower order terms in the model even if they are not significant.
+* You **do not** have to mean center your focal predictor and moderator before creating the interaction term.
+* **Do not** artificially categorize a quantitative variable to make an interaction term. 
+
+## Thinking of Nonlinear Effects as Interactions
+
+Nonlinear effects occur whenever the relationship between a focal predictor and an outcome **changes at different values of the focal predictor**. 
+
+In a way, this is similar to the idea of moderation where X would be both the focal predictor and moderator.
+
+## Using Polynomial Regression to Model Nonlinear Effects
+
+We can use linear regression to approximate most nonlinear functions by creating higher order (e.g. squaring, cubing) terms from the focal predictor: 
+
+$$Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3$$
+
+## An Example of Polynomial Regression
+
+We will estimate the curvilinear (nonlinear) relationship between **procrastination** and **creativity**:
+
+```{r}
+#| echo: false
+set.seed(2341)
+procrastination <- sample(1:20, size = n, replace = TRUE)
+creativity <- 10 + .015 * (procrastination - 10) + -.025 * (procrastination - 10)^2
+e4 <- sqrt(var(creativity)*.80 / (1 - .80))
+
+creativity <- creativity + rnorm(n, 0, e4)
+```
+
+```{r}
+mod <- lm(creativity ~ procrastination + I(procrastination^2))
+
+summary(mod)$coefficients
+```
+
+## Plotting the Nonlinear Relationship 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+    data = NULL, 
+    ggplot2::aes(
+      x = procrastination,
+      y = creativity
+    )
+) + 
+  ggplot2::geom_point(
+    color = plot_fill,
+    alpha = plot_alpha
+  ) +
+  ggplot2::geom_smooth(
+    method = lm,
+    se = FALSE,
+    formula = y ~ x + I(x^2),
+    color = plot_color,
+    lwd = 1.5
+  ) + 
+  ggplot2::labs(
+    x = "Procrastination",
+    y = "Creativity"
+  ) + 
+  lecture_ggplot_theme_moderation_plot
+```
+
+
+
+
+
+
+
+
+
+
+
