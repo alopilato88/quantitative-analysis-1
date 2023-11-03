@@ -85,7 +85,7 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
     <td class="ts-topic">Moderation & Mediation</td>
     <td class="ts-content"><a href="readings/reading-8.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
-    <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="lectures/08-lecture-page.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/7</td>
