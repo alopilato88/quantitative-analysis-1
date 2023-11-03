@@ -1,0 +1,62 @@
+
+# Setup 
+
+library(tidyverse)
+library(boot)
+library(ggthemes)
+
+data_ai <- readr::read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/03-assignment-data.csv")
+
+# Question 1: 
+# Create a table that shows what proportion of employees belong to a given a region. 
+# Which region do most employees work?
+
+# Question 2: 
+# Estimate a regression model that uses `office_region` to predict `perceived_freq_use`. 
+# Name this model mod_freq_use_.
+
+# Question 3: 
+# Does an individual's `perceived_freq_use` differ by `office_region`? Provide a brief explanation.
+
+# Question 4: 
+# Using `mutate`, transform the `office_region` variable into a factor and make the reference group equal to `north america`. 
+# Name this new variable: `office_region_factor`.
+
+# Question 5: 
+# Estimate a regression model that uses `office_region_factor` to predict `perceived_freq_use`. 
+# Name this model: mod_freq_use_2.
+
+# Question 6: 
+# Why do the regression coefficients in `mod_freq_use_1` differ from the coefficients in `mod_freq_use_2`?
+
+# Question 7:
+# Estimate a regression model that tests if `previous_exp` moderates the relationship between `perceived_useful` and `behavioral_intention`. In this model, `perceived_useful` is the focal predictor and `previous_exp` is the moderator. 
+# Name the model `mod_beh_intent_1`.
+
+# Question 8: 
+# Does `previous_exp` moderate the relationship between `perceived_useful` and `behavioral_intention`? 
+# Why or why not?
+
+# Question 9: 
+# Interpret the interaction you estimated in `mod_beh_intent_1`. 
+# Feel free to use a plot using `ggplot2` to aid in your interpretation.
+
+# Question 10: 
+# Is the conditional relationship between `perceived_useful` and `behavioral_intention` for employees in the `prev_exp == yes` group? 
+# What about for the `prev_exp == no` group? Explain.
+
+# Question 11:
+# Estimate several regression models that you can use to determine if `perceived_useful` indirectly affects `perceived_freq_use` through `behavioral_intention`. 
+# Name the model with `behavioral_intention` as the outcome: `mod_ie` and name the model with `perceived_freq_use` as the outcome: `mod_de`.
+
+# Question 12:
+# In the models you fit in Question 11, which variable is the antecedent variable, which variable is the mediator, and which variable is the outcome?
+
+# Question 13:
+# What the direct effect of `perceived_useful` on `behavioral_intention`? 
+# What is the indirect effect of `perceived_useful` on `behavioral_intention`? 
+# Calculate the total effect using the indirect effect and direct effect, then compare it to the estimated total effect.
+
+# Bonus
+# Use the bootstrap method to determine if the indirect effect is significant. Use 500 bootstrap samples. 
+# Use `set.seed(8547)`, so  that I can reproduce your results.

@@ -28,6 +28,12 @@ The Fall 2023 assignment schedule for Quantiative Analysis 1. Use the links belo
     <td class="tassign-content"><a href="assignments/02-assignment-page.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
     <td class="tassign-content"><a href="assignments/02-assignment-answers.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
+  <tr>
+    <td class="tassign-date">11/14</td>
+    <td class="tassign-topic">Moderation & Mediation</td>
+    <td class="tassign-content"><a href="assignments/04-assignment-page.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
+    <td class="tassign-content"><a href="assignments/04-assignment-answers.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+  </tr>
 </tbody>
 </table>
 

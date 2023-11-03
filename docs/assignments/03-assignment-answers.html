@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantitative Analysis 1 - Assignment 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Quantitative Analysis 1</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignment.html" rel="" target="">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Load the required packages and read in the dataset below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://alopilato88.github.io/quantitative-analysis-1/assignments/03-assignment-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p><strong>Q1: Create a table that shows what proportion of employees belong to a given a region. Which region do most employees work?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_ai<span class="sc">$</span>office_region) <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+         asia        europe north america 
+        0.082         0.178         0.740 </code></pre>
+</div>
+</div>
+<p>Most employees work in North America.</p>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p><strong>Q2: Estimate a regression model that uses <code>office_region</code> to predict <code>perceived_freq_use</code>. Name this model mod_freq_use_1</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod_freq_use_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(perceived_freq_use <span class="sc">~</span> office_region, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p><strong>Q3: Does an individual’s <code>perceived_freq_use</code> differ by <code>office_region</code>? Provide a brief explanation.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_freq_use_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = perceived_freq_use ~ office_region, data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3865 -0.3865 -0.2195  0.7416  1.7805 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 4.21951    0.19837  21.271   &lt;2e-16 ***
+office_regioneurope         0.03891    0.23974   0.162    0.871    
+office_regionnorth america  0.16697    0.20907   0.799    0.425    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.27 on 497 degrees of freedom
+Multiple R-squared:  0.00241,   Adjusted R-squared:  -0.001604 
+F-statistic: 0.6003 on 2 and 497 DF,  p-value: 0.549</code></pre>
+</div>
+</div>
+<p>No, <code>perceived_freq_use</code> does not differ by <code>office_region</code> because neither the regression slope comparing Europe to Asia nor the regression slope comparing North America to Asia are significantly different than zero. Further, the R<sup>2</sup> value is very small and non-significant.</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p><strong>Q4: Using <code>mutate</code>, transform the <code>office_region</code> variable into a factor and make the reference group equal to <code>north america</code>. Name this new variable: <code>office_region_factor</code>.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  data_ai <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">office_region_factor =</span> <span class="fu">as.factor</span>(office_region),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">office_region_factor =</span> <span class="fu">relevel</span>(office_region_factor, <span class="at">ref =</span> <span class="st">"north america"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p><strong>Q5: Estimate a regression model that uses <code>office_region_factor</code> to predict <code>perceived_freq_use</code>. Name this model: mod_freq_use_2.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mod_freq_use_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(perceived_freq_use <span class="sc">~</span> office_region_factor, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<p><strong>Q6: Why do the regression coefficients in <code>mod_freq_use_1</code> differ from the coefficients in <code>mod_freq_use_2</code>?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_freq_use_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = perceived_freq_use ~ office_region_factor, data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3865 -0.3865 -0.2195  0.7416  1.7805 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 4.38649    0.06603  66.429   &lt;2e-16 ***
+office_region_factorasia   -0.16697    0.20907  -0.799    0.425    
+office_region_factoreurope -0.12806    0.14996  -0.854    0.394    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.27 on 497 degrees of freedom
+Multiple R-squared:  0.00241,   Adjusted R-squared:  -0.001604 
+F-statistic: 0.6003 on 2 and 497 DF,  p-value: 0.549</code></pre>
+</div>
+</div>
+<p>In <code>mod_freq_use_1</code>, the reference group for <code>office_region</code> is Asia, so the intercept estimates average <code>perceived_freq_use</code> for employees based in Asia and each subsequent regression slope is a mean comparison of the remaining region averages to the Asia average. Whereas in <code>mod_freq_use_2</code> the reference group is North America, so the intercept now estimates the average <code>perceived_freq_use</code> for employees based in North America and the slopes are mean comparisons of the remaining region averages to North America.</p>
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<p><strong>Q7: Estimate a regression model that tests if <code>previous_exp</code> moderates the relationship between <code>perceived_useful</code> and <code>behavioral_intention</code>. In this model, <code>perceived_useful</code> is the focal predictor and <code>previous_exp</code> is the moderator. Name the model <code>mod_beh_intent_1</code>.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mod_beh_intent_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> perceived_useful <span class="sc">*</span> previous_exp, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<p><strong>Q8: Does <code>previous_exp</code> moderate the relationship between <code>perceived_useful</code> and <code>behavioral_intention</code>? Why or why not?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_beh_intent_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ perceived_useful * previous_exp, 
+    data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8033 -0.8033  0.1967  0.8180  3.8098 
+
+Coefficients:
+                                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                       3.35358    0.22020  15.230  &lt; 2e-16 ***
+perceived_useful                  0.20710    0.04302   4.814 1.97e-06 ***
+previous_expyes                  -2.08131    0.39227  -5.306 1.69e-07 ***
+perceived_useful:previous_expyes  0.43220    0.07842   5.512 5.73e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.408 on 496 degrees of freedom
+Multiple R-squared:  0.1937,    Adjusted R-squared:  0.1889 
+F-statistic: 39.73 on 3 and 496 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Yes, <code>previous_exp</code> moderates the relationship between <code>perceived_useful</code> and <code>behavioral_intention</code> because the estimate of the interaction effect (<code>perceived_useful:previous_expyes</code>) is significantly different than zero.</p>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<p><strong>Q9: Interpret the interaction you estimated in <code>mod_beh_intent_1</code>. Feel free to use a plot using <code>ggplot2</code> to aid in your interpretation.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  data_ai,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">aes</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> perceived_useful,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> behavioral_intention,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> previous_exp</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"lm"</span>, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">FALSE</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_economist</span>() <span class="sc">+</span> </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_economist</span>() <span class="sc">+</span> </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Perceptions that the AI Tool is Useful"</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Intention to use the AI Tool"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Previous Exp. with a similar AI Tool"</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="03-assignment-answers_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From the plot above, we can see that the relationship between <code>perceived_useful</code> and <code>behavioral_intention</code> is stronger for the group of employees who have had previous experience with a similar AI tool (<code>previous_exp == yes</code>).</p>
+<p>We can also infer this form the estimate of the interaction, which tells us how much and in which direction the effect of <code>perceived_useful</code> changes for employees in the reference group (<code>previous_exp == yes</code>). In this case, the interaction estimate is 0.432, which tells us that the effect of <code>perceived_useful</code> changes from 0.207 for employees with no previous experience to 0.639 for employees with previous experience.</p>
+</section>
+<section id="question-10" class="level2">
+<h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
+<p><strong>Q10: Is the conditional relationship between <code>perceived_useful</code> and <code>behavioral_intention</code> for employees in the <code>prev_exp == yes</code> group? What about for the <code>prev_exp == no</code> group? Explain.</strong></p>
+<p>For the group with no previous experience, we can use the slope of <code>perceived_useful</code> in our model where the <code>previous_exp</code> reference group is the “no” group to determine if the conditional effect of <code>perceived_useful</code> for the no group is significant.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_beh_intent_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ perceived_useful * previous_exp, 
+    data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8033 -0.8033  0.1967  0.8180  3.8098 
+
+Coefficients:
+                                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                       3.35358    0.22020  15.230  &lt; 2e-16 ***
+perceived_useful                  0.20710    0.04302   4.814 1.97e-06 ***
+previous_expyes                  -2.08131    0.39227  -5.306 1.69e-07 ***
+perceived_useful:previous_expyes  0.43220    0.07842   5.512 5.73e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.408 on 496 degrees of freedom
+Multiple R-squared:  0.1937,    Adjusted R-squared:  0.1889 
+F-statistic: 39.73 on 3 and 496 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Because the slope of <code>perceived_useful</code> is significant, we can conclude that the conditional relationship between <code>perceived_useful</code> and <code>behavioral_intention</code> for employees without previous experience is significant and positive.</p>
+<p>Similarly, we can change the reference group to “yes” and refit our model to estimate the conditional relationship of employees with previous experience.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_ai <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  data_ai <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">previous_exp_new =</span> <span class="fu">as.factor</span>(previous_exp),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">previous_exp_new =</span> <span class="fu">relevel</span>(previous_exp_new, <span class="at">ref =</span> <span class="st">"yes"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>mod_beh_intent_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> perceived_useful <span class="sc">*</span> previous_exp_new, <span class="at">data =</span> data_ai)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_beh_intent_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = behavioral_intention ~ perceived_useful * previous_exp_new, 
+    data = data_ai)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8033 -0.8033  0.1967  0.8180  3.8098 
+
+Coefficients:
+                                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          1.27227    0.32464   3.919 0.000101 ***
+perceived_useful                     0.63930    0.06556   9.751  &lt; 2e-16 ***
+previous_exp_newno                   2.08131    0.39227   5.306 1.69e-07 ***
+perceived_useful:previous_exp_newno -0.43220    0.07842  -5.512 5.73e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.408 on 496 degrees of freedom
+Multiple R-squared:  0.1937,    Adjusted R-squared:  0.1889 
+F-statistic: 39.73 on 3 and 496 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Because the slope of <code>perceived_useful</code> is significant, we can conclude that the conditional relationship between <code>perceived_useful</code> and <code>behavioral_intention</code> for employees <strong>with previous experience</strong> is significant and positive. Further, the significant and negative interaction term tells us that the slope for employees with previous experience is stronger than the slope for those without experience.</p>
+</section>
+<section id="question-11" class="level2">
+<h2 class="anchored" data-anchor-id="question-11">Question 11</h2>
+<p><strong>Q11: Estimate several regression models that you can use to determine if <code>perceived_useful</code> indirectly affects <code>perceived_freq_use</code> through <code>behavioral_intention</code>. Name the model with <code>behavioral_intention</code> as the outcome: <code>mod_ie</code> and name the model with <code>perceived_freq_use</code> as the outcome: <code>mod_de</code>.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod_ie <span class="ot">&lt;-</span> <span class="fu">lm</span>(behavioral_intention <span class="sc">~</span> perceived_useful, <span class="at">data =</span> data_ai)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mod_de <span class="ot">&lt;-</span> <span class="fu">lm</span>(perceived_freq_use <span class="sc">~</span> behavioral_intention <span class="sc">+</span> perceived_useful, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-12" class="level2">
+<h2 class="anchored" data-anchor-id="question-12">Question 12</h2>
+<p><strong>Q12: In the models you fit in Question 11, which variable is the antecedent variable, which variable is the mediator, and which variable is the outcome?</strong></p>
+<ul>
+<li>Antecedent variable: <code>perceived_useful</code></li>
+<li>Mediator: <code>behavioral_intention</code></li>
+<li>Outcome: <code>perceived_freq_use</code></li>
+</ul>
+</section>
+<section id="question-13" class="level2">
+<h2 class="anchored" data-anchor-id="question-13">Question 13</h2>
+<p><strong>Q13: What the direct effect of <code>perceived_useful</code> on <code>behavioral_intention</code>? What is the indirect effect of <code>perceived_useful</code> on <code>behavioral_intention</code>? Calculate the total effect using the indirect effect and direct effect, then compare it to the estimated total effect.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Direct Effect: </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>de <span class="ot">&lt;-</span> mod_de<span class="sc">$</span>coefficients[<span class="st">"perceived_useful"</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Indirect Effect</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ie <span class="ot">&lt;-</span> mod_de<span class="sc">$</span>coefficients[<span class="st">"behavioral_intention"</span>] <span class="sc">*</span> mod_ie<span class="sc">$</span>coefficients[<span class="st">"perceived_useful"</span>]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Total Effect</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>te <span class="ot">&lt;-</span> de <span class="sc">+</span> ie</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate total effect</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>mod_te <span class="ot">&lt;-</span> <span class="fu">lm</span>(perceived_freq_use <span class="sc">~</span> perceived_useful, <span class="at">data =</span> data_ai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The effects are:</p>
+<ul>
+<li>Direct Effect: -0.046</li>
+<li>Indirect Effect: 0.161</li>
+<li>Total Effect Calculated: 0.114</li>
+<li>Total Effect Estimated: 0.114</li>
+</ul>
+</section>
+<section id="bonus-question" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-question">Bonus Question</h2>
+<p><strong>Use the bootstrap method to determine if the indirect effect is significant. Use 500 bootstrap samples. Use <code>set.seed(8547)</code>, so that I can reproduce your results.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>calc_ie <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices, formula_de, formula_m, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                    x_name, m_name) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> data[indices, ]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  mod_de <span class="ot">&lt;-</span> <span class="fu">lm</span>(formula_de, <span class="at">data =</span> d)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  mod_m <span class="ot">&lt;-</span> <span class="fu">lm</span>(formula_m, <span class="at">data =</span> d)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  ie <span class="ot">&lt;-</span> mod_de<span class="sc">$</span>coef[m_name] <span class="sc">*</span> mod_m<span class="sc">$</span>coef[x_name]</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ie)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8547</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>ie_boot <span class="ot">&lt;-</span> boot<span class="sc">::</span><span class="fu">boot</span>(</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_ai,</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistic =</span> calc_ie,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">R =</span> <span class="dv">500</span>,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula_m =</span> behavioral_intention <span class="sc">~</span> perceived_useful,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula_de =</span> perceived_freq_use <span class="sc">~</span> behavioral_intention <span class="sc">+</span> perceived_useful,</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_name =</span> <span class="st">"perceived_useful"</span>,</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">m_name =</span> <span class="st">"behavioral_intention"</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>boot<span class="sc">::</span><span class="fu">boot.ci</span>(ie_boot, <span class="at">conf =</span> .<span class="dv">95</span>, <span class="at">type =</span> <span class="st">"perc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 500 bootstrap replicates
+
+CALL : 
+boot::boot.ci(boot.out = ie_boot, conf = 0.95, type = "perc")
+
+Intervals : 
+Level     Percentile     
+95%   ( 0.1208,  0.2004 )  
+Calculations and Intervals on Original Scale</code></pre>
+</div>
+</div>
+<p>Yes, the indirect effect is significant because 0 is not contained in its 95% bootstrap confidence interval.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
