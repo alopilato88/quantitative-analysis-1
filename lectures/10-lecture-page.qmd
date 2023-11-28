@@ -1,0 +1,19 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+
+<div class = "prev-next-container">
+<a class="prev-next" href="11-lecture-page.html">Next Week's Materials &raquo;</a>
+</div>
+
+## Lecture: Regression Diagnostics
+
+<iframe src="10-lecture-slides.html" name="10-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="10-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+
+
+

@@ -99,14 +99,14 @@ The tentative Fall 2023 schedule for Quantiative Analysis 1. Use the reading lin
     <td class="ts-topic">Regression diagnostics</td>
     <td class="ts-content"><a href="readings/reading-10.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
-    <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="lectures/10-lecture-page.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">11/28</td>
     <td class="ts-topic">Regression diagnostics</td>
     <td class="ts-content"><a href="readings/reading-11.html"><img src="assets/reading-icon-1.png" width="50" height="54"></a></td>
     <td class="ts-content"><a href="index.html"><img src="assets/assignment-icon-1.png" width="50" height="54"></a></td>
-    <td class="ts-content"><a href="index.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
+    <td class="ts-content"><a href="lectures/10-lecture-page.html"><img src="assets/lecture-icon-1.png" width="50" height="54"></a></td>
   </tr>
   <tr>
     <td class="ts-date">12/5</td>

@@ -1,0 +1,623 @@
+---
+title: "Regression Diagnostics"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+
+```
+
+## Overview 
+
+* Learn about unusual and influential data
+* Learn how to detect and diagnose assumption violations
+* Learn how to detect and diagnose collinearity 
+
+# Unusual & Influential Data
+
+## Unusual Observations 
+
+Unusual observations are cases where specific observations do not fit the general pattern of the overall data. It is important to detect these unusual observations as they can exert a lot of influence over the results of your analysis.
+
+## Leverage, Outliers, and Influence
+
+Unusual observations can be "unusual" in several different ways:
+
+* **Leverage**: An observation where one or more of the **predictor** values is far away from the bulk of the predictor values. 
+* **Outliers**: An observation with a large residual, which indicates the observed outcome value falls farther away from its predicted value.
+* **Influence**: The combination of high leverage with a regression outlier--these observations **influence** your results. 
+
+## Visualizing Leverage, Outliers, and Influence
+
+```{r}
+#| echo: false
+#| fig-align: center
+set.seed(46)
+n <- 30
+x <- runif(n)
+e <- rnorm(n, sd = .50)
+y <- 2 + x + e
+
+xo <- mean(x)
+eo <- max(abs(e)) * 1.5
+
+yo <- c(y, 2 + xo + eo)
+xo <- c(x, xo)
+
+xl <- max(abs(x)) * 1.5
+yl <- c(y, 2 + xl + rnorm(1, sd = .50))
+xl <- c(x, xl)
+
+xi <- max(abs(x)) * 1.5
+yi <- c(y, 2 + xi + max(abs(e)) * 1.5)
+xi <- c(x, xi)
+
+data <- 
+  tibble::tibble(
+    x = c(xo, xl, xi),
+    y = c(yo, yl, yi)
+  ) |>
+  dplyr::mutate(
+    type = c(rep("Outlier", n + 1), rep("Leverage", n + 1), rep("Influence", n + 1)),
+    type = factor(type, levels = c("Leverage", "Outlier", "Influence")),
+    id = c(rep("Regular", n), rep("Unusual", 1), rep("Regular", n), rep("Unusual", 1), rep("Regular", n), rep("Unusual", 1)),
+    size = dplyr::if_else(id == "Regular", 2, 2.02)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = y,
+    shape = id
+  )
+) + 
+  ggplot2::geom_point(
+    size = 2.5,
+    color = plot_fill
+  ) +
+  ggplot2::geom_point(
+    data = data |> dplyr::filter(id == "Unusual"),
+    pch = 21,
+    size = 8,
+    
+  ) +
+  ggplot2::facet_wrap(
+    ~ type
+  ) + 
+  ggplot2::geom_smooth(
+    method = "lm", 
+    se = FALSE,
+    linetype = "dotted",
+    color = "black",
+    formula = y ~ x
+  ) +
+  ggplot2::geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    inherit.aes = FALSE,
+    color = "red",
+    ggplot2::aes(
+      x = x,
+      y = y
+    )
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Predictor Variable",
+    y = "Outcome Variable",
+    shape = "Unusual Observation"
+  )
+```
+
+## Measuring Leverage
+
+The most common way to measure leverage is by the hat-values, $h_i$. Hat-values range from $\frac{1}{n}$ to 1 where larger values indicate that the predictor data for a given case (or respondent) is farther away from the average predictor values. 
+
+In a simple regression model, the hat-value tells us how far away a predictor value is from the average of all the predictor values.
+
+## Detecting Leverage
+
+```{r}
+mod_influence <- lm(
+  y ~ x, data = data |> dplyr::filter(type == "Influence")
+)
+
+hatvalues(mod_influence)
+```
+
+## Plotting Leverage
+
+```{r}
+#| echo: false
+h <- hatvalues(mod_influence)
+
+ggplot2::ggplot(
+  data = tibble::tibble(x = 1:length(h), y = h),
+  ggplot2::aes(
+    x = x,
+    y = y
+  )
+) + 
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Hat-Value"
+  )
+
+```
+
+## Identifying Outliers
+
+To identify outliers we need a good way to measure how unusual an outcome response is given values of its predictors. We can use the linear regression residuals, observed outcome minus the predicted outcome, but there are a two issues with regular residuals: 
+
+1. Residuals do not have equal variances
+2. Residuals associated with high-leverage observations pull the regression line towards them which shrinks the residual
+
+## Different Types of Residuals 
+
+There are two types of residuals that adjust for the issues with regular residuals:
+
+* **Standardized Residual**: Regular residuals that have been standardized (variance = 1) and adjusted for their association with high-leverage observations so that residuals associated with high-leverage observations get increased. 
+* **Studentized Residual**: Nearly identical to standardized residuals, but are standardized in a slightly different way to ensure that they follow a t-distribution. Studentized residuals are preferred over regular and standardized residuals. 
+
+## Detecting Outliers
+
+We can plot the studentized residuals against the observation number and look for comparatively extreme values (any values greater than 2 in absolute value). 
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+resid_student <- rstudent(mod_influence)
+
+ggplot2::ggplot(
+  data = tibble::tibble(
+    x = 1:length(resid_student),
+    y = resid_student
+  ),
+  ggplot2::aes(
+    x = x,
+    y = y
+  )
+) + 
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) + 
+  ggplot2::labs(
+    x = "Observation Number", 
+    y = "Studentized Residuals"
+  ) + 
+  lecture_ggplot_theme_barplot
+```
+
+## Testing Outliers
+
+We can use the function `outlierTest` from the package `car` to determine if the largest studentized residual is statistically different from the other studentized residuals:
+
+```{r}
+car::outlierTest(mod_influence)
+```
+
+## Measuring Influentional Observations
+
+We can measure influence using local measures such as DFBETA or DFBETAS (standardized version) or global measures such as Cook's Distance:
+
+* **Local Measures**: Tell us how a given observation changes the relationship between a predictor variable and outcome. 
+* **Global Measures**: Tell us how a given observation influences all of the predicted values. 
+
+## DFBETA & DFBETAS
+
+Both DFBETA and DFBETAS compare how the regression coefficients change when a single observation is removed: 
+<br>
+<br>
+DFBETA: $D_{ij} = \beta_{j} - \beta_{j(-i)}$
+<br>
+<br>
+DFBETAS: $\frac{D_{ij}}{SE_{(i)}(\beta_j)}$
+
+## Calculating DFBETAS
+
+```{r}
+#| eval: false
+dfbetas(mod_influence)
+```
+
+```{r}
+#| echo: false
+dfbetas(mod_influence) |> head()
+```
+
+## Visualizing DFBETAS
+
+```{r}
+#| echo: false
+#| fig-align: center
+df_betas <- dfbetas(mod_influence)[, 2]
+
+ggplot2::ggplot(
+  data = tibble::tibble(
+    x = 1:length(df_betas),
+    y = df_betas
+  ),
+  ggplot2::aes(
+    x = x, 
+    y = y
+  )
+) + 
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "DFBETAS",
+    title = "DFBETAS for Regression Slope of X"
+  )
+```
+
+## Cook's Distance
+
+Cook's Distance is a measure of how much the model predictions change when a given observation is removed. It is calculated by multiplying a measure of how unusual an outlier is by a measure of leverage:
+
+$$\frac{Stand. Resid^2}{k + 1} \times \frac{h_i}{1 - h_i}$$
+
+## Calculating Cook's Distance
+
+```{r}
+cooks.distance(mod_influence)
+```
+
+## Cut-Offs for Diagnostic Statistics
+
+While it is important to plot your residuals and holistically examine all of the various diagnostic statistics, there are a few cutoffs that can help you focus in on specific data points. These are rules of thumb, though!
+
+**Leverage**: $h_i > 2\times\bar{h_i}$
+
+**Outlier**: Studentized residuals greater than 2 or -2
+
+**DFBETAS**: $\text{DFBETAS}\gt \frac{2}{\sqrt{n}}$
+
+**Cooks Distance**: $D_i \gt \frac{4}{n - k - 1}$
+
+## What Do You Do with Unusual Observations? 
+
+Sometimes there is not much you can do about unusual observations, but it is always important to be aware of them. Some potential solutions are: 
+
+* Discard the data if it is clearly wrong (e.g. coded incorrectly)
+* Try to understand if the unusual observation can lead to a better model
+* Use a model that is better at handling unusual observations such as robust regression
+
+# Violation of Linear Regression Assumptions
+
+## Review of Assumptions
+
+We make the following assumptions when we fit a regression model: 
+
+1. Validity of our Data
+2. Representativeness of our Data
+3. Additivity & Linearity 
+4. Independence of Errors
+5. Equal Variance of Errors (Homoscedasticity)
+6. Normality of Errors 
+
+## Assumption Violations
+
+Assumptions violations occur whenever our data (specifically our residuals) do not follow at least one of the previous assumptions. When a violation occurs, it usually biases the standard error estimates for the regression coefficients, which hurts our ability to make accurate statistical inferences.
+
+## Detecting Nonlinearity 
+
+```{r}
+#| echo: false
+set.seed(433)
+n <- 200
+x <- runif(n)
+y <- .2*x + -.2*x^2
+y <- y + rnorm(n, sd = sqrt(1.5*var(y)))
+```
+
+To detect nonlinearity we can plot the predictor values against the studentized residuals. If we have more than one predictor, we can plot the predicted outcome values against the studentized residuals. If our assumptions of linearity are met, then the plot should just look like a cloud of points randomly scattered. 
+
+## Visualizing Nonlinearity
+
+```{r}
+#| echo: false
+#| fig-align: center
+mod_1 <- lm(y ~ x)
+mod_2 <- lm(y ~ x + I(x^2))
+
+data <- 
+  tibble::tibble(
+    x = c(x, x),
+    r = c(rstudent(mod_1), rstudent(mod_2)),
+    model = c(rep("Linear Predictor", n), rep("Nonlinear Predictor", n))
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = r
+  )
+) + 
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) + 
+  ggplot2::facet_wrap(
+    ~ model
+  ) + 
+  ggplot2::geom_smooth(
+    method = "loess",
+    se = FALSE
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Predictor",
+    y = "Studentized Residuals"
+  )
+
+```
+
+## Testing Nonlinearity
+
+Although plots are great, if you have reason to believe their is a nonlinear effect in your data, then the best way to test this is to include a squared term ($X^2$) in your model. If the squared term is significant, then you can conclude there is a nonlinear effect. 
+
+## Detecting Non-Constant Error Variance
+
+```{r}
+#| echo: false
+set.seed(235)
+n <- 200
+x <- runif(n)
+x2 <- runif(n)
+y <- 2 + x + x2
+e <- rnorm(n, sd = sqrt(1.5 * var(y))*x)
+y <- y + e
+mod_ncv <- lm(y ~ x)
+```
+
+To detect non-constant error variance (heteroscedasticity), we can plot the studentized residuals of our model against each specific predictor or the overall predicted value from the model. 
+
+```{r}
+#| echo: false
+#| fig-align: center
+ggplot2::ggplot(
+  data = tibble::tibble(
+    x = x,
+    y = rstudent(mod_ncv)
+  ),
+  ggplot2::aes(x = x, y = y)
+) +
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) +
+  ggplot2::labs(
+    x = "Predictor",
+    y = "Studentized Residual"
+  ) +
+  lecture_ggplot_theme_barplot
+```
+
+## Testing for Non-Constant Error Variance
+
+We can also use a special statistical test that will help us further understand if the patterns we see in our data are actually indicative of non-constant error variance. If the p-value is below some preset cutoff, usually .05, then we can conclude that we have violated the assumption of constant error variance. We can use the function `ncvTest` from the `car` package. 
+
+```{r}
+car::ncvTest(mod_ncv)
+```
+
+## Detecting Non-Normality
+
+```{r}
+#| echo: false
+set.seed(4234)
+n <- 500
+x <- runif(n)
+y <- 2 + x 
+e_norm <- rnorm(n, sd = sqrt(2 * var(y)))
+e_log <- rlnorm(n, sdlog = sqrt(2 * var(y)))
+
+y_norm <- y + e_norm
+y_log <- y + e_log
+
+mod_norm <- lm(y_norm ~ x)
+mod_log <- lm(y_log ~ x)
+
+data <- 
+  tibble::tibble(
+    x = c(x, x),
+    resid = c(rstudent(mod_norm), rstudent(mod_log))
+  ) |>
+  dplyr::mutate(
+    type = c(rep("Normal", n), rep("Non-Normal", n))
+  )
+```
+
+Violations of normality typically have little effect on your inferences unless they are extreme (e.g. your data has very heavy tails or suffers from an extreme positive or negative skew).
+
+We can use a QQ plot (quantile quantile plot) to visually examine if the **studentized residuals** fall nicely along a straight line when plotted against quantiles from a t-distribution. The further these residuals fall away from the line, the more likely it is that our normality assumption has been violated.
+
+## QQ Plot for Normality
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+qqplot_data <- 
+  data |>
+  dplyr::filter(
+    type == "Normal"
+  ) |>
+  dplyr::mutate(
+    t_quant = qt(ppoints(resid), df = n - 1- 2),
+    sort_resid = sort(resid)
+  ) |>
+  dplyr::select(
+    t_quant, 
+    sort_resid,
+    type
+  ) |>
+  dplyr::bind_rows(
+    data |>
+  dplyr::filter(
+    type == "Non-Normal"
+  ) |>
+  dplyr::mutate(
+    t_quant = qt(ppoints(resid), df = n - 1- 2),
+    sort_resid = sort(resid)
+  ) |>
+  dplyr::select(
+    t_quant, 
+    sort_resid,
+    type
+  )
+)
+
+ggplot2::ggplot(
+  data = qqplot_data,
+  ggplot2::aes(
+    x = t_quant,
+    y = sort_resid
+  )
+) + 
+  ggplot2::facet_wrap(
+    ~ type
+  ) +
+  ggplot2::geom_point(
+    color = plot_fill,
+    size = 2.5
+  ) + 
+  ggplot2::labs(
+    x = "t Quantiles", 
+    y = "Studentized Residuals"
+  ) + 
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Additional Normality Plot
+
+We can also plot the distribution of the studentized residuals to determine if the normality assumption was violated:
+
+```{r}
+#| echo: false
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) + 
+  ggplot2::geom_histogram(
+    fill = plot_fill,
+    color = plot_color,
+    bins = 25
+  ) + 
+  facet_grid(
+    ~ type
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Studentized Residual",
+    y = "Count"
+  )
+```
+
+## Testing for Normality 
+
+We can use a statistical test to provide further information as to whether our data violate the normality assumption: 
+
+```{r}
+#| eval: false
+ks.test(rstudent(mod_norm), "pnorm")
+ks.test(rstudent(mod_log), "pnorm")
+```
+
+```{r}
+#| echo: false
+ks.test(rstudent(mod_norm), "pnorm")
+ks.test(rstudent(mod_log), "pnorm")
+```
+
+## Correcting for Violations 
+
+There are several different ways to correct for negative impact that assumption violations have on the regression coefficient standard errors: 
+
+* Make adjustments to the regression coefficient standard errors using sandwich estimators
+* Using bootstrap standard errors
+* Use a more appropriate statistical model such as a Weighted Least Squares model
+
+# Collinearity
+
+## What is Collinearity? 
+
+Collinearity is a measure of how related your predictors are with one another. While some level of relationship among your predictors is to be expected, if the level increases, then it can bias the estimation of the regression coefficient standard errors. 
+
+## Measuring & Detecting Collinearity
+
+We use the Variance Inflation Factor or VIF to measure and detect collinearity, which obtains the $R^2$ for each predictor when it is regressed on all of the other predictors. The larger the $R^2$, the worse the collinearity. 
+
+$$VIF = \frac{1}{1 - R^2_j}$$
+
+## An Example of Collinearity
+
+```{r}
+#| echo: false
+set.seed(43252)
+n <- 500
+x1 <- rnorm(n)
+x2 <- rnorm(n)
+x3 <- .95*x1 + rnorm(n, sd = sqrt(1 - var(.95*x1)))
+y <- .3*x1 + .3*x2 + .2*x3 + rnorm(n, sd = sqrt(1 - var(.3*x1 + .3*x2 + .2*x3)))
+```
+
+```{r}
+mod_1 <- lm(y ~ x1 + x2 + x3)
+car::vif(mod_1)
+summary(mod_1)
+```
+
+## An Example of Collinearity
+
+Which model do you choose? 
+
+```{r}
+mod_2 <- lm(y ~ x1 + x2)
+summary(mod_2)
+```
+
+## An Example of Collinearity
+
+Which model do you choose? 
+
+```{r}
+mod_3 <- lm(y ~ x3 + x2)
+summary(mod_3)
+```
+
+## Dealing with Collinearity 
+
+Unless VIF is high, greater than 5 (or even 10), then we should not worry about it too much. But there are a few solutions: 
+
+* Combine the collinear predictors together (average them or more advanced methods)
+* Drop one of the collinear predictors
+* Change to a more appropriate model that corrects for this such as ridge regression
