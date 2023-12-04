@@ -1,0 +1,75 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+<h1 class="h1-reading">Assignment 4</h1>
+
+<h2>Instructions</h2>
+
+In this assignment you will practice some of the statistical methods we have talked about so far: multiple regression with multicategorical predictors, moderation, and mediation analysis. **This assignment will be due on or before 12-13-2023.**
+
+**For R users**: 
+
+1. Download the assignment R script or Quarto document, which can be found <a href="#materials">below</a>.
+2. Open the R script in RStudio.
+3. Begin the assignment.
+4. For the questions that require a written answer, save your answer either as a comment directly in the R script or in a separate Word document (or something similar).
+5. Upload your completed R script and any other files you created, such as a Word document, into the class Brightspace. 
+
+**If you run into any issues, please email me.** 
+
+<h2>Materials</h2>
+
+<strong>Assignment R Script</strong>: <a href="04-assignment.R" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<strong>Assignment Data</strong>: <a href="04-assignment-data.csv" download target="_blank" rel="noopener noreferrer"><strong>Download</strong></a>
+
+<h2>Data Description</h2>
+
+Your organization is planning a wide-scale release of a new generative AI chatbot designed to support your organization's sales force. Among other features the AI chatbot can find answers to the customer's question, identifying new promotions tailored to the customer, and generally help the sales representative meet the customer's demands.
+
+Your organization wants to determine if using the AI chatbot results in higher monthly sales. 
+They have asked you design a survey study on a sample of the organization's sales representatives to understand what predicts a sale's representative's intentions to use the new AI tool.
+
+You ultimately decide to measure eight variables: The AI tool's perceived ease of use (`perceived_ease_use`), the AI tool's perceived usefulness for the sales job (`perceived_useful`), the previous experience a sales representative has had with an AI-enhanced sales tool (`previous_exp`), the sales rep's intentions to use the new AI tool (`behavioral_intention`), the region a sales rep is based in (`office_region`), and the sales rep's perceived frequency of using the AI-enhanced tool (`perceived_freq_use`).
+
+The dataset for this assignment contains the following variables:
+
+* `employee_id`: A unique 6-digit employee identifier. 
+* `perceived_useful`: Responses to the question: "I believe the AI tool is useful for my job."
+* `behavioral_intention`: Responses to the question: "I plan to use the system in the next month."
+* `positive_attitude_ai`: Responses to the question: "I think AI will positively impact society."
+* `office_region`: The geographic region the employee is based in. 
+* `perceived_freq_use`: Responses to the question: "How often have you used this tool in the past month?"
+* `actual_usage`: The number of times a sales rep used the tool in the past month. 
+* `skill_level`: A classification that designates if the sales rep is low, moderate, or high on the knowledge and skills required for the job.  
+* `engagement`: Responses to the question: "I am energized by my work."
+* `sales_last_month`: The dollar amount of sales a sales rep brought in during the past month.
+
+The four survey questions, `perceived_useful`, `behavioral_intention`, `positive_attitude_ai`, and `engagement` are measured on a seven point agreement response scale: 
+
+1. Completely Disagree
+2. Strongly Disagree
+3. Disagree
+4. Neither Disagree, Nor Agree
+5. Agree
+6. Strongly Agree
+7. Completely Agree
+
+The survey question, `perceived_freq_use` is on a six point frequency scale: 
+
+1. Never
+2. Rarely
+3. Occasionally
+4. Fairly often
+5. Very often
+6. All the time
+
+The survey question, `skill_level` is a multicategorical variable with categories:
+
+1. Low
+2. Moderate
+3. High
+
+The question, `actual_usage` is a count variable. And the question `sales_last_month` is the revenue brought in by a sales rep last month. 
