@@ -1,0 +1,404 @@
+---
+title: "A Mixed Bag of Models"
+format: 
+  revealjs:
+    theme: [default, theme-lecture-slides.scss] 
+    css: styles-lecture-slides.css
+    slide-number: true
+execute:
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+source("packages-lecture.R")
+source("helper-functions-lecture.R")
+
+```
+
+## Overview 
+
+* Learn about different regression models
+* Learn about statistical power and power analysis
+* Learn about the effect of measurement error in predictors
+
+# Extending Linear Regression 
+
+## Why Extend Linear Regression? 
+
+Our data often does not lend itself well to a linear regression model. It may violate many of the linear regression assumptions: 
+
+* Non-normal residuals (Binary or categorical outcomes)
+* Correlated observations (time series data or nested data)
+* Nonlinear relationships (Spline models)
+
+## Modeling Binary Outcomes with Logistic Regression 
+
+Logistic regression models essentially use a linear model to predict the odds of an event occurring: 
+
+$$log(\frac{p}{1 - p})=\beta_0 + \beta_1X_1$$
+
+## Estimating a Logistic Regression Model
+
+```{r}
+#| echo: false
+set.seed(4325)
+n <- 3000
+x1 <- sample(0:1, size = n, replace = TRUE, prob = c(.75, .25))
+
+y_linear <- -1 + 1.5 * x1
+y <- rbinom(n, size = 1, prob = plogis(y_linear))
+
+data <- 
+  tibble::tibble(
+    selection_test = x1,
+    hire = y
+  ) |>
+  dplyr::mutate(
+    selection_test = dplyr::if_else(selection_test == 1, "pass", "fail"),
+    hire_cat = dplyr::if_else(hire == 1, "hire", "no hire")
+  )
+
+head(data, 3)
+```
+
+```{r}
+mod_logistic <- glm(hire ~ selection_test, data = data, family = "binomial")
+```
+
+## Interpreting a Logistic Regression Model
+
+```{r}
+summary(mod_logistic)
+```
+
+## Interpreting a Logistic Regression Model
+
+You can transform the coefficients from the logistic regression model to get: 
+
+* How the odds of an event occurring (e.g. being hired) change as the predictor values change
+* How the probability of an event occurring change as the predictor values change
+
+## Graphing Logistic Regression Models is Best 
+
+```{r}
+#| echo: false
+data_logistic_plot <- 
+  tibble::tibble(
+    selection_test = c("pass", "fail"),
+    hire_prob = c(plogis(-.946 + 1.356), plogis(-.946))
+  )
+
+ggplot2::ggplot(
+  data = data_logistic_plot,
+  ggplot2::aes(
+    x = selection_test,
+    y = hire_prob
+  )
+) + 
+  ggplot2::geom_bar(
+    fill = plot_fill,
+    color = plot_color,
+    stat = "identity",
+    position = ggplot2::position_dodge()
+  ) + 
+  lecture_ggplot_theme_barplot + 
+  ggplot2::labs(
+    x = "Selection Test Results",
+    y = "Predicted Probability of Hire"
+  ) + 
+  ggplot2::ylim(c(0, 1))
+```
+
+## Ordinal Logistic Regression: Ordered Multicategorical Outcome
+
+Ordinal logistic regression models allow you to analyze categorical data when there is an inherent order to the categories: 
+
+* Survey response data
+* Loan default risk (Low, Medium, High)
+* Really any variables where you can create low, medium, and high categories
+
+## Estimating an Ordinal Logistic Regression Model
+
+```{r}
+#| echo: false
+set.seed(43524)
+n <- 5000
+x <- rnorm(n, mean = 15, sd = 5) |> round()
+x[x < 0] <- 0
+x_scale <- as.numeric(scale(x))
+y_linear <- -x_scale + rlogis(n)
+data_ord <- 
+  tibble::tibble(
+    yr_employ = x
+  ) |>
+  dplyr::mutate(
+    default_risk = dplyr::case_when(
+      y_linear <= qlogis(.35) ~ "low",
+      y_linear <= qlogis(.75) ~ "moderate",
+      TRUE ~ "high"
+    ), 
+    default_risk = factor(default_risk, levels = c("low", "moderate", "high"))
+  )
+
+head(data_ord, 5)
+```
+
+```{r}
+mod_ordinal <- MASS::polr(default_risk ~ yr_employ, data = data_ord)
+```
+
+## Interpreting an Ordinal Logistic Model 
+
+The coefficient tells you how the odds of moving up in a category change for a unit increase in your predictors. A negative value means that higher values on the predictor are associated with lower odds of being in a higher category. 
+
+```{r}
+summary(mod_ordinal)
+```
+
+## Plotting the Results of an Ordinal Regression Model
+
+```{r}
+#| echo: false
+predict_prob_ord <- 
+  predict(mod_ordinal, type = "probs") |> 
+  tibble::as_tibble() |>
+  dplyr::mutate(
+    yr_employ = x
+  ) |>
+  tidyr::pivot_longer(
+    low:high,
+    names_to = "default_risk",
+    values_to = "prob"
+  )
+
+ggplot2::ggplot(
+  data = predict_prob_ord,
+  ggplot2::aes(
+    x = yr_employ,
+    y = prob,
+    linetype = default_risk
+  )
+) + 
+  ggplot2::geom_line(
+    color = plot_fill
+  ) +
+  ggplot2::labs(
+    x = "Years Employed",
+    y = "Predicted Probability",
+    linetype = "Default Risk"
+  ) + 
+  ggplot2::ylim(c(0, 1)) +
+  lecture_ggplot_theme_moderation_plot
+```
+
+## Multilevel Models 
+
+Multilevel models allow you to model data that are nested in higher units like employees nested within an organization. 
+
+When units are nested in higher-level clusters, your data will likely violate the independence of error assumption--units within the same cluster will be more related to one another than units in a different cluster. 
+
+## Testing Effects at Different Levels
+
+Multilevel models also allow you to test effects at the unit (level 1) level or the cluster level (level 2): 
+
+* Impact of employee engagement on individual sales (level 1) and the impact of office location on individual sales (level 2)
+* Impact of parental education on a student's achievement (level 1) and the impact of teacher quality on students' achievement (level 2)
+
+## Estimating a Multilevel Model 
+
+```{r}
+#| echo: false
+set.seed(7435)
+n1 <- 5
+n2 <- 1000
+n <- n1 * n2
+x_l2 <- rep(rnorm(n2), each = n1)
+x_l1 <- rnorm(n)
+e_l1 <- rnorm(n)
+e_l2 <- rnorm(n2, sd = .50)
+
+team_id <- rep(1:n2, each = n1)
+Z <- model.matrix(~as.factor(team_id) - 1)
+X <- cbind(1, x_l1, x_l2)
+y <- X%*%c(3, .80, 1) + Z%*%e_l2 + e_l1
+
+data_mlm <- 
+  tibble::tibble(
+    ind_perf = as.numeric(y),
+    ind_sat = x_l1,
+    cohesion = x_l2,
+    team = team_id
+  )
+
+head(data_mlm, 10)
+```
+
+```{r}
+mod_mlm <- lme4::lmer(ind_perf ~ ind_sat + cohesion + (1|team), data = data_mlm)
+```
+
+## Interpreting a Multilevel Model
+
+```{r}
+summary(mod_mlm)
+```
+
+## Time Series Models
+
+Time series models are statistical models that have been developed specifically to analyze data that follow a time ordering:
+
+* Financial data (Daily/Monthly changes in stock prices)
+* Personalized medicine (Changes in an individuals blood pressure over time)
+* Political data (Changes in congressional approval through time)
+
+## Autoregressive Time Series Model
+
+A standard time series model is the AR model, where the outcome variable at Time T is predicted by its value at Time T-1: 
+
+$$Y_{t}=\beta_{1}Y_{t-1} + \epsilon_t$$
+
+# Statistical Power
+
+## What is Power? 
+
+The **power** of a statistical test is the probability of obtaining a significant result **given** that the effect actually exists. 
+
+Typically, you want the power of your test to be 80% or higher. 
+
+## Decisions: Power, Type 2 Error, and Type 1 Error
+
+|                           | $H_0$ is True | $H_0$ is True |
+|---------------------------|---------------|---------------|
+| Test Rejects $H_0$        | $\alpha$      | 1 - $\beta$   |
+| Test Doesn't Reject $H_0$ | 1 - $\alpha$   | $\beta$       |
+
+<br>
+
+* **Power** is represented as 1 - $\beta$
+* **Type 1** error is represented as $\alpha$
+* **Type 2** error is represented as $\beta$
+
+## Factors Affecting the Power of Any Statistical Test
+
+There are several things that impact the power of all statistical tests: 
+
+* **N**: Sample size
+* **Effect Size**: Size of the effect of interest
+* **$\alpha$-level**: The significance cut-off (e.g. .05)
+
+## Factors Affecting the Power of Regression Slope Test
+
+We can use the formula of a statistical test and the SE of a regression slope to see the factors that directly impact the power of a regression slope test: 
+
+$$\text{Statistical Test} = \frac{\beta}{SE_{\beta}}$$
+
+$$SE_{\beta_j}=\sqrt{\frac{\sigma^2_e}{N\times Var(X_j) \times Tol(X_j)}}$$
+
+## What is a Power Analysis? 
+
+A power analysis is an analysis undertaken before you begin your study that helps you determine the minimum sample size you need to achieve a certain amount of power--typically 80%. 
+
+As we will see, a power analysis is full of a fair amount of educated guessing...
+
+## Information Needed to Conduct a Power Analysis 
+
+To conduct a power analysis you generally need the following pieces of information: 
+
+* The size of the effect of interest (e.g. $R^2$ or $\beta$)
+* The significance level being used (e.g. $\alpha = .05$)
+* Desired level of power 
+
+For multiple regression, you will also need to know the number of predictors being used in the model. 
+
+## Multiple Regression Power Analysis 
+
+There are a few ways to conduct a power analysis for a multiple regression model. You can decide to look at the power to the individual regression coefficients significant or the power to find the $R^2$ significant. 
+
+You will likely need to write a simulation script to determine the sample size needed to find an individual regression coefficient significant, but we can use a package called `pwr` to determine the sample size needed to find the overall $R^2$ significant. 
+
+## Example of Power Analysis Using `pwr`
+
+```{r}
+#| eval: false
+pwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)
+```
+
+<br>
+
+* f2 = $\frac{R^2}{1 - R^2}$ (Effect Size)
+* u = The number of predictors
+* v = N - u - 1
+* N = v + u + 1
+
+## Changing the Significance Level
+
+```{r}
+pwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)
+pwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .10, power = .80)
+```
+
+## Changing the Effect Size
+
+```{r}
+pwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)
+pwr::pwr.f2.test(u = 6, f2 = .5 / (1 - .5), sig.level = .05, power = .80)
+```
+
+# Measurement Error in Predictors
+
+## What is Measurement Error? 
+
+**Measurement error** is the random noise that affects all of our measurements: 
+
+* Mental measurements (intelligence, personality, etc.)
+* Health measurements (weight, blood pressure, etc.)
+* Economic measurements 
+
+## Observed Score, True Score, & Measurement Error Variance
+
+Measurement theory defines your **observed score** (X) as your **true score** (T) plus **random measurement error** (E): 
+
+$$X_{Obs} = T + E$$
+
+$$Var(X_{obs}) = \sigma^2_{T} + \sigma^2_{E}$$
+
+## What is the Typical Effect of Measurement Error? 
+
+Measurement error in either the outcome or predictor will **weaken** the power of your statistical tests. 
+
+Measurement error in the predictor will bias most of your statistical estimates such that the estimate you obtain will be even further than the parameters it is estimating. 
+
+## How Do We Quantify Measurement Error? 
+
+To quantify measurement error, we calculate a ratio of true score variance to observed score variance, which is referred to as the measurement's **reliability**: 
+
+$$r_{xx}=\frac{\sigma^2_T}{\sigma^2_{Obs.}}$$
+
+## How Do We Estimate Reliability? 
+
+There are many different ways to estimate the reliability of a measure, but in the social sciences the most common way is through a coefficient called Coefficient Alpha. 
+
+All you need to know right now is that survey measurements should have Coefficient Alpha values equal to or greater than .80. 
+
+## Measurement Error and Simple Regression
+
+Measurement error in the predictor will bias the estimate of the regression slope by a factor equal to the reliability of the predictor, $r_{xx}$: 
+
+$$b = \beta\times r_{xx}$$
+
+This will also serve to weaken the power of the statistical test as any measurement error shrinks the regression slope. 
+
+## Measurement Error and Multiple Regression
+
+The effects of measurement error on multiple regression are very similar to its effects in simple regression, but predicting the exact effects are harder if the predictors are correlated with one another.
+
+## Can We Correct for Measurement Error? 
+
+If we know the amount of measurement error (reliability) in our measures, then we can use some corrections to adjust our statistical estimates (e.g. $\frac{b}{r_{xx}}=\beta$).
+
+However, the best way to adjust for measurement error is to use a more complex family of statistical models called **latent variable models**. Latent variable models explicitly model and correct for measurement error. 
+

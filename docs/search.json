@@ -6753,5 +6753,278 @@
     "title": "Assignment 4",
     "section": "Question 19",
     "text": "Question 19\nQ19: Write up the results of your final model. You will want to talk about what varibles significantly predict log_sales_last_month, what variables interact with skill_level and how that alters their effects, and the overall fit of the model."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#overview",
+    "href": "lectures/11-lecture-slides.html#overview",
+    "title": "A Mixed Bag of Models",
+    "section": "Overview",
+    "text": "Overview\n\nLearn about different regression models\nLearn about statistical power and power analysis\nLearn about the effect of measurement error in predictors"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#why-extend-linear-regression",
+    "href": "lectures/11-lecture-slides.html#why-extend-linear-regression",
+    "title": "A Mixed Bag of Models",
+    "section": "Why Extend Linear Regression?",
+    "text": "Why Extend Linear Regression?\nOur data often does not lend itself well to a linear regression model. It may violate many of the linear regression assumptions:\n\nNon-normal residuals (Binary or categorical outcomes)\nCorrelated observations (time series data or nested data)\nNonlinear relationships (Spline models)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#modeling-binary-outcomes-with-logistic-regression",
+    "href": "lectures/11-lecture-slides.html#modeling-binary-outcomes-with-logistic-regression",
+    "title": "A Mixed Bag of Models",
+    "section": "Modeling Binary Outcomes with Logistic Regression",
+    "text": "Modeling Binary Outcomes with Logistic Regression\nLogistic regression models essentially use a linear model to predict the odds of an event occurring:\n\\[log(\\frac{p}{1 - p})=\\beta_0 + \\beta_1X_1\\]"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#estimating-a-logistic-regression-model",
+    "href": "lectures/11-lecture-slides.html#estimating-a-logistic-regression-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Estimating a Logistic Regression Model",
+    "text": "Estimating a Logistic Regression Model\n\n\n# A tibble: 3 × 3\n  selection_test  hire hire_cat\n  &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   \n1 pass               1 hire    \n2 pass               0 no hire \n3 fail               1 hire    \n\n\n\nmod_logistic &lt;- glm(hire ~ selection_test, data = data, family = \"binomial\")"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#interpreting-a-logistic-regression-model",
+    "href": "lectures/11-lecture-slides.html#interpreting-a-logistic-regression-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Interpreting a Logistic Regression Model",
+    "text": "Interpreting a Logistic Regression Model\n\nsummary(mod_logistic)\n\n\nCall:\nglm(formula = hire ~ selection_test, family = \"binomial\", data = data)\n\nCoefficients:\n                   Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)        -0.94631    0.04694  -20.16   &lt;2e-16 ***\nselection_testpass  1.35624    0.08824   15.37   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 3919.4  on 2999  degrees of freedom\nResidual deviance: 3675.1  on 2998  degrees of freedom\nAIC: 3679.1\n\nNumber of Fisher Scoring iterations: 4"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#interpreting-a-logistic-regression-model-1",
+    "href": "lectures/11-lecture-slides.html#interpreting-a-logistic-regression-model-1",
+    "title": "A Mixed Bag of Models",
+    "section": "Interpreting a Logistic Regression Model",
+    "text": "Interpreting a Logistic Regression Model\nYou can transform the coefficients from the logistic regression model to get:\n\nHow the odds of an event occurring (e.g. being hired) change as the predictor values change\nHow the probability of an event occurring change as the predictor values change"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#graphing-logistic-regression-models-is-best",
+    "href": "lectures/11-lecture-slides.html#graphing-logistic-regression-models-is-best",
+    "title": "A Mixed Bag of Models",
+    "section": "Graphing Logistic Regression Models is Best",
+    "text": "Graphing Logistic Regression Models is Best"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#ordinal-logistic-regression-ordered-multicategorical-outcome",
+    "href": "lectures/11-lecture-slides.html#ordinal-logistic-regression-ordered-multicategorical-outcome",
+    "title": "A Mixed Bag of Models",
+    "section": "Ordinal Logistic Regression: Ordered Multicategorical Outcome",
+    "text": "Ordinal Logistic Regression: Ordered Multicategorical Outcome\nOrdinal logistic regression models allow you to analyze categorical data when there is an inherent order to the categories:\n\nSurvey response data\nLoan default risk (Low, Medium, High)\nReally any variables where you can create low, medium, and high categories"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#estimating-an-ordinal-logistic-regression-model",
+    "href": "lectures/11-lecture-slides.html#estimating-an-ordinal-logistic-regression-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Estimating an Ordinal Logistic Regression Model",
+    "text": "Estimating an Ordinal Logistic Regression Model\n\n\n# A tibble: 5 × 2\n  yr_employ default_risk\n      &lt;dbl&gt; &lt;fct&gt;       \n1        12 high        \n2         8 low         \n3        11 high        \n4        14 moderate    \n5        15 low         \n\n\n\nmod_ordinal &lt;- MASS::polr(default_risk ~ yr_employ, data = data_ord)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#interpreting-an-ordinal-logistic-model",
+    "href": "lectures/11-lecture-slides.html#interpreting-an-ordinal-logistic-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Interpreting an Ordinal Logistic Model",
+    "text": "Interpreting an Ordinal Logistic Model\nThe coefficient tells you how the odds of moving up in a category change for a unit increase in your predictors. A negative value means that higher values on the predictor are associated with lower odds of being in a higher category.\n\nsummary(mod_ordinal)\n\nCall:\nMASS::polr(formula = default_risk ~ yr_employ, data = data_ord)\n\nCoefficients:\n            Value Std. Error t value\nyr_employ -0.1933   0.006338   -30.5\n\nIntercepts:\n              Value    Std. Error t value \nlow|moderate   -3.5709   0.1032   -34.5992\nmoderate|high  -1.7790   0.0927   -19.1852\n\nResidual Deviance: 9844.334 \nAIC: 9850.334"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#plotting-the-results-of-an-ordinal-regression-model",
+    "href": "lectures/11-lecture-slides.html#plotting-the-results-of-an-ordinal-regression-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Plotting the Results of an Ordinal Regression Model",
+    "text": "Plotting the Results of an Ordinal Regression Model"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#multilevel-models",
+    "href": "lectures/11-lecture-slides.html#multilevel-models",
+    "title": "A Mixed Bag of Models",
+    "section": "Multilevel Models",
+    "text": "Multilevel Models\nMultilevel models allow you to model data that are nested in higher units like employees nested within an organization.\nWhen units are nested in higher-level clusters, your data will likely violate the independence of error assumption–units within the same cluster will be more related to one another than units in a different cluster."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#testing-effects-at-different-levels",
+    "href": "lectures/11-lecture-slides.html#testing-effects-at-different-levels",
+    "title": "A Mixed Bag of Models",
+    "section": "Testing Effects at Different Levels",
+    "text": "Testing Effects at Different Levels\nMultilevel models also allow you to test effects at the unit (level 1) level or the cluster level (level 2):\n\nImpact of employee engagement on individual sales (level 1) and the impact of office location on individual sales (level 2)\nImpact of parental education on a student’s achievement (level 1) and the impact of teacher quality on students’ achievement (level 2)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#estimating-a-multilevel-model",
+    "href": "lectures/11-lecture-slides.html#estimating-a-multilevel-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Estimating a Multilevel Model",
+    "text": "Estimating a Multilevel Model\n\n\n# A tibble: 10 × 4\n   ind_perf ind_sat cohesion  team\n      &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;\n 1    3.23   1.01     -1.02      1\n 2    2.29  -0.809    -1.02      1\n 3    1.99  -0.387    -1.02      1\n 4    4.14   1.36     -1.02      1\n 5    0.213  0.0215   -1.02      1\n 6    3.29  -0.558     0.484     2\n 7    4.43   1.03      0.484     2\n 8    4.01  -0.394     0.484     2\n 9    5.04   0.202     0.484     2\n10    5.07   1.34      0.484     2\n\n\n\nmod_mlm &lt;- lme4::lmer(ind_perf ~ ind_sat + cohesion + (1|team), data = data_mlm)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#interpreting-a-multilevel-model",
+    "href": "lectures/11-lecture-slides.html#interpreting-a-multilevel-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Interpreting a Multilevel Model",
+    "text": "Interpreting a Multilevel Model\n\nsummary(mod_mlm)\n\nLinear mixed model fit by REML ['lmerMod']\nFormula: ind_perf ~ ind_sat + cohesion + (1 | team)\n   Data: data_mlm\n\nREML criterion at convergence: 15033.5\n\nScaled residuals: \n    Min      1Q  Median      3Q     Max \n-3.4760 -0.6363 -0.0007  0.6450  3.6050 \n\nRandom effects:\n Groups   Name        Variance Std.Dev.\n team     (Intercept) 0.2271   0.4766  \n Residual             1.0158   1.0079  \nNumber of obs: 5000, groups:  team, 1000\n\nFixed effects:\n            Estimate Std. Error t value\n(Intercept)  3.00383    0.02075  144.80\nind_sat      0.80263    0.01512   53.08\ncohesion     1.01902    0.02044   49.85\n\nCorrelation of Fixed Effects:\n         (Intr) ind_st\nind_sat  0.002        \ncohesion 0.015  0.004"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#time-series-models",
+    "href": "lectures/11-lecture-slides.html#time-series-models",
+    "title": "A Mixed Bag of Models",
+    "section": "Time Series Models",
+    "text": "Time Series Models\nTime series models are statistical models that have been developed specifically to analyze data that follow a time ordering:\n\nFinancial data (Daily/Monthly changes in stock prices)\nPersonalized medicine (Changes in an individuals blood pressure over time)\nPolitical data (Changes in congressional approval through time)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#what-is-power",
+    "href": "lectures/11-lecture-slides.html#what-is-power",
+    "title": "A Mixed Bag of Models",
+    "section": "What is Power?",
+    "text": "What is Power?\nThe power of a statistical test is the probability of obtaining a significant result given that the effect actually exists.\nTypically, you want the power of your test to be 80% or higher."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#power-type-2-errors",
+    "href": "lectures/11-lecture-slides.html#power-type-2-errors",
+    "title": "A Mixed-Bag of Models",
+    "section": "Power & Type 2 Errors",
+    "text": "Power & Type 2 Errors\n\nDemonstration of pipe table syntax\n\n\n\n\\(H_0\\) is True\n\\(H_0\\) is True\n\n\n\n\nTest Rejects \\(H_0\\)\n\\(\\alpha\\)\n1 - \\(\\beta\\)\n\n\nTest Doesn’t Reject \\(H_0\\)\n1 - \\(alpha\\)\n\\(\\beta\\)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#decisions-power-type-2-error-and-type-1-error",
+    "href": "lectures/11-lecture-slides.html#decisions-power-type-2-error-and-type-1-error",
+    "title": "A Mixed Bag of Models",
+    "section": "Decisions: Power, Type 2 Error, and Type 1 Error",
+    "text": "Decisions: Power, Type 2 Error, and Type 1 Error\n\n\n\n\n\\(H_0\\) is True\n\\(H_0\\) is True\n\n\n\n\nTest Rejects \\(H_0\\)\n\\(\\alpha\\)\n1 - \\(\\beta\\)\n\n\nTest Doesn’t Reject \\(H_0\\)\n1 - \\(\\alpha\\)\n\\(\\beta\\)\n\n\n\n\n\nPower is represented as 1 - \\(\\beta\\)\nType 1 error is represented as \\(\\alpha\\)\nType 2 error is represented as \\(\\beta\\)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#factors-affecting-the-power-of-any-statistical-test",
+    "href": "lectures/11-lecture-slides.html#factors-affecting-the-power-of-any-statistical-test",
+    "title": "A Mixed Bag of Models",
+    "section": "Factors Affecting the Power of Any Statistical Test",
+    "text": "Factors Affecting the Power of Any Statistical Test\nThere are several things that impact the power of all statistical tests:\n\nN: Sample size\nEffect Size: Size of the effect of interest\n\\(\\alpha\\)-level: The significance cut-off (e.g. .05)"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#factors-affecting-the-power-of-regression-slope-test",
+    "href": "lectures/11-lecture-slides.html#factors-affecting-the-power-of-regression-slope-test",
+    "title": "A Mixed Bag of Models",
+    "section": "Factors Affecting the Power of Regression Slope Test",
+    "text": "Factors Affecting the Power of Regression Slope Test\nWe can use the formula of a statistical test and the SE of a regression slope to see the factors that directly impact the power of a regression slope test:\n\\[\\text{Statistical Test} = \\frac{\\beta}{SE_{\\beta}}\\]\n\\[SE_{\\beta_j}=\\sqrt{\\frac{\\sigma^2_e}{N\\times Var(X_j) \\times Tol(X_j)}}\\]"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#what-is-a-power-analysis",
+    "href": "lectures/11-lecture-slides.html#what-is-a-power-analysis",
+    "title": "A Mixed Bag of Models",
+    "section": "What is a Power Analysis?",
+    "text": "What is a Power Analysis?\nA power analysis is an analysis undertaken before you begin your study that helps you determine the minimum sample size you need to achieve a certain amount of power–typically 80%.\nAs we will see, a power analysis is full of a fair amount of educated guessing…"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#information-needed-to-conduct-a-power-analysis",
+    "href": "lectures/11-lecture-slides.html#information-needed-to-conduct-a-power-analysis",
+    "title": "A Mixed Bag of Models",
+    "section": "Information Needed to Conduct a Power Analysis",
+    "text": "Information Needed to Conduct a Power Analysis\nTo conduct a power analysis you generally need the following pieces of information:\n\nThe size of the effect of interest (e.g. \\(R^2\\) or \\(\\beta\\))\nThe significance level being used (e.g. \\(\\alpha = .05\\))\nDesired level of power\n\nFor multiple regression, you will also need to know the number of predictors being used in the model."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#multiple-regression-power-analysis",
+    "href": "lectures/11-lecture-slides.html#multiple-regression-power-analysis",
+    "title": "A Mixed Bag of Models",
+    "section": "Multiple Regression Power Analysis",
+    "text": "Multiple Regression Power Analysis\nThere are a few ways to conduct a power analysis for a multiple regression model. You can decide to look at the power to the individual regression coefficients significant or the power to find the \\(R^2\\) significant.\nYou will likely need to write a simulation script to determine the sample size needed to find an individual regression coefficient significant, but we can use a package called pwr to determine the sample size needed to find the overall \\(R^2\\) significant."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#example-of-power-analysis-using-pwr",
+    "href": "lectures/11-lecture-slides.html#example-of-power-analysis-using-pwr",
+    "title": "A Mixed Bag of Models",
+    "section": "Example of Power Analysis Using pwr",
+    "text": "Example of Power Analysis Using pwr\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)\n\n\n\nf2 = \\(\\frac{R^2}{1 - R^2}\\) (Effect Size)\nu = The number of predictors\nv = N - u - 1\nN = v + u + 1"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#example-of-power-analysis-using-pwr-1",
+    "href": "lectures/11-lecture-slides.html#example-of-power-analysis-using-pwr-1",
+    "title": "A Mixed-Bag of Models",
+    "section": "Example of Power Analysis Using pwr",
+    "text": "Example of Power Analysis Using pwr\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 31.57285\n             f2 = 0.4285714\n      sig.level = 0.05\n          power = 0.8\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .10, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 24.86152\n             f2 = 0.4285714\n      sig.level = 0.1\n          power = 0.8\n\npwr::pwr.f2.test(u = 6, f2 = .5 / (1 - .5), sig.level = .05, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 13.86892\n             f2 = 1\n      sig.level = 0.05\n          power = 0.8"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#changing-the-significance-level",
+    "href": "lectures/11-lecture-slides.html#changing-the-significance-level",
+    "title": "A Mixed Bag of Models",
+    "section": "Changing the Significance Level",
+    "text": "Changing the Significance Level\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 31.57285\n             f2 = 0.4285714\n      sig.level = 0.05\n          power = 0.8\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .10, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 24.86152\n             f2 = 0.4285714\n      sig.level = 0.1\n          power = 0.8"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#changing-the-effect-size",
+    "href": "lectures/11-lecture-slides.html#changing-the-effect-size",
+    "title": "A Mixed Bag of Models",
+    "section": "Changing the Effect Size",
+    "text": "Changing the Effect Size\n\npwr::pwr.f2.test(u = 6, f2 = .3 / (1 - .3), sig.level = .05, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 31.57285\n             f2 = 0.4285714\n      sig.level = 0.05\n          power = 0.8\n\npwr::pwr.f2.test(u = 6, f2 = .5 / (1 - .5), sig.level = .05, power = .80)\n\n\n     Multiple regression power calculation \n\n              u = 6\n              v = 13.86892\n             f2 = 1\n      sig.level = 0.05\n          power = 0.8"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#what-is-measurement-error",
+    "href": "lectures/11-lecture-slides.html#what-is-measurement-error",
+    "title": "A Mixed Bag of Models",
+    "section": "What is Measurement Error?",
+    "text": "What is Measurement Error?\nMeasurement error is the random noise that affects all of our measurements:\n\nMental measurements (intelligence, personality, etc.)\nHealth measurements (weight, blood pressure, etc.)\nEconomic measurements"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#observed-score-true-score-measurement-error-variance",
+    "href": "lectures/11-lecture-slides.html#observed-score-true-score-measurement-error-variance",
+    "title": "A Mixed Bag of Models",
+    "section": "Observed Score, True Score, & Measurement Error Variance",
+    "text": "Observed Score, True Score, & Measurement Error Variance\nMeasurement theory defines your observed score (X) as your true score (T) plus random measurement error (E):\n\\[X_{Obs} = T + E\\]\n\\[Var(X_{obs}) = \\sigma^2_{T} + \\sigma^2_{E}\\]"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#what-is-the-typical-effect-of-measurement-error",
+    "href": "lectures/11-lecture-slides.html#what-is-the-typical-effect-of-measurement-error",
+    "title": "A Mixed Bag of Models",
+    "section": "What is the Typical Effect of Measurement Error?",
+    "text": "What is the Typical Effect of Measurement Error?\nMeasurement error in either the outcome or predictor will weaken the power of your statistical tests.\nMeasurement error in the predictor will bias most of your statistical estimates such that the estimate you obtain will be even further than the parameters it is estimating."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#how-do-we-quantify-measurement-error",
+    "href": "lectures/11-lecture-slides.html#how-do-we-quantify-measurement-error",
+    "title": "A Mixed Bag of Models",
+    "section": "How Do We Quantify Measurement Error?",
+    "text": "How Do We Quantify Measurement Error?\nTo quantify measurement error, we calculate a ratio of true score variance to observed score variance, which is referred to as the measurement’s reliability:\n\\[r_{xx}=\\frac{\\sigma^2_T}{\\sigma^2_{Obs.}}\\]"
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#how-do-we-estimate-reliability",
+    "href": "lectures/11-lecture-slides.html#how-do-we-estimate-reliability",
+    "title": "A Mixed Bag of Models",
+    "section": "How Do We Estimate Reliability?",
+    "text": "How Do We Estimate Reliability?\nThere are many different ways to estimate the reliability of a measure, but in the social sciences the most common way is through a coefficient called Coefficient Alpha.\nAll you need to know right now is that survey measurements should have Coefficient Alpha values equal to or greater than .80."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#measurement-error-and-simple-regression",
+    "href": "lectures/11-lecture-slides.html#measurement-error-and-simple-regression",
+    "title": "A Mixed Bag of Models",
+    "section": "Measurement Error and Simple Regression",
+    "text": "Measurement Error and Simple Regression\nMeasurement error in the predictor will bias the estimate of the regression slope by a factor equal to the reliability of the predictor, \\(r_{xx}\\):\n\\[b = \\beta\\times r_{xx}\\]\nThis will also serve to weaken the power of the statistical test as any measurement error shrinks the regression slope."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#measurement-error-and-multiple-regression",
+    "href": "lectures/11-lecture-slides.html#measurement-error-and-multiple-regression",
+    "title": "A Mixed Bag of Models",
+    "section": "Measurement Error and Multiple Regression",
+    "text": "Measurement Error and Multiple Regression\nThe effects of measurement error on multiple regression are very similar to its effects in simple regression, but predicting the exact effects are harder if the predictors are correlated with one another."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#can-we-correct-for-measurement-error",
+    "href": "lectures/11-lecture-slides.html#can-we-correct-for-measurement-error",
+    "title": "A Mixed Bag of Models",
+    "section": "Can We Correct for Measurement Error?",
+    "text": "Can We Correct for Measurement Error?\nIf we know the amount of measurement error (reliability) in our measures, then we can use some corrections to adjust our statistical estimates (e.g. \\(\\frac{b}{r_{xx}}=\\beta\\)).\nHowever, the best way to adjust for measurement error is to use a more complex family of statistical models called latent variable models. Latent variable models explicitly model and correct for measurement error."
+  },
+  {
+    "objectID": "lectures/11-lecture-page.html",
+    "href": "lectures/11-lecture-page.html",
+    "title": "Quantitative Analysis 1",
+    "section": "",
+    "text": "Next Week’s Materials »"
+  },
+  {
+    "objectID": "lectures/11-lecture-page.html#lecture-a-mixed-bag-of-models",
+    "href": "lectures/11-lecture-page.html#lecture-a-mixed-bag-of-models",
+    "title": "Quantitative Analysis 1",
+    "section": "Lecture: A Mixed Bag of Models",
+    "text": "Lecture: A Mixed Bag of Models\n\n\nTo download a pdf version of these slides, click here."
+  },
+  {
+    "objectID": "lectures/11-lecture-slides.html#autoregressive-time-series-model",
+    "href": "lectures/11-lecture-slides.html#autoregressive-time-series-model",
+    "title": "A Mixed Bag of Models",
+    "section": "Autoregressive Time Series Model",
+    "text": "Autoregressive Time Series Model\nA standard time series model is the AR model, where the outcome variable at Time T is predicted by its value at Time T-1:\n\\[Y_{t}=\\beta_{1}Y_{t-1} + \\epsilon_t\\]"
   }
 ]

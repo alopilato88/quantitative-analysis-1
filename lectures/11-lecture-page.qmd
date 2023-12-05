@@ -1,0 +1,19 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+
+<div class = "prev-next-container">
+<a class="prev-next" href="12-lecture-page.html">Next Week's Materials &raquo;</a>
+</div>
+
+## Lecture: A Mixed Bag of Models
+
+<iframe src="11-lecture-slides.html" name="11-lecture-slides"></iframe>
+
+To download a pdf version of these slides, click <a href="11-lecture-slides.pdf" download target="_blank" rel="noopener noreferrer"><strong>here</strong></a>.
+
+
+
+
