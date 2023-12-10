@@ -6626,98 +6626,98 @@
     "href": "assignments/04-assignment-answers.html#question-1",
     "title": "Assignment 4",
     "section": "Question 1",
-    "text": "Question 1\nQ1: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict perceived_freq_use. Intrepret the model results.\n\nmod_1 &lt;- lm(perceived_freq_use ~ behavioral_intention + positive_attitude_ai, data = data_ai)"
+    "text": "Question 1\nQ1: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict perceived_freq_use. Interpret the model results.\n\nmod_1 &lt;- lm(perceived_freq_use ~ behavioral_intention + positive_attitude_ai, data = data_ai)\nsummary(mod_1)\n\n\nCall:\nlm(formula = perceived_freq_use ~ behavioral_intention + positive_attitude_ai, \n    data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.7031 -0.6489  0.2524  0.7737  3.1731 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           2.50679    0.20855   12.02   &lt;2e-16 ***\nbehavioral_intention  0.45550    0.03011   15.13   &lt;2e-16 ***\npositive_attitude_ai -0.02707    0.03425   -0.79     0.43    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.052 on 497 degrees of freedom\nMultiple R-squared:  0.3163,    Adjusted R-squared:  0.3135 \nF-statistic: 114.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n\nFrom the model results, we can see that behavioral_intention is significantly and positively related to perceived_freq_use and that positive_attitude_ai is not significantly related to perceived_freq_use. We can use the p-values associated with each regression coefficient to determine if a predictor variable is significantly related to an outcome variable. When the p-value is less than or equal to .05, we can assert that the linear relationship between the predictor and the outcome (captured by the estimated regression slope) is significantly different than zero.\nFocusing on behavioral_intention, our model tells us that for every unit increase in behavioral_intention, we should expected perceived_freq_use to increase by .45 units while controlling for positive_attitude_ai.\nOverall, our predictors explain ~31% of the variance in perceived_freq_use, which is quite large in this literature."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-2",
     "href": "assignments/04-assignment-answers.html#question-2",
     "title": "Assignment 4",
     "section": "Question 2",
-    "text": "Question 2\nQ2: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 1. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value."
+    "text": "Question 2\nQ2: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 1. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value.\n\nhat_mod_1 &lt;- hatvalues(mod_1)\nresid_mod_1 &lt;- rstudent(mod_1)\nmax(hat_mod_1)\n\n[1] 0.02062439\n\nmax(resid_mod_1)\n\n[1] 3.060017\n\n\nThe largest studentized residual is 3.0600168 and the largest hat-value is 0.0206244.\n\ndata &lt;- \n  tibble::tibble(\n    hat_value = hat_mod_1,\n    resid = resid_mod_1,\n    x = 1:length(hat_mod_1)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = hat_value\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Hat-value\",\n    title = \"Model Hat-Values\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Studentized Residuals\",\n    title = \"Model Studentized Residuals\"\n  )"
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-3",
     "href": "assignments/04-assignment-answers.html#question-3",
     "title": "Assignment 4",
     "section": "Question 3",
-    "text": "Question 3\nQ3: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influentional observations?"
+    "text": "Question 3\nQ3: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influential observations?\n\ncook_mod_1 &lt;- cooks.distance(mod_1)\n\ndata &lt;- \n  data |&gt;\n  dplyr::mutate(\n    cooks_dist = cook_mod_1\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = cooks_dist\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Cooks Distance\",\n    title = \"Model Leverage\"\n  )\n\n\n\n\nThe most influential point as measured by Cook’s distance is observation number 302 with a Cook’s distance of 0.0511843."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-4",
     "href": "assignments/04-assignment-answers.html#question-4",
     "title": "Assignment 4",
     "section": "Question 4",
-    "text": "Question 4\nQ4: Use the predict function to calculate the predicted values from the model you estimated in Quesiton 1, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 2. Do you see a pattern or does the plot look more like a random cloud of points?"
+    "text": "Question 4\nQ4: Use the predict function to calculate the predicted values from the model you estimated in Question 1, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 2. Do you see a pattern or does the plot look more like a random cloud of points?\n\ndata &lt;- \n  data |&gt; \n  dplyr::mutate(\n    pred_value = predict(mod_1)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = pred_value,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Predicted Value\",\n    y = \"Studentized Residual\",\n    title = \"Plot of Predicted Values vs Model Residuals\"\n  )\n\n\n\n\nThere appears to be somewhat of a negative relationship between our model predicted values and residuals. As the predicted values increase, the model residuals decrease, on average. This could mean that we are missing an important predictor that is both related to our outcome variable and one or more of our predictor variables."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-5",
     "href": "assignments/04-assignment-answers.html#question-5",
     "title": "Assignment 4",
     "section": "Question 5",
-    "text": "Question 5\nQ5: Plot a histogram of the residuals from the model you estimated in Question 1. Do the residuals look normally distributed?\n\nresid_mod_1 &lt;- rstudent(mod_1)\nggplot2::ggplot(\n  data = tibble::tibble(x = resid_mod_1),\n  ggplot2::aes(\n    x = x\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 25\n  )"
+    "text": "Question 5\nQ5: Plot a histogram of the residuals from the model you estimated in Question 1. Do the residuals look normally distributed?\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 25\n  ) + \n  ggplot2::theme_minimal()\n\n\n\n\nThe residual histogram shows that the distribution of the residuals is approximately symmetric and centered around a mean of 0. Although not perfectly normal, the residual distribution may be close enough to normal."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-6",
     "href": "assignments/04-assignment-answers.html#question-6",
     "title": "Assignment 4",
     "section": "Question 6",
-    "text": "Question 6\nQ6: Use histograms to explore the distributions of actual_usage and sales_last_month. What do you notice about the distributions of these variables?"
+    "text": "Question 6\nQ6: Use histograms to explore the distributions of actual_usage and sales_last_month. What do you notice about the distributions of these variables?\n\nggplot2::ggplot(\n  data = data_ai,\n  ggplot2::aes(\n    x = actual_usage\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 25\n  ) + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Actual Usage\",\n    title = \"Distribution of the Number of Times Employees Used the AI Tool\",\n    y = \"Count\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data_ai,\n  ggplot2::aes(\n    x = sales_last_month\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 100\n  ) + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Sales Last Month\",\n    title = \"Distribution of Sales Last Month\",\n    y = \"Count\"\n  )\n\n\n\n\nBoth of these distributions seem to suffer from a strong positive skew further we are likely to see some extreme values (values very far away from the mean) in both of these distributions. This may indicate that linear regression will not work very well with either of these variables as outcomes."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-7",
     "href": "assignments/04-assignment-answers.html#question-7",
     "title": "Assignment 4",
     "section": "Question 7",
-    "text": "Question 7\nQ7: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict actual_usage. Intrepret the model results.\n\nmod_2 &lt;- lm(actual_usage ~ behavioral_intention + positive_attitude_ai, data = data_ai)"
+    "text": "Question 7\nQ7: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict actual_usage. Interpret the model results.\n\nmod_2 &lt;- lm(actual_usage ~ behavioral_intention + positive_attitude_ai, data = data_ai)\nsummary(mod_2)\n\n\nCall:\nlm(formula = actual_usage ~ behavioral_intention + positive_attitude_ai, \n    data = data_ai)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-16.009  -6.099  -1.368   3.089 101.542 \n\nCoefficients:\n                     Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          -11.7321     2.1547  -5.445 8.16e-08 ***\nbehavioral_intention   4.6365     0.3111  14.902  &lt; 2e-16 ***\npositive_attitude_ai   0.1836     0.3538   0.519    0.604    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 10.86 on 497 degrees of freedom\nMultiple R-squared:  0.3089,    Adjusted R-squared:  0.3061 \nF-statistic: 111.1 on 2 and 497 DF,  p-value: &lt; 2.2e-16\n\n\nFrom the model results, we can see that only behavioral_intention is significantly related to actual_usage with a p-value less than .001, but positive_attitude_ai is not significantly related to actual_usage. Specifically, for every unit increase in behavioral_intention, we expect to see actual_usage increase by 4.64 units while controlling for positive_attitude_ai.\nThe model R2 is .31, which indicates that our predictors explain 31% of variance in our outcome, actual_usage."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-8",
     "href": "assignments/04-assignment-answers.html#question-8",
     "title": "Assignment 4",
     "section": "Question 8",
-    "text": "Question 8\nQ8: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 7. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value."
+    "text": "Question 8\nQ8: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 7. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value.\n\nhat_mod_2 &lt;- hatvalues(mod_2)\nresid_mod_2 &lt;- rstudent(mod_2)\nmax(hat_mod_2)\n\n[1] 0.02062439\n\nmax(resid_mod_2)\n\n[1] 10.33554\n\n\nThe largest studentized residual is 10.3355361 and the largest hat-value is 0.0206244.\n\ndata &lt;- \n  tibble::tibble(\n    hat_value = hat_mod_2,\n    resid = resid_mod_2,\n    x = 1:length(hat_mod_2)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = hat_value\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Hat-value\",\n    title = \"Model Hat-Values\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Studentized Residuals\",\n    title = \"Model Studentized Residuals\"\n  )"
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-9",
     "href": "assignments/04-assignment-answers.html#question-9",
     "title": "Assignment 4",
     "section": "Question 9",
-    "text": "Question 9\nQ8: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influentional observations?"
+    "text": "Question 9\nQ8: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influential observations?\n\ncook_mod_2 &lt;- cooks.distance(mod_2)\n\ndata &lt;- \n  data |&gt;\n  dplyr::mutate(\n    cooks_dist = cook_mod_2\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = cooks_dist\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Observation Number\",\n    y = \"Cooks Distance\",\n    title = \"Model Leverage\"\n  )\n\n\n\n\nThe most influential point as measured by Cook’s distance is observation number 413 with a Cook’s distance of 0.2409545."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-10",
     "href": "assignments/04-assignment-answers.html#question-10",
     "title": "Assignment 4",
     "section": "Question 10",
-    "text": "Question 10\nQ10: Use the predict function to calculate the predicted values from the model you estimated in Quesiton 7, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 8. Do you see a pattern or does the plot look more like a random cloud of points?\n\ndata &lt;- \n  tibble::tibble(\n    x = predict(mod_2),\n    y = rstudent(mod_2)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = x,\n    y = y\n  )\n) + \n  ggplot2::geom_point()"
+    "text": "Question 10\nQ10: Use the predict function to calculate the predicted values from the model you estimated in Question 7, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 8. Do you see a pattern or does the plot look more like a random cloud of points?\n\ndata &lt;- \n  data |&gt; \n  dplyr::mutate(\n    pred_value = predict(mod_2)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = pred_value,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Predicted Value\",\n    y = \"Studentized Residual\",\n    title = \"Plot of Predicted Values vs Model Residuals\"\n  )\n\n\n\n\nThere appears to be somewhat of a negative relationship between our model predicted values and residuals although it is weaker than the previous plot we looked at. Similarly, this could mean that we are missing an important predictor that is both related to our outcome variable and one or more of our predictor variables."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-11",
     "href": "assignments/04-assignment-answers.html#question-11",
     "title": "Assignment 4",
     "section": "Question 11",
-    "text": "Question 11\nQ11: Plot a histogram of the residuals from the model you estimated in Question 7. Do the residuals look normally distributed?\n\nresid_mod_2 &lt;- rstudent(mod_2)\nggplot2::ggplot(\n  data = tibble::tibble(x = resid_mod_2),\n  ggplot2::aes(\n    x = x\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 45\n  )"
+    "text": "Question 11\nQ11: Plot a histogram of the residuals from the model you estimated in Question 7. Do the residuals look normally distributed?\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) + \n  ggplot2::geom_histogram(\n    bins = 25\n  ) + \n  ggplot2::theme_minimal()\n\n\n\n\nAlthough somewhat symmetric, the distribution of the residuals is showing a slight negative skew with larger negative values (-3 and greater) than we would expect if the residuals were normally distributed."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-12",
     "href": "assignments/04-assignment-answers.html#question-12",
     "title": "Assignment 4",
     "section": "Question 12",
-    "text": "Question 12\nQ12: Estimate the the indirect effect that perceived_useful has on actual_usage through behavioral_intention."
+    "text": "Question 12\nQ12: Estimate the the indirect effect that perceived_useful has on actual_usage through behavioral_intention.\n\nmod_ie &lt;- lm(behavioral_intention ~ perceived_useful, data = data_ai)\nmod_de &lt;- lm(actual_usage ~ behavioral_intention + perceived_useful, data = data_ai)\n\nie &lt;- coef(mod_ie)[\"perceived_useful\"] * coef(mod_de)[\"behavioral_intention\"]\nround(ie, 3)\n\nperceived_useful \n           1.575 \n\n\nThe indirect effect perceived_useful has on actual_usage through behavioral_intention is 1.575."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-13",
     "href": "assignments/04-assignment-answers.html#question-13",
     "title": "Assignment 4",
     "section": "Question 13",
-    "text": "Question 13\nQ13: Estimate a regression model that uses engagement, perceived_freq_use, actual_usage, skill_level, and office_region to predict sales_last_month. Interpret the model results\n\nmod_3 &lt;- lm(sales_last_month ~ engagement + perceived_freq_use + actual_usage + skill_level + \n              office_region, data = data_ai)"
+    "text": "Question 13\nQ13: Estimate a regression model that uses engagement, perceived_freq_use, actual_usage, skill_level, and office_region to predict sales_last_month. Interpret the model results\n\nmod_3 &lt;- lm(sales_last_month ~ engagement + perceived_freq_use + actual_usage + skill_level + \n              office_region, data = data_ai)\n\nFrom our model results, we can see that perceived_freq_use, actual_usage, and skill_level are all significantly related to sales_last_month.\nFocusing on perceived_freq_use, we see that for every unit increase in perceived_freq_use sales_last_month decreases by ~158 dollars. For actual_usage, we see that for every unit increase in actual_usage sales_last_month increases by ~78 dollars. For skill_level, we see that the average sales of employees with low levels of skills is ~577 dollars lower compared to employees with a high level of skills. Similarly, the average sales of employees with a moderate level of skills is ~642 dollars lower than the average sales of employees with a high level of skills.\nOverall, our model is able to explain 23% of the variance in sales (R2 = .23)."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-14",
     "href": "assignments/04-assignment-answers.html#question-14",
     "title": "Assignment 4",
     "section": "Question 14",
-    "text": "Question 14\nQ14: Use plots of residuals from the model you estimated in Question 13 to determine if any of the linear regression assumptions are violated.\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_3),\n    resid = rstudent(mod_3)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point()\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40)"
+    "text": "Question 14\nQ14: Use plots of residuals from the model you estimated in Question 13 to determine if any of the linear regression assumptions are violated.\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_3),\n    resid = rstudent(mod_3)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() +\n  ggplot2::labs(\n    x = \"Predicted Value\",\n    y = \"Studentized Residuals\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40) + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Studentized Residual\",\n    y = \"Count\"\n  )\n\n\n\n\nFrom both plots, we can clearly see that our data violates the assumption that residuals are normally distributed. The model residuals have a distribution with a severe positive skew and likely very heavy tails, which tells us that there are more extreme observations in our data than we would see with a normal distribution."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-15",
@@ -6731,28 +6731,28 @@
     "href": "assignments/04-assignment-answers.html#question-16",
     "title": "Assignment 4",
     "section": "Question 16",
-    "text": "Question 16\nQ16: Use plots of residuals from the model you estimated in Question 15 to determine if any of the linear regression assumptions are violated.\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_4),\n    resid = rstudent(mod_4)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point()\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40)"
+    "text": "Question 16\nQ16: Use plots of residuals from the model you estimated in Question 15 to determine if any of the linear regression assumptions are violated.\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_4),\n    resid = rstudent(mod_4)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Predicted Value\",\n    y = \"Studentized Residual\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40) + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Studentized Residuals\",\n    y = \"Count\"\n  )\n\n\n\n\nFrom our plot of predicted values vs residuals, we see that there is still some pattern in our data that is not being accounted for by the predictors. Specifically, the data seem to display non-constant error variance where we are better able to predict smaller values of log_sales_last_month than larger values.\nFrom our histogram our model residuals, we see that the residuals look normally distributed now especially compared to our residuals before we transformed the outcome variable."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-17",
     "href": "assignments/04-assignment-answers.html#question-17",
     "title": "Assignment 4",
     "section": "Question 17",
-    "text": "Question 17\nQ17: From your residual plots, it should appear that there are some observations that still are not explained well by the regression model. Try adding in some new interaction terms:\n\nengagement * skill_level\nactual_usage * skill_level\nperceived_freq_use * skill_level\n\nRemove the interaction if not all the component terms (e.g. perceived_freq_use:skill_level_low & perceived_freq_use:skill_level_moderate) are not significant. This will be your final model.\nOnce you have estimated your final model, plot the residuals and decide if your residuals indicate that your final model fits better than your previous models. Why or why not?\n\ndata_ai &lt;- \n  data_ai |&gt; \n  dplyr::mutate(\n    log_sales_last_month = log(sales_last_month)\n  )\n\nmod_5 &lt;- lm(log_sales_last_month ~ (engagement + perceived_freq_use + actual_usage) * skill_level + \n              office_region, data = data_ai)\n\nmod_6 &lt;- lm(log_sales_last_month ~ engagement + perceived_freq_use + actual_usage * skill_level + \n              office_region, data = data_ai)\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_6),\n    resid = rstudent(mod_6)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point()\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40)"
+    "text": "Question 17\nQ17: From your residual plots, it should appear that there are some observations that still are not explained well by the regression model. Try adding in some new interaction terms:\n\nengagement * skill_level\nactual_usage * skill_level\nperceived_freq_use * skill_level\n\nRemove the interaction if not all the component terms (e.g. perceived_freq_use:skill_level_low & perceived_freq_use:skill_level_moderate) are not significant. This will be your final model.\nOnce you have estimated your final model, plot the residuals and decide if your residuals indicate that your final model fits better than your previous models. Why or why not?\n\ndata_ai &lt;- \n  data_ai |&gt; \n  dplyr::mutate(\n    log_sales_last_month = log(sales_last_month)\n  )\n\nmod_5 &lt;- lm(log_sales_last_month ~ (engagement + perceived_freq_use + actual_usage) * skill_level + \n              office_region, data = data_ai)\n\nmod_6 &lt;- lm(log_sales_last_month ~ engagement + perceived_freq_use + actual_usage * skill_level + \n              office_region, data = data_ai)\n\ndata &lt;- \n  tibble::tibble(\n    predict = predict(mod_6),\n    resid = rstudent(mod_6)\n  )\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = predict,\n    y = resid\n  )\n) + \n  ggplot2::geom_point() + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Predicted Value\",\n    y = \"Studentized Residual\"\n  )\n\n\n\nggplot2::ggplot(\n  data = data,\n  ggplot2::aes(\n    x = resid\n  )\n) +\n  ggplot2::geom_histogram(bins = 40) + \n  ggplot2::theme_minimal() + \n  ggplot2::labs(\n    x = \"Studentized Residuals\",\n    y = \"Count\"\n  )\n\n\n\n\nOverall, the plots do not show a lot of improvement as the predicted values vs the studentized residuals still show signs of non-constant error variance, but we will keep the significant interactions to improve the overall fit of our model."
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-18",
     "href": "assignments/04-assignment-answers.html#question-18",
     "title": "Assignment 4",
     "section": "Question 18",
-    "text": "Question 18\nQ18: Calculate the effects of actual_usage when skill_level is low, moderate, and high."
+    "text": "Question 18\nQ18: Calculate the effects of actual_usage when skill_level is low, moderate, and high.\n\n# Actual Usage when Skill Level is Low\ncoef(mod_6)[\"actual_usage\"] + coef(mod_6)[\"actual_usage:skill_levellow\"]\n\nactual_usage \n  0.02082389 \n\n# Actual Usage when Skill Level is Moderate \ncoef(mod_6)[\"actual_usage\"] + coef(mod_6)[\"actual_usage:skill_levelmoderate\"]\n\nactual_usage \n  0.03207207 \n\n# Actual Usage when Skill Level is High\ncoef(mod_6)[\"actual_usage\"]\n\nactual_usage \n  0.05892917"
   },
   {
     "objectID": "assignments/04-assignment-answers.html#question-19",
     "href": "assignments/04-assignment-answers.html#question-19",
     "title": "Assignment 4",
     "section": "Question 19",
-    "text": "Question 19\nQ19: Write up the results of your final model. You will want to talk about what varibles significantly predict log_sales_last_month, what variables interact with skill_level and how that alters their effects, and the overall fit of the model."
+    "text": "Question 19\nQ19: Write up the results of your final model. You will want to talk about what variables significantly predict log_sales_last_month, what variables interact with skill_level and how that alters their effects, and the overall fit of the model.\n\nsummary(mod_6)\n\n\nCall:\nlm(formula = log_sales_last_month ~ engagement + perceived_freq_use + \n    actual_usage * skill_level + office_region, data = data_ai)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.11082 -0.48315  0.00927  0.45839  1.87846 \n\nCoefficients:\n                                  Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)                       4.785576   0.184935  25.877  &lt; 2e-16 ***\nengagement                        0.042602   0.018894   2.255   0.0246 *  \nperceived_freq_use               -0.001479   0.025098  -0.059   0.9530    \nactual_usage                      0.058929   0.005658  10.415  &lt; 2e-16 ***\nskill_levellow                    0.212025   0.112524   1.884   0.0601 .  \nskill_levelmoderate               0.172906   0.098297   1.759   0.0792 .  \noffice_regioneurope               0.029988   0.123043   0.244   0.8076    \noffice_regionnorth america       -0.017852   0.107227  -0.166   0.8678    \nactual_usage:skill_levellow      -0.038105   0.007404  -5.146 3.85e-07 ***\nactual_usage:skill_levelmoderate -0.026857   0.006265  -4.287 2.19e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.6502 on 490 degrees of freedom\nMultiple R-squared:  0.3564,    Adjusted R-squared:  0.3446 \nF-statistic: 30.15 on 9 and 490 DF,  p-value: &lt; 2.2e-16\n\n\nOverall, after we transform sales_last_month to log_sales_last_month, we see that engagement and actual_usage x skill_level are all significant predictors.\nFocusing on engagement, we see that for every unit increase in engagement log_sales_last_month increases by ~.04 units controlling for all other predictors in the model.\nFor actual_usage, we see that when an employees’ skill level is high a unit increase in actual_usage increases log_sales_last_month by ~.06 units. Next, when employees’ skill level is moderate, we that a unit increase in actual_usage increases log_sales_last_month by ~.03 units. Finally, when employees’ skill level is low, we see that a unit increase in actual_usage increases log_sales_last_month by ~.02 units. Overall, actual_usage is most related to log_sales_last_month when an employee has a high skill level.\nFurther, with all of our predictors, we are able to explain ~36% of the variance in log_sales_last_month."
   },
   {
     "objectID": "lectures/11-lecture-slides.html#overview",
@@ -7026,5 +7026,152 @@
     "title": "A Mixed Bag of Models",
     "section": "Autoregressive Time Series Model",
     "text": "Autoregressive Time Series Model\nA standard time series model is the AR model, where the outcome variable at Time T is predicted by its value at Time T-1:\n\\[Y_{t}=\\beta_{1}Y_{t-1} + \\epsilon_t\\]"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html",
+    "href": "assignments/04-assignment-quarto.html",
+    "title": "Assignment 4",
+    "section": "",
+    "text": "Load the required packages and read in the dataset below.\n\nlibrary(tidyverse)\nlibrary(boot)\nlibrary(ggthemes)\n\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/04-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#setup",
+    "href": "assignments/04-assignment-quarto.html#setup",
+    "title": "Assignment 4",
+    "section": "",
+    "text": "Load the required packages and read in the dataset below.\n\nlibrary(tidyverse)\nlibrary(boot)\nlibrary(ggthemes)\n\ndata_ai &lt;- readr::read_csv(\"https://alopilato88.github.io/quantitative-analysis-1/assignments/04-assignment-data.csv\")"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-1",
+    "href": "assignments/04-assignment-quarto.html#question-1",
+    "title": "Assignment 4",
+    "section": "Question 1",
+    "text": "Question 1\nQ1: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict perceived_freq_use. Intrepret the model results."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-2",
+    "href": "assignments/04-assignment-quarto.html#question-2",
+    "title": "Assignment 4",
+    "section": "Question 2",
+    "text": "Question 2\nQ2: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 1. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-3",
+    "href": "assignments/04-assignment-quarto.html#question-3",
+    "title": "Assignment 4",
+    "section": "Question 3",
+    "text": "Question 3\nQ3: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influentional observations?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-4",
+    "href": "assignments/04-assignment-quarto.html#question-4",
+    "title": "Assignment 4",
+    "section": "Question 4",
+    "text": "Question 4\nQ4: Use the predict function to calculate the predicted values from the model you estimated in Question 1, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 2. Do you see a pattern or does the plot look more like a random cloud of points?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-5",
+    "href": "assignments/04-assignment-quarto.html#question-5",
+    "title": "Assignment 4",
+    "section": "Question 5",
+    "text": "Question 5\nQ5: Plot a histogram of the residuals from the model you estimated in Question 1. Do the residuals look normally distributed?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-6",
+    "href": "assignments/04-assignment-quarto.html#question-6",
+    "title": "Assignment 4",
+    "section": "Question 6",
+    "text": "Question 6\nQ6: Use histograms to explore the distributions of actual_usage and sales_last_month. What do you notice about the distributions of these variables?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-7",
+    "href": "assignments/04-assignment-quarto.html#question-7",
+    "title": "Assignment 4",
+    "section": "Question 7",
+    "text": "Question 7\nQ7: Estimate a regression model that uses behavioral_intention and positive_attitude_ai to predict actual_usage. Intrepret the model results."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-8",
+    "href": "assignments/04-assignment-quarto.html#question-8",
+    "title": "Assignment 4",
+    "section": "Question 8",
+    "text": "Question 8\nQ8: Use the functions hatvalues and rstudent to calculate the hat-values and studentized residuals from the model you estimated in Question 7. What is the largest hat-value and residual in your data?\nCreate two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-9",
+    "href": "assignments/04-assignment-quarto.html#question-9",
+    "title": "Assignment 4",
+    "section": "Question 9",
+    "text": "Question 9\nQ8: Use the function cooks.distance to calculate the Cook’s distance values. Plot the values. Can you identify any influentional observations?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-10",
+    "href": "assignments/04-assignment-quarto.html#question-10",
+    "title": "Assignment 4",
+    "section": "Question 10",
+    "text": "Question 10\nQ10: Use the predict function to calculate the predicted values from the model you estimated in Quesiton 7, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 8. Do you see a pattern or does the plot look more like a random cloud of points?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-11",
+    "href": "assignments/04-assignment-quarto.html#question-11",
+    "title": "Assignment 4",
+    "section": "Question 11",
+    "text": "Question 11\nQ11: Plot a histogram of the residuals from the model you estimated in Question 7. Do the residuals look normally distributed?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-12",
+    "href": "assignments/04-assignment-quarto.html#question-12",
+    "title": "Assignment 4",
+    "section": "Question 12",
+    "text": "Question 12\nQ12: Estimate the the indirect effect that perceived_useful has on actual_usage through behavioral_intention."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-13",
+    "href": "assignments/04-assignment-quarto.html#question-13",
+    "title": "Assignment 4",
+    "section": "Question 13",
+    "text": "Question 13\nQ13: Estimate a regression model that uses engagement, perceived_freq_use, actual_usage, skill_level, and office_region to predict sales_last_month. Interpret the model results"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-14",
+    "href": "assignments/04-assignment-quarto.html#question-14",
+    "title": "Assignment 4",
+    "section": "Question 14",
+    "text": "Question 14\nQ14: Use plots of residuals from the model you estimated in Question 13 to determine if any of the linear regression assumptions are violated."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-15",
+    "href": "assignments/04-assignment-quarto.html#question-15",
+    "title": "Assignment 4",
+    "section": "Question 15",
+    "text": "Question 15\nQ15: From your residual plots, it should appear that the residuals suffer from some extreme observations. To adjust for this, transform your dependent variable, sales_last_month, into a new variable using the log function. Name this new variable log_sales_last_month. Refit your regression model using the new dependent variable."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-16",
+    "href": "assignments/04-assignment-quarto.html#question-16",
+    "title": "Assignment 4",
+    "section": "Question 16",
+    "text": "Question 16\nQ16: Use plots of residuals from the model you estimated in Question 15 to determine if any of the linear regression assumptions are violated."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-17",
+    "href": "assignments/04-assignment-quarto.html#question-17",
+    "title": "Assignment 4",
+    "section": "Question 17",
+    "text": "Question 17\nQ17: From your residual plots, it should appear that there are some observations that still are not explained well by the regression model. Try adding in some new interaction terms:\n\nengagement * skill_level\nactual_usage * skill_level\nperceived_freq_use * skill_level\n\nRemove the interaction if not all the component terms (e.g. perceived_freq_use:skill_level_low & perceived_freq_use:skill_level_moderate) are not significant. This will be your final model.\nOnce you have estimated your final model, plot the residuals and decide if your residuals indicate that your final model fits better than your previous models. Why or why not?"
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-18",
+    "href": "assignments/04-assignment-quarto.html#question-18",
+    "title": "Assignment 4",
+    "section": "Question 18",
+    "text": "Question 18\nQ18: Calculate the effects of actual_usage when skill_level is low, moderate, and high."
+  },
+  {
+    "objectID": "assignments/04-assignment-quarto.html#question-19",
+    "href": "assignments/04-assignment-quarto.html#question-19",
+    "title": "Assignment 4",
+    "section": "Question 19",
+    "text": "Question 19\nQ19: Write up the results of your final model. You will want to talk about what varibles significantly predict log_sales_last_month, what variables interact with skill_level and how that alters their effects, and the overall fit of the model."
   }
 ]

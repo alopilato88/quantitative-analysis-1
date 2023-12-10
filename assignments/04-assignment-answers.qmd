@@ -1,0 +1,576 @@
+---
+title: "Assignment 4"
+editor_options: 
+  chunk_output_type: console
+---
+
+## Setup 
+
+Load the required packages and read in the dataset below. 
+
+```{r}
+#| output: false
+library(tidyverse)
+library(boot)
+library(ggthemes)
+
+data_ai <- readr::read_csv("https://alopilato88.github.io/quantitative-analysis-1/assignments/04-assignment-data.csv")
+```
+
+## Question 1
+
+**Q1: Estimate a regression model that uses `behavioral_intention` and `positive_attitude_ai` to predict `perceived_freq_use`. Interpret the model results.** 
+
+```{r}
+mod_1 <- lm(perceived_freq_use ~ behavioral_intention + positive_attitude_ai, data = data_ai)
+summary(mod_1)
+```
+
+From the model results, we can see that `behavioral_intention` is significantly and positively related to `perceived_freq_use` and that `positive_attitude_ai` is not significantly related to `perceived_freq_use`. We can use the p-values associated with each regression coefficient to determine if a predictor variable is significantly related to an outcome variable. When the p-value is less than or equal to .05, we can assert that the linear relationship between the predictor and the outcome (captured by the estimated regression slope) is significantly different than zero. 
+
+Focusing on `behavioral_intention`, our model tells us that for every unit increase in `behavioral_intention`, we should expected `perceived_freq_use` to increase by .45 units while controlling for `positive_attitude_ai`. 
+
+Overall, our predictors explain ~31% of the variance in `perceived_freq_use`, which is quite large in this literature. 
+
+## Question 2
+
+**Q2: Use the functions `hatvalues` and `rstudent` to calculate the hat-values and studentized residuals from the model you estimated in Question 1. What is the largest hat-value and residual in your data?** 
+
+**Create two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value.**
+
+```{r}
+hat_mod_1 <- hatvalues(mod_1)
+resid_mod_1 <- rstudent(mod_1)
+max(hat_mod_1)
+max(resid_mod_1)
+```
+
+The largest studentized residual is `r max(resid_mod_1)` and the largest hat-value is `r max(hat_mod_1)`. 
+
+```{r}
+data <- 
+  tibble::tibble(
+    hat_value = hat_mod_1,
+    resid = resid_mod_1,
+    x = 1:length(hat_mod_1)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = hat_value
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Hat-value",
+    title = "Model Hat-Values"
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Studentized Residuals",
+    title = "Model Studentized Residuals"
+  )
+```
+
+## Question 3
+
+**Q3: Use the function `cooks.distance` to calculate the Cook's distance values. Plot the values. Can you identify any influential observations?**
+
+```{r}
+cook_mod_1 <- cooks.distance(mod_1)
+
+data <- 
+  data |>
+  dplyr::mutate(
+    cooks_dist = cook_mod_1
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = cooks_dist
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Cooks Distance",
+    title = "Model Leverage"
+  )
+```
+
+The most influential point as measured by Cook's distance is observation number `r data |> dplyr::filter(cooks_dist == max(cooks_dist)) |> dplyr::pull(x)` with a Cook's distance of `r max(data$cooks_dist)`.
+
+## Question 4
+
+**Q4: Use the `predict` function to calculate the predicted values from the model you estimated in Question 1, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 2. Do you see a pattern or does the plot look more like a random cloud of points?**
+
+```{r}
+data <- 
+  data |> 
+  dplyr::mutate(
+    pred_value = predict(mod_1)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = pred_value,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Predicted Value",
+    y = "Studentized Residual",
+    title = "Plot of Predicted Values vs Model Residuals"
+  )
+
+```
+
+There appears to be somewhat of a negative relationship between our model predicted values and residuals. As the predicted values increase, the model residuals decrease, on average. This could mean that we are missing an important predictor that is both related to our outcome variable and one or more of our predictor variables. 
+
+## Question 5
+
+**Q5: Plot a histogram of the residuals from the model you estimated in Question 1. Do the residuals look normally distributed?**
+
+```{r}
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 25
+  ) + 
+  ggplot2::theme_minimal()
+```
+
+The residual histogram shows that the distribution of the residuals is approximately symmetric and centered around a mean of 0. Although not perfectly normal, the residual distribution may be close enough to normal. 
+
+## Question 6
+
+**Q6: Use histograms to explore the distributions of `actual_usage` and `sales_last_month`. What do you notice about the distributions of these variables?**
+
+```{r}
+ggplot2::ggplot(
+  data = data_ai,
+  ggplot2::aes(
+    x = actual_usage
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 25
+  ) + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Actual Usage",
+    title = "Distribution of the Number of Times Employees Used the AI Tool",
+    y = "Count"
+  )
+
+ggplot2::ggplot(
+  data = data_ai,
+  ggplot2::aes(
+    x = sales_last_month
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 100
+  ) + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Sales Last Month",
+    title = "Distribution of Sales Last Month",
+    y = "Count"
+  )
+```
+
+Both of these distributions seem to suffer from a strong positive skew further we are likely to see some extreme values (values very far away from the mean) in both of these distributions. This may indicate that linear regression will not work very well with either of these variables as outcomes. 
+
+## Question 7
+
+**Q7: Estimate a regression model that uses `behavioral_intention` and `positive_attitude_ai` to predict `actual_usage`. Interpret the model results.** 
+
+```{r}
+mod_2 <- lm(actual_usage ~ behavioral_intention + positive_attitude_ai, data = data_ai)
+summary(mod_2)
+```
+
+From the model results, we can see that only `behavioral_intention` is significantly related to `actual_usage` with a p-value less than .001, but `positive_attitude_ai` is not significantly related to `actual_usage`. Specifically, for every unit increase in `behavioral_intention`, we expect to see `actual_usage` increase by 4.64 units while controlling for `positive_attitude_ai`. 
+
+The model R^2^ is .31, which indicates that our predictors explain 31% of variance in our outcome, `actual_usage`. 
+
+## Question 8
+
+**Q8: Use the functions `hatvalues` and `rstudent` to calculate the hat-values and studentized residuals from the model you estimated in Question 7. What is the largest hat-value and residual in your data?** 
+
+**Create two separate plots: a plot for the residuals where the X-axis is the observation number and the y-axis is the studentized residual and a plot for the hat-values where the X-axis is the observation number and y-axis is the hat-value.**
+
+```{r}
+hat_mod_2 <- hatvalues(mod_2)
+resid_mod_2 <- rstudent(mod_2)
+max(hat_mod_2)
+max(resid_mod_2)
+```
+
+The largest studentized residual is `r max(resid_mod_2)` and the largest hat-value is `r max(hat_mod_2)`. 
+
+```{r}
+data <- 
+  tibble::tibble(
+    hat_value = hat_mod_2,
+    resid = resid_mod_2,
+    x = 1:length(hat_mod_2)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = hat_value
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Hat-value",
+    title = "Model Hat-Values"
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Studentized Residuals",
+    title = "Model Studentized Residuals"
+  )
+```
+
+## Question 9
+
+**Q8: Use the function `cooks.distance` to calculate the Cook's distance values. Plot the values. Can you identify any influential observations?**
+
+```{r}
+cook_mod_2 <- cooks.distance(mod_2)
+
+data <- 
+  data |>
+  dplyr::mutate(
+    cooks_dist = cook_mod_2
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = x,
+    y = cooks_dist
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Observation Number",
+    y = "Cooks Distance",
+    title = "Model Leverage"
+  )
+```
+
+The most influential point as measured by Cook's distance is observation number `r data |> dplyr::filter(cooks_dist == max(cooks_dist)) |> dplyr::pull(x)` with a Cook's distance of `r max(data$cooks_dist)`.
+
+## Question 10
+
+**Q10: Use the `predict` function to calculate the predicted values from the model you estimated in Question 7, then plot the predicted values (X-axis) against the studentized residuals (Y-axis) you calculated in Question 8. Do you see a pattern or does the plot look more like a random cloud of points?**
+
+```{r}
+data <- 
+  data |> 
+  dplyr::mutate(
+    pred_value = predict(mod_2)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = pred_value,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Predicted Value",
+    y = "Studentized Residual",
+    title = "Plot of Predicted Values vs Model Residuals"
+  )
+```
+
+There appears to be somewhat of a negative relationship between our model predicted values and residuals although it is weaker than the previous plot we looked at. Similarly, this could mean that we are missing an important predictor that is both related to our outcome variable and one or more of our predictor variables. 
+
+## Question 11
+
+**Q11: Plot a histogram of the residuals from the model you estimated in Question 7. Do the residuals look normally distributed?**
+
+```{r}
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) + 
+  ggplot2::geom_histogram(
+    bins = 25
+  ) + 
+  ggplot2::theme_minimal()
+```
+
+Although somewhat symmetric, the distribution of the residuals is showing a slight negative skew with larger negative values (-3 and greater) than we would expect if the residuals were normally distributed.
+
+## Question 12
+
+**Q12: Estimate the the indirect effect that `perceived_useful` has on `actual_usage` through `behavioral_intention`.**
+
+```{r}
+mod_ie <- lm(behavioral_intention ~ perceived_useful, data = data_ai)
+mod_de <- lm(actual_usage ~ behavioral_intention + perceived_useful, data = data_ai)
+
+ie <- coef(mod_ie)["perceived_useful"] * coef(mod_de)["behavioral_intention"]
+round(ie, 3)
+```
+
+The indirect effect `perceived_useful` has on `actual_usage` through `behavioral_intention` is `r round(ie, 3)`.
+
+## Question 13
+
+**Q13: Estimate a regression model that uses `engagement`, `perceived_freq_use`, `actual_usage`, `skill_level`, and `office_region` to predict `sales_last_month`. Interpret the model results**
+
+```{r}
+mod_3 <- lm(sales_last_month ~ engagement + perceived_freq_use + actual_usage + skill_level + 
+              office_region, data = data_ai)
+```
+
+From our model results, we can see that `perceived_freq_use`, `actual_usage`, and `skill_level` are all significantly related to `sales_last_month`. 
+
+Focusing on `perceived_freq_use`, we see that for every unit increase in `perceived_freq_use` `sales_last_month` decreases by ~158 dollars. For `actual_usage`, we see that for every unit increase in `actual_usage` `sales_last_month` increases by ~78 dollars. For `skill_level`, we see that the average sales of employees with low levels of skills is ~577 dollars lower compared to employees with a high level of skills. Similarly, the average sales of employees with a moderate level of skills is ~642 dollars lower than the average sales of employees with a high level of skills. 
+
+Overall, our model is able to explain 23% of the variance in sales (R^2^ = .23).
+
+## Question 14
+
+**Q14: Use plots of residuals from the model you estimated in Question 13 to determine if any of the linear regression assumptions are violated.**
+
+```{r}
+data <- 
+  tibble::tibble(
+    predict = predict(mod_3),
+    resid = rstudent(mod_3)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = predict,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() +
+  ggplot2::labs(
+    x = "Predicted Value",
+    y = "Studentized Residuals"
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) +
+  ggplot2::geom_histogram(bins = 40) + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Studentized Residual",
+    y = "Count"
+  )
+
+```
+
+From both plots, we can clearly see that our data violates the assumption that residuals are normally distributed. The model residuals have a distribution with a severe positive skew and likely very heavy tails, which tells us that there are more extreme observations in our data than we would see with a normal distribution.
+
+## Question 15
+
+**Q15: From your residual plots, it should appear that the residuals suffer from some extreme observations. To adjust for this, transform your dependent variable, `sales_last_month`, into a new variable using the `log` function. Name this new variable `log_sales_last_month`. Refit your regression model using the new dependent variable.**
+
+```{r}
+data_ai <- 
+  data_ai |> 
+  dplyr::mutate(
+    log_sales_last_month = log(sales_last_month)
+  )
+
+mod_4 <- lm(log_sales_last_month ~ engagement + perceived_freq_use + actual_usage + skill_level + 
+              office_region, data = data_ai)
+
+```
+
+## Question 16
+
+**Q16: Use plots of residuals from the model you estimated in Question 15 to determine if any of the linear regression assumptions are violated.**
+
+```{r}
+data <- 
+  tibble::tibble(
+    predict = predict(mod_4),
+    resid = rstudent(mod_4)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = predict,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Predicted Value",
+    y = "Studentized Residual"
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) +
+  ggplot2::geom_histogram(bins = 40) + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Studentized Residuals",
+    y = "Count"
+  )
+
+```
+
+From our plot of predicted values vs residuals, we see that there is still some pattern in our data that is not being accounted for by the predictors. Specifically, the data seem to display non-constant error variance where we are better able to predict smaller values of `log_sales_last_month` than larger values. 
+
+From our histogram our model residuals, we see that the residuals look normally distributed now especially compared to our residuals before we transformed the outcome variable. 
+
+## Question 17
+
+**Q17: From your residual plots, it should appear that there are some observations that still are not explained well by the regression model. Try adding in some new interaction terms:**
+
+1. `engagement * skill_level` 
+2. `actual_usage * skill_level`
+3. `perceived_freq_use * skill_level`
+
+**Remove the interaction if not all the component terms (e.g. perceived_freq_use:skill_level_low & perceived_freq_use:skill_level_moderate) are not significant. This will be your final model.**
+
+**Once you have estimated your final model, plot the residuals and decide if your residuals indicate that your final model fits better than your previous models. Why or why not?**
+
+```{r}
+data_ai <- 
+  data_ai |> 
+  dplyr::mutate(
+    log_sales_last_month = log(sales_last_month)
+  )
+
+mod_5 <- lm(log_sales_last_month ~ (engagement + perceived_freq_use + actual_usage) * skill_level + 
+              office_region, data = data_ai)
+
+mod_6 <- lm(log_sales_last_month ~ engagement + perceived_freq_use + actual_usage * skill_level + 
+              office_region, data = data_ai)
+
+data <- 
+  tibble::tibble(
+    predict = predict(mod_6),
+    resid = rstudent(mod_6)
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = predict,
+    y = resid
+  )
+) + 
+  ggplot2::geom_point() + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Predicted Value",
+    y = "Studentized Residual"
+  )
+
+ggplot2::ggplot(
+  data = data,
+  ggplot2::aes(
+    x = resid
+  )
+) +
+  ggplot2::geom_histogram(bins = 40) + 
+  ggplot2::theme_minimal() + 
+  ggplot2::labs(
+    x = "Studentized Residuals",
+    y = "Count"
+  )
+```
+
+Overall, the plots do not show a lot of improvement as the predicted values vs the studentized residuals still show signs of non-constant error variance, but we will keep the significant interactions to improve the overall fit of our model. 
+
+## Question 18
+
+**Q18: Calculate the effects of `actual_usage` when `skill_level` is low, moderate, and high.**
+
+```{r}
+# Actual Usage when Skill Level is Low
+coef(mod_6)["actual_usage"] + coef(mod_6)["actual_usage:skill_levellow"]
+
+# Actual Usage when Skill Level is Moderate 
+coef(mod_6)["actual_usage"] + coef(mod_6)["actual_usage:skill_levelmoderate"]
+
+# Actual Usage when Skill Level is High
+coef(mod_6)["actual_usage"]
+```
+
+## Question 19
+
+**Q19: Write up the results of your final model. You will want to talk about what variables significantly predict `log_sales_last_month`, what variables interact with `skill_level` and how that alters their effects, and the overall fit of the model.**
+
+```{r}
+summary(mod_6)
+```
+
+Overall, after we transform `sales_last_month` to `log_sales_last_month`, we see that `engagement` and `actual_usage x skill_level` are all significant predictors. 
+
+Focusing on `engagement`, we see that for every unit increase in `engagement` `log_sales_last_month` increases by ~.04 units controlling for all other predictors in the model. 
+
+For `actual_usage`, we see that when an employees' skill level is high a unit increase in `actual_usage` increases `log_sales_last_month` by ~.06 units. Next, when employees' skill level is moderate, we that a unit increase in `actual_usage` increases `log_sales_last_month` by ~.03 units. Finally, when employees' skill level is low, we see that a unit increase in `actual_usage` increases `log_sales_last_month` by ~.02 units. Overall, `actual_usage` is most related to `log_sales_last_month` when an employee has a high skill level. 
+
+Further, with all of our predictors, we are able to explain ~36% of the variance in `log_sales_last_month`. 
