@@ -1,0 +1,15 @@
+---
+format: 
+  html:
+    page-layout: article
+---
+
+## Thinking Linearly: Things to Remember About Linear Regression
+
+<iframe src="12-lecture-slides.html" name="12-lecture-slides"></iframe>
+
+
+
+
+
+

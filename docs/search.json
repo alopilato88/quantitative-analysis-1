@@ -7173,5 +7173,33 @@
     "title": "Assignment 4",
     "section": "Question 19",
     "text": "Question 19\nQ19: Write up the results of your final model. You will want to talk about what varibles significantly predict log_sales_last_month, what variables interact with skill_level and how that alters their effects, and the overall fit of the model."
+  },
+  {
+    "objectID": "lectures/12-lecture-slides.html#overview",
+    "href": "lectures/12-lecture-slides.html#overview",
+    "title": "Thinking Linearly: Things to Remember About Linear Regression",
+    "section": "Overview",
+    "text": "Overview\n\nReview the final homework assignment\nA retro/review of the course material"
+  },
+  {
+    "objectID": "lectures/12-lecture-slides.html#things-to-remember",
+    "href": "lectures/12-lecture-slides.html#things-to-remember",
+    "title": "Thinking Linearly: Things to Remember About Linear Regression",
+    "section": "Things to Remember",
+    "text": "Things to Remember\n\nLinear regression tries to answer the question: How does the outcome variable change, on average, when we change the value of a predictor variable.\n\nYou do not have to think linearly with a linear model, you can capture nonlinear effects too (interactions & curvilinear effects).\n\nLinear regression is a tool and it works wondefully when applied to the right problems (assumptions are generally met), but it can fall apart when applied to the wrong problems.\nFor all statistical models, do not equate statistical significance with practical significance–always remember to look at the effect size!\nThe best policy when using statistics is to be transparent about all of the decisions you made to get to your final model."
+  },
+  {
+    "objectID": "lectures/12-lecture-slides.html#questions",
+    "href": "lectures/12-lecture-slides.html#questions",
+    "title": "Thinking Linearly: Things to Remember About Linear Regression",
+    "section": "Questions",
+    "text": "Questions\nSpeak now or forever hold your peace!"
+  },
+  {
+    "objectID": "lectures/12-lecture-slides.html#thanks",
+    "href": "lectures/12-lecture-slides.html#thanks",
+    "title": "Thinking Linearly: Things to Remember About Linear Regression",
+    "section": "Thanks!",
+    "text": "Thanks!\nThanks for a great semester! I hope y’all enjoyed the most fascintating, never boring course you could take!\nFeel free to keep in touch!"
   }
 ]
